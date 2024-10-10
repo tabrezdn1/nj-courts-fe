@@ -1,13 +1,10 @@
-import {
-  Card,
-  CardBody,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 
-import Heading from "../../components/Heading"
+import Heading from "../../components/Heading";
 import PointsList from "../../components/PointsList";
+
 const HowItWorks = () => {
-  const heading = "How it Works?"
+  const heading = "How it Works?";
   const listPoints = [
     {
       title: "Easy Access",
@@ -27,12 +24,12 @@ const HowItWorks = () => {
   return (
     <>
       <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-      <Heading heading={heading}/>
+        <Heading heading={heading} />
         <CardBody className="p-8 font-normal">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
             Our platform offers:
           </Typography>
-          <PointsList listPoints={listPoints}/>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>

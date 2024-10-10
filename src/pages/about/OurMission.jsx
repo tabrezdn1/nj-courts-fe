@@ -1,16 +1,13 @@
-import {
-  Card,
-  CardBody,
-  Typography,
-} from "@material-tailwind/react";
-import Heading from "../../components/Heading"
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+
+import Heading from "../../components/Heading";
 
 const OurMission = () => {
   const heading = "Our Mission";
   return (
     <>
       <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading}/>
+        <Heading heading={heading} />
         <CardBody className="p-8 font-normal">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
             We are dedicated to making the legal system more accessible to the
