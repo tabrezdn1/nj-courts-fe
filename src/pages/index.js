@@ -9,7 +9,7 @@ import WhatIsExpungement from "./expungement-forms/WhatIsExpungement";
 import WhyConsiderExpungenment from "./expungement-forms/WhyConsiderExpungement";
 import ExpungementEligibilityCriteria from "./expungement-forms/ExpungementEligibilityCriteria";
 import ExpungementProcess from "./expungement-forms/ExpungementProcess";
-import ExpungementRequiredDocument from "./expungement-forms/ExpungementRequiredDocuments";
+import HowToGetYourRecords from "./expungement-forms/HowToGetYourRecords";
 import PostExpungementInfo from "./expungement-forms/PostExpungementInfo";
 
 import CivilCourtCommonForms from "./civil-court-forms/CivilCourtCommonForms";
@@ -37,7 +37,7 @@ import ContactUs from "./user-support/ContactUs";
 import PrivacyPolicy from "./terms-and-policies/PrivacyPolicy";
 import TermsOfUse from "./terms-and-policies/TermsOfUse";
 import ExpungementForm from "./ExpungementForm";
-import Home from "./Home"
+import Home from "./Home";
 export {
   OurMission,
   HowItWorks,
@@ -48,7 +48,7 @@ export {
   WhyConsiderExpungenment,
   ExpungementEligibilityCriteria,
   ExpungementProcess,
-  ExpungementRequiredDocument,
+  HowToGetYourRecords,
   PostExpungementInfo,
   CivilCourtCommonForms,
   CivilCourtOverview,
@@ -68,7 +68,6 @@ export {
   ContactUs,
   PrivacyPolicy,
   TermsOfUse,
-  
   ExpungementForm,
-  Home
+  Home,
 };

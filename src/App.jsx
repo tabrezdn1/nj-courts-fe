@@ -14,7 +14,7 @@ import {
   WhyConsiderExpungenment,
   ExpungementEligibilityCriteria,
   ExpungementProcess,
-  ExpungementRequiredDocument,
+  HowToGetYourRecords,
   PostExpungementInfo,
   CivilCourtCommonForms,
   CivilCourtOverview,
@@ -78,8 +78,8 @@ function App() {
               element={<ExpungementProcess />}
             />
             <Route
-              path="/expungement-forms/required-documents"
-              element={<ExpungementRequiredDocument />}
+              path="/expungement-forms/how-to-get-your-records"
+              element={<HowToGetYourRecords />}
             />
             <Route
               path="/expungement-forms/post-expungement-process"

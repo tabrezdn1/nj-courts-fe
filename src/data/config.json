@@ -49,7 +49,7 @@
           "link": "/eligibility-criteria"
         },
         {
-          "label": "The Expungement Process",
+          "label": "Expungement Process",
           "link": "/expungement-process",
           "tabs": [
             {
@@ -67,8 +67,8 @@
           ]
         },
         {
-          "label": "Required Documents",
-          "link": "/required-documents",
+          "label": "How to Get Your Records?",
+          "link": "/how-to-get-your-records",
           "tabs": [
             {
               "label": "Obtaining Criminal Records",
@@ -103,7 +103,7 @@
           ]
         },
         {
-            "label": "Form Beta test ****",
+            "label": "ONLINE FORM",
             "link": "/form",
             "tabs": [
               {
