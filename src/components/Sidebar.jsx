@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -9,18 +10,8 @@ import {
   AccordionBody,
   Input,
 } from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
-import {
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
-import { Link, NavLink } from "react-router-dom";
+
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Sidebar = (props) => {
   const [openAccordions, setOpenAccordions] = React.useState({});
@@ -70,7 +61,6 @@ const Sidebar = (props) => {
                   {accordionItem?.menu.map((menuItem, menuIndex) => (
                     <NavLink
                       to={`${accordionItem.link}${menuItem.link}`}
-                      activeClassName="active"
                       key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
                     >
                       <ListItem>{menuItem.label}</ListItem>
