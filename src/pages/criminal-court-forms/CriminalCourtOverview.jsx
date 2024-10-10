@@ -10,11 +10,8 @@ const CriminalCourtOverview = () => {
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Criminal courts handle cases involving alleged violations of
+            criminal law.
           </Typography>
         </CardBody>
       </Card>
