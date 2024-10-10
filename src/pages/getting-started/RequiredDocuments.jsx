@@ -1,27 +1,39 @@
-import {
-    Card,
-    CardBody,
-    Typography,
-  } from "@material-tailwind/react";
-  import Heading from "../../components/Heading"
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+
+import Heading from "../../components/Heading";
+import PointsList from "../../components/PointsList";
+
 const RequiredDocuments = () => {
-    const heading = "Required Documents";
+  const heading = "Required Documents";
+  const listPoints = [
+    {
+      title: "Identification",
+      description: "Valid photo ID (e.g., driver's license, passport).",
+    },
+    {
+      title: "Case-Specific Documents",
+      description:
+        "Relevant to your legal matter (e.g., previous court orders, police reports).",
+    },
+    {
+      title: "Financial Records",
+      description: "If applicable, such as income statements or tax returns.",
+    },
+  ];
+
   return (
     <>
       <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading}/>
+        <Heading heading={heading} />
         <CardBody className="p-8 font-normal">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Prepare the following:
           </Typography>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>
   );
-}
+};
 
 export default RequiredDocuments;

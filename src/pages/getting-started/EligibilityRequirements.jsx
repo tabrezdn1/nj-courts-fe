@@ -1,27 +1,33 @@
-import {
-    Card,
-    CardBody,
-    Typography,
-  } from "@material-tailwind/react";
-  import Heading from "../../components/Heading"
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+
+import Heading from "../../components/Heading";
+import PointsList from "../../components/PointsList";
+
 const EligibilityRequirements = () => {
-    const heading = "Eligibility Requirements";
+  const heading = "Eligibility Requirements";
+  const listPoints = [
+    {
+      title: "Check Eligibility",
+      description: "Different forms have specific eligibility criteria.",
+    },
+    {
+      title: "Legal Consultation",
+      description: "Consider seeking legal advice to confirm your eligibility.",
+    },
+  ];
   return (
     <>
       <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading}/>
+        <Heading heading={heading} />
         <CardBody className="p-8 font-normal">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Before you begin:
           </Typography>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>
   );
-}
+};
 
 export default EligibilityRequirements;
