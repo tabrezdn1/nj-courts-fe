@@ -16,6 +16,25 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 const Sidebar = (props) => {
   const [openAccordions, setOpenAccordions] = React.useState({});
 
+  function Icon({ rotate }) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        className={`${rotate ? "rotate-180" : ""} h-5 w-5 transition-transform`}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+        />
+      </svg>
+    );
+  }
+
   const toggleAccordion = (index) => {
     setOpenAccordions((prevState) => ({
       ...prevState,
@@ -51,6 +70,7 @@ const Sidebar = (props) => {
           <Accordion
             open={openAccordions[accordionIndex] ?? false}
             key={`${accordionItem}-${accordionIndex}`}
+            icon={<Icon rotate={openAccordions[accordionIndex]} />}
           >
             <AccordionHeader onClick={() => toggleAccordion(accordionIndex)}>
               {accordionItem.title}
