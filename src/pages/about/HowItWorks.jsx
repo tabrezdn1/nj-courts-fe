@@ -23,9 +23,9 @@ const HowItWorks = () => {
   ];
   return (
     <>
-      <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
-        <CardBody className="p-8 font-normal">
+        <CardBody className="font-normal px-[64px]">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
             Our platform offers:
           </Typography>

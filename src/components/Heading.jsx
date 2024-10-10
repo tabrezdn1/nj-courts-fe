@@ -7,9 +7,9 @@ const Heading = ({ heading }) => {
       shadow={false}
       color="teal"
       variant="gradient"
-      className="rounded-md border-b border-white/10 p-4 min-h-80"
+      className="rounded-md border-b border-white/10 p-4 min-h-10"
     >
-      <Typography color="white" className="text-7xl mt-[200px]">
+      <Typography color="white" className="text-7xl mt-[120px] px-[35px]">
         {heading}
       </Typography>
     </CardHeader>
