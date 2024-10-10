@@ -1,21 +1,33 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import Heading from "../../components/Heading";
+import PointsList from "../../components/PointsList";
 
 const PrivacyPolicy = () => {
   const heading = "Privacy Policy";
+  const listPoints = [
+    {
+      title: "Data Protection",
+      description: " Measures we take to secure your personal information.",
+    },
+    {
+      title: "Data Usage",
+      description: "How your information is used within our services.",
+    },
+    {
+      title: "Cookies and Tracking",
+      description: "Information on website tracking technologies.",
+    },
+  ];
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Policy:
           </Typography>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>
