@@ -1,0 +1,254 @@
+{
+  "sidebarItems": [
+    {
+      "title": "About",
+      "link": "/about",
+      "menu": [
+        {
+          "label": "Our Mission",
+          "link": "/our-mission"
+        },
+        {
+          "label": "How It Works",
+          "link": "/how-it-works"
+        }
+      ]
+    },
+    {
+      "title": "Getting Started",
+      "link": "/getting-started",
+      "menu": [
+        {
+          "label": "Understanding Court Forms",
+          "link": "/understanding-court-forms"
+        },
+        {
+          "label": "Eligibility Requirements",
+          "link": "/eligibility-requirements"
+        },
+        {
+          "label": "Required Documents",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Expungement Forms",
+      "link": "/expungement-forms",
+      "menu": [
+        {
+          "label": "What is Expungement?",
+          "link": "/what-is-expungement"
+        },
+        {
+          "label": "Why Consider Expungement?",
+          "link": "/why-consider-expungement"
+        },
+        {
+          "label": "Eligibility Criteria",
+          "link": "/eligibility-criteria"
+        },
+        {
+          "label": "The Expungement Process",
+          "link": "/expungement-process",
+          "tabs": [
+            {
+              "label": "Steps to Apply",
+              "link": ""
+            },
+            {
+              "label": "Required Documents",
+              "link": ""
+            },
+            {
+              "label": "How Long It Takes",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Required Documents",
+          "link": "/required-documents",
+          "tabs": [
+            {
+              "label": "Obtaining Criminal Records",
+              "link": ""
+            },
+            {
+              "label": "Fingerprinting for Expungement",
+              "link": ""
+            },
+            {
+              "label": "Information Needed",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Post-Expungement Information",
+          "link": "/post-expungement-process",
+          "tabs": [
+            {
+              "label": "What Happens After Expungement",
+              "link": ""
+            },
+            {
+              "label": "Who Can Still See Expunged Records",
+              "link": ""
+            },
+            {
+              "label": "Can Expungement Be Reversed?",
+              "link": ""
+            }
+          ]
+        },
+        {
+            "label": "Form Beta test ****",
+            "link": "/form",
+            "tabs": [
+              {
+                "label": "What Happens After Expungement",
+                "link": ""
+              },
+              {
+                "label": "Who Can Still See Expunged Records",
+                "link": ""
+              },
+              {
+                "label": "Can Expungement Be Reversed?",
+                "link": ""
+              }
+            ]
+          }
+      ]
+    },
+    {
+      "title": "Civil Court Forms",
+      "link": "/civil-court-forms",
+      "menu": [
+        {
+          "label": "Overview",
+          "link": "/overview"
+        },
+        {
+          "label": "Common Forms",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Required Documents",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Family Court Forms",
+      "link": "/family-court-forms",
+      "menu": [
+        {
+          "label": "Overview",
+          "link": "/overview"
+        },
+        {
+          "label": "Common Forms",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Required Documents",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Criminal Court Forms",
+      "link": "/criminal-court-forms",
+      "menu": [
+        {
+          "label": "Overview",
+          "link": "/overview"
+        },
+        {
+          "label": "Common Forms",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Required Documents",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "How to Fill Forms",
+      "link": "/how-to-fill",
+      "menu": [
+        {
+          "label": "Step-by-Step Guides",
+          "link": "/step-by-step-guides",
+          "tabs": [
+            {
+              "label": "Expungement Form Guide",
+              "link": ""
+            },
+            {
+              "label": "Civil Complaint Form Guide",
+              "link": ""
+            },
+            {
+              "label": "Family Court Petition Guide",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Frequently Asked Questions",
+          "link": "/frequently-asked-questions"
+        }
+      ]
+    },
+    {
+      "title": "Resources",
+      "link": "/resources",
+      "menu": [
+        {
+          "label": "Legal Aid Services",
+          "link": "/legal-aid-services"
+        },
+        {
+          "label": "Court Locations And Contact",
+          "link": "/court-locations-and-contact"
+        },
+        {
+          "label": "Glossary of Legal Terms",
+          "link": "/glossary-of-legal-terms"
+        }
+      ]
+    },
+    {
+      "title": "User Support",
+      "link": "/user-support",
+      "menu": [
+        {
+          "label": "Help Center",
+          "link": "/help-center"
+        },
+        {
+          "label": "Contact Us",
+          "link": "/contact-us"
+        }
+      ]
+    },
+    {
+      "title": "Terms and Policies",
+      "link": "/terms-and-policies",
+      "menu": [
+        {
+          "label": "Privacy Policy",
+          "link": "/privacy-policy"
+        },
+        {
+          "label": "Terms of Use",
+          "link": "/terms-of-use"
+        }
+      ]
+    }
+  ]
+}
