@@ -26,7 +26,7 @@ const Sidebar = (props) => {
 
   return (
     <div className="h-full flex-[0.20] ">
-      <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-8 shadow-xl shadow-blue-gray-900/5 overflow-auto">
+      <Card className="h-[calc(100vh-2rem)] w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
         <Link to="/">
           <div className="mb-2 flex items-center gap-4 p-4">
             <img
