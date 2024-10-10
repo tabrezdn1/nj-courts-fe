@@ -1,27 +1,38 @@
-import {
-    Card,
-    CardBody,
-    Typography,
-  } from "@material-tailwind/react";
-  import Heading from "../../components/Heading"
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+
+import Heading from "../../components/Heading";
+import PointsList from "../../components/PointsList";
+
 const HelpCenter = () => {
-    const heading = "Help Center";
+  const heading = "Help Center";
+  const listPoints = [
+    {
+      title: "Getting Started Guides",
+      description: "Tutorials on using the online portal.",
+    },
+    {
+      title: "Technical Support",
+      description: "Assistance with website issues or errors.",
+    },
+    {
+      title: "Account Assistance",
+      description:
+        "Help with login issues, password resets, and account management.",
+    },
+  ];
   return (
     <>
-      <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading}/>
-        <CardBody className="p-8 font-normal">
+      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+        <Heading heading={heading} />
+        <CardBody className="font-normal px-[64px]">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Available support:
           </Typography>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>
   );
-}
+};
 
 export default HelpCenter;

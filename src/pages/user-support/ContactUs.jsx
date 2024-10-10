@@ -1,27 +1,37 @@
-import {
-    Card,
-    CardBody,
-    Typography,
-  } from "@material-tailwind/react";
-  import Heading from "../../components/Heading"
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+
+import Heading from "../../components/Heading";
+import PointsList from "../../components/PointsList";
+
 const ContactUs = () => {
-    const heading = "Contact Us";
+  const heading = "Contact Us";
+  const listPoints = [
+    {
+      title: "Email Support",
+      description: "support@njcourtsforms.gov",
+    },
+    {
+      title: "Phone Support",
+      description: "1-800-XXX-XXXX (Monday to Friday, 9 AM - 5 PM)",
+    },
+    {
+      title: "Live Chat",
+      description: "Chat with a support agent for immediate assistance.",
+    },
+  ];
   return (
     <>
-      <Card className="w-full p-8 h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading}/>
-        <CardBody className="p-8 font-normal">
+      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+        <Heading heading={heading} />
+        <CardBody className="font-normal px-[64px]">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            We are dedicated to making the legal system more accessible to the
-            residents of New Jersey. Our goal is to simplify the process of
-            filling out court forms by providing clear instructions and online
-            tools, reducing the stress and confusion often associated with legal
-            paperwork.
+            Get in touch:
           </Typography>
+          <PointsList listPoints={listPoints} />
         </CardBody>
       </Card>
     </>
   );
-}
+};
 
 export default ContactUs;
