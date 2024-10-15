@@ -1,5 +1,4 @@
-{
-  "sidebarItems": [
+[
     {
       "title": "About",
       "link": "/about",
@@ -252,4 +251,3 @@
       ]
     }
   ]
-}

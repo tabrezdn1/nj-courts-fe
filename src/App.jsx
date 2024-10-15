@@ -1,7 +1,7 @@
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { Routes, Route } from "react-router-dom";
-import config from "./data/config.json";
+import { sidebarItems } from "./data/configs";
 import {
   Home,
   OurMission,
@@ -39,7 +39,7 @@ function App() {
   return (
     <>
       <div className="w-full flex h-svh max-h-svh">
-        <Sidebar items={config.sidebarItems} />
+        <Sidebar items={sidebarItems} />
         <div className="h-full flex-1">
           <Routes>
             <Route exact path="/" element={<Home />} />
