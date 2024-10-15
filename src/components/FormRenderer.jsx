@@ -15,7 +15,7 @@ const GPTFormRenderer = ({ form }) => {
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
         {form.title}
-        <HelpDrawer />
+        {form?.helper && <HelpDrawer />}
       </Typography>
       <Typography color="gray" className="mt-1 font-normal max-w-96">
         {form?.subtitle || ""}
