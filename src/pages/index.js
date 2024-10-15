@@ -36,7 +36,7 @@ import ContactUs from "./user-support/ContactUs";
 
 import PrivacyPolicy from "./terms-and-policies/PrivacyPolicy";
 import TermsOfUse from "./terms-and-policies/TermsOfUse";
-import ExpungementForm from "./ExpungementForm";
+import ExpungementForm from "./expungement-forms/ExpungementForm";
 import Home from "./Home";
 export {
   OurMission,
