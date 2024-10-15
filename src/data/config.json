@@ -103,23 +103,24 @@
           ]
         },
         {
-            "label": "ONLINE FORM",
-            "link": "/form",
-            "tabs": [
-              {
-                "label": "What Happens After Expungement",
-                "link": ""
-              },
-              {
-                "label": "Who Can Still See Expunged Records",
-                "link": ""
-              },
-              {
-                "label": "Can Expungement Be Reversed?",
-                "link": ""
-              }
-            ]
-          }
+          "label": "Fill out the Form",
+          "link": "/form",
+          "chip": "ONLINE",
+          "tabs": [
+            {
+              "label": "What Happens After Expungement",
+              "link": ""
+            },
+            {
+              "label": "Who Can Still See Expunged Records",
+              "link": ""
+            },
+            {
+              "label": "Can Expungement Be Reversed?",
+              "link": ""
+            }
+          ]
+        }
       ]
     },
     {

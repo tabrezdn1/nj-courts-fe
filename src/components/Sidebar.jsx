@@ -9,6 +9,8 @@ import {
   AccordionHeader,
   AccordionBody,
   Input,
+  ListItemSuffix,
+  Chip
 } from "@material-tailwind/react";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -48,11 +50,7 @@ const Sidebar = (props) => {
       <Card className="h-[calc(100vh-2rem)] w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
         <Link to="/">
           <div className="mb-2 flex items-center gap-4 p-4">
-            <img
-              src="../../public/nj-courts.jpeg"
-              alt="brand"
-              className="h-8 w-8"
-            />
+            <img src="/nj-courts.jpeg" alt="brand" className="h-8 w-8" />
             <Typography variant="h5" color="blue-gray">
               NJ Courts Forms
             </Typography>
@@ -83,7 +81,18 @@ const Sidebar = (props) => {
                       to={`${accordionItem.link}${menuItem.link}`}
                       key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
                     >
-                      <ListItem>{menuItem.label}</ListItem>
+                      <ListItem>
+                        {menuItem.label}
+                        {menuItem?.chip?.length && <ListItemSuffix>
+                          <Chip
+                            value="ONLINE"
+                            size="sm"
+                            variant="ghost"
+                            color="blue-gray"
+                            className="rounded-full"
+                          />
+                        </ListItemSuffix>}
+                      </ListItem>
                     </NavLink>
                   ))}
                 </List>
