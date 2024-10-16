@@ -1,6 +1,7 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 import Heading from "../components/Heading";
+import NavigateLink from "../components/NavigateLink";
 
 const Home = () => {
   const heading = "Home";
@@ -14,6 +15,16 @@ const Home = () => {
             legal processes by accessing and completing court forms online. Our
             user-friendly platform guides you through each step, ensuring that
             you provide all necessary information accurately.
+          </Typography>
+          <Typography
+            color="blue-gray"
+            className="py-1 w-1/2 text-2xl "
+            variant="h4"
+          >
+            <NavigateLink
+              label="Take me to expungement form"
+              link="./expungement-forms/form"
+            />
           </Typography>
         </CardBody>
       </Card>
