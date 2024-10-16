@@ -11,7 +11,7 @@ import {
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
 const TabsRenderer = ({ tabItems }) => {
-  const [activeTab, updateActiveTab] = React.useState("personal-details");
+  const [activeTab, updateActiveTab] = React.useState(tabItems[0]["value"]);
   return (
     <Tabs className="mt-6 w-auto" value={activeTab}>
       <TabsHeader
