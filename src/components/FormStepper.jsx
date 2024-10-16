@@ -43,10 +43,10 @@ const GPTStepper = ({ steps }) => {
         <FormRenderer form={steps[activeStep]} />
       </div>
       <div className="flex justify-between mb-5">
-        <Button color="teal" onClick={handlePrev} disabled={isFirstStep}>
+        <Button onClick={handlePrev} disabled={isFirstStep}>
           Prev
         </Button>
-        <Button color="teal" onClick={handleNext} disabled={isLastStep}>
+        <Button onClick={handleNext} disabled={isLastStep}>
           Next
         </Button>
       </div>
