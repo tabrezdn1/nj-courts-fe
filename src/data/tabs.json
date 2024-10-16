@@ -2,7 +2,7 @@
   {
     "label": "Personal Details",
     "value": "personal-details",
-    "desc": "Enter your personal details",
+    "desc": "",
     "list": [],
     "stepper": [
       {
@@ -45,7 +45,7 @@
   {
     "label": "Criminal Records",
     "value": "criminal-records",
-    "desc": "Enter your criminal records",
+    "desc": "",
     "list": [],
     "stepper": [
       {
@@ -69,7 +69,7 @@
   {
     "label": "Employment History",
     "value": "employment-history",
-    "desc": "Enter your employment history",
+    "desc": "",
     "list": [],
     "stepper": [
       {
@@ -106,7 +106,7 @@
   {
     "label": "Education",
     "value": "education",
-    "desc": "Enter your educational background",
+    "desc": "",
     "list": [],
     "stepper": [
       {
@@ -131,7 +131,7 @@
   {
     "label": "References",
     "value": "references",
-    "desc": "Enter your references",
+    "desc": "",
     "list": [],
     "stepper": [
       {
@@ -162,7 +162,7 @@
   {
     "label": "Submit",
     "value": "submit",
-    "desc": "Submit your details",
+    "desc": "",
     "list": [],
     "stepper": [
       {
