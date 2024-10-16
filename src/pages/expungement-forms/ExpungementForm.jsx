@@ -11,6 +11,7 @@ import Heading from "../../components/Heading";
 import PointsList from "../../components/PointsList";
 import { useState } from "react";
 import FormStepper from "../../components/FormStepper";
+import ExpungementFormSubmit from "./ExpungementFormSubmit";
 const ExpungementForm = () => {
   const heading = "ONLINE FORM";
   const [activeTab, updateActiveTab] = useState("personal-details");
@@ -45,8 +46,14 @@ const ExpungementForm = () => {
                   <Typography color="gray" className="py-1 w-1/2 text-2xl">
                     {desc}
                   </Typography>
-                  {list?.length > 0 && <PointsList listPoints={list} />}
+
+                  {value !== "submit" && (
+                    <>
+                      {list?.length > 0 && <PointsList listPoints={list} />}
+                    </>
+                  )}
                   <FormStepper steps={stepper} activeTab={activeTab} />
+                  {value === "submit" && <ExpungementFormSubmit />}
                 </TabPanel>
               ))}
             </TabsBody>

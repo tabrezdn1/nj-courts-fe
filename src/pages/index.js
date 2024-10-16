@@ -11,6 +11,7 @@ import ExpungementEligibilityCriteria from "./expungement-forms/ExpungementEligi
 import ExpungementProcess from "./expungement-forms/ExpungementProcess";
 import HowToGetYourRecords from "./expungement-forms/HowToGetYourRecords";
 import PostExpungementInfo from "./expungement-forms/PostExpungementInfo";
+import ExpungementFormSubmit from "./expungement-forms/ExpungementFormSubmit";
 
 import CivilCourtCommonForms from "./civil-court-forms/CivilCourtCommonForms";
 import CivilCourtOverview from "./civil-court-forms/CivilCourtOverview";
@@ -50,6 +51,7 @@ export {
   ExpungementProcess,
   HowToGetYourRecords,
   PostExpungementInfo,
+  ExpungementFormSubmit,
   CivilCourtCommonForms,
   CivilCourtOverview,
   CivilCourtRequiredDocuments,
