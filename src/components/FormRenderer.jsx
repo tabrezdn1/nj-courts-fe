@@ -10,7 +10,13 @@ import {
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
 
-const GPTFormRenderer = ({ form }) => {
+const GPTFormRenderer = ({ tab_id, form, formData, updateField }) => {
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    updateField(tab_id, id, value);
+  };
+
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
@@ -31,6 +37,9 @@ const GPTFormRenderer = ({ form }) => {
                 <Input
                   size="lg"
                   placeholder={field.placeholder}
+                  id={field.id}
+                  value={formData[tab_id]?.[field.id] || ""}
+                  onChange={handleInputChange}
                   className="!border-t-blue-gray-200 focus:!border-t-gray-900"
                   labelProps={{
                     className: "before:content-none after:content-none",

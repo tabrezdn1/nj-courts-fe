@@ -3,7 +3,7 @@ import { Stepper, Step, Button } from "@material-tailwind/react";
 import { CogIcon, UserIcon, HomeIcon } from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
 
-const GPTStepper = ({ steps }) => {
+const GPTStepper = ({ tab_id, steps, formData, updateField }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
@@ -40,7 +40,7 @@ const GPTStepper = ({ steps }) => {
         )}
       </div>
       <div className="flex items-center justify-center min-h-full">
-        <FormRenderer form={steps[activeStep]} />
+        <FormRenderer tab_id={tab_id} form={steps[activeStep]} formData={formData} updateField={updateField} />
       </div>
       <div className="flex justify-between mb-5">
         <Button onClick={handlePrev} disabled={isFirstStep}>

@@ -1,19 +1,20 @@
 import { Card, CardBody } from "@material-tailwind/react";
 import { tabItems } from "../../data/configs";
 import Heading from "../../components/Heading";
-import PointsList from "../../components/PointsList";
-import { useState } from "react";
-import FormStepper from "../../components/FormStepper";
+import useFormData from "../../hooks/useFormData";
 import TabsRenderer from "../../components/TabsRenderer";
+
+
 const ExpungementForm = () => {
   const heading = "ONLINE FORM";
+  const { formData, updateField } = useFormData("expungementForm");
 
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
-          <TabsRenderer tabItems={tabItems}/>
+          <TabsRenderer tabItems={tabItems} formData={formData} updateField={updateField}/>
         </CardBody>
       </Card>
     </>

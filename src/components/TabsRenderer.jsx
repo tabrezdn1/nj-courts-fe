@@ -11,7 +11,7 @@ import {
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
-const TabsRenderer = ({ tabItems }) => {
+const TabsRenderer = ({ tabItems, formData, updateField }) => {
   const [activeTab, updateActiveTab] = React.useState(tabItems[0]["value"]);
   return (
     <Tabs className="mt-6 w-auto" value={activeTab}>
@@ -44,7 +44,7 @@ const TabsRenderer = ({ tabItems }) => {
                 {list?.length > 0 && <PointsList listPoints={list} />}
               </>
             )}
-            <FormStepper steps={stepper} activeTab={activeTab} />
+            <FormStepper tab_id={value}  steps={stepper} activeTab={activeTab} formData={formData} updateField={updateField}/>
             {value === "submit" && <ExpungementFormSubmit />}
           </TabPanel>
         ))}

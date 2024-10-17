@@ -16,16 +16,23 @@
         "icon": "UserIcon",
         "fields": [
           {
+            "id": "first_name",
             "type": "input",
             "label": "First Name",
             "placeholder": "First Name"
           },
           {
+            "id": "middle_name",
             "type": "input",
             "label": "Middle Name (if applicable)",
             "placeholder": "Middle Name (if applicable)"
           },
-          { "type": "input", "label": "Last Name", "placeholder": "Last Name" }
+          { 
+            "id": "last_name",
+            "type": "input", 
+            "label": "Last Name", 
+            "placeholder": "Last Name" 
+          }
         ]
       },
       {
@@ -33,11 +40,17 @@
         "icon": "HomeIcon",
         "fields": [
           {
+            "id": "phone_number",
             "type": "input",
             "label": "Phone Number",
             "placeholder": "Phone Number"
           },
-          { "type": "input", "label": "Email", "placeholder": "Email" }
+          { 
+            "id": "email",
+            "type": "input", 
+            "label": "Email", 
+            "placeholder": "Email" 
+          }
         ]
       }
     ]
@@ -53,11 +66,13 @@
         "icon": "CogIcon",
         "fields": [
           {
+            "id": "case_number",
             "type": "input",
             "label": "Case Number",
             "placeholder": "Case Number"
           },
           {
+            "id": "date_of_conviction",
             "type": "date",
             "label": "Date of Conviction",
             "placeholder": "Date of Conviction"
@@ -77,12 +92,14 @@
         "icon": "UserIcon",
         "fields": [
           {
+            "id": "company_name",
             "type": "input",
             "label": "Company Name",
             "placeholder": "Company Name"
           },
-          { "type": "input", "label": "Job Title", "placeholder": "Job Title" },
+          {"id": "job_title", "type": "input", "label": "Job Title", "placeholder": "Job Title" },
           {
+            "id": "years_of_employment",
             "type": "input",
             "label": "Years of Employment",
             "placeholder": "Years of Employment"
@@ -94,6 +111,7 @@
         "icon": "CogIcon",
         "fields": [
           {
+            "id": "employment_type",
             "type": "radio",
             "label": "Employment Type",
             "name": "employmentType",
@@ -114,12 +132,14 @@
         "icon": "HomeIcon",
         "fields": [
           {
+            "id": "institution_name",
             "type": "input",
             "label": "Institution Name",
             "placeholder": "Institution Name"
           },
-          { "type": "input", "label": "Degree", "placeholder": "Degree" },
+          {"id": "degree", "type": "input", "label": "Degree", "placeholder": "Degree" },
           {
+            "id": "date_range",
             "type": "date-range",
             "label": "Years Attended",
             "placeholder": "From - To"
@@ -138,18 +158,21 @@
         "title": "Reference Details",
         "icon": "CogIcon",
         "fields": [
-          { "type": "input", "label": "Name", "placeholder": "Name" },
+          { "id": "name", "type": "input", "label": "Name", "placeholder": "Name" },
           {
+            "id": "relationship",
             "type": "input",
             "label": "Relationship",
             "placeholder": "Relationship"
           },
           {
+            "id": "contact_information",
             "type": "input",
             "label": "Contact Information",
             "placeholder": "Contact Information"
           },
           {
+            "id": "preferred_contact_method",
             "type": "checkbox",
             "label": "Preferred Contact Method",
             "name": "contactMethod",
@@ -170,6 +193,7 @@
         "icon": "UserIcon",
         "fields": [
           {
+            "id": "additional_comments",
             "type": "textarea",
             "label": "Additional Comments",
             "placeholder": "Enter any additional comments"
