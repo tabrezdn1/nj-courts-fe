@@ -198,7 +198,12 @@
             "label": "Additional Comments",
             "placeholder": "Enter any additional comments"
           },
-          { "type": "input", "label": "Signature", "placeholder": "Signature" }
+          {
+            "id":"signature", 
+            "type": "input", 
+            "label": "Signature", 
+            "placeholder": "Signature" 
+          }
         ]
       }
     ]

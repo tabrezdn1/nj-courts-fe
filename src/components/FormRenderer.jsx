@@ -13,9 +13,47 @@ import HelpDrawer from "./HelpDrawer";
 const GPTFormRenderer = ({ tab_id, form, formData, updateField }) => {
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    updateField(tab_id, id, value);
+    const { id, value, type } = e.target;
+    switch (type) {
+      case "text":
+        updateField(tab_id, id, value);    
+        break;
+      case "textarea":
+        updateField(tab_id, id, value);    
+        break;
+      case "radio":
+        updateField(tab_id, id, value);
+        break; 
+      case "date":
+        updateField(tab_id, id, value);
+        break;
+      case "checkbox":
+        handleCheckboxChange(e, id);
+        break; 
+      default:
+        console.error("Unsupported input field", type);
+    }
   };
+
+
+  const handleCheckboxChange = (e, fieldId) => {
+    console.log(fieldId);
+    const { value, checked } = e.target;
+    const updatedValues = formData[tab_id]?.[fieldId] || [];
+  
+    if (checked) {
+      // Add the checked value to the array
+      updateField(tab_id, fieldId, [...updatedValues, value]);
+    } else {
+      // Remove the unchecked value from the array
+      updateField(
+        tab_id,
+        fieldId,
+        updatedValues.filter((item) => item !== value)
+      );
+    }
+  };
+  
 
   return (
     <Card color="transparent" shadow={false}>
@@ -50,10 +88,14 @@ const GPTFormRenderer = ({ tab_id, form, formData, updateField }) => {
                 <div className="flex gap-4">
                   {field.options.map((option, i) => (
                     <Radio
+                      id={field.id}
                       key={i}
                       name={field.name}
                       label={option}
                       color="teal"
+                      value={option}
+                      checked={formData[tab_id]?.[field.id] === option}
+                      onChange={handleInputChange}
                     />
                   ))}
                 </div>
@@ -67,6 +109,9 @@ const GPTFormRenderer = ({ tab_id, form, formData, updateField }) => {
                       label={option}
                       name={field.name}
                       color="teal"
+                      value={option}
+                      checked={formData[tab_id]?.[field.id]?.includes(option) || false}
+                      onChange={(e) => handleCheckboxChange(e, field.id)}
                     />
                   ))}
                 </div>
@@ -89,15 +134,21 @@ const GPTFormRenderer = ({ tab_id, form, formData, updateField }) => {
               )}
               {field.type === "textarea" && (
                 <Textarea
+                  id={field.id}
                   color="teal"
                   placeholder={field.placeholder}
                   rows={8}
+                  value={formData[tab_id]?.[field.id] || ""}
+                  onChange={handleInputChange}
                 />
               )}
               {field.type === "date" && (
                   <Input
+                    id={field.id}
                     type="date"
                     size="lg"
+                    value={formData[tab_id]?.[field.id] || ""}
+                    onChange={handleInputChange}
                     className="!border-t-blue-gray-200 focus:!border-t-gray-900"
                     labelProps={{
                       className: "before:content-none after:content-none",

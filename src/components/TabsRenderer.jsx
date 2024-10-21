@@ -11,18 +11,22 @@ import {
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
-const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalStorage, updateActiveStepLocalStorage }) => {
+const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalStorage }) => {
   const [activeTab, updateActiveTab] = React.useState(formData['activeTab'] || tabItems[0]["value"]);
 
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
-    const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
-    if (tabButton) {
-      tabButton.click();
-    }
-
     updateActiveTabLocalStorage(activeTab)
+  }, [activeTab]);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+      if (tabButton) {
+        tabButton.click();
+      }
+    }, 0);
   }, [activeTab]);
 
   return (
@@ -59,11 +63,9 @@ const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalSto
             <FormStepper 
               steps={stepper}
               tab_id={value}  
-              activeTab={activeTab} 
               isTabActive={value==activeTab}
               formData={formData} 
               updateField={updateField} 
-              updateActiveStepLocalStorage={updateActiveStepLocalStorage}
               moveNextTab={() => updateActiveTab(tabItems[index + 1]["value"])}
               movePrevTab={() => updateActiveTab(tabItems[index - 1]["value"])}
               isFirstTab={value === tabItems[0].value}

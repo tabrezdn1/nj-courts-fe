@@ -5,17 +5,15 @@ import FormRenderer from "./FormRenderer";
 
 const GPTStepper = ({ 
   tab_id, 
-  isTabActive, 
   steps, 
   formData, 
   updateField, 
-  updateActiveStepLocalStorage,
   moveNextTab,
   movePrevTab,
   isFirstTab,
   isLastTab, 
 }) => {
-  const [activeStep, setActiveStep] = React.useState(isTabActive ? formData['activeStep'] || 0 : 0);
+  const [activeStep, setActiveStep] = React.useState(formData[tab_id]?.activeStep || 0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
@@ -37,9 +35,7 @@ const GPTStepper = ({
   React.useEffect(() => {
     setIsLastStep(activeStep === steps.length - 1);
     setIsFirstStep(activeStep === 0);
-    if (isTabActive) {
-      updateActiveStepLocalStorage(activeStep)
-    }
+    updateField(tab_id, 'activeStep', activeStep)
   }, [activeStep, steps.length]);
 
   return (

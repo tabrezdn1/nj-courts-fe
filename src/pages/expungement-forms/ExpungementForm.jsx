@@ -7,7 +7,7 @@ import TabsRenderer from "../../components/TabsRenderer";
 
 const ExpungementForm = () => {
   const heading = "ONLINE FORM";
-  const { formData, updateField, updateActiveTabLocalStorage, updateActiveStepLocalStorage } = useFormData("expungementForm");
+  const { formData, updateField, updateActiveTabLocalStorage } = useFormData("expungementForm");
 
   return (
     <>
@@ -19,7 +19,6 @@ const ExpungementForm = () => {
             formData={formData} 
             updateField={updateField} 
             updateActiveTabLocalStorage={updateActiveTabLocalStorage} 
-            updateActiveStepLocalStorage={updateActiveStepLocalStorage}
           />
         </CardBody>
       </Card>
