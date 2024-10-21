@@ -7,174 +7,257 @@
     "stepper": [
       {
         "title": "Full Name",
-        "helper": {
-          "title": "",
-          "content": "",
-          "helpLink": ""
-        },
-        "subtitle": "Enter your first name, middle name (if applicable), and last name. This should match the name used on any legal documents related to your case.",
-        "icon": "UserIcon",
+        "icon": "UserCircleIcon",
         "fields": [
           {
             "type": "input",
-            "label": "First Name",
-            "placeholder": "First Name"
-          },
-          {
-            "type": "input",
-            "label": "Middle Name (if applicable)",
-            "placeholder": "Middle Name (if applicable)"
-          },
-          { "type": "input", "label": "Last Name", "placeholder": "Last Name" }
+            "label": "Hey there! What's your full name?",
+            "placeholder": "Full Name"
+          }
         ]
       },
       {
-        "title": "Contact Information",
+        "title": "Date of Birth",
+        "icon": "CalendarIcon",
+        "fields": [
+          {
+            "type": "date",
+            "label": "When's your birthday, {User's Name}?",
+            "placeholder": "Date of Birth"
+          }
+        ]
+      },
+      {
+        "title": "Address",
         "icon": "HomeIcon",
         "fields": [
           {
             "type": "input",
-            "label": "Phone Number",
-            "placeholder": "Phone Number"
-          },
-          { "type": "input", "label": "Email", "placeholder": "Email" }
-        ]
-      }
-    ]
-  },
-  {
-    "label": "Criminal Records",
-    "value": "criminal-records",
-    "desc": "",
-    "list": [],
-    "stepper": [
-      {
-        "title": "Case Information",
-        "icon": "CogIcon",
-        "fields": [
-          {
-            "type": "input",
-            "label": "Case Number",
-            "placeholder": "Case Number"
-          },
-          {
-            "type": "date",
-            "label": "Date of Conviction",
-            "placeholder": "Date of Conviction"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "label": "Employment History",
-    "value": "employment-history",
-    "desc": "",
-    "list": [],
-    "stepper": [
-      {
-        "title": "Previous Employment",
-        "icon": "UserIcon",
-        "fields": [
-          {
-            "type": "input",
-            "label": "Company Name",
-            "placeholder": "Company Name"
-          },
-          { "type": "input", "label": "Job Title", "placeholder": "Job Title" },
-          {
-            "type": "input",
-            "label": "Years of Employment",
-            "placeholder": "Years of Employment"
+            "label": "Where do you live these days? (Full address with ZIP code, please)",
+            "placeholder": "Address"
           }
         ]
       },
       {
-        "title": "Employment Type",
-        "icon": "CogIcon",
+        "title": "Phone Number",
+        "icon": "PhoneIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Can we get your phone number in case we need to reach you?",
+            "placeholder": "Phone Number"
+          }
+        ]
+      },
+      {
+        "title": "Social Security Number",
+        "icon": "IdentificationIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Do you have a Social Security number you can share? (Optional, but helpful)",
+            "placeholder": "Social Security Number"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "First Offense Information",
+    "value": "first-offense",
+    "desc": "",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Date of Arrest",
+        "icon": "CalendarIcon",
+        "fields": [
+          {
+            "type": "date",
+            "label": "Alright, {User's Name}, when did this first arrest happen?",
+            "placeholder": "Date of Arrest"
+          }
+        ]
+      },
+      {
+        "title": "Municipality",
+        "icon": "BuildingOffice2Icon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Which town or city did this take place in?",
+            "placeholder": "Municipality"
+          }
+        ]
+      },
+      {
+        "title": "Offense Name",
+        "icon": "ExclamationTriangleIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "What were you arrested for? (Please provide the full offense name)",
+            "placeholder": "Offense Name"
+          }
+        ]
+      },
+      {
+        "title": "Statute Number",
+        "icon": "DocumentTextIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Do you know the statute number linked to the charge?",
+            "placeholder": "Statute Number"
+          }
+        ]
+      },
+      {
+        "title": "Case Number",
+        "icon": "HashtagIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Got any case numbers for this? (Indictment, complaint, or warrant)",
+            "placeholder": "Indictment/Complaint Number"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Case Outcome",
+    "value": "case-outcome",
+    "desc": "",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Case Resolution",
+        "icon": "ScaleIcon",
+        "fields": [
+          {
+            "type": "select",
+            "label": "How did the case wrap up?",
+            "name": "caseOutcome",
+            "options": ["Dismissed", "Convicted", "Deferred Disposition"]
+          }
+        ]
+      },
+      {
+        "title": "Dismissal Program",
+        "icon": "ClipboardDocumentCheckIcon",
+        "fields": [
+          {
+            "type": "select",
+            "label": "Since it was dismissed, was the dismissal through one of these programs?",
+            "name": "dismissalProgram",
+            "options": ["PTI", "Conditional Discharge", "Other"]
+          }
+        ]
+      },
+      {
+        "title": "Program Completion",
+        "icon": "CheckCircleIcon",
+        "fields": [
+          {
+            "type": "date",
+            "label": "When did you complete the program?",
+            "placeholder": "Program Completion Date"
+          }
+        ]
+      },
+      {
+        "title": "Court Information",
+        "icon": "BuildingLibraryIcon",
+        "fields": [
+          {
+            "type": "input",
+            "label": "Which court dismissed the charge?",
+            "placeholder": "Court Name"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Additional Offense",
+    "value": "additional-offense",
+    "desc": "",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Additional Offense Check",
+        "icon": "PlusCircleIcon",
         "fields": [
           {
             "type": "radio",
-            "label": "Employment Type",
-            "name": "employmentType",
-            "options": ["Full-Time", "Part-Time", "Contract"]
+            "label": "Do you have another offense to add?",
+            "name": "additionalOffense",
+            "options": ["Yes", "No"]
           }
         ]
       }
     ]
   },
   {
-    "label": "Education",
-    "value": "education",
+    "label": "Eligibility Check",
+    "value": "eligibility",
     "desc": "",
     "list": [],
     "stepper": [
       {
-        "title": "Educational Details",
-        "icon": "HomeIcon",
+        "title": "Open Charges",
+        "icon": "QuestionMarkCircleIcon",
         "fields": [
           {
-            "type": "input",
-            "label": "Institution Name",
-            "placeholder": "Institution Name"
-          },
-          { "type": "input", "label": "Degree", "placeholder": "Degree" },
-          {
-            "type": "date-range",
-            "label": "Years Attended",
-            "placeholder": "From - To"
+            "type": "radio",
+            "label": "Any open or pending charges right now?",
+            "name": "openCharges",
+            "options": ["Yes", "No"]
           }
         ]
-      }
-    ]
-  },
-  {
-    "label": "References",
-    "value": "references",
-    "desc": "",
-    "list": [],
-    "stepper": [
+      },
       {
-        "title": "Reference Details",
-        "icon": "CogIcon",
+        "title": "Previous Expungement",
+        "icon": "ArchiveBoxIcon",
         "fields": [
-          { "type": "input", "label": "Name", "placeholder": "Name" },
           {
-            "type": "input",
-            "label": "Relationship",
-            "placeholder": "Relationship"
-          },
-          {
-            "type": "input",
-            "label": "Contact Information",
-            "placeholder": "Contact Information"
-          },
-          {
-            "type": "checkbox",
-            "label": "Preferred Contact Method",
-            "name": "contactMethod",
-            "options": ["Phone", "Email", "Mail"]
+            "type": "radio",
+            "label": "Have you ever had an expungement granted before?",
+            "name": "previousExpungement",
+            "options": ["Yes", "No"]
           }
         ]
       }
     ]
   },
   {
-    "label": "Submit",
-    "value": "submit",
+    "label": "Review Summary",
+    "value": "review",
     "desc": "",
     "list": [],
     "stepper": [
       {
-        "title": "Review and Submit",
-        "icon": "UserIcon",
+        "title": "Review Information",
+        "icon": "ClipboardDocumentListIcon",
         "fields": [
           {
             "type": "textarea",
-            "label": "Additional Comments",
-            "placeholder": "Enter any additional comments"
-          },
-          { "type": "input", "label": "Signature", "placeholder": "Signature" }
+            "label": "Let's review everything you've entered so far:",
+            "placeholder": "Summary will be displayed here"
+          }
+        ]
+      },
+      {
+        "title": "Confirmation",
+        "icon": "CheckBadgeIcon",
+        "fields": [
+          {
+            "type": "radio",
+            "label": "Does everything look good? You can always go back to fix something if needed!",
+            "name": "confirmInfo",
+            "options": ["Yes", "No"]
+          }
         ]
       }
     ]

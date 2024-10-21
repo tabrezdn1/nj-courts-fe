@@ -1,6 +1,6 @@
 import React from "react";
 import { Stepper, Step, Button } from "@material-tailwind/react";
-import { CogIcon, UserIcon, HomeIcon } from "@heroicons/react/24/outline";
+import * as HeroIcons from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
 
 const GPTStepper = ({ 
@@ -36,33 +36,46 @@ const GPTStepper = ({
 
   return (
     <>
-      <div className="w-full px-24 py-4 min-h-32">
+      <div className="w-full px-24 py-4 min-h-24">
         {steps.length > 1 && (
           <Stepper
             activeStep={activeStep}
             isLastStep={(value) => setIsLastStep(value)}
             isFirstStep={(value) => setIsFirstStep(value)}
           >
-            {steps.map((step, index) => (
-              <Step key={index} onClick={() => setActiveStep(index)}>
-                {step.icon == "UserIcon" &&<UserIcon className="h-6 w-6" />}
-                {step.icon == "HomeIcon" && <HomeIcon className="h-6 w-6" />}
-                {step.icon == "CogIcon" && <CogIcon className="h-6 w-6" />}
-              </Step>
-            ))}
+            {steps.map((step, index) => {
+              const IconComponent = HeroIcons[step.icon];
+              return (
+                <Step key={index} onClick={() => setActiveStep(index)}>
+                  {IconComponent ? (
+                    <IconComponent className="h-6 w-6" />
+                  ) : (
+                    <div className="h-6 w-6" /> // Fallback empty div if icon not found
+                  )}
+                </Step>
+              );
+            })}
           </Stepper>
         )}
       </div>
-      <div className="flex items-center justify-center min-h-full">
+      <div className="flex items-center justify-center min-h-96 pb-16">
         <FormRenderer form={steps[activeStep]} />
       </div>
-      <div className="flex justify-between mb-5">
-        <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>
-          Prev
-        </Button>
-        <Button onClick={handleNext} disabled={isLastTab && isLastStep}>
-          Next
-        </Button>
+      <div className="flex justify-between mb-5 sticky bottom-0 bg-white p-4 max-w-[inherit]">
+        <div>
+          {!(isFirstTab && isFirstStep) && (
+            <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>
+              Prev
+            </Button>
+          )}
+        </div>
+        <div>
+          {!(isLastTab && isLastStep) && (
+            <Button onClick={handleNext} disabled={isLastTab && isLastStep}>
+              Next
+            </Button>
+          )}
+        </div>
       </div>
     </>
   );
