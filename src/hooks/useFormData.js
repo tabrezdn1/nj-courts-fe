@@ -23,7 +23,21 @@ const useFormData = (formName) => {
     }));
   };
 
-  return { formData, updateField };
+  const updateActiveTabLocalStorage = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      activeTab: value
+    }));
+  };
+
+  const updateActiveStepLocalStorage = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      activeStep: value
+    }));
+  };
+
+  return { formData, updateField, updateActiveTabLocalStorage, updateActiveStepLocalStorage };
 };
 
 export default useFormData;

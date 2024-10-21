@@ -7,14 +7,20 @@ import TabsRenderer from "../../components/TabsRenderer";
 
 const ExpungementForm = () => {
   const heading = "ONLINE FORM";
-  const { formData, updateField } = useFormData("expungementForm");
+  const { formData, updateField, updateActiveTabLocalStorage, updateActiveStepLocalStorage } = useFormData("expungementForm");
 
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
-          <TabsRenderer tabItems={tabItems} formData={formData} updateField={updateField}/>
+          <TabsRenderer 
+            tabItems={tabItems} 
+            formData={formData} 
+            updateField={updateField} 
+            updateActiveTabLocalStorage={updateActiveTabLocalStorage} 
+            updateActiveStepLocalStorage={updateActiveStepLocalStorage}
+          />
         </CardBody>
       </Card>
     </>

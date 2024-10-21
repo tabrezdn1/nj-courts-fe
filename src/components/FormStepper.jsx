@@ -3,8 +3,8 @@ import { Stepper, Step, Button } from "@material-tailwind/react";
 import { CogIcon, UserIcon, HomeIcon } from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
 
-const GPTStepper = ({ tab_id, steps, formData, updateField }) => {
-  const [activeStep, setActiveStep] = React.useState(0);
+const GPTStepper = ({ tab_id, isTabActive, steps, formData, updateField, updateActiveStepLocalStorage }) => {
+  const [activeStep, setActiveStep] = React.useState(isTabActive ? formData['activeStep'] || 0 : 0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
@@ -18,6 +18,9 @@ const GPTStepper = ({ tab_id, steps, formData, updateField }) => {
   React.useEffect(() => {
     setIsLastStep(activeStep === steps.length - 1);
     setIsFirstStep(activeStep === 0);
+    if (isTabActive) {
+      updateActiveStepLocalStorage(activeStep)
+    }
   }, [activeStep, steps.length]);
 
   return (
