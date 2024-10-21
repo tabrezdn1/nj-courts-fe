@@ -15,6 +15,7 @@ const TabsRenderer = ({ tabItems }) => {
   const [activeTab, updateActiveTab] = React.useState(tabItems[0]["value"]);
 
   // Hack for smooter transistions
+  // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
     const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
     if (tabButton) {
