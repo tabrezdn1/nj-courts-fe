@@ -14,12 +14,19 @@ import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSub
 const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalStorage, updateActiveStepLocalStorage }) => {
   const [activeTab, updateActiveTab] = React.useState(formData['activeTab'] || tabItems[0]["value"]);
 
+  // Hack for smooter transistions
+  // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
+    const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+    if (tabButton) {
+      tabButton.click();
+    }
+
     updateActiveTabLocalStorage(activeTab)
   }, [activeTab]);
 
   return (
-    <Tabs className="mt-6 w-auto" value={activeTab}>
+    <Tabs className="mt-6 w-auto" value={activeTab} >
       <TabsHeader
         className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
         indicatorProps={{
@@ -39,7 +46,7 @@ const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalSto
         ))}
       </TabsHeader>
       <TabsBody>
-        {tabItems.map(({ value, desc, list, stepper }) => (
+        {tabItems.map(({ value, desc, list, stepper }, index) => (
           <TabPanel key={value} value={value}>
             <Typography color="gray" className="py-1 w-1/2 text-2xl">
               {desc}
@@ -50,12 +57,17 @@ const TabsRenderer = ({ tabItems, formData, updateField, updateActiveTabLocalSto
               </>
             )}
             <FormStepper 
-              tab_id={value} 
-              steps={stepper} 
+              steps={stepper}
+              tab_id={value}  
+              activeTab={activeTab} 
               isTabActive={value==activeTab}
               formData={formData} 
               updateField={updateField} 
               updateActiveStepLocalStorage={updateActiveStepLocalStorage}
+              moveNextTab={() => updateActiveTab(tabItems[index + 1]["value"])}
+              movePrevTab={() => updateActiveTab(tabItems[index - 1]["value"])}
+              isFirstTab={value === tabItems[0].value}
+              isLastTab={value === tabItems[tabItems.length - 1].value}
             />
             {value === "submit" && <ExpungementFormSubmit />}
           </TabPanel>

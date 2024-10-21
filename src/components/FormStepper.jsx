@@ -3,16 +3,35 @@ import { Stepper, Step, Button } from "@material-tailwind/react";
 import { CogIcon, UserIcon, HomeIcon } from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
 
-const GPTStepper = ({ tab_id, isTabActive, steps, formData, updateField, updateActiveStepLocalStorage }) => {
+const GPTStepper = ({ 
+  tab_id, 
+  isTabActive, 
+  steps, 
+  formData, 
+  updateField, 
+  updateActiveStepLocalStorage,
+  moveNextTab,
+  movePrevTab,
+  isFirstTab,
+  isLastTab, 
+}) => {
   const [activeStep, setActiveStep] = React.useState(isTabActive ? formData['activeStep'] || 0 : 0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
   const handleNext = () => {
-    if (!isLastStep) setActiveStep((cur) => cur + 1);
+    if (!isLastStep) {
+      setActiveStep((cur) => cur + 1);
+    } else if (isLastStep && !isLastTab) {
+      moveNextTab();
+    }
   };
   const handlePrev = () => {
-    if (!isFirstStep) setActiveStep((cur) => cur - 1);
+    if (!isFirstStep) {
+      setActiveStep((cur) => cur - 1);
+    } else if (isFirstStep && !isFirstTab) {
+      movePrevTab();
+    }
   };
 
   React.useEffect(() => {
@@ -46,10 +65,10 @@ const GPTStepper = ({ tab_id, isTabActive, steps, formData, updateField, updateA
         <FormRenderer tab_id={tab_id} form={steps[activeStep]} formData={formData} updateField={updateField} />
       </div>
       <div className="flex justify-between mb-5">
-        <Button onClick={handlePrev} disabled={isFirstStep}>
+        <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>
           Prev
         </Button>
-        <Button onClick={handleNext} disabled={isLastStep}>
+        <Button onClick={handleNext} disabled={isLastTab && isLastStep}>
           Next
         </Button>
       </div>
