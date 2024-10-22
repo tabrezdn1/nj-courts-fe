@@ -20,8 +20,8 @@ const PointsList = ({ listPoints }) => {
             <TimelineHeader className="h-3">
               <TimelineIcon />
               <Typography
-                variant="h4"
-                color="blue-gray"
+                variant="h5"
+                color="text-gray-900"
                 className="leading-none"
               >
                 {point.title}
