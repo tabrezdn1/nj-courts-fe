@@ -10,7 +10,6 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
-import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
 const TabsRenderer = ({ tabItems }) => {
   const [activeTab, updateActiveTab] = React.useState(tabItems[0]["value"]);
 
@@ -24,7 +23,7 @@ const TabsRenderer = ({ tabItems }) => {
   }, [activeTab]);
 
   return (
-    <Tabs className="mt-6 w-auto" value={activeTab} >
+    <Tabs className="mt-6 w-auto" value={activeTab}>
       <TabsHeader
         className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
         indicatorProps={{
@@ -46,23 +45,23 @@ const TabsRenderer = ({ tabItems }) => {
       <TabsBody>
         {tabItems.map(({ value, desc, list, stepper }, index) => (
           <TabPanel key={value} value={value}>
-            <Typography color="gray" className="py-1 w-1/2 text-2xl">
+            <Typography
+              color="gray"
+              className="py-1 w-1/2 text-2xl mx-auto text-center"
+            >
               {desc}
             </Typography>
             {value !== "submit" && (
-              <>
-                {list?.length > 0 && <PointsList listPoints={list} />}
-              </>
+              <>{list?.length > 0 && <PointsList listPoints={list} />}</>
             )}
-            <FormStepper 
-              steps={stepper} 
-              activeTab={activeTab} 
+            <FormStepper
+              steps={stepper}
+              activeTab={activeTab}
               moveNextTab={() => updateActiveTab(tabItems[index + 1]["value"])}
               movePrevTab={() => updateActiveTab(tabItems[index - 1]["value"])}
               isFirstTab={value === tabItems[0].value}
               isLastTab={value === tabItems[tabItems.length - 1].value}
             />
-            {value === "submit" && <ExpungementFormSubmit />}
           </TabPanel>
         ))}
       </TabsBody>

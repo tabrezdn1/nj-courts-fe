@@ -3,12 +3,14 @@ import { Stepper, Step, Button } from "@material-tailwind/react";
 import * as HeroIcons from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
 
-const GPTStepper = ({ 
-  steps, 
+import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
+
+const FormStepper = ({
+  steps,
   moveNextTab,
   movePrevTab,
   isFirstTab,
-  isLastTab, 
+  isLastTab,
 }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
@@ -58,10 +60,10 @@ const GPTStepper = ({
           </Stepper>
         )}
       </div>
-      <div className="flex items-center justify-center min-h-96 pb-16">
+      <div className="flex items-center justify-center min-h-96">
         <FormRenderer form={steps[activeStep]} />
       </div>
-      <div className="flex justify-between mb-5 sticky bottom-0 bg-white p-4 max-w-[inherit]">
+      <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit]">
         <div>
           {!(isFirstTab && isFirstStep) && (
             <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>
@@ -75,10 +77,13 @@ const GPTStepper = ({
               Next
             </Button>
           )}
+          {steps[activeStep].showSubmitButton === true && isLastStep && (
+            <ExpungementFormSubmit />
+          )}
         </div>
       </div>
     </>
   );
 };
 
-export default GPTStepper;
+export default FormStepper;

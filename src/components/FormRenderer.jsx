@@ -50,7 +50,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
               ripple={true}
               label={option}
               color="teal"
-              onChange={(e) => onOptionChange(field.id, option, e.target.checked)}
+              onChange={(e) =>
+                onOptionChange(field.id, option, e.target.checked)
+              }
               checked={selectedOptions[field.id]?.[option] || false}
             />
           ))}
@@ -69,8 +71,11 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           value={selectedOptions[field.id]}
         >
           {field.options.map((option, i) => (
-            <Option key={i} value={option.trim()}>
-              {option}
+            <Option
+              key={i}
+              value={typeof option === "string" ? option.trim() : option.value}
+            >
+              {typeof option === "string" ? option : option.label}
             </Option>
           ))}
         </Select>
@@ -103,42 +108,60 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
   }
 };
 
-const RecursiveFieldRenderer = ({ fields, selectedOptions, onOptionChange }) => {
+const RecursiveFieldRenderer = ({
+  fields,
+  selectedOptions,
+  onOptionChange,
+}) => {
   return fields.map((field, index) => (
     <div key={index}>
-      <Typography variant="h6" color="blue-gray">
+      <Typography
+        variant="h6"
+        color="blue-gray"
+        className="py-1 font-black font-bold"
+      >
         {field.label}
       </Typography>
-      <FieldRenderer field={field} onOptionChange={onOptionChange} selectedOptions={selectedOptions} />
-      {field.subFields && selectedOptions[field.id] && field.subFields[selectedOptions[field.id]] && (
-        <RecursiveFieldRenderer 
-          fields={field.subFields[selectedOptions[field.id]]} 
-          selectedOptions={selectedOptions}
-          onOptionChange={onOptionChange}
-        />
-      )}
+      <Typography variant="small" color="gray" className="py-1 font-black">
+        {field.sub_label}
+      </Typography>
+      <FieldRenderer
+        field={field}
+        onOptionChange={onOptionChange}
+        selectedOptions={selectedOptions}
+      />
+      {field.subFields &&
+        selectedOptions[field.id] &&
+        field.subFields[selectedOptions[field.id]] && (
+          <RecursiveFieldRenderer
+            className="p-1"
+            fields={field.subFields[selectedOptions[field.id]]}
+            selectedOptions={selectedOptions}
+            onOptionChange={onOptionChange}
+          />
+        )}
     </div>
   ));
 };
 
-const GPTFormRenderer = ({ form }) => {
+const FormRenderer = ({ form }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
-    setSelectedOptions(prevOptions => {
-      const field = form.fields.find(f => f.id === fieldId);
-      if (field && field.type === 'checkbox') {
+    setSelectedOptions((prevOptions) => {
+      const field = form.fields.find((f) => f.id === fieldId);
+      if (field && field.type === "checkbox") {
         return {
           ...prevOptions,
-          [fieldId]: { 
+          [fieldId]: {
             ...prevOptions[fieldId],
-            [option]: isChecked 
-          }
+            [option]: isChecked,
+          },
         };
       } else {
         return {
           ...prevOptions,
-          [fieldId]: option
+          [fieldId]: option,
         };
       }
     });
@@ -150,13 +173,13 @@ const GPTFormRenderer = ({ form }) => {
         {form.title}
         {form?.helper && <HelpDrawer />}
       </Typography>
-      <Typography color="gray" className="mt-1 font-normal max-w-96">
+      <Typography color="gray" className="font-normal max-w-96">
         {form?.subtitle || ""}
       </Typography>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+      <form className="w-96">
         <div className="mb-1 flex flex-col gap-6">
-          <RecursiveFieldRenderer 
-            fields={form.fields} 
+          <RecursiveFieldRenderer
+            fields={form.fields}
             selectedOptions={selectedOptions}
             onOptionChange={handleOptionChange}
           />
@@ -166,4 +189,4 @@ const GPTFormRenderer = ({ form }) => {
   );
 };
 
-export default GPTFormRenderer;
+export default FormRenderer;
