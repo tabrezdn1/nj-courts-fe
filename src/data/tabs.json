@@ -7,55 +7,95 @@
     "stepper": [
       {
         "title": "Full Name",
-        "icon": "UserCircleIcon",
+        "subtitle": "Let's start with your complete name. This helps us personalize your experience.",
+        "icon": "UserIcon",
         "fields": [
           {
+            "id": "personal_details_first_name",
             "type": "input",
-            "label": "Hey there! What's your full name?",
-            "placeholder": "Full Name"
+            "label": "What's your first name?",
+            "placeholder": "First Name"
+          },
+          {
+            "id": "personal_details_middle_name",
+            "type": "input",
+            "label": "Do you have a middle name? (If applicable)",
+            "placeholder": "Middle Name"
+          },
+          {
+            "id": "personal_details_last_name",
+            "type": "input",
+            "label": "And your last name?",
+            "placeholder": "Last Name"
           }
         ]
       },
       {
         "title": "Date of Birth",
-        "icon": "CalendarIcon",
+        "subtitle": "Your birthday helps us verify your identity and determine eligibility for certain processes.",
+        "icon": "CakeIcon",
         "fields": [
           {
+            "id": "personal_details_dob",
             "type": "date",
-            "label": "When's your birthday, {User's Name}?",
+            "label": "When's your birthday?",
             "placeholder": "Date of Birth"
           }
         ]
       },
       {
         "title": "Address",
+        "subtitle": "We'll need your current address for our records and any future correspondence.",
         "icon": "HomeIcon",
         "fields": [
           {
+            "id": "personal_details_street_address",
             "type": "input",
-            "label": "Where do you live these days? (Full address with ZIP code, please)",
-            "placeholder": "Address"
+            "label": "What's your street address?",
+            "placeholder": "Street Address"
+          },
+          {
+            "id": "personal_details_city",
+            "type": "input",
+            "label": "In which city do you live?",
+            "placeholder": "City"
+          },
+          {
+            "id": "personal_details_state",
+            "type": "input",
+            "label": "What state is that in?",
+            "placeholder": "State"
+          },
+          {
+            "id": "personal_details_zipcode",
+            "type": "input",
+            "label": "And what's your ZIP code?",
+            "placeholder": "ZIP Code"
           }
         ]
       },
       {
         "title": "Phone Number",
+        "subtitle": "A reliable way to contact you if we need any clarifications.",
         "icon": "PhoneIcon",
         "fields": [
           {
+            "id": "personal_details_phone",
             "type": "input",
-            "label": "Can we get your phone number in case we need to reach you?",
+            "label": "What's the best phone number to reach you?",
             "placeholder": "Phone Number"
           }
         ]
       },
       {
         "title": "Social Security Number",
+        "subtitle": "This helps us ensure we're working with the correct records. Your privacy is our priority.",
         "icon": "IdentificationIcon",
         "fields": [
           {
+            "id": "personal_details_ssn",
             "type": "input",
-            "label": "Do you have a Social Security number you can share? (Optional, but helpful)",
+            "label": "Could you provide your Social Security number? (Optional, but helpful)",
             "placeholder": "Social Security Number"
           }
         ]
@@ -63,200 +103,306 @@
     ]
   },
   {
-    "label": "First Offense Information",
-    "value": "first-offense",
+    "label": "Arrest Information",
+    "value": "arrest-info",
     "desc": "",
     "list": [],
     "stepper": [
       {
         "title": "Date of Arrest",
+        "subtitle": "The specific date of the incident is crucial for our records and the expungement process.",
         "icon": "CalendarIcon",
         "fields": [
           {
+            "id": "arrest_info_date",
             "type": "date",
-            "label": "Alright, {User's Name}, when did this first arrest happen?",
+            "label": "When did the arrest happen? (Example: June 12, 2020)",
             "placeholder": "Date of Arrest"
           }
         ]
       },
       {
-        "title": "Municipality",
-        "icon": "BuildingOffice2Icon",
+        "title": "Municipality of Arrest",
+        "subtitle": "Knowing where the arrest occurred helps us determine the relevant jurisdiction.",
+        "icon": "MapPinIcon",
         "fields": [
           {
+            "id": "arrest_info_municipality",
             "type": "input",
-            "label": "Which town or city did this take place in?",
+            "label": "In which town or city did the arrest take place? (Example: Edison, NJ)",
             "placeholder": "Municipality"
           }
         ]
       },
       {
-        "title": "Offense Name",
-        "icon": "ExclamationTriangleIcon",
+        "title": "Offense Details",
+        "subtitle": "The specific charges are important for determining eligibility for expungement.",
+        "icon": "ClipboardListIcon",
         "fields": [
           {
+            "id": "arrest_info_offense_name",
             "type": "input",
-            "label": "What were you arrested for? (Please provide the full offense name)",
-            "placeholder": "Offense Name"
-          }
-        ]
-      },
-      {
-        "title": "Statute Number",
-        "icon": "DocumentTextIcon",
-        "fields": [
+            "label": "What offense(s) were you charged with?",
+            "placeholder": "Offense Name(s)"
+          },
           {
+            "id": "arrest_info_statute_code",
             "type": "input",
-            "label": "Do you know the statute number linked to the charge?",
-            "placeholder": "Statute Number"
-          }
-        ]
-      },
-      {
-        "title": "Case Number",
-        "icon": "HashtagIcon",
-        "fields": [
-          {
-            "type": "input",
-            "label": "Got any case numbers for this? (Indictment, complaint, or warrant)",
-            "placeholder": "Indictment/Complaint Number"
+            "label": "Do you know the NJSA Statute Code for the 1st offense? (Example: 2C:20-3)",
+            "placeholder": "NJSA Statute Code"
           }
         ]
       }
     ]
   },
   {
-    "label": "Case Outcome",
-    "value": "case-outcome",
+    "label": "Dismissal Information",
+    "value": "dismissal-info",
     "desc": "",
     "list": [],
     "stepper": [
       {
-        "title": "Case Resolution",
-        "icon": "ScaleIcon",
-        "fields": [
-          {
-            "type": "select",
-            "label": "How did the case wrap up?",
-            "name": "caseOutcome",
-            "options": ["Dismissed", "Convicted", "Deferred Disposition"]
-          }
-        ]
-      },
-      {
-        "title": "Dismissal Program",
-        "icon": "ClipboardDocumentCheckIcon",
-        "fields": [
-          {
-            "type": "select",
-            "label": "Since it was dismissed, was the dismissal through one of these programs?",
-            "name": "dismissalProgram",
-            "options": ["PTI", "Conditional Discharge", "Other"]
-          }
-        ]
-      },
-      {
-        "title": "Program Completion",
+        "title": "Dismissal Status",
+        "subtitle": "Understanding if and how your charges were dismissed is crucial for the expungement process.",
         "icon": "CheckCircleIcon",
         "fields": [
           {
-            "type": "date",
-            "label": "When did you complete the program?",
-            "placeholder": "Program Completion Date"
-          }
-        ]
-      },
-      {
-        "title": "Court Information",
-        "icon": "BuildingLibraryIcon",
-        "fields": [
-          {
-            "type": "input",
-            "label": "Which court dismissed the charge?",
-            "placeholder": "Court Name"
+            "id": "dismissal_info_status",
+            "type": "radio",
+            "label": "Was the offense you were charged with dismissed?",
+            "name": "dismissalStatus",
+            "options": ["Yes", "No"],
+            "subFields": {
+              "Yes": [
+                {
+                  "id": "dismissal_info_conditional",
+                  "type": "radio",
+                  "label": "Was the dismissal conditional?",
+                  "name": "conditionalDismissal",
+                  "options": ["Yes", "No"],
+                  "subFields": {
+                    "Yes": [
+                      {
+                        "id": "dismissal_info_programs",
+                        "type": "radio",
+                        "label": "Select the program that applies:",
+                        "name": "dismissalProgram",
+                        "options": ["Program1", "Program2", "Other"],
+                        "subFields": {
+                          "Other": [
+                            {
+                              "id": "dismissal_info_other_program",
+                              "type": "input",
+                              "label": "Please specify the other program:",
+                              "placeholder": "Other Program Name"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "dismissal_info_court",
+                  "type": "input",
+                  "label": "Which court dismissed the charge? (Example: Edison Municipal Court)",
+                  "placeholder": "Court Name"
+                },
+                {
+                  "id": "dismissal_info_date",
+                  "type": "date",
+                  "label": "When was the charge dismissed? (Example: July 20, 2020)",
+                  "placeholder": "Date of Dismissal"
+                }
+              ]
+            }
           }
         ]
       }
     ]
   },
   {
-    "label": "Additional Offense",
-    "value": "additional-offense",
+    "label": "Guilty Offense Details",
+    "value": "guilty-offense",
     "desc": "",
     "list": [],
     "stepper": [
       {
-        "title": "Additional Offense Check",
-        "icon": "PlusCircleIcon",
+        "title": "Guilty Status",
+        "subtitle": "If you were found guilty, we need to know the specifics to determine expungement eligibility.",
+        "icon": "ExclamationCircleIcon",
         "fields": [
           {
+            "id": "guilty_offense_status",
             "type": "radio",
-            "label": "Do you have another offense to add?",
-            "name": "additionalOffense",
-            "options": ["Yes", "No"]
+            "label": "Were you found guilty of any charges?",
+            "name": "guiltyStatus",
+            "options": ["Yes", "No"],
+            "subFields": {
+              "Yes": [
+                {
+                  "id": "guilty_offense_date",
+                  "type": "date",
+                  "label": "When were you found guilty? (Example: August 5, 2020)",
+                  "placeholder": "Date Found Guilty"
+                },
+                {
+                  "id": "guilty_offense_name",
+                  "type": "input",
+                  "label": "What offense were you found guilty of? (Example: Theft)",
+                  "placeholder": "Offense Name"
+                },
+                {
+                  "id": "guilty_offense_statute",
+                  "type": "input",
+                  "label": "What's the NJSA Statute Code for this offense? (Example: 2C:20-3a)",
+                  "placeholder": "NJSA Statute Code"
+                }
+              ]
+            }
           }
         ]
       }
     ]
   },
   {
-    "label": "Eligibility Check",
-    "value": "eligibility",
+    "label": "Sentence Details",
+    "value": "sentence-details",
     "desc": "",
     "list": [],
     "stepper": [
       {
-        "title": "Open Charges",
-        "icon": "QuestionMarkCircleIcon",
+        "title": "Sentence Overview",
+        "subtitle": "Let's break down the details of your sentence.",
+        "icon": "ClipboardListIcon",
         "fields": [
           {
-            "type": "radio",
-            "label": "Any open or pending charges right now?",
-            "name": "openCharges",
-            "options": ["Yes", "No"]
-          }
-        ]
-      },
-      {
-        "title": "Previous Expungement",
-        "icon": "ArchiveBoxIcon",
-        "fields": [
-          {
-            "type": "radio",
-            "label": "Have you ever had an expungement granted before?",
-            "name": "previousExpungement",
-            "options": ["Yes", "No"]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "label": "Review Summary",
-    "value": "review",
-    "desc": "",
-    "list": [],
-    "stepper": [
-      {
-        "title": "Review Information",
-        "icon": "ClipboardDocumentListIcon",
-        "fields": [
-          {
+            "id": "sentence_details_overview",
             "type": "textarea",
-            "label": "Let's review everything you've entered so far:",
-            "placeholder": "Summary will be displayed here"
+            "label": "What was your sentence? (Example: Jail time: 6 months, Probation: 1 year, Fine: $500)",
+            "placeholder": "Sentence Details"
           }
         ]
       },
       {
-        "title": "Confirmation",
-        "icon": "CheckBadgeIcon",
+        "title": "Sentence Completion",
+        "subtitle": "Please provide information about completing your sentence.",
+        "icon": "CalendarIcon",
         "fields": [
           {
-            "type": "radio",
-            "label": "Does everything look good? You can always go back to fix something if needed!",
-            "name": "confirmInfo",
-            "options": ["Yes", "No"]
+            "id": "sentence_completion_jail",
+            "type": "date",
+            "label": "When did you complete your jail time? (If applicable)",
+            "placeholder": "Jail Time Completion Date"
+          },
+          {
+            "id": "sentence_completion_probation",
+            "type": "date",
+            "label": "When did you complete your probation? (If applicable)",
+            "placeholder": "Probation Completion Date"
+          }
+        ]
+      },
+      {
+        "title": "Fine Payment",
+        "subtitle": "Information about any fines associated with your sentence.",
+        "icon": "CurrencyDollarIcon",
+        "fields": [
+          {
+            "id": "sentence_fine_amount",
+            "type": "input",
+            "label": "What was the total amount of your fine? (If applicable)",
+            "placeholder": "Fine Amount"
+          },
+          {
+            "id": "sentence_completion_fine",
+            "type": "date",
+            "label": "When did you pay your fine? (If applicable)",
+            "placeholder": "Fine Payment Date"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Review",
+    "value": "review",
+    "desc": "Review all the information you've entered",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Review Your Information",
+        "subtitle": "Please review all the information you've provided. Make sure everything is accurate.",
+        "icon": "ClipboardCheckIcon",
+        "fields": [
+          {
+            "id": "review_personal_details",
+            "type": "review",
+            "label": "Personal Details",
+            "source": "personal-details"
+          },
+          {
+            "id": "review_arrest_info",
+            "type": "review",
+            "label": "Arrest Information",
+            "source": "arrest-info"
+          },
+          {
+            "id": "review_dismissal_info",
+            "type": "review",
+            "label": "Dismissal Information",
+            "source": "dismissal-info"
+          },
+          {
+            "id": "review_guilty_offense",
+            "type": "review",
+            "label": "Guilty Offense Details",
+            "source": "guilty-offense"
+          },
+          {
+            "id": "review_sentence_details",
+            "type": "review",
+            "label": "Sentence Details",
+            "source": "sentence-details"
+          }
+        ]
+      },
+      {
+        "title": "Confirm Accuracy",
+        "subtitle": "Please confirm that all the information you've provided is accurate to the best of your knowledge.",
+        "icon": "ShieldCheckIcon",
+        "fields": [
+          {
+            "id": "review_confirm_accuracy",
+            "type": "checkbox",
+            "label": "I confirm that all the information I've provided is accurate and complete to the best of my knowledge.",
+            "options": ["Confirm"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Submit",
+    "value": "submit",
+    "desc": "Submit your expungement application",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Submit Your Application",
+        "subtitle": "You're almost done! Review the terms and submit your application.",
+        "icon": "PaperAirplaneIcon",
+        "fields": [
+          {
+            "id": "submit_terms_agreement",
+            "type": "checkbox",
+            "label": "I agree to the terms and conditions of submitting this expungement application.",
+            "options": ["Agree"]
+          },
+          {
+            "id": "submit_button",
+            "type": "submit",
+            "label": "Submit Application"
           }
         ]
       }
