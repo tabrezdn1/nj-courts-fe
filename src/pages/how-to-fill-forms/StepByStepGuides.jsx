@@ -1,101 +1,134 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
-import PointsList from "../../components/PointsList";
 import { useState } from "react";
+import {
+  DevicePhoneMobileIcon,
+  UserCircleIcon,
+  ClipboardDocumentListIcon,
+  StarIcon,
+  BuildingOfficeIcon,
+  ShieldCheckIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid"; // Additional icons
 
 const StepByStepGuides = () => {
   const heading = "Step by Step Guides";
   const [activeTab, updateActiveTab] = useState("expungement-form-guide");
+
+  // Steps for the Expungement Form Guide
+  const expungementSteps = [
+    {
+      icon: DevicePhoneMobileIcon,
+      description: "Check Eligibility for Expungement.",
+      link: "/expungement-eligibility",
+    },
+    {
+      icon: UserCircleIcon,
+      description: "Gather Necessary Documents.",
+      link: "/documents-needed",
+    },
+    {
+      icon: ClipboardDocumentListIcon,
+      description: "Complete the Petition for Expungement (Form A).",
+      link: "/petition-form-a",
+    },
+    {
+      icon: StarIcon,
+      description: "File the Petition with the Court.",
+      link: "/file-petition",
+    },
+  ];
+
+  const additionalExpungementSteps = [
+    {
+      icon: DevicePhoneMobileIcon,
+      description: "Notify Law Enforcement and Other Agencies.",
+      link: "/notify-agencies",
+    },
+    {
+      icon: UserCircleIcon,
+      description: "Attend the Court Hearing (If Required).",
+      link: "/court-hearing",
+    },
+    {
+      icon: ClipboardDocumentListIcon,
+      description: "Expungement Order and Notifications.",
+      link: "/expungement-order",
+    },
+    {
+      icon: StarIcon,
+      description: "Confirm Record Removal.",
+      link: "/confirm-removal",
+    },
+  ];
+
+  // Steps for the Civil Complaint Form Guide
+  const civilComplaintSteps = [
+    {
+      icon: BuildingOfficeIcon,
+      description: "Identify Parties Involved.",
+      link: "/identify-parties",
+    },
+    {
+      icon: ShieldCheckIcon,
+      description: "Establish Jurisdiction.",
+      link: "/jurisdiction",
+    },
+    {
+      icon: ClipboardDocumentListIcon,
+      description: "Draft the Civil Complaint.",
+      link: "/draft-complaint",
+    },
+    {
+      icon: StarIcon,
+      description: "File the Complaint in Court.",
+      link: "/file-complaint",
+    },
+  ];
+
+  // Steps for the Family Court Petition Guide
+  const familyCourtSteps = [
+    {
+      icon: HomeIcon,
+      description: "Provide Petitioner and Respondent Information.",
+      link: "/petitioner-respondent-info",
+    },
+    {
+      icon: UserCircleIcon,
+      description: "Specify Child Information (if applicable).",
+      link: "/child-info",
+    },
+    {
+      icon: ClipboardDocumentListIcon,
+      description: "Outline the Grounds for Action.",
+      link: "/grounds-for-action",
+    },
+    {
+      icon: StarIcon,
+      description: "Submit Requested Orders to the Court.",
+      link: "/submit-orders",
+    },
+  ];
+
   const tabsData = [
     {
       label: "Expungement Form Guide",
       value: "expungement-form-guide",
-      desc: "",
-      list: [
-        {
-          title: "Section 1: Personal Information",
-          description:
-            "Provide your full legal name, date of birth, and contact information.",
-        },
-        {
-          title: "Section 2: Criminal History",
-          description:
-            "List all arrests, charges, and convictions with dates and case numbers.",
-        },
-        {
-          title: "Section 3: Statement of Eligibility",
-          description:
-            "Explain how you meet the eligibility criteria for expungement.",
-        },
-        {
-          title: "Section 4: Certification",
-          description:
-            "Sign and date the petition, certifying that all information is accurate.",
-        },
-        {
-          title: "Review and Submit:",
-          description: "Carefully review your petition before filing.",
-        },
-      ],
+      steps: expungementSteps,
+      additionalSteps: additionalExpungementSteps,
     },
     {
       label: "Civil Complaint Form Guide",
       value: "civil-complaint-form-guide",
-      desc: "",
-      list: [
-        {
-          title: "Identify Parties",
-          description:
-            "Clearly state the names and addresses of all plaintiffs and defendants.",
-        },
-        {
-          title: "Jurisdiction and Venue",
-          description: "Specify why the court has authority over the case.",
-        },
-        {
-          title: "Statement of Facts",
-          description:
-            "Provide a detailed account of the events leading to the lawsuit.",
-        },
-        {
-          title: "Relief Sought",
-          description:
-            "Outline the specific remedies or compensation you are requesting.",
-        },
-      ],
+      steps: civilComplaintSteps,
+      additionalSteps: [], // If you need additional steps for this section, add them here.
     },
     {
       label: "Family Court Petition Guide",
       value: "family-court-petition-guide",
-      desc: "",
-      list: [
-        {
-          title: "Petitioner and Respondent Information",
-          description: "Include details for both parties.",
-        },
-        {
-          title: "Child Information",
-          description:
-            "List names, ages, and current living arrangements of involved children.",
-        },
-        {
-          title: "Grounds for Action",
-          description:
-            "Explain the legal basis for your request (e.g., custody modification).",
-        },
-        {
-          title: "Requested Orders",
-          description:
-            "Specify what you are asking the court to decide or change.",
-        },
-      ],
+      steps: familyCourtSteps,
+      additionalSteps: [], // If you need additional steps for this section, add them here.
     },
   ];
 
@@ -123,16 +156,7 @@ const StepByStepGuides = () => {
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody>
-              {tabsData.map(({ value, desc, list }) => (
-                <TabPanel key={value} value={value}>
-                  <Typography color="gray" className="py-1 w-1/2 text-2xl">
-                    {desc}
-                  </Typography>
-                  <PointsList listPoints={list} />
-                </TabPanel>
-              ))}
-            </TabsBody>
+            <TabsBody></TabsBody>
           </Tabs>
         </CardBody>
       </Card>
