@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
 import CustomTypography from "../../components/CustomTypography";
 import HorizontalCard from "../../components/HorizontalCard";
 import PointsList from "../../components/PointsList";
 import CardWithLink from "../../components/CardWithLink";
-import DefaultAccordion from "../../components/DefaultAccordion"; 
 
 const UnderstandingCourtForms = () => {
   const heading = "Understanding Court Forms";
@@ -42,52 +40,11 @@ const UnderstandingCourtForms = () => {
       description:
         "Each form comes with its own set of instructions outlining what needs to be included and how it should be filled out. Our platform offers step-by-step guidance for each form, ensuring that you don’t miss critical sections.",
       links: [
-        { text: "Link to How to Fill Forms Guide", route: "/how-to-fill-forms" },
+        {
+          text: "Link to How to Fill Forms Guide",
+          route: "/how-to-fill-forms",
+        },
       ],
-    },
-  ];
-
-  const [openAcc1, setOpenAcc1] = useState(true);
-  const [openAcc2, setOpenAcc2] = useState(true);
-  const [openAcc3, setOpenAcc3] = useState(true);
-  const [openAcc4, setOpenAcc4] = useState(true);
-
-  const commonSectionsAccordionItems = [
-    {
-      header: "Parties Involved",
-      content: {
-        description:
-          "This includes the names and contact details of the plaintiff(s), defendant(s), or petitioner(s).",
-      },
-      handleOpen: () => setOpenAcc1((cur) => !cur),
-      open: openAcc1,
-    },
-    {
-      header: "Case Details",
-      content: {
-        description:
-          "The form will ask for information such as the case number, court location, and details of the legal action being requested (e.g., a motion, claim, or expungement).",
-      },
-      handleOpen: () => setOpenAcc2((cur) => !cur),
-      open: openAcc2,
-    },
-    {
-      header: "Legal Justifications",
-      content: {
-        description:
-          "Some forms require you to reference specific laws or statutes under which you are filing. This could include citing grounds for divorce in a family case or referring to expungement eligibility criteria.",
-      },
-      handleOpen: () => setOpenAcc3((cur) => !cur),
-      open: openAcc3,
-    },
-    {
-      header: "Supporting Documentation",
-      content: {
-        description:
-          "In many cases, you will need to attach supporting documents, such as identification, prior court orders, or proof of sentence completion. Forms will specify what documents are needed.",
-      },
-      handleOpen: () => setOpenAcc4((cur) => !cur),
-      open: openAcc4,
     },
   ];
 
@@ -170,9 +127,6 @@ const UnderstandingCourtForms = () => {
             While the exact details of court forms vary by case type, many forms
             include common sections, such as:
           </CustomTypography>
-          <div className="mt-8">
-            <DefaultAccordion items={commonSectionsAccordionItems} />
-          </div>
         </section>
 
         <section className="mb-16">

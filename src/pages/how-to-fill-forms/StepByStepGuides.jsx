@@ -1,9 +1,16 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
-import StepsSection from "../../components/StepsSection"; // Import StepsSection
 import { useState } from "react";
-import { DevicePhoneMobileIcon, UserCircleIcon, ClipboardDocumentListIcon, StarIcon, BuildingOfficeIcon, ShieldCheckIcon, HomeIcon } from '@heroicons/react/24/solid'; // Additional icons
+import {
+  DevicePhoneMobileIcon,
+  UserCircleIcon,
+  ClipboardDocumentListIcon,
+  StarIcon,
+  BuildingOfficeIcon,
+  ShieldCheckIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid"; // Additional icons
 
 const StepByStepGuides = () => {
   const heading = "Step by Step Guides";
@@ -14,46 +21,45 @@ const StepByStepGuides = () => {
     {
       icon: DevicePhoneMobileIcon,
       description: "Check Eligibility for Expungement.",
-      link: "/expungement-eligibility"
+      link: "/expungement-eligibility",
     },
     {
       icon: UserCircleIcon,
       description: "Gather Necessary Documents.",
-      link: "/documents-needed"
+      link: "/documents-needed",
     },
     {
       icon: ClipboardDocumentListIcon,
       description: "Complete the Petition for Expungement (Form A).",
-      link: "/petition-form-a"
+      link: "/petition-form-a",
     },
     {
       icon: StarIcon,
       description: "File the Petition with the Court.",
-      link: "/file-petition"
+      link: "/file-petition",
     },
   ];
 
-  // Additional steps for Expungement
   const additionalExpungementSteps = [
     {
       icon: DevicePhoneMobileIcon,
       description: "Notify Law Enforcement and Other Agencies.",
-      link: "/notify-agencies"
+      link: "/notify-agencies",
     },
     {
       icon: UserCircleIcon,
       description: "Attend the Court Hearing (If Required).",
-      link: "/court-hearing"
+      link: "/court-hearing",
     },
     {
       icon: ClipboardDocumentListIcon,
       description: "Expungement Order and Notifications.",
-      link: "/expungement-order"
+      link: "/expungement-order",
     },
     {
       icon: StarIcon,
       description: "Confirm Record Removal.",
-      link: "/confirm-removal"
+      link: "/confirm-removal",
     },
   ];
 
@@ -62,22 +68,22 @@ const StepByStepGuides = () => {
     {
       icon: BuildingOfficeIcon,
       description: "Identify Parties Involved.",
-      link: "/identify-parties"
+      link: "/identify-parties",
     },
     {
       icon: ShieldCheckIcon,
       description: "Establish Jurisdiction.",
-      link: "/jurisdiction"
+      link: "/jurisdiction",
     },
     {
       icon: ClipboardDocumentListIcon,
       description: "Draft the Civil Complaint.",
-      link: "/draft-complaint"
+      link: "/draft-complaint",
     },
     {
       icon: StarIcon,
       description: "File the Complaint in Court.",
-      link: "/file-complaint"
+      link: "/file-complaint",
     },
   ];
 
@@ -86,22 +92,22 @@ const StepByStepGuides = () => {
     {
       icon: HomeIcon,
       description: "Provide Petitioner and Respondent Information.",
-      link: "/petitioner-respondent-info"
+      link: "/petitioner-respondent-info",
     },
     {
       icon: UserCircleIcon,
       description: "Specify Child Information (if applicable).",
-      link: "/child-info"
+      link: "/child-info",
     },
     {
       icon: ClipboardDocumentListIcon,
       description: "Outline the Grounds for Action.",
-      link: "/grounds-for-action"
+      link: "/grounds-for-action",
     },
     {
       icon: StarIcon,
       description: "Submit Requested Orders to the Court.",
-      link: "/submit-orders"
+      link: "/submit-orders",
     },
   ];
 
@@ -135,7 +141,8 @@ const StepByStepGuides = () => {
             <TabsHeader
               className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
               indicatorProps={{
-                className: "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
+                className:
+                  "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
               }}
             >
               {tabsData.map(({ label, value }) => (
@@ -149,21 +156,7 @@ const StepByStepGuides = () => {
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody>
-              {tabsData.map(({ value, steps, additionalSteps }) => (
-                <TabPanel key={value} value={value}>
-                  {/* Steps Section for each guide */}
-                  <StepsSection stepsHeading={`${value.replace('-', ' ')} Steps`} steps={steps} buttonLabel="Learn More" />
-
-                  {/* Display Additional Steps if available */}
-                  {additionalSteps.length > 0 && (
-                    <div className="mt-12">
-                      <StepsSection stepsHeading="" steps={additionalSteps} buttonLabel="Learn More" />
-                    </div>
-                  )}
-                </TabPanel>
-              ))}
-            </TabsBody>
+            <TabsBody></TabsBody>
           </Tabs>
         </CardBody>
       </Card>

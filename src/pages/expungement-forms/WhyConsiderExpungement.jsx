@@ -1,10 +1,8 @@
-import React, { useState } from "react";
 import { Card, CardBody } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
 import CustomTypography from "../../components/CustomTypography";
 import PointsList from "../../components/PointsList";
 import CardWithLink from "../../components/CardWithLink";
-import DefaultAccordion from "../../components/DefaultAccordion";
 
 const WhyConsiderExpungement = () => {
   const heading = "Why Consider Expungement?";
@@ -24,32 +22,6 @@ const WhyConsiderExpungement = () => {
     },
   ];
 
-  const [openAcc1, setOpenAcc1] = useState(true);
-  const [openAcc2, setOpenAcc2] = useState(true);
-  const [openAcc3, setOpenAcc3] = useState(true);
-  const [openAcc4, setOpenAcc4] = useState(true);
-
-  const housingAndFinancialAccordionItems = [
-    {
-      header: "Housing Applications",
-      content: {
-        description:
-          "Landlords often reject applicants based on their criminal history. Expungement helps you secure stable housing by removing your record from these checks.",
-      },
-      handleOpen: () => setOpenAcc1((cur) => !cur),
-      open: openAcc1,
-    },
-    {
-      header: "Improved Access to Financial Aid",
-      content: {
-        description:
-          "Expunged records do not affect eligibility for student loans or financial aid programs. This is especially helpful if you're looking to continue your education or need financial assistance.",
-      },
-      handleOpen: () => setOpenAcc2((cur) => !cur),
-      open: openAcc2,
-    },
-  ];
-
   const personalAndProfessionalPoints = [
     {
       title: "Rebuilding Trust",
@@ -60,27 +32,6 @@ const WhyConsiderExpungement = () => {
       title: "Professional Advancement",
       description:
         "If you’re looking to advance in your career, expungement removes the barriers that a criminal record may have placed on your ability to grow professionally.",
-    },
-  ];
-
-  const educationalOpportunitiesAccordionItems = [
-    {
-      header: "Higher Education Admissions",
-      content: {
-        description:
-          "With an expunged record, you can apply to colleges or vocational programs without the fear that your past convictions will affect your chances of admission.",
-      },
-      handleOpen: () => setOpenAcc3((cur) => !cur),
-      open: openAcc3,
-    },
-    {
-      header: "Financial Freedom",
-      content: {
-        description:
-          "Expungement can help you avoid the financial setbacks often associated with being denied educational opportunities or having limited career options due to a criminal record.",
-      },
-      handleOpen: () => setOpenAcc4((cur) => !cur),
-      open: openAcc4,
     },
   ];
 
@@ -100,7 +51,8 @@ const WhyConsiderExpungement = () => {
   const additionalResourcesCards = [
     {
       title: "Start Your Expungement Process Here",
-      description: "Begin the process by filing a Petition for Expungement (Form A) with the court.",
+      description:
+        "Begin the process by filing a Petition for Expungement (Form A) with the court.",
       link: "/online-form",
       buttonText: "Route to ONLINE FORM page",
     },
@@ -134,7 +86,6 @@ const WhyConsiderExpungement = () => {
           <CustomTypography variant="heading">
             2. Access to Housing and Financial Services
           </CustomTypography>
-          <DefaultAccordion items={housingAndFinancialAccordionItems} />
         </section>
 
         <section className="mb-16">
@@ -148,7 +99,6 @@ const WhyConsiderExpungement = () => {
           <CustomTypography variant="heading">
             4. Educational Opportunities and Personal Growth
           </CustomTypography>
-          <DefaultAccordion items={educationalOpportunitiesAccordionItems} />
         </section>
 
         <section className="mb-16">
@@ -156,13 +106,18 @@ const WhyConsiderExpungement = () => {
             5. Restoration of Rights
           </CustomTypography>
           <CustomTypography variant="paragraph">
-            In certain cases, expungement can lead to the restoration of rights that were lost due to a criminal conviction. These rights might include the ability to vote, serve on a jury, or own a firearm, depending on the nature of the conviction and state laws.
+            In certain cases, expungement can lead to the restoration of rights
+            that were lost due to a criminal conviction. These rights might
+            include the ability to vote, serve on a jury, or own a firearm,
+            depending on the nature of the conviction and state laws.
           </CustomTypography>
           <CustomTypography variant="heading" className="mt-4">
             Restoring Civil Rights
           </CustomTypography>
           <CustomTypography variant="paragraph">
-            For some, expungement can result in the restoration of civil rights, helping you fully reintegrate into society without the limitations of a criminal record.
+            For some, expungement can result in the restoration of civil rights,
+            helping you fully reintegrate into society without the limitations
+            of a criminal record.
           </CustomTypography>
         </section>
 
@@ -178,7 +133,12 @@ const WhyConsiderExpungement = () => {
             How to Begin the Expungement Process
           </CustomTypography>
           <CustomTypography variant="paragraph" className="mt-4">
-            If you are eligible for expungement, you can begin the process by filing a Petition for Expungement (Form A) with the court. This form must be completed and submitted along with supporting documentation that proves your eligibility. Our platform provides easy access to the expungement forms and step-by-step instructions to guide you through the process.
+            If you are eligible for expungement, you can begin the process by
+            filing a Petition for Expungement (Form A) with the court. This form
+            must be completed and submitted along with supporting documentation
+            that proves your eligibility. Our platform provides easy access to
+            the expungement forms and step-by-step instructions to guide you
+            through the process.
           </CustomTypography>
           <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {additionalResourcesCards.map((card, index) => (

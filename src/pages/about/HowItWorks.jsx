@@ -1,11 +1,12 @@
 import { Card, CardBody } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
 import PointsList from "../../components/PointsList";
-import { DocumentTextIcon, MagnifyingGlassCircleIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
+import {
+  DocumentTextIcon,
+  MagnifyingGlassCircleIcon,
+  ArrowUpIcon,
+} from "@heroicons/react/24/outline";
 import CustomTypography from "../../components/CustomTypography";
-
-
-
 
 const HowItWorks = () => {
   const heading = "How it Works?";
@@ -59,22 +60,17 @@ const HowItWorks = () => {
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
-       
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
-        
-
           <section className="mb-16">
-            <CustomTypography variant="heading">
-              Introduction
-            </CustomTypography>
+            <CustomTypography variant="heading">Introduction</CustomTypography>
             <CustomTypography variant="paragraph">
               {introductionText}
             </CustomTypography>
           </section>
 
           <section className="mb-16 flex items-start gap-8">
-            <MagnifyingGlassCircleIcon  className="text-gray-700 h-10 w-10" />
+            <MagnifyingGlassCircleIcon className="text-gray-700 h-10 w-10" />
             <div>
               <CustomTypography variant="heading">
                 Find the Form You Need
@@ -90,7 +86,7 @@ const HowItWorks = () => {
           </section>
 
           <section className="mb-16 flex items-start gap-8">
-            <DocumentTextIcon  className="text-gray-700 h-10 w-10" />
+            <DocumentTextIcon className="text-gray-700 h-10 w-10" />
             <div>
               <CustomTypography variant="heading">
                 Fill Out the Form with Guidance
@@ -133,9 +129,7 @@ const HowItWorks = () => {
           </section>
 
           <section className="mb-16">
-            <CustomTypography variant="heading">
-              Get Started
-            </CustomTypography>
+            <CustomTypography variant="heading">Get Started</CustomTypography>
             <CustomTypography variant="paragraph">
               Start by choosing a category or searching for your form today, and
               let the New Jersey Courts Online Forms Portal guide you through
