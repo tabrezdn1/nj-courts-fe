@@ -6,15 +6,33 @@ import FormRenderer from "./FormRenderer";
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
 
 const FormStepper = ({
+  id,
   steps,
   moveNextTab,
   movePrevTab,
   isFirstTab,
   isLastTab,
 }) => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  let formDetail = {}
+
+  const getInitialStep = () => {
+    formDetail = JSON.parse(localStorage.getItem(id));
+    if (formDetail?.activeStep === undefined) {
+      formDetail = {activeStep: 0}
+      localStorage.setItem(id, JSON.stringify(formDetail))
+    }
+    return formDetail.activeStep
+  };
+
+  const [activeStep, setActiveStep] = React.useState(getInitialStep);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
+
+  React.useEffect(() => {
+    formDetail = JSON.parse(localStorage.getItem(id));
+    formDetail.activeStep = activeStep
+    localStorage.setItem(id, JSON.stringify(formDetail));
+  }, [activeStep]);
 
   const handleNext = () => {
     if (!isLastStep) {
@@ -61,7 +79,7 @@ const FormStepper = ({
         )}
       </div>
       <div className="flex items-center justify-center min-h-96">
-        <FormRenderer form={steps[activeStep]} />
+        <FormRenderer form={steps[activeStep]} prefilledValues={formDetail} id={id}/>
       </div>
       <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit]">
         <div>

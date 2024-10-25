@@ -9,7 +9,7 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
   switch (field.type) {
@@ -144,8 +144,20 @@ const RecursiveFieldRenderer = ({
   ));
 };
 
-const FormRenderer = ({ form }) => {
-  const [selectedOptions, setSelectedOptions] = useState({});
+const FormRenderer = ({ form, id, prefilledValues }) => {
+  const [selectedOptions, setSelectedOptions] = useState(prefilledValues);
+
+  useEffect(() => {
+    // Read existing data from local storage
+    const existingData = JSON.parse(localStorage.getItem(id)) || {};
+    // Merge existing data with new selected options
+    const updatedData = {
+      ...existingData,
+      ...selectedOptions,
+    };
+    // Update local storage with merged data
+    localStorage.setItem(id, JSON.stringify(updatedData));
+  }, [selectedOptions]);
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
     setSelectedOptions((prevOptions) => {

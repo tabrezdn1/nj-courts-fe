@@ -29,7 +29,12 @@
             "type": "input",
             "label": "Last Name",
             "sub_label": "What is your legal last name?",
-            "placeholder": "Legal Last Name"
+            "placeholder": "Legal Last Name",
+            "validation": {
+              "required": false,
+              "minimum": 3,
+              "maximum": 16
+            }
           }
         ]
       },
@@ -243,6 +248,9 @@
             "id": "case_disposition_status",
             "type": "radio",
             "label": "Dismissal Status",
+            "validation": {
+              "required": true
+            },
             "sub_label": "Were the charges against you dismissed?",
             "name": "dismissalStatus",
             "options": ["Yes", "No"],

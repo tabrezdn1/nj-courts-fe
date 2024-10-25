@@ -10,16 +10,33 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
-const TabsRenderer = ({ tabItems }) => {
-  const [activeTab, updateActiveTab] = React.useState(tabItems[0]["value"]);
+const TabsRenderer = ({ id, tabItems }) => {
+  let tabsDetails = {}
+
+  const getInitialTab = () => {
+    tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
+    if (tabsDetails?.activeTab === undefined) {
+      tabsDetails.activeTab = tabItems[0]["value"]
+      localStorage.setItem(id, JSON.stringify(tabsDetails))
+    }
+    return tabsDetails.activeTab;
+  };
+
+
+  const [activeTab, updateActiveTab] = React.useState(getInitialTab);
 
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
-    const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
-    if (tabButton) {
-      tabButton.click();
-    }
+    tabsDetails.activeTab = activeTab
+    localStorage.setItem(id, JSON.stringify(tabsDetails));
+
+    setTimeout(() => {
+      const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+      if (tabButton) {
+        tabButton.click();
+      }
+    }, 0);
   }, [activeTab]);
 
   return (
@@ -55,8 +72,8 @@ const TabsRenderer = ({ tabItems }) => {
               <>{list?.length > 0 && <PointsList listPoints={list} />}</>
             )}
             <FormStepper
+              id={`${id}-${value}`}
               steps={stepper}
-              activeTab={activeTab}
               moveNextTab={() => updateActiveTab(tabItems[index + 1]["value"])}
               movePrevTab={() => updateActiveTab(tabItems[index - 1]["value"])}
               isFirstTab={value === tabItems[0].value}
