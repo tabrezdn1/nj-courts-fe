@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 import Heading from "../components/Heading";
+import SVGRenderer from "../components/SVGRenderer";
 import questions from "../data/homescreen.json";
 const Home = () => {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
@@ -15,7 +16,6 @@ const Home = () => {
     // selection for first question
     if (card.formLink) {
       userSelection.formLink = card.formLink;
-      userSelection.helpLink = card.helpLink;
     }
 
     // selection for second question
@@ -31,11 +31,7 @@ const Home = () => {
     setUserSelection(userSelection);
 
     if (card.noQuestionForward) {
-      if (userSelection.actionType === "checkEligibility") {
-        navigate(userSelection.helpLink);
-      } else if (userSelection.actionType === "newForm" || userSelection.actionType === "continueForm") {
-        navigate(userSelection.formLink);
-      }
+      navigate(userSelection.formLink);
     } else {
       setCurrentQuestion(questions[currentQuestionIndex + 1]);
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -51,17 +47,15 @@ const Home = () => {
     <>
       <div className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
-        <Typography color="gray" className="pt-[55px] pb-4 px-4 text-2xl text-center font-bold">
+        <Typography color="gray" className="pt-[60px] pb-4 px-4 text-2xl text-center font-bold">
           {currentQuestion.question}
         </Typography>
-        <div className={`grid grid-cols-${currentQuestion.noOfCols} gap-[30px] px-[${currentQuestion.noOfCols == 3 ? "200px" : "350px"}] pt-4`}>
+        <div className={`grid grid-cols-2 gap-[30px] px-[250px] pt-[60px]`}>
           {
             currentQuestion.options.map((card, index) => (
               <Card key={index} className="w-120 h-60 cursor-pointer" onClick={() => routeTo(card)}>
                 <CardBody className="flex justify-center items-center text-center">
-                  {card.svg && (
-                    <div dangerouslySetInnerHTML={{ __html: card.svg }} />
-                  )}
+                  <SVGRenderer svgName={card.name} />
                 </CardBody>
                 <CardFooter className="pt-0 text-center">
                   <Typography variant="h5" color="gray" className="mb-2">

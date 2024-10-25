@@ -1,5 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { useState } from "react";
+import { ArrowDownOnSquareStackIcon } from "@heroicons/react/24/outline";
+
 
 import { post } from "../../services/api-call.service";
 import { tabItems } from "../../data/configs";
@@ -7,6 +9,7 @@ import { tabItems } from "../../data/configs";
 const ExpungementFormSubmit = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
+  const [fileBuffer, setFileBuffer] = useState(null);
 
   const fields = {
     "expungement_form-personal-information": [
@@ -69,7 +72,7 @@ const ExpungementFormSubmit = () => {
       fieldsForTab.forEach((field) => {
         if (tabData.hasOwnProperty(field)) {
 
-          if (key === "expungement_form-information-review"){
+          if (key === "expungement_form-information-review") {
             payload[field] = tabData[field]['Confirm'] === true;
           } else if (key === "expungement_form-application-submission") {
             payload[field] = tabData[field]["Agree"] === true;
@@ -83,24 +86,30 @@ const ExpungementFormSubmit = () => {
     return payload;
   };
 
+  const downloadForm = () => {
+    setIsLoading(true);
+    const url = window.URL.createObjectURL(fileBuffer);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ExpungementForm.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+    setApiResponse("downloadSuccess");
+    setIsLoading(false);
+  }
+
   // Function to submit the form
   const submitForm = () => {
     setIsLoading(true);
     const payload = createPayload()
     post("/expungementform/print", payload)
       .then((response) => {
-        const url = window.URL.createObjectURL(response);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "ExpungementForm.pdf";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-        setApiResponse("success");
+        setFileBuffer(response);
+        setApiResponse("submitSuccess");
         setIsLoading(false);
-      }) 
-      .catch((error) => {
+      }).catch((error) => {
         console.log(error);
         setApiResponse("error");
         setIsLoading(false);
@@ -109,19 +118,40 @@ const ExpungementFormSubmit = () => {
 
   return (
     <>
-      <Button
-        color="teal"
-        size="lg"
-        onClick={submitForm}
-        disabled={isLoading}
-        className="w-auto"
-      >
-        Submit
-      </Button>
+      {!fileBuffer && (
+        <Button
+          color="teal"
+          size="md"
+          onClick={submitForm}
+          disabled={isLoading}
+          loading={isLoading}
+          className="w-auto"
+        >
+          Submit
+        </Button>
+      )}
+
+      {fileBuffer && (
+        <Button
+          color="teal"
+          size="md"
+          onClick={downloadForm}
+          disabled={isLoading}
+          className="w-auto flex items-center gap-3"
+        >
+          <ArrowDownOnSquareStackIcon className="h-5 w-5" />
+          Download Form
+        </Button>
+      )}
       {apiResponse === "error" && (
         <p className="text-red-700 mt-3 font-bold">Something went wrong!</p>
       )}
-      {apiResponse === "success" && (
+      {apiResponse === "submitSuccess" && (
+        <p className="text-green-700 mt-3 font-bold">
+          Form submitted successfully!
+        </p>
+      )}
+      {apiResponse === "downloadSuccess" && (
         <p className="text-green-700 mt-3 font-bold">
           Form downloaded successfully!
         </p>
