@@ -430,6 +430,70 @@
     ]
   },
   {
+    "label": "Additional Arrest Details",
+    "value": "additional-arrest-information",
+    "desc": "Now, let's discuss the details of any old or additional arrests in question.",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Date of Additional Arrest",
+        "subtitle": "The specific date of the additional arrest is crucial for our records and the expungement process. Do you recall when it occurred?",
+        "icon": "CalendarIcon",
+        "fields": [
+          {
+            "id": "additional_arrest_information_date",
+            "type": "date",
+            "label": "Date of Additional Arrest",
+            "sub_label": "On what date did the additional arrest take place?",
+            "placeholder": "MM/DD/YYYY"
+          }
+        ]
+      },
+      {
+        "title": "Jurisdiction of Additional Arrest",
+        "subtitle": "To determine the relevant court authority, we need to know where the additional arrest occurred. Can you provide that information?",
+        "icon": "MapPinIcon",
+        "fields": [
+          {
+            "id": "additional_arrest_information_jurisdiction",
+            "type": "input",
+            "label": "Jurisdiction",
+            "sub_label": "In which municipality or jurisdiction did the additional arrest take place?",
+            "placeholder": "Municipality/Jurisdiction"
+          }
+        ]
+      },
+      {
+        "title": "Additional Offense Details",
+        "subtitle": "To assess your eligibility for expungement, we need specific information about the additional charges. Could you provide those details?",
+        "icon": "ClipboardDocumentListIcon",
+        "fields": [
+          {
+            "id": "additional_arrest_information_offense_name",
+            "type": "input",
+            "label": "Offense(s) Charged for this Additional Arrest",
+            "sub_label": "What offense(s) were you charged with?",
+            "placeholder": "Additional Arrest Offense Name(s)"
+          },
+          {
+            "id": "additional_arrest_information_statute_code",
+            "type": "input",
+            "label": "Statute Code for this Additional Arrest",
+            "sub_label": "Do you know the NJSA Statute Code for the additional primary offense?",
+            "placeholder": "NJSA Statute Code"
+          },
+          {
+            "id": "additional_arrest_information_docket_number",
+            "type": "input",
+            "label": "Original Case Number for this Additional Arrest",
+            "sub_label": "What was the original Indictment/Accusation/Summons/Warrant/Complaint/Docket number for this additional arrest?",
+            "placeholder": "Case Number"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "label": "Information Review",
     "value": "information-review",
     "desc": "Let's review all the information you've provided to ensure its accuracy and completeness.",
