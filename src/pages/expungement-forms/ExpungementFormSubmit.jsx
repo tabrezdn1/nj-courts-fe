@@ -6,9 +6,11 @@ import { ArrowDownOnSquareStackIcon } from "@heroicons/react/24/outline";
 import { post } from "../../services/api-call.service";
 import { tabItems } from "../../data/configs";
 
-const ExpungementFormSubmit = () => {
+const ExpungementFormSubmit = ({formData}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
+  const [error, setError] = useState(false);
+  const [errorDesc, setErrorDesc] = useState(false);
   const [fileBuffer, setFileBuffer] = useState(null);
 
   const fields = {
@@ -73,11 +75,11 @@ const ExpungementFormSubmit = () => {
         if (tabData.hasOwnProperty(field)) {
 
           if (key === "expungement_form-information-review") {
-            payload[field] = tabData[field]['Confirm'] === true;
+            payload[field] = tabData[field].value['Confirm'] === true;
           } else if (key === "expungement_form-application-submission") {
-            payload[field] = tabData[field]["Agree"] === true;
+            payload[field] = tabData[field].value["Agree"] === true;
           } else {
-            payload[field] = tabData[field];
+            payload[field] = tabData[field].value;
           }
         }
       });
@@ -85,6 +87,15 @@ const ExpungementFormSubmit = () => {
 
     return payload;
   };
+
+  const validateForm = () => {
+    return tabItems.every((tab) => {
+      const key = `expungement_form-${tab.value}`;
+      const tabData = JSON.parse(localStorage.getItem(key)) || {};
+      return tabData?.tabCompleted || false;
+    });
+  };
+  
 
   const downloadForm = () => {
     setIsLoading(true);
@@ -102,6 +113,12 @@ const ExpungementFormSubmit = () => {
 
   // Function to submit the form
   const submitForm = () => {
+    if (!validateForm()) {
+      setError(true)
+      setErrorDesc("Incomplete details, Please fill the complete form")
+      return
+    }
+
     setIsLoading(true);
     const payload = createPayload()
     post("/expungementform/print", payload, null, "blob")
@@ -111,7 +128,8 @@ const ExpungementFormSubmit = () => {
         setIsLoading(false);
       }).catch((error) => {
         console.log(error);
-        setApiResponse("error");
+        setError(true)
+        setErrorDesc("Something went wrong!")
         setIsLoading(false);
       });
   };
@@ -123,7 +141,7 @@ const ExpungementFormSubmit = () => {
           color="teal"
           size="md"
           onClick={submitForm}
-          disabled={isLoading}
+          disabled={isLoading || formData?.submit_terms_agreement?.value?.Agree != true}
           loading={isLoading}
           className="w-auto"
         >
@@ -143,8 +161,8 @@ const ExpungementFormSubmit = () => {
           Download Form
         </Button>
       )}
-      {apiResponse === "error" && (
-        <p className="text-red-700 mt-3 font-bold">Something went wrong!</p>
+      {error && (
+        <p className="text-red-700 mt-3 font-bold">{errorDesc}</p>
       )}
       {apiResponse === "submitSuccess" && (
         <p className="text-green-700 mt-3 font-bold">
