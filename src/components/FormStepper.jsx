@@ -114,11 +114,11 @@ const FormStepper = ({
             {steps.map((step, index) => {
               const IconComponent = HeroIcons[step.icon];
               return (
-                <Step key={index} onClick={() => setActiveStep(index)}>
+                <Step key={index}>
                   {IconComponent ? (
                     <IconComponent className="h-6 w-6" />
                   ) : (
-                    <div className="h-6 w-6" /> // Fallback empty div if icon not found
+                    <div className="h-6 w-6" />
                   )}
                 </Step>
               );
