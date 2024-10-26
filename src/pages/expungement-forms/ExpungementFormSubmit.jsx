@@ -104,7 +104,7 @@ const ExpungementFormSubmit = () => {
   const submitForm = () => {
     setIsLoading(true);
     const payload = createPayload()
-    post("/expungementform/print", payload)
+    post("/expungementform/print", payload, null, "blob")
       .then((response) => {
         setFileBuffer(response);
         setApiResponse("submitSuccess");
