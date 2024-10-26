@@ -13,53 +13,96 @@ const FormStepper = ({
   isFirstTab,
   isLastTab,
 }) => {
-  let formDetail = {}
+  const getSeletedOptions = () => {
+    return JSON.parse(localStorage.getItem(id)) || {activeStep: 0};
+  }
 
-  const getInitialStep = () => {
-    formDetail = JSON.parse(localStorage.getItem(id));
-    if (formDetail?.activeStep === undefined) {
-      formDetail = {activeStep: 0}
-      localStorage.setItem(id, JSON.stringify(formDetail))
-    }
-    return formDetail.activeStep
-  };
-
-  const [activeStep, setActiveStep] = React.useState(getInitialStep);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
+  const [selectedOptions, setSelectedOptions] = React.useState(getSeletedOptions);
 
-  React.useEffect(() => {
-    formDetail = JSON.parse(localStorage.getItem(id));
-    formDetail.activeStep = activeStep
-    localStorage.setItem(id, JSON.stringify(formDetail));
-  }, [activeStep]);
+  const setInputProperty = (fieldId, property, value) => {
+    setSelectedOptions((prevOptions) => {
+      return {
+        ...prevOptions,
+        [fieldId]: {
+          ...prevOptions[fieldId],
+          [property]: value,
+        },
+      };
+    })
+  }
+
+  const isValid = () => {
+    const currentStep = steps[selectedOptions.activeStep];
+    let valid = true
+  
+    for (let field of currentStep.fields) {
+      if (field?.validation) {
+        if (field.validation.required) {
+          const fieldValue = selectedOptions[field.id]?.value;
+  
+          if (field.type !== "checkbox") {
+            // Validation for non-checkbox fields
+            if (!fieldValue || fieldValue.trim() === "") {
+              setInputProperty(field.id, "error", true);
+              setInputProperty(field.id, "error_desc", "Required Field");
+              valid = false
+            }
+          } else {
+            // Validation for checkbox fields
+            const requiredOptions = field.validation.requiredOptions || [];
+            if (!fieldValue || requiredOptions.some(option => !fieldValue[option])) {
+              setInputProperty(field.id, "error", true);
+              setInputProperty(field.id, "error_desc", "Required Field");
+              valid = false
+            }
+          }
+        }
+      }
+    }
+  
+    return valid;
+  };
 
   const handleNext = () => {
-    if (!isLastStep) {
-      setActiveStep((cur) => cur + 1);
-    } else if (isLastStep && !isLastTab) {
-      moveNextTab();
+    if (isValid()){
+      if (!isLastStep) {
+        setSelectedOptions(
+          (prev) => {
+            return {...prev, activeStep: prev.activeStep+1}
+          }
+        )
+      } else if (isLastStep && !isLastTab) {
+        moveNextTab();
+      }
     }
   };
   const handlePrev = () => {
     if (!isFirstStep) {
-      setActiveStep((cur) => cur - 1);
+      setSelectedOptions(
+        (prev) => {
+          return {...prev, activeStep: prev.activeStep-1}
+        }
+      )
     } else if (isFirstStep && !isFirstTab) {
       movePrevTab();
     }
   };
 
   React.useEffect(() => {
-    setIsLastStep(activeStep === steps.length - 1);
-    setIsFirstStep(activeStep === 0);
-  }, [activeStep, steps.length]);
+    setIsLastStep(selectedOptions.activeStep === steps.length - 1);
+    setIsFirstStep(selectedOptions.activeStep === 0);
+
+    localStorage.setItem(id, JSON.stringify(selectedOptions));
+  }, [selectedOptions, steps.length]);
 
   return (
     <>
       <div className="w-full px-24 py-4 min-h-24">
         {steps.length > 1 && (
           <Stepper
-            activeStep={activeStep}
+            activeStep={selectedOptions.activeStep}
             isLastStep={(value) => setIsLastStep(value)}
             isFirstStep={(value) => setIsFirstStep(value)}
           >
@@ -79,7 +122,12 @@ const FormStepper = ({
         )}
       </div>
       <div className="flex items-center justify-center min-h-96">
-        <FormRenderer form={steps[activeStep]} prefilledValues={formDetail} id={id}/>
+        <FormRenderer 
+          form={steps[selectedOptions.activeStep]} 
+          id={id}
+          selectedOptions={selectedOptions} 
+          setSelectedOptions={setSelectedOptions}
+        />
       </div>
       <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit]">
         <div>
@@ -95,8 +143,8 @@ const FormStepper = ({
               Next
             </Button>
           )}
-          {steps[activeStep].showSubmitButton === true && isLastStep && (
-            <ExpungementFormSubmit />
+          {steps[selectedOptions.activeStep].showSubmitButton === true && isLastStep && (
+            <ExpungementFormSubmit formData={selectedOptions}/>
           )}
         </div>
       </div>

@@ -12,17 +12,23 @@
         "fields": [
           {
             "id": "personal_information_first_name",
-            "type": "input",
+            "type": "input", 
             "label": "First Name",
             "sub_label": "What is your legal first name?",
-            "placeholder": "Legal First Name"
+            "placeholder": "Legal First Name",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "personal_information_middle_name",
             "type": "input",
             "label": "Middle Name",
             "sub_label": "Do you have a legal middle name? If so, please enter it:",
-            "placeholder": "Legal Middle Name"
+            "placeholder": "Legal Middle Name",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "personal_information_last_name",
@@ -31,7 +37,7 @@
             "sub_label": "What is your legal last name?",
             "placeholder": "Legal Last Name",
             "validation": {
-              "required": false,
+              "required": true,
               "minimum": 3,
               "maximum": 16
             }
@@ -48,7 +54,10 @@
             "type": "date",
             "label": "Date of Birth",
             "sub_label": "On what date were you born?",
-            "placeholder": "MM/DD/YYYY"
+            "placeholder": "MM/DD/YYYY",
+            "validation": {
+              "required": true
+            }
           }
         ]
       },
@@ -62,14 +71,20 @@
             "type": "input",
             "label": "Street Address",
             "sub_label": "What is your current street address?",
-            "placeholder": "Street Address"
+            "placeholder": "Street Address",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "personal_information_city",
             "type": "input",
             "label": "City",
             "sub_label": "In which city do you currently reside?",
-            "placeholder": "City"
+            "placeholder": "City",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "personal_information_state",
@@ -77,6 +92,9 @@
             "label": "State",
             "sub_label": "Please select your state of residence:",
             "placeholder": "Select State",
+            "validation": {
+              "required": true
+            },
             "options": [
               { "value": "AL", "label": "Alabama" },
               { "value": "AK", "label": "Alaska" },
@@ -135,7 +153,11 @@
             "type": "input",
             "label": "ZIP Code",
             "sub_label": "What is your current ZIP code?",
-            "placeholder": "ZIP Code"
+            "placeholder": "ZIP Code",
+            "validation": {
+              "required": true,
+              "maxLength": 5
+            }
           }
         ]
       },
@@ -149,7 +171,11 @@
             "type": "input",
             "label": "Telephone Number",
             "sub_label": "What is your primary telephone number?",
-            "placeholder": "Telephone Number"
+            "placeholder": "Telephone Number",
+            "validation": {
+              "required": true,
+              "maxLength": 10
+            }
           }
         ]
       },
@@ -163,7 +189,11 @@
             "type": "input",
             "label": "Social Security Number",
             "sub_label": "What is your Social Security Number?",
-            "placeholder": "XXX-XX-XXXX"
+            "placeholder": "XXX-XX-XXXX",
+            "validation": {
+              "required": true,
+              "maxLength": 7
+            }
           }
         ]
       }
@@ -185,7 +215,10 @@
             "type": "date",
             "label": "Date of Arrest",
             "sub_label": "On what date did the arrest take place?",
-            "placeholder": "MM/DD/YYYY"
+            "placeholder": "MM/DD/YYYY",
+            "validation": {
+              "required": true
+            }
           }
         ]
       },
@@ -199,7 +232,10 @@
             "type": "input",
             "label": "Jurisdiction",
             "sub_label": "In which municipality or jurisdiction did the arrest take place?",
-            "placeholder": "Municipality/Jurisdiction"
+            "placeholder": "Municipality/Jurisdiction",
+            "validation": {
+              "required": true
+            }
           }
         ]
       },
@@ -213,21 +249,30 @@
             "type": "input",
             "label": "Offense(s) Charged",
             "sub_label": "What offense(s) were you charged with?",
-            "placeholder": "Offense Name(s)"
+            "placeholder": "Offense Name(s)",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "arrest_information_statute_code",
             "type": "input",
             "label": "Statute Code",
             "sub_label": "Do you know the NJSA Statute Code for the primary offense?",
-            "placeholder": "NJSA Statute Code"
+            "placeholder": "NJSA Statute Code",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "arrest_information_docket_number",
             "type": "input",
             "label": "Original Case Number",
             "sub_label": "What was the original Indictment/Accusation/Summons/Warrant/Complaint/Docket number?",
-            "placeholder": "Case Number"
+            "placeholder": "Case Number",
+            "validation": {
+              "required": true
+            }
           }
         ]
       }
@@ -262,6 +307,9 @@
                   "label": "Conditional Dismissal",
                   "sub_label": "Was the dismissal conditional?",
                   "name": "conditionalDismissal",
+                  "validation": {
+                    "required": true
+                  },
                   "options": ["Yes", "No"],
                   "subFields": {
                     "Yes": [
@@ -287,14 +335,20 @@
                   "type": "input",
                   "label": "Court of Dismissal",
                   "sub_label": "Which court dismissed the charges?",
-                  "placeholder": "Court Name"
+                  "placeholder": "Court Name",
+                  "validation": {
+                    "required": true
+                  }
                 },
                 {
                   "id": "case_disposition_date",
                   "type": "date",
                   "label": "Date of Dismissal",
                   "sub_label": "When were the charges dismissed?",
-                  "placeholder": "MM/DD/YYYY"
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
                 }
               ]
             }
@@ -320,6 +374,9 @@
             "label": "Conviction Status",
             "sub_label": "Were you convicted of any charges in this case?",
             "name": "convictionStatus",
+            "validation": {
+              "required": true
+            },
             "options": ["Yes", "No"],
             "subFields": {
               "Yes": [
@@ -328,21 +385,30 @@
                   "type": "date",
                   "label": "Date of Conviction",
                   "sub_label": "On what date were you convicted?",
-                  "placeholder": "MM/DD/YYYY"
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
                 },
                 {
                   "id": "conviction_information_offense",
                   "type": "input",
                   "label": "Convicted Offense",
                   "sub_label": "For which offense were you convicted?",
-                  "placeholder": "Offense Name"
+                  "placeholder": "Offense Name",
+                  "validation": {
+                    "required": true
+                  }
                 },
                 {
                   "id": "conviction_information_statute",
                   "type": "input",
                   "label": "Statute of Conviction",
                   "sub_label": "Do you know the NJSA Statute Code for the convicted offense?",
-                  "placeholder": "NJSA Statute Code"
+                  "placeholder": "NJSA Statute Code",
+                  "validation": {
+                    "required": true
+                  }
                 }
               ]
             }
@@ -367,21 +433,30 @@
             "type": "input",
             "label": "Incarceration Period",
             "sub_label": "If applicable, how long was your incarceration period?",
-            "placeholder": "Incarceration Duration"
+            "placeholder": "Incarceration Duration",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "sentencing_information_probation",
             "type": "input",
             "label": "Probation Period",
             "sub_label": "If applicable, how long was your probation period?",
-            "placeholder": "Probation Duration"
+            "placeholder": "Probation Duration",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "sentencing_information_fine",
             "type": "input",
             "label": "Fine Amount",
             "sub_label": "If applicable, what was the amount of any fine imposed?",
-            "placeholder": "Fine Amount"
+            "placeholder": "Fine Amount",
+            "validation": {
+              "required": true
+            }
           }
         ]
       },
@@ -395,14 +470,20 @@
             "type": "date",
             "label": "Incarceration End Date",
             "sub_label": "If applicable, when did you complete your incarceration?",
-            "placeholder": "MM/DD/YYYY"
+            "placeholder": "MM/DD/YYYY",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "sentencing_information_probation_end",
             "type": "date",
             "label": "Probation End Date",
             "sub_label": "If applicable, when did you complete your probation?",
-            "placeholder": "MM/DD/YYYY"
+            "placeholder": "MM/DD/YYYY",
+            "validation": {
+              "required": true
+            }
           }
         ]
       },
@@ -416,14 +497,20 @@
             "type": "input",
             "label": "Fine Amount",
             "sub_label": "What was the total amount of the fine imposed?",
-            "placeholder": "Fine Amount"
+            "placeholder": "Fine Amount",
+            "validation": {
+              "required": true
+            }
           },
           {
             "id": "sentencing_information_fine_payment",
             "type": "date",
             "label": "Fine Payment Date",
             "sub_label": "On what date did you pay the fine in full?",
-            "placeholder": "MM/DD/YYYY"
+            "placeholder": "MM/DD/YYYY",
+            "validation": {
+              "required": true
+            }
           }
         ]
       }
@@ -487,7 +574,13 @@
             "type": "checkbox",
             "label": "Accuracy Confirmation",
             "sub_label": "I solemnly affirm that all information provided in this application is true, accurate, and complete to the best of my knowledge.",
-            "options": ["Confirm"]
+            "options": ["Confirm"],
+            "validation": {
+              "required": true,
+              "requiredOptions": [
+                "Confirm"
+              ]
+            }
           }
         ]
       }
@@ -510,7 +603,13 @@
             "type": "checkbox",
             "label": "Terms and Conditions",
             "sub_label": "I hereby acknowledge that I have read, understood, and agree to the terms and conditions governing the submission of this expungement application.",
-            "options": ["Agree"]
+            "options": ["Agree"],
+            "validation": {
+              "required": true,
+              "requiredOptions": [
+                "Agree"
+              ]
+            }
           }
         ]
       }

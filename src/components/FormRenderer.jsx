@@ -9,12 +9,12 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
   switch (field.type) {
     case "input":
-      return (
+      return <>
         <Input
           size="lg"
           placeholder={field.placeholder}
@@ -23,9 +23,14 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             className: "before:content-none after:content-none",
           }}
           onChange={(e) => onOptionChange(field.id, e.target.value)}
-          value={selectedOptions[field.id] || ""}
+          value={selectedOptions[field.id]?.value || ""}
+          error={selectedOptions[field.id]?.error}
+          maxLength={field?.validation?.maxLength || 255}
         />
-      );
+        {
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+        }
+      </>
     case "radio":
       return (
         <div className="flex gap-4">
@@ -36,13 +41,13 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
               label={option}
               color="teal"
               onChange={() => onOptionChange(field.id, option)}
-              checked={selectedOptions[field.id] === option}
+              checked={selectedOptions[field.id]?.value === option}
             />
           ))}
         </div>
       );
     case "checkbox":
-      return (
+      return <>
         <div className="flex gap-4">
           {field.options.map((option, i) => (
             <Checkbox
@@ -53,11 +58,14 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
               onChange={(e) =>
                 onOptionChange(field.id, option, e.target.checked)
               }
-              checked={selectedOptions[field.id]?.[option] || false}
+              checked={selectedOptions[field.id]?.value?.[option] || false}
             />
           ))}
         </div>
-      );
+        {
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+        }
+      </>
     case "select":
       return (
         <Select
@@ -68,7 +76,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             unmount: { y: 25 },
           }}
           onChange={(value) => onOptionChange(field.id, value)}
-          value={selectedOptions[field.id]}
+          value={selectedOptions[field.id]?.["value"]}
         >
           {field.options.map((option, i) => (
             <Option
@@ -87,11 +95,11 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           placeholder={field.placeholder}
           rows={8}
           onChange={(e) => onOptionChange(field.id, e.target.value)}
-          value={selectedOptions[field.id] || ""}
+          value={selectedOptions[field.id]?.["value"] || ""}
         />
       );
     case "date":
-      return (
+      return <>
         <Input
           type="date"
           size="lg"
@@ -100,9 +108,15 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             className: "before:content-none after:content-none",
           }}
           onChange={(e) => onOptionChange(field.id, e.target.value)}
-          value={selectedOptions[field.id] || ""}
+          value={selectedOptions[field.id]?.["value"] || ""}
+          min="1947-08-15"
+          max={new Date().toISOString().split("T")[0]}
+          error={selectedOptions[field.id]?.error}
         />
-      );
+        {
+          selectedOptions[field.id]?.error && <p>{selectedOptions[field.id]?.error_desc}</p>
+        }
+        </>
     default:
       return null;
   }
@@ -131,11 +145,11 @@ const RecursiveFieldRenderer = ({
         selectedOptions={selectedOptions}
       />
       {field.subFields &&
-        selectedOptions[field.id] &&
-        field.subFields[selectedOptions[field.id]] && (
+        selectedOptions[field.id]?.value &&
+        field.subFields[selectedOptions[field.id]?.value] && (
           <RecursiveFieldRenderer
             className="p-1"
-            fields={field.subFields[selectedOptions[field.id]]}
+            fields={field.subFields[selectedOptions[field.id]?.value]}
             selectedOptions={selectedOptions}
             onOptionChange={onOptionChange}
           />
@@ -144,8 +158,7 @@ const RecursiveFieldRenderer = ({
   ));
 };
 
-const FormRenderer = ({ form, id, prefilledValues }) => {
-  const [selectedOptions, setSelectedOptions] = useState(prefilledValues);
+const FormRenderer = ({ form, id, selectedOptions, setSelectedOptions }) => {
 
   useEffect(() => {
     // Read existing data from local storage
@@ -167,13 +180,21 @@ const FormRenderer = ({ form, id, prefilledValues }) => {
           ...prevOptions,
           [fieldId]: {
             ...prevOptions[fieldId],
-            [option]: isChecked,
-          },
+            value: {
+              ...(prevOptions[fieldId]?.["value"] || {}),
+              [option]: isChecked,
+            },
+            error: false
+          } ,
         };
       } else {
         return {
           ...prevOptions,
-          [fieldId]: option,
+          [fieldId]: {
+            ...(prevOptions[fieldId] || {}),
+            value: option,
+            error: false
+          },
         };
       }
     });

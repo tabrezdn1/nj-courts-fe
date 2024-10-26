@@ -4,7 +4,7 @@ import { useState } from "react";
 import { post } from "../../services/api-call.service";
 import { tabItems } from "../../data/configs";
 
-const ExpungementFormSubmit = () => {
+const ExpungementFormSubmit = ({formData}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
 
@@ -68,13 +68,12 @@ const ExpungementFormSubmit = () => {
 
       fieldsForTab.forEach((field) => {
         if (tabData.hasOwnProperty(field)) {
-
           if (key === "expungement_form-information-review"){
-            payload[field] = tabData[field]['Confirm'] === true;
+            payload[field] = tabData[field].value['Confirm'] === true;
           } else if (key === "expungement_form-application-submission") {
-            payload[field] = tabData[field]["Agree"] === true;
+            payload[field] = tabData[field].value["Agree"] === true;
           } else {
-            payload[field] = tabData[field];
+            payload[field] = tabData[field].value;
           }
         }
       });
@@ -113,7 +112,7 @@ const ExpungementFormSubmit = () => {
         color="teal"
         size="lg"
         onClick={submitForm}
-        disabled={isLoading}
+        disabled={isLoading || formData?.submit_terms_agreement?.value?.Agree != true}
         className="w-auto"
       >
         Submit
