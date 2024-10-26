@@ -25,10 +25,7 @@
             "type": "input",
             "label": "Middle Name",
             "sub_label": "Do you have a legal middle name? If so, please enter it:",
-            "placeholder": "Legal Middle Name",
-            "validation": {
-              "required": true
-            }
+            "placeholder": "Legal Middle Name"
           },
           {
             "id": "personal_information_last_name",
