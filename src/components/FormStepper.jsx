@@ -14,7 +14,7 @@ const FormStepper = ({
   isLastTab,
 }) => {
   const getSeletedOptions = () => {
-    return JSON.parse(localStorage.getItem(id)) || {activeStep: 0};
+    return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false};
   }
 
   const [isLastStep, setIsLastStep] = React.useState(false);
@@ -74,6 +74,11 @@ const FormStepper = ({
           }
         )
       } else if (isLastStep && !isLastTab) {
+        setSelectedOptions(
+          (prev) => {
+            return {...prev, tabCompleted: true}
+          }
+        )
         moveNextTab();
       }
     }
