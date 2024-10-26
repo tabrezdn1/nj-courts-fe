@@ -91,8 +91,11 @@ const ExpungementFormSubmit = ({formData}) => {
   const validateForm = () => {
     return tabItems.every((tab) => {
       const key = `expungement_form-${tab.value}`;
-      const tabData = JSON.parse(localStorage.getItem(key)) || {};
-      return tabData?.tabCompleted || false;
+      if (key != "expungement_form-application-submission") {
+        const tabData = JSON.parse(localStorage.getItem(key)) || {};
+        return tabData?.tabCompleted || false;
+      }
+      return true
     });
   };
   
