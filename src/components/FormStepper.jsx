@@ -39,7 +39,7 @@ const FormStepper = ({
   const isValid = () => {
     const currentStep = steps[selectedOptions.activeStep];
     let valid = true
-  
+
     for (let field of currentStep.fields) {
       if (field?.validation) {
         if (field.validation.required) {
@@ -168,7 +168,7 @@ const FormStepper = ({
       </div>
       <div className="flex items-center justify-center min-h-96">
         <FormRenderer 
-          form={steps[selectedOptions.activeStep]} 
+          form={steps[selectedOptions.activeStep] || steps[0]} 
           id={id}
           selectedOptions={selectedOptions} 
           setSelectedOptions={setSelectedOptions}

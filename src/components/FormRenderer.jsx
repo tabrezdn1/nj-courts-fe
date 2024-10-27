@@ -210,7 +210,7 @@ const FormRenderer = ({
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        {form.title}
+        {form?.title}
         {form?.helper && <HelpDrawer />}
       </Typography>
       <Typography color="gray" className="font-normal max-w-96">
