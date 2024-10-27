@@ -8,10 +8,13 @@ import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSub
 const FormStepper = ({
   id,
   steps,
+  tabDetails,
+  formConfig,
+  updateTabDetails,
   moveNextTab,
   movePrevTab,
   isFirstTab,
-  isLastTab,
+  isLastTab
 }) => {
   const getSeletedOptions = () => {
     return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false};
@@ -94,13 +97,50 @@ const FormStepper = ({
       movePrevTab();
     }
   };
-
+  
   React.useEffect(() => {
     setIsLastStep(selectedOptions.activeStep === steps.length - 1);
     setIsFirstStep(selectedOptions.activeStep === 0);
 
     localStorage.setItem(id, JSON.stringify(selectedOptions));
   }, [selectedOptions, steps.length]);
+
+  const handleOptionChange = ( fieldId, option, isChecked=true ) => {
+    const isConditionalStepper = tabDetails.conditionalStepper;
+    const conditionalField = tabDetails.conditionalField;
+    if (!isConditionalStepper || conditionalField != fieldId) {
+      return
+    }
+    const tab_id = tabDetails.value
+    const tab = formConfig.find(item => item.value === tab_id);
+    const updatedStepper = tab.stepper.concat(tabDetails.conditional_stepper[option]);
+    const updatedTab = { ...tab, stepper: updatedStepper };
+    setSelectedOptions((prevOptions) => {
+      const updatedOptions = { ...prevOptions };
+      const prevConditionalSteps = tabDetails.conditional_stepper[prevOptions[fieldId]?.value] || [];
+      prevConditionalSteps.forEach((step) => {
+        step.fields.forEach((field) => {
+          delete updatedOptions[field.id];
+        });
+      });
+      return updatedOptions;
+    });
+    updateTabDetails(tab_id, updatedTab);
+  }
+
+  React.useEffect(() => {
+    const isConditionalStepper = tabDetails.conditionalStepper;
+    const conditionalField = tabDetails.conditionalField;
+    if (!isConditionalStepper || !(conditionalField in selectedOptions)) {
+      return
+    }
+    const option = selectedOptions[conditionalField].value
+    const tab_id = tabDetails.value
+    const tab = formConfig.find(item => item.value === tab_id);
+    const updatedStepper = tab.stepper.concat(tabDetails.conditional_stepper[option]);
+    const updatedTab = { ...tab, stepper: updatedStepper };
+    updateTabDetails(tab_id, updatedTab);
+  }, [])
 
   return (
     <>
@@ -132,6 +172,7 @@ const FormStepper = ({
           id={id}
           selectedOptions={selectedOptions} 
           setSelectedOptions={setSelectedOptions}
+          handleOptionChangeCallback={handleOptionChange}
         />
       </div>
       <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit]">
@@ -148,7 +189,7 @@ const FormStepper = ({
               Next
             </Button>
           )}
-          {steps[selectedOptions.activeStep].showSubmitButton === true && isLastStep && (
+          {steps[selectedOptions.activeStep]?.showSubmitButton === true && isLastStep && (
             <ExpungementFormSubmit formData={selectedOptions}/>
           )}
         </div>

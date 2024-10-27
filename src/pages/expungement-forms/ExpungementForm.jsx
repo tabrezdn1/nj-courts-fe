@@ -11,7 +11,7 @@ const ExpungementForm = () => {
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
         <CardBody className="font-normal px-[64px]">
-          <TabsRenderer id={FormId} tabItems={tabItems} />
+          <TabsRenderer id={FormId} formConfig={tabItems} />
         </CardBody>
       </Card>
     </>

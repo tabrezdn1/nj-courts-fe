@@ -54,6 +54,14 @@ const ExpungementFormSubmit = ({formData}) => {
       "sentencing_information_fine_amount",
       "sentencing_information_fine_payment"
     ],
+    "expungement_form-additional-arrest-information": [
+      "additional_arrest",
+      "additional_arrest_information_docket_number",
+      "additional_arrest_information_jurisdiction",
+      "additional_arrest_information_offense_name",
+      "additional_arrest_information_statute_code",
+      "conviction_information_status"
+    ],
     "expungement_form-information-review": [
       "review_confirm_accuracy"
     ],

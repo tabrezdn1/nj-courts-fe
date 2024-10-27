@@ -10,13 +10,15 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
-const TabsRenderer = ({ id, tabItems }) => {
+import { useEffect } from "react";
+
+const TabsRenderer = ({ id, formConfig }) => {
   let tabsDetails = {}
 
   const getInitialTab = () => {
     tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
     if (tabsDetails?.activeTab === undefined) {
-      tabsDetails.activeTab = tabItems[0]["value"]
+      tabsDetails.activeTab = formConfig[0]["value"]
       localStorage.setItem(id, JSON.stringify(tabsDetails))
     }
     return tabsDetails.activeTab;
@@ -24,6 +26,16 @@ const TabsRenderer = ({ id, tabItems }) => {
 
 
   const [activeTab, updateActiveTab] = React.useState(getInitialTab);
+  const [activeForm, updateActiveForm] = React.useState(formConfig);
+
+  const updateTabDetails = (tab_id, value) => {
+    updateActiveForm(prev => {
+      const newState = [...prev];
+      const index = newState.findIndex(item => item.value === tab_id);
+      newState[index] = { ...newState[index], ...value };
+      return newState;
+    });
+  };
 
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
@@ -48,7 +60,7 @@ const TabsRenderer = ({ id, tabItems }) => {
             "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
         }}
       >
-        {tabItems.map(({ label, value }) => (
+        {activeForm.map(({ label, value }) => (
           <Tab
             key={value}
             value={value}
@@ -60,24 +72,27 @@ const TabsRenderer = ({ id, tabItems }) => {
         ))}
       </TabsHeader>
       <TabsBody>
-        {tabItems.map(({ value, desc, list, stepper }, index) => (
-          <TabPanel key={value} value={value}>
+        {activeForm.map((item, index) => (
+          <TabPanel key={item.value} value={item.value}>
             <Typography
               color="gray"
               className="py-1 w-1/2 text-2xl mx-auto text-center"
             >
-              {desc}
+              {item.desc}
             </Typography>
-            {value !== "submit" && (
-              <>{list?.length > 0 && <PointsList listPoints={list} />}</>
+            {item.value !== "submit" && (
+              <>{item.list?.length > 0 && <PointsList listPoints={item.list} />}</>
             )}
             <FormStepper
-              id={`${id}-${value}`}
-              steps={stepper}
-              moveNextTab={() => updateActiveTab(tabItems[index + 1]["value"])}
-              movePrevTab={() => updateActiveTab(tabItems[index - 1]["value"])}
-              isFirstTab={value === tabItems[0].value}
-              isLastTab={value === tabItems[tabItems.length - 1].value}
+              id={`${id}-${item.value}`}
+              steps={item.stepper}
+              tabDetails={item}
+              formConfig={formConfig}
+              updateTabDetails={updateTabDetails}
+              moveNextTab={() => updateActiveTab(activeForm[index + 1]["value"])}
+              movePrevTab={() => updateActiveTab(activeForm[index - 1]["value"])}
+              isFirstTab={item.value === activeForm[0].value}
+              isLastTab={item.value === activeForm[activeForm.length - 1].value}
             />
           </TabPanel>
         ))}

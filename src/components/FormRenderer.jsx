@@ -158,7 +158,13 @@ const RecursiveFieldRenderer = ({
   ));
 };
 
-const FormRenderer = ({ form, id, selectedOptions, setSelectedOptions }) => {
+const FormRenderer = ({ 
+  id, 
+  form,
+  selectedOptions, 
+  setSelectedOptions, 
+  handleOptionChangeCallback 
+}) => {
 
   useEffect(() => {
     // Read existing data from local storage
@@ -173,6 +179,7 @@ const FormRenderer = ({ form, id, selectedOptions, setSelectedOptions }) => {
   }, [selectedOptions]);
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
+    handleOptionChangeCallback(fieldId, option, isChecked)
     setSelectedOptions((prevOptions) => {
       const field = form.fields.find((f) => f.id === fieldId);
       if (field && field.type === "checkbox") {
