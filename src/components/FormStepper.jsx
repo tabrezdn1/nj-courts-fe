@@ -36,33 +36,47 @@ const FormStepper = ({
     })
   }
 
-  const isValid = () => {
-    const currentStep = steps[selectedOptions.activeStep];
-    let valid = true
-
-    for (let field of currentStep.fields) {
-      if (field?.validation) {
-        if (field.validation.required) {
-          const fieldValue = selectedOptions[field.id]?.value;
-  
-          if (field.type !== "checkbox") {
-            // Validation for non-checkbox fields
-            if (!fieldValue || fieldValue.trim() === "") {
-              setInputProperty(field.id, "error", true);
-              setInputProperty(field.id, "error_desc", "Required Field");
-              valid = false
-            }
-          } else {
-            // Validation for checkbox fields
-            const requiredOptions = field.validation.requiredOptions || [];
-            if (!fieldValue || requiredOptions.some(option => !fieldValue[option])) {
-              setInputProperty(field.id, "error", true);
-              setInputProperty(field.id, "error_desc", "Required Field");
-              valid = false
-            }
+  const isValidField = (field) => {
+    if (field?.validation) {
+      if (field.validation.required) {
+        const fieldValue = selectedOptions[field.id]?.value;
+        if (field.type !== "checkbox") {
+          // Validation for non-checkbox fields
+          if (!fieldValue || fieldValue.trim() === "") {  
+            setInputProperty(field.id, "error", true);
+            setInputProperty(field.id, "error_desc", "Required Field");
+            return false
+          }
+        } else {
+          // Validation for checkbox fields
+          const requiredOptions = field.validation.requiredOptions || [];
+          if (!fieldValue || requiredOptions.some(option => !fieldValue[option])) {
+            setInputProperty(field.id, "error", true);
+            setInputProperty(field.id, "error_desc", "Required Field");
+            return  false
           }
         }
       }
+    }
+    return true
+  }
+
+  const handleSubfields = (field) => {
+    let valid = true
+    console.log(field)
+    valid = isValidField(field) && valid
+    for (let subField of (field?.subFields?.[selectedOptions[field.id]?.value] || [])) {
+      valid = handleSubfields(subField) && valid
+    }
+    return valid
+  }
+
+  const isValid = () => {
+    const currentStep = steps[selectedOptions.activeStep];
+    let valid = true
+  
+    for (let field of currentStep?.fields) {
+      valid = handleSubfields(field) && valid
     }
   
     return valid;

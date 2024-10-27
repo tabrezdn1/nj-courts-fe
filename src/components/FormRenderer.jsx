@@ -32,7 +32,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         }
       </>
     case "radio":
-      return (
+      return <>
         <div className="flex gap-4">
           {field.options.map((option, i) => (
             <Radio
@@ -45,7 +45,10 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             />
           ))}
         </div>
-      );
+        {
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+        }
+      </>
     case "checkbox":
       return <>
         <div className="flex gap-4">
@@ -67,7 +70,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         }
       </>
     case "select":
-      return (
+      return <>
         <Select
           color="teal"
           label={field.name}
@@ -77,6 +80,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           }}
           onChange={(value) => onOptionChange(field.id, value)}
           value={selectedOptions[field.id]?.["value"]}
+          error={selectedOptions[field.id]?.error}
         >
           {field.options.map((option, i) => (
             <Option
@@ -87,7 +91,10 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             </Option>
           ))}
         </Select>
-      );
+        {
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+        }
+      </>
     case "textarea":
       return (
         <Textarea
@@ -114,7 +121,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           error={selectedOptions[field.id]?.error}
         />
         {
-          selectedOptions[field.id]?.error && <p>{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
         }
         </>
     default:

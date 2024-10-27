@@ -10,7 +10,6 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
-import { useEffect } from "react";
 
 const TabsRenderer = ({ id, formConfig }) => {
   let tabsDetails = {}

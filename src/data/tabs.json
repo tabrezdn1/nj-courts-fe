@@ -316,6 +316,9 @@
                         "label": "Dismissal Program",
                         "sub_label": "Under which program was your case dismissed?",
                         "name": "dismissalProgram",
+                        "validation": {
+                          "required": true
+                        },
                         "options": [
                           "Conditional Discharge",
                           "Pretrial Intervention",
