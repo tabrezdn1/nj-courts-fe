@@ -1,36 +1,37 @@
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-} from "@material-tailwind/react";
-import NavigateLink from "../components/NavigateLink";
-
-export function CardWithLink({ content }) {
+import { Card, CardBody, Typography } from '@material-tailwind/react';
+import NavigateLink from './NavigateLink'; 
+const CardWithLink = ({ title, description, steps }) => {
   return (
-    <Card className="mt-6 w-96">
-      <CardBody>
-        {content?.icon && (
-          <div className="mb-4 h-12 w-12 text-gray-900">{content.icon}</div>
-        )}
-        {content?.title && (
-          <Typography variant="h5" color="blue-gray" className="mb-2">
-            {content.title}
-          </Typography>
-        )}
-        {content?.description && <Typography>{content.description}</Typography>}
-      </CardBody>
-      <CardFooter className="pt-0">
-        {content?.link && content?.buttonText && (
-          <NavigateLink
-            link={content.link}
-            label={content.buttonText}
-            className="flex items-center gap-2 text-blue-500 hover:underline mt-4"
-          />
-        )}
-      </CardFooter>
-    </Card>
+    <div className="w-full py-10">
+      <Typography variant="h4" className="text-center mb-4 text-black">
+        {title}
+      </Typography>
+      <Typography variant="paragraph" className="text-center mb-8 text-black">
+        {description}
+      </Typography>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {steps.map((step, index) => (
+          <Card
+            key={index}
+            className="shadow-lg rounded-lg hover:shadow-xl cursor-pointer transition-shadow duration-300 h-full"
+          >
+            <CardBody className="flex flex-col items-center justify-center p-6 h-full">
+              <div className="flex justify-center mb-4 text-teal-600">
+                <step.icon className="h-12 w-12" />
+              </div>
+              <Typography variant="h5" className="font-semibold mb-2 text-gray-800">
+                {step.title}
+              </Typography>
+              <Typography className="text-gray-600 text-center mb-4">
+                {step.description}
+              </Typography>
+              <NavigateLink link={step.link} label="Learn More" />
+            </CardBody>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
-}
+};
 
 export default CardWithLink;
