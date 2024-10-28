@@ -25,7 +25,7 @@ export const routeGroups = [
       { path: "expungement-process", component: "ExpungementProcess" },
       { path: "how-to-get-your-records", component: "HowToGetYourRecords" },
       { path: "post-expungement-process", component: "PostExpungementInfo" },
-      { path: "form", component: "ExpungementForm" },
+      { path: "form", component: "ExpungementForm", parameters: ["mode"] },
     ],
   },
   {

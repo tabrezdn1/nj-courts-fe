@@ -2,6 +2,7 @@ import React from "react";
 import { Stepper, Step, Button } from "@material-tailwind/react";
 import * as HeroIcons from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
+import { useParams } from "react-router-dom";
 
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
 
@@ -16,8 +17,14 @@ const FormStepper = ({
   isFirstTab,
   isLastTab
 }) => {
+  const { mode } = useParams();
+
   const getSeletedOptions = () => {
-    return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false};
+    if (mode === "new") {
+      return {activeStep: 0, tabCompleted: false};
+    } else {
+      return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false};
+    }
   }
 
   const [isLastStep, setIsLastStep] = React.useState(false);

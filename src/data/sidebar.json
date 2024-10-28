@@ -103,7 +103,7 @@
         },
         {
           "label": "Fill out the Form",
-          "link": "/form",
+          "link": "/form/new",
           "chip": "ONLINE",
           "tabs": [
             {

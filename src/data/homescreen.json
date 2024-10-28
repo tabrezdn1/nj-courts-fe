@@ -34,12 +34,12 @@
         "options": [
             {
                 "title": "Start a New Application",
-                "actionType": "newForm",
+                "actionType": "new",
                 "name": "newForm"
             },
             {
                 "title": "Continue with an Existing Application",
-                "actionType": "continueForm",
+                "actionType": "continue",
                 "name": "continueForm"
             }
         ]
