@@ -10,6 +10,8 @@ import {
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
 import { useEffect } from "react";
+import React from "react";
+import FormReview from "./FormReview";
 
 const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
   switch (field.type) {
@@ -123,7 +125,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         {
           selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
         }
-        </>
+      </>
     default:
       return null;
   }
@@ -165,14 +167,13 @@ const RecursiveFieldRenderer = ({
   ));
 };
 
-const FormRenderer = ({ 
-  id, 
+const FormRenderer = ({
+  id,
   form,
-  selectedOptions, 
-  setSelectedOptions, 
-  handleOptionChangeCallback 
+  selectedOptions,
+  setSelectedOptions,
+  handleOptionChangeCallback
 }) => {
-
   useEffect(() => {
     // Read existing data from local storage
     const existingData = JSON.parse(localStorage.getItem(id)) || {};
@@ -225,11 +226,13 @@ const FormRenderer = ({
       </Typography>
       <form className="w-96">
         <div className="mb-1 flex flex-col gap-6">
-          <RecursiveFieldRenderer
+          {!form.isReview && (<RecursiveFieldRenderer
             fields={form.fields}
-            selectedOptions={selectedOptions}
+            selectedOptions={form.isReview ? reviewData : selectedOptions}
             onOptionChange={handleOptionChange}
           />
+          )}
+          {form.isReview && (<FormReview id={form.value} />)}
         </div>
       </form>
     </Card>

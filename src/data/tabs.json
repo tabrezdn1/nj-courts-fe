@@ -606,51 +606,58 @@
     "list": [],
     "stepper": [
       {
-        "title": "Application Information Review",
+        "title": "Personal Information Review",
         "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
         "icon": "ClipboardDocumentCheckIcon",
-        "fields": [
-          {
-            "id": "review_personal_information",
-            "type": "review",
-            "label": "Personal Information",
-            "sub_label": "Please review your personal information",
-            "source": "personal-information"
-          },
-          {
-            "id": "review_arrest_information",
-            "type": "review",
-            "label": "Arrest Information",
-            "sub_label": "Please review your arrest information",
-            "source": "arrest-information"
-          },
-          {
-            "id": "review_case_disposition",
-            "type": "review",
-            "label": "Case Disposition",
-            "sub_label": "Please review your case disposition information",
-            "source": "case-disposition"
-          },
-          {
-            "id": "review_conviction_information",
-            "type": "review",
-            "label": "Conviction Information",
-            "sub_label": "Please review your conviction information",
-            "source": "conviction-information"
-          },
-          {
-            "id": "review_sentencing_information",
-            "type": "review",
-            "label": "Sentencing Information",
-            "sub_label": "Please review your sentencing information",
-            "source": "sentencing-information"
-          }
-        ]
+        "value": "personal-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Arrest Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "arrest-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Case Outcome Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "case-disposition",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Conviction Details Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "conviction-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Sentencing Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "sentencing-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Additional Arrest Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "arrest-information",
+        "isReview": true,
+        "fields": []
       },
       {
         "title": "Accuracy Confirmation",
         "subtitle": "Before we proceed, we need you to confirm the accuracy and completeness of all information provided in your application.",
         "icon": "ShieldCheckIcon",
+        "value": "accuracy-confirmation",
         "fields": [
           {
             "id": "review_confirm_accuracy",
