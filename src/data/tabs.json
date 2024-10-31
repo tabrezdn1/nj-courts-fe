@@ -418,98 +418,59 @@
     ]
   },
   {
-    "label": "Sentencing Information",
-    "value": "sentencing-information",
-    "desc": "If you were convicted, we need to discuss the details of your sentence.",
+    "label": "Sentence Details",
+    "value": "sentencing-information", 
+    "desc": "If you were found guilty, we need to know when you finished your sentence.",
     "list": [],
     "stepper": [
       {
-        "title": "Sentence Details",
-        "subtitle": "Could you provide information about the components of your sentence?",
-        "icon": "ClipboardDocumentListIcon",
-        "fields": [
-          {
-            "id": "sentencing_information_incarceration",
-            "type": "input",
-            "label": "Incarceration Period",
-            "sub_label": "If applicable, how long was your incarceration period?",
-            "placeholder": "Incarceration Duration",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_probation",
-            "type": "input",
-            "label": "Probation Period",
-            "sub_label": "If applicable, how long was your probation period?",
-            "placeholder": "Probation Duration",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_fine",
-            "type": "input",
-            "label": "Fine Amount",
-            "sub_label": "If applicable, what was the amount of any fine imposed?",
-            "placeholder": "Fine Amount",
-            "validation": {
-              "required": true
-            }
-          }
-        ]
-      },
-      {
-        "title": "Sentence Completion",
-        "subtitle": "We need to know when you completed your sentence. Could you provide those dates?",
+        "title": "Time Served",
+        "subtitle": "Did the court order you to serve jail time, probation, or pay fines?",
         "icon": "CalendarIcon",
         "fields": [
           {
-            "id": "sentencing_information_incarceration_end",
-            "type": "date",
-            "label": "Incarceration End Date",
-            "sub_label": "If applicable, when did you complete your incarceration?",
-            "placeholder": "MM/DD/YYYY",
+            "id": "sentence_details_status",
+            "type": "radio",
+            "label": "Court-Ordered Penalties",
+            "sub_label": "Did you have to serve jail time, complete probation, or pay fines?",
+            "name": "timeServed",
             "validation": {
               "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_probation_end",
-            "type": "date",
-            "label": "Probation End Date",
-            "sub_label": "If applicable, when did you complete your probation?",
-            "placeholder": "MM/DD/YYYY",
-            "validation": {
-              "required": true
-            }
-          }
-        ]
-      },
-      {
-        "title": "Fine Payment",
-        "subtitle": "If a fine was imposed, we need information about its payment. Could you provide those details?",
-        "icon": "CurrencyDollarIcon",
-        "fields": [
-          {
-            "id": "sentencing_information_fine_amount",
-            "type": "input",
-            "label": "Fine Amount",
-            "sub_label": "What was the total amount of the fine imposed?",
-            "placeholder": "Fine Amount",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_fine_payment",
-            "type": "date",
-            "label": "Fine Payment Date",
-            "sub_label": "On what date did you pay the fine in full?",
-            "placeholder": "MM/DD/YYYY",
-            "validation": {
-              "required": true
+            },
+            "options": ["Yes", "No"],
+            "subFields": {
+              "Yes": [
+                {
+                  "id": "sentence_details_jail_end",
+                  "type": "date",
+                  "label": "Jail Time",
+                  "sub_label": "When did you get out of jail?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "sentence_details_probation_end", 
+                  "type": "date",
+                  "label": "Probation",
+                  "sub_label": "When did you finish your probation?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "sentence_details_fine_payment",
+                  "type": "date", 
+                  "label": "Fines",
+                  "sub_label": "When did you pay all your fines?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ]
             }
           }
         ]
