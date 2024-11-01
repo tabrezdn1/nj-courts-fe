@@ -1,92 +1,127 @@
-import { Card, CardBody } from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
-import CustomTypography from "../../components/CustomTypography";
-import HorizontalCard from "../../components/HorizontalCard";
+import NavigateLink from "../../components/NavigateLink";
 import PointsList from "../../components/PointsList";
-import CardWithLink from "../../components/CardWithLink";
+import {
+  BookOpenIcon,
+  DocumentTextIcon,
+  ClipboardDocumentCheckIcon,
+  QuestionMarkCircleIcon,
+} from "@heroicons/react/24/outline";
 
-const UnderstandingCourtForms = () => {
+const UnderstandingCF = () => {
   const heading = "Understanding Court Forms";
-  const introductionText =
-    "Court forms are essential documents that must be completed accurately when submitting legal matters to the court. Whether you are involved in a civil, criminal, family, or expungement case, understanding these forms is crucial for ensuring that your legal process runs smoothly. Here’s a breakdown of what you need to know about court forms and how to navigate them:";
 
-  const courtFormsCards = [
+  const sections = [
     {
-      category: "Court Forms",
-      title: "Types of Court Forms",
+      title: "What Are Court Forms?",
       description:
-        "Depending on your case, you may need to file civil, criminal, family, or expungement forms. Each category of forms addresses a different area of law and comes with its own specific requirements.",
-      link: "/court-forms",
-      buttonText: "View Court Forms",
-    },
-    {
-      category: "Court Forms",
-      title: "Legal Terminology",
-      description:
-        "Court forms often contain legal terms and references to specific laws. Our platform provides definitions and explanations where necessary, helping you better understand what is required.",
-      link: "/resources/glossary-of-legal-terms",
-      buttonText: "View Glossary",
-    },
-  ];
-
-  const accuracyTipsPoints = [
-    {
-      title: "Provide Complete Information",
-      description:
-        "Each section of a form is designed to capture key details relevant to your case. Missing information or incorrect details can result in additional paperwork or resubmission.",
-    },
-    {
-      title: "Follow Instructions Carefully",
-      description:
-        "Each form comes with its own set of instructions outlining what needs to be included and how it should be filled out. Our platform offers step-by-step guidance for each form, ensuring that you don’t miss critical sections.",
-      links: [
+        "Court forms are standardized documents used to submit requests, motions, claims, and other legal actions to the court. These forms capture key information about your case, the parties involved, and the specific legal actions being requested.",
+      listPoints: [
         {
-          text: "Link to How to Fill Forms Guide",
-          route: "/how-to-fill-forms",
+          title: "Types of Court Forms",
+          description:
+            "Depending on your case, you may need to file civil, criminal, family, or expungement forms.",
+          links: [
+            { label: "Civil Court Forms", route: "/civil-court-forms" },
+            { label: "Family Court Forms", route: "/family-court-forms" },
+            { label: "Criminal Court Forms", route: "/criminal-court-forms" },
+            { label: "Expungement Forms", route: "/expungement-forms" },
+          ],
+        },
+        {
+          title: "Legal Terminology",
+          description:
+            "Court forms often contain legal terms and references. Our platform provides definitions and explanations to help you understand what is required.",
+          links: [
+            {
+              label: "Glossary of Legal Terms",
+              route: "/resources/glossary-of-legal-terms",
+            },
+          ],
         },
       ],
-    },
-  ];
-
-  const tipsForCompletingPoints = [
-    {
-      title: "Read the Entire Form First",
-      description:
-        "Before filling out any section, read through the entire form so you understand what’s required.",
+      icon: DocumentTextIcon,
     },
     {
-      title: "Use Clear Language",
+      title: "Why Accuracy Is Important",
       description:
-        "Stick to factual, concise information when completing your form. Avoid jargon, and be as clear as possible.",
+        "Filling out court forms accurately is essential for ensuring your case proceeds without delays or rejections. Errors or omissions can lead to delays, fines, or even dismissal of your case.",
+      listPoints: [
+        {
+          title: "Provide Complete Information",
+          description:
+            "Each section of a form is designed to capture key details relevant to your case. Missing information or incorrect details can result in additional paperwork or resubmission.",
+        },
+        {
+          title: "Follow Instructions Carefully",
+          description:
+            "Each form comes with its own set of instructions outlining what needs to be included and how it should be filled out.",
+          links: [
+            { label: "How to Fill Forms Guide", route: "/how-to-fill-forms" },
+          ],
+        },
+      ],
+      icon: ClipboardDocumentCheckIcon,
     },
     {
-      title: "Review Before Submission",
+      title: "Common Sections of Court Forms",
       description:
-        "Double-check all information for accuracy before submitting the form to the court. Errors could result in a rejected filing or delayed processing.",
+        "While the exact details of court forms vary by case type, many forms include common sections.",
+      listPoints: [
+        {
+          title: "Parties Involved",
+          description: "Names and contact details of all parties.",
+        },
+        {
+          title: "Case Details",
+          description: "Case number, location, and type of legal action.",
+        },
+        {
+          title: "Legal Justifications",
+          description:
+            "Reference specific laws or statutes relevant to the case.",
+        },
+        {
+          title: "Supporting Documentation",
+          description:
+            "Include necessary documents, such as identification or court orders.",
+        },
+      ],
+      icon: BookOpenIcon,
     },
-  ];
-
-  const additionalResourcesCards = [
     {
-      title: "Step-by-Step Guides",
+      title: "Additional Resources for Understanding Forms",
       description:
-        "Our guides will walk you through how to complete each section of your form accurately.",
-      link: "/how-to-fill-forms/step-by-step-guides",
-      buttonText: "Link to Step-by-Step Guides",
-    },
-    {
-      title: "Glossary of Legal Terms",
-      description:
-        "Refer to our glossary for definitions of common legal terms that you may encounter when filling out forms.",
-      link: "/resources/glossary-of-legal-terms",
-      buttonText: "Link to Glossary",
-    },
-    {
-      title: "Help Center",
-      description:
-        "If you have further questions, our Help Center provides answers to frequently asked questions and offers support on technical and legal questions related to form submissions.",
-      link: "/support/help-center",
-      buttonText: "Link to Help Center",
+        "If you're unsure about how to complete a specific form, don’t worry. Our platform offers several resources to help you better understand your forms.",
+      listPoints: [
+        {
+          title: "Step-by-Step Guides",
+          description:
+            "Our guides will walk you through how to complete each section of your form accurately.",
+          links: [
+            {
+              label: "Step-by-Step Guides",
+              route: "/how-to-fill-forms/step-by-step-guides",
+            },
+          ],
+        },
+        {
+          title: "Glossary of Legal Terms",
+          description:
+            "Definitions of common legal terms encountered in forms.",
+          links: [
+            { label: "Glossary", route: "/resources/glossary-of-legal-terms" },
+          ],
+        },
+        {
+          title: "Help Center",
+          description:
+            "Answers to frequently asked questions and technical support.",
+          links: [{ label: "Help Center", route: "/support/help-center" }],
+        },
+      ],
+      icon: QuestionMarkCircleIcon,
     },
   ];
 
@@ -94,66 +129,46 @@ const UnderstandingCourtForms = () => {
     <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
       <Heading heading={heading} />
       <CardBody className="font-normal px-[64px]">
-        <section className="mb-16">
-          <CustomTypography variant="paragraph">
-            {introductionText}
-          </CustomTypography>
-        </section>
-
-        <section className="mb-16 grid gap-8 grid-cols-1 sm:grid-cols-2">
-          {courtFormsCards.map((card, index) => (
-            <HorizontalCard key={index} content={card} />
-          ))}
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            Why Accuracy Is Important
-          </CustomTypography>
-          <CustomTypography variant="paragraph" className="mt-4">
-            Filling out court forms accurately is essential to ensuring that
-            your case proceeds without delays or rejections. Errors or omissions
-            on your forms can lead to delays, fines, or even dismissal of your
-            case.
-          </CustomTypography>
-          <PointsList listPoints={accuracyTipsPoints} />
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            Common Sections of Court Forms
-          </CustomTypography>
-          <CustomTypography variant="paragraph" className="mt-4">
-            While the exact details of court forms vary by case type, many forms
-            include common sections, such as:
-          </CustomTypography>
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            Tips for Completing Court Forms
-          </CustomTypography>
-          <PointsList listPoints={tipsForCompletingPoints} />
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            Additional Resources for Understanding Forms
-          </CustomTypography>
-          <CustomTypography variant="paragraph" className="mt-4">
-            If you're unsure about how to complete a specific form, don’t worry.
-            Our platform offers several resources to help you better understand
-            your forms:
-          </CustomTypography>
-          <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {additionalResourcesCards.map((card, index) => (
-              <CardWithLink key={index} content={card} />
-            ))}
+        <Typography color="gray" className="py-1 w-1/2 text-2xl">
+          Understanding court forms is crucial for ensuring your case proceeds
+          smoothly.
+        </Typography>
+        {sections.map((section, index) => (
+          <div key={index} className="my-8">
+            <Typography
+              variant="h4"
+              color="teal"
+              className="font-semibold flex items-center gap-2"
+            >
+              <section.icon className="w-8 h-8" />
+              {section.title}
+            </Typography>
+            <Typography color="blue-gray" className="mt-2 text-lg">
+              {section.description}
+            </Typography>
+            <PointsList
+              listPoints={section.listPoints.map((item) => ({
+                ...item,
+                description: (
+                  <>
+                    {item.description}{" "}
+                    {item.links &&
+                      item.links.map((link, idx) => (
+                        <NavigateLink
+                          key={idx}
+                          link={link.route}
+                          label={link.label}
+                        />
+                      ))}
+                  </>
+                ),
+              }))}
+            />
           </div>
-        </section>
+        ))}
       </CardBody>
     </Card>
   );
 };
 
-export default UnderstandingCourtForms;
+export default UnderstandingCF;

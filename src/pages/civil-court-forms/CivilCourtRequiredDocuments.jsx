@@ -1,17 +1,16 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
-
+import { Card, CardBody } from "@material-tailwind/react";
+import ComingSoon from "../../components/ComingSoon";
 import Heading from "../../components/Heading";
 
 const CivilCourtRequiredDocuments = () => {
-  const heading = "Civil Court Required Documents";
+  const heading = "Civil Court Common Forms";
+
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
         <Heading heading={heading} />
-        <CardBody className="font-normal px-[64px]">
-          <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            STILL IN DEVELOPMENT
-          </Typography>
+        <CardBody className="flex items-center justify-center h-full">
+          <ComingSoon />
         </CardBody>
       </Card>
     </>

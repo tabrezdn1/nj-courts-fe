@@ -1,151 +1,162 @@
-import { Card, CardBody } from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
-import CustomTypography from "../../components/CustomTypography";
-import PointsList from "../../components/PointsList";
-import CardWithLink from "../../components/CardWithLink";
+import {
+  BriefcaseIcon,
+  HomeIcon,
+  AcademicCapIcon,
+  HeartIcon,
+  UserIcon,
+  KeyIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/solid";
 
 const WhyConsiderExpungement = () => {
   const heading = "Why Consider Expungement?";
-  const introductionText =
-    "Expungement offers individuals a valuable second chance by allowing them to seal or erase certain criminal records from public view. For those who have served their sentence and fulfilled legal obligations, expungement provides an opportunity to move forward without the ongoing burden of a criminal record affecting daily life. Here are the primary reasons why you should consider seeking expungement:";
 
-  const employmentOpportunitiesPoints = [
+  const sections = [
     {
-      title: "Better Job Prospects",
+      title: "Improved Employment Opportunities",
+      icon: BriefcaseIcon,
       description:
-        "Expunged records do not show up on most background checks conducted by private employers, giving you the freedom to pursue a wider range of career options.",
+        "A criminal record can significantly limit your job prospects. Expungement allows you to legally answer 'No' to questions about past convictions on most job applications, greatly improving your employment opportunities.",
+      points: [
+        {
+          title: "Better Job Prospects",
+          content:
+            "Expunged records do not show up on most background checks conducted by private employers, giving you the freedom to pursue a wider range of career options.",
+        },
+        {
+          title: "Professional Licensing",
+          content:
+            "Some professional boards and licensing agencies might still see expunged records, but many will consider that your record has been cleared.",
+        },
+      ],
     },
     {
-      title: "Professional Licensing",
+      title: "Access to Housing and Financial Services",
+      icon: HomeIcon,
       description:
-        "Some professional boards and licensing agencies might still see expunged records, but many will consider the fact that your record has been cleared when making decisions about licensure.",
-    },
-  ];
-
-  const personalAndProfessionalPoints = [
-    {
-      title: "Rebuilding Trust",
-      description:
-        "Without a criminal record to follow you, it’s easier to rebuild and maintain positive personal relationships. Family and friends may feel more comfortable knowing that you’ve taken steps to clear your name.",
-    },
-    {
-      title: "Professional Advancement",
-      description:
-        "If you’re looking to advance in your career, expungement removes the barriers that a criminal record may have placed on your ability to grow professionally.",
-    },
-  ];
-
-  const peaceOfMindPoints = [
-    {
-      title: "Fresh Start",
-      description:
-        "With an expunged record, you no longer have to explain your criminal history during interviews, housing applications, or other important aspects of life.",
+        "Expungement can make it easier to secure housing, as many landlords conduct background checks. It also improves access to financial aid.",
+      points: [
+        {
+          title: "Housing Applications",
+          content:
+            "Landlords often reject applicants based on criminal history. Expungement helps you secure stable housing by removing your record from these checks.",
+        },
+        {
+          title: "Improved Access to Financial Aid",
+          content:
+            "Expunged records do not affect eligibility for student loans or financial aid programs.",
+        },
+      ],
     },
     {
-      title: "Mental and Emotional Relief",
+      title: "Enhanced Personal and Professional Relationships",
+      icon: UserIcon,
       description:
-        "Expungement offers closure and the ability to move forward confidently, knowing that you’ve taken the legal steps to clear your record.",
+        "Living with a criminal record can strain relationships. Expungement helps you rebuild trust and confidence in your relationships.",
+      points: [
+        {
+          title: "Rebuilding Trust",
+          content:
+            "Without a criminal record to follow you, it's easier to build positive relationships with family and friends.",
+        },
+        {
+          title: "Professional Advancement",
+          content:
+            "Expungement removes barriers in advancing your career and growing professionally.",
+        },
+      ],
     },
-  ];
-
-  const additionalResourcesCards = [
     {
-      title: "Start Your Expungement Process Here",
+      title: "Educational Opportunities and Personal Growth",
+      icon: AcademicCapIcon,
       description:
-        "Begin the process by filing a Petition for Expungement (Form A) with the court.",
-      link: "/online-form",
-      buttonText: "Route to ONLINE FORM page",
+        "Expungement can increase your chances of being accepted into educational programs, allowing you to further your education.",
+      points: [
+        {
+          title: "Higher Education Admissions",
+          content:
+            "With an expunged record, you can apply to colleges or vocational programs without fear that your past will affect your chances of admission.",
+        },
+        {
+          title: "Financial Freedom",
+          content:
+            "Expungement helps avoid financial setbacks associated with denied educational opportunities.",
+        },
+      ],
     },
     {
-      title: "Expungement Resources",
+      title: "Restoration of Rights",
+      icon: KeyIcon,
       description:
-        "Visit our Expungement Resources page to learn more about the benefits, eligibility requirements, and steps involved in clearing your record.",
-      link: "/resources/expungement",
-      buttonText: "Learn More",
+        "Expungement can restore certain rights lost due to a criminal conviction, allowing you to fully reintegrate into society.",
+      points: [
+        {
+          title: "Restoring Civil Rights",
+          content:
+            "For some, expungement can result in the restoration of civil rights, like the right to vote or serve on a jury.",
+        },
+      ],
+    },
+    {
+      title: "Peace of Mind and Closure",
+      icon: HeartIcon,
+      description:
+        "Expungement provides peace of mind by allowing you to move forward confidently without the burden of a criminal history.",
+      points: [
+        {
+          title: "Fresh Start",
+          content:
+            "With an expunged record, you no longer have to explain your criminal history during interviews, housing applications, or other important aspects of life.",
+        },
+        {
+          title: "Mental and Emotional Relief",
+          content:
+            "Expungement offers closure and the ability to move forward confidently, knowing that you've taken steps to clear your record.",
+        },
+      ],
     },
   ];
 
   return (
     <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
       <Heading heading={heading} />
-      <CardBody className="font-normal px-[64px]">
-        <section className="mb-16">
-          <CustomTypography variant="paragraph">
-            {introductionText}
-          </CustomTypography>
-        </section>
+      <CardBody className="px-8 py-12 space-y-12">
+        {sections.map((section, index) => (
+          <div key={index} className="space-y-4 mb-10">
+            <div className="flex items-center gap-4 p-4 bg-teal-300 rounded-lg shadow-md">
+              <section.icon className="w-10 h-10 text-white" />
+              <Typography variant="h4" color="white" className="font-bold">
+                {section.title}
+              </Typography>
+            </div>
 
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            1. Improved Employment Opportunities
-          </CustomTypography>
-          <PointsList listPoints={employmentOpportunitiesPoints} />
-        </section>
+            <Typography color="blue-gray" className="text-lg mt-2">
+              {section.description}
+            </Typography>
 
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            2. Access to Housing and Financial Services
-          </CustomTypography>
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            3. Enhanced Personal and Professional Relationships
-          </CustomTypography>
-          <PointsList listPoints={personalAndProfessionalPoints} />
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            4. Educational Opportunities and Personal Growth
-          </CustomTypography>
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            5. Restoration of Rights
-          </CustomTypography>
-          <CustomTypography variant="paragraph">
-            In certain cases, expungement can lead to the restoration of rights
-            that were lost due to a criminal conviction. These rights might
-            include the ability to vote, serve on a jury, or own a firearm,
-            depending on the nature of the conviction and state laws.
-          </CustomTypography>
-          <CustomTypography variant="heading" className="mt-4">
-            Restoring Civil Rights
-          </CustomTypography>
-          <CustomTypography variant="paragraph">
-            For some, expungement can result in the restoration of civil rights,
-            helping you fully reintegrate into society without the limitations
-            of a criminal record.
-          </CustomTypography>
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            6. Peace of Mind and Closure
-          </CustomTypography>
-          <PointsList listPoints={peaceOfMindPoints} />
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">
-            How to Begin the Expungement Process
-          </CustomTypography>
-          <CustomTypography variant="paragraph" className="mt-4">
-            If you are eligible for expungement, you can begin the process by
-            filing a Petition for Expungement (Form A) with the court. This form
-            must be completed and submitted along with supporting documentation
-            that proves your eligibility. Our platform provides easy access to
-            the expungement forms and step-by-step instructions to guide you
-            through the process.
-          </CustomTypography>
-          <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {additionalResourcesCards.map((card, index) => (
-              <CardWithLink key={index} content={card} />
-            ))}
+            <ul className="space-y-3 pl-4">
+              {section.points.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <CheckCircleIcon className="w-5 h-5 text-teal-500" />
+                  <div>
+                    <Typography
+                      variant="h6"
+                      color="blue-gray"
+                      className="font-semibold"
+                    >
+                      {point.title}
+                    </Typography>
+                    <Typography color="gray" className="text-base">
+                      {point.content}
+                    </Typography>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </section>
+        ))}
       </CardBody>
     </Card>
   );

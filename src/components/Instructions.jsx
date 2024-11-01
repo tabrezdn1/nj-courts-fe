@@ -9,17 +9,13 @@ export function Instructions({ steps }) {
           key={index}
           className="flex w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 "
         >
-          
           <div className="w-2 bg-gray-800 dark:bg-gray-900 "></div>
 
-          
           <div className="flex items-center px-2 py-3 ">
-            
             <div className="flex justify-center text-teal-600">
               <step.icon className="h-10 w-10" />
             </div>
 
-           
             <div className="mx-3 ">
               <Typography className="text-gray-600 dark:text-gray-200">
                 {step.text}
@@ -43,10 +39,10 @@ export function Instructions({ steps }) {
 Instructions.propTypes = {
   steps: PropTypes.arrayOf(
     PropTypes.shape({
-      icon: PropTypes.elementType.isRequired, 
-      text: PropTypes.string.isRequired, 
-      link: PropTypes.string, 
-      linkText: PropTypes.string, 
+      icon: PropTypes.elementType.isRequired,
+      text: PropTypes.string.isRequired,
+      link: PropTypes.string,
+      linkText: PropTypes.string,
     })
   ).isRequired,
 };

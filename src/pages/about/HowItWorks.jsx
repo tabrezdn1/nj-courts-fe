@@ -1,6 +1,6 @@
 import { Card, CardBody } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
-import Instructions from "../../components/Instructions"; // Import Instructions
+import PointsList from "../../components/PointsList";
 import {
   DocumentTextIcon,
   MagnifyingGlassCircleIcon,
@@ -14,23 +14,93 @@ const HowItWorks = () => {
   const introductionText =
     "The New Jersey Courts Online Forms Portal simplifies the legal filing process, ensuring that anyone can access, fill out, and submit the necessary forms with ease. Our platform is designed to provide you with the guidance you need every step of the way, whether you're submitting forms for civil cases, family matters, criminal filings, or expungement processes.";
 
-  const stepsTitle = "Find the Form You Need";
-  const stepsDescription =
-    "The first step to getting started is identifying the right form for your legal matter. You can easily:";
-
-  // Step data with text, link, and icon
-  const steps = [
+  const findFormPoints = [
     {
-      icon: MagnifyingGlassCircleIcon,
-      text: "Browse by Category to find forms relevant to your situation.",
-      link: "/browse-category",
-      linkText: "Browse forms",
+      title: "Browse by Category",
+      steps: [
+        {
+          icon: MagnifyingGlassCircleIcon,
+          text: "Browse by Category to find forms relevant to your situation.",
+          link: "/browse-category",
+          linkText: "Browse forms",
+        },
+      ],
     },
     {
-      icon: DocumentTextIcon,
-      text: "Use the Search Bar for quick access to the form you need.",
-      link: "/search-form",
-      linkText: "Search now",
+      title: "Use the Search Bar",
+      steps: [
+        {
+          icon: DocumentTextIcon,
+          text: "Use the Search Bar for quick access to the form you need.",
+          link: "/search-form",
+          linkText: "Search now",
+        },
+      ],
+    },
+  ];
+
+  const fillFormPoints = [
+    {
+      title: "Provide Helpful Tooltips",
+
+      steps: [
+        {
+          icon: InformationCircleIcon,
+          text: "Understand legal terms with helpful tooltips.",
+          link: "/tooltips",
+          linkText: "Learn more",
+        },
+      ],
+    },
+    {
+      title: "Break Down Complex Sections",
+
+      steps: [
+        {
+          icon: ArrowUpIcon,
+          text: "Complex sections are broken down into steps.",
+          link: "/complex-sections",
+          linkText: "See details",
+        },
+      ],
+    },
+    {
+      title: "Auto-Save Your Progress",
+
+      steps: [
+        {
+          icon: ArrowUpIcon,
+          text: "Your progress is automatically saved as you go.",
+          link: "/auto-save",
+          linkText: "Learn more",
+        },
+      ],
+    },
+  ];
+
+  const submitFormPoints = [
+    {
+      title: "Submit Electronically",
+
+      steps: [
+        {
+          icon: ArrowUpIcon,
+          text: "Submit forms online if eligible.",
+          link: "/submit-electronically",
+          linkText: "Submit online",
+        },
+      ],
+    },
+    {
+      title: "Print and Submit in Person",
+      steps: [
+        {
+          icon: DocumentTextIcon,
+          text: "Print and submit at the court if online submission is unavailable.",
+          link: "/print-submit",
+          linkText: "Print form",
+        },
+      ],
     },
   ];
 
@@ -45,13 +115,37 @@ const HowItWorks = () => {
           </CustomTypography>
         </section>
 
-        {/* Section with Title, Description, and Instructions */}
         <section className="mb-16">
-          <CustomTypography variant="heading">{stepsTitle}</CustomTypography>
-          <CustomTypography variant="paragraph" className="mb-4">
-            {stepsDescription}
+          <CustomTypography variant="heading">
+            Find the Form You Need
           </CustomTypography>
-          <Instructions steps={steps} />
+          <CustomTypography variant="paragraph" className="mb-4">
+            The first step to getting started is identifying the right form for
+            your legal matter. You can easily:
+          </CustomTypography>
+          <PointsList listPoints={findFormPoints} />
+        </section>
+
+        <section className="mb-16">
+          <CustomTypography variant="heading">
+            Fill Out the Form with Step-by-Step Guidance
+          </CustomTypography>
+          <CustomTypography variant="paragraph" className="mb-4">
+            Once you’ve found the right form, our platform offers
+            easy-to-understand, step-by-step instructions to ensure you fill it
+            out correctly. We make sure to:
+          </CustomTypography>
+          <PointsList listPoints={fillFormPoints} />
+        </section>
+
+        <section className="mb-16">
+          <CustomTypography variant="heading">
+            Submit Your Form
+          </CustomTypography>
+          <CustomTypography variant="paragraph" className="mb-4">
+            After completing your form, you can:
+          </CustomTypography>
+          <PointsList listPoints={submitFormPoints} />
         </section>
 
         <section className="mb-16">
@@ -64,10 +158,6 @@ const HowItWorks = () => {
             detailed instructions and automatic reminders, we ensure that your
             forms are accurate and submitted on time.
           </CustomTypography>
-        </section>
-
-        <section className="mb-16">
-          <CustomTypography variant="heading">Get Started</CustomTypography>
           <CustomTypography variant="paragraph">
             Start by choosing a category or searching for your form today, and
             let the New Jersey Courts Online Forms Portal guide you through your

@@ -7,16 +7,14 @@ import {
   TimelineIcon,
   TimelineBody,
 } from "@material-tailwind/react";
-
+import Instructions from "./Instructions";
 const PointsList = ({ listPoints }) => {
   return (
     <div className="w-[40rem] py-5">
       <Timeline>
         {listPoints.map((point, pointIndex) => (
-          <TimelineItem key={`${point}=${pointIndex}`}>
-            {/* Hide line connecter for the last point */}
+          <TimelineItem key={`${point.title}-${pointIndex}`}>
             {pointIndex < listPoints.length - 1 && <TimelineConnector />}
-
             <TimelineHeader className="h-3">
               <TimelineIcon />
               <Typography
@@ -29,9 +27,13 @@ const PointsList = ({ listPoints }) => {
             </TimelineHeader>
 
             <TimelineBody className="pb-8">
-              <Typography color="gray" className="font-normal text-gray-600">
+              <Typography
+                color="gray"
+                className="font-normal text-gray-600 mb-4"
+              >
                 {point.description}
               </Typography>
+              {point.steps && <Instructions steps={point.steps} />}
             </TimelineBody>
           </TimelineItem>
         ))}
