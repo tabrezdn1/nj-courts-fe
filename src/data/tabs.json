@@ -418,98 +418,59 @@
     ]
   },
   {
-    "label": "Sentencing Information",
-    "value": "sentencing-information",
-    "desc": "If you were convicted, we need to discuss the details of your sentence.",
+    "label": "Sentence Details",
+    "value": "sentencing-information", 
+    "desc": "If you were found guilty, we need to know when you finished your sentence.",
     "list": [],
     "stepper": [
       {
-        "title": "Sentence Details",
-        "subtitle": "Could you provide information about the components of your sentence?",
-        "icon": "ClipboardDocumentListIcon",
-        "fields": [
-          {
-            "id": "sentencing_information_incarceration",
-            "type": "input",
-            "label": "Incarceration Period",
-            "sub_label": "If applicable, how long was your incarceration period?",
-            "placeholder": "Incarceration Duration",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_probation",
-            "type": "input",
-            "label": "Probation Period",
-            "sub_label": "If applicable, how long was your probation period?",
-            "placeholder": "Probation Duration",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_fine",
-            "type": "input",
-            "label": "Fine Amount",
-            "sub_label": "If applicable, what was the amount of any fine imposed?",
-            "placeholder": "Fine Amount",
-            "validation": {
-              "required": true
-            }
-          }
-        ]
-      },
-      {
-        "title": "Sentence Completion",
-        "subtitle": "We need to know when you completed your sentence. Could you provide those dates?",
+        "title": "Time Served",
+        "subtitle": "Did the court order you to serve jail time, probation, or pay fines?",
         "icon": "CalendarIcon",
         "fields": [
           {
-            "id": "sentencing_information_incarceration_end",
-            "type": "date",
-            "label": "Incarceration End Date",
-            "sub_label": "If applicable, when did you complete your incarceration?",
-            "placeholder": "MM/DD/YYYY",
+            "id": "sentence_details_status",
+            "type": "radio",
+            "label": "Court-Ordered Penalties",
+            "sub_label": "Did you have to serve jail time, complete probation, or pay fines?",
+            "name": "timeServed",
             "validation": {
               "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_probation_end",
-            "type": "date",
-            "label": "Probation End Date",
-            "sub_label": "If applicable, when did you complete your probation?",
-            "placeholder": "MM/DD/YYYY",
-            "validation": {
-              "required": true
-            }
-          }
-        ]
-      },
-      {
-        "title": "Fine Payment",
-        "subtitle": "If a fine was imposed, we need information about its payment. Could you provide those details?",
-        "icon": "CurrencyDollarIcon",
-        "fields": [
-          {
-            "id": "sentencing_information_fine_amount",
-            "type": "input",
-            "label": "Fine Amount",
-            "sub_label": "What was the total amount of the fine imposed?",
-            "placeholder": "Fine Amount",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "id": "sentencing_information_fine_payment",
-            "type": "date",
-            "label": "Fine Payment Date",
-            "sub_label": "On what date did you pay the fine in full?",
-            "placeholder": "MM/DD/YYYY",
-            "validation": {
-              "required": true
+            },
+            "options": ["Yes", "No"],
+            "subFields": {
+              "Yes": [
+                {
+                  "id": "sentence_details_jail_end",
+                  "type": "date",
+                  "label": "Jail Time",
+                  "sub_label": "When did you get out of jail?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "sentence_details_probation_end", 
+                  "type": "date",
+                  "label": "Probation",
+                  "sub_label": "When did you finish your probation?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "id": "sentence_details_fine_payment",
+                  "type": "date", 
+                  "label": "Fines",
+                  "sub_label": "When did you pay all your fines?",
+                  "placeholder": "MM/DD/YYYY",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ]
             }
           }
         ]
@@ -559,24 +520,6 @@
               "validation": {
                 "required": true
               }
-            }
-          ]
-        },
-        {
-          "title": "Date of Additional Arrest",
-          "subtitle": "The specific date of the additional arrest is crucial for our records and the expungement process. Do you recall when it occurred?",
-          "icon": "CalendarIcon",
-          "fields": [
-            {
-              "id": "conviction_information_status",
-              "type": "radio",
-              "label": "Conviction Status",
-              "sub_label": "Were you convicted of any charges in this case?",
-              "name": "convictionStatus",
-              "validation": {
-                "required": true
-              },
-              "options": ["Yes", "No"]
             }
           ]
         },
@@ -633,6 +576,184 @@
               }
             }
           ]
+        },
+        {
+          "title": "Additional Case Dismissal Status",
+          "subtitle": "We need to know if the charges from this additional arrest were dismissed. Can you provide this information?",
+          "icon": "CheckCircleIcon",
+          "fields": [
+            {
+              "id": "additional_case_disposition_status",
+              "type": "radio",
+              "label": "Dismissal Status",
+              "validation": {
+                "required": true
+              },
+              "sub_label": "Were the charges against you dismissed?",
+              "name": "additionalDismissalStatus",
+              "options": ["Yes", "No"],
+              "subFields": {
+                "Yes": [
+                  {
+                    "id": "additional_case_disposition_conditional",
+                    "type": "radio",
+                    "label": "Conditional Dismissal",
+                    "sub_label": "Was the dismissal conditional?",
+                    "name": "additionalConditionalDismissal",
+                    "validation": {
+                      "required": true
+                    },
+                    "options": ["Yes", "No"],
+                    "subFields": {
+                      "Yes": [
+                        {
+                          "id": "additional_case_disposition_programs",
+                          "type": "select",
+                          "label": "Dismissal Program",
+                          "sub_label": "Under which program was your case dismissed?",
+                          "name": "additionalDismissalProgram",
+                          "validation": {
+                            "required": true
+                          },
+                          "options": [
+                            "Conditional Discharge",
+                            "Pretrial Intervention",
+                            "Juvenile Conference Committee",
+                            "Intake Service Conference",
+                            "Deferred Disposition"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "additional_case_disposition_court",
+                    "type": "input",
+                    "label": "Court of Dismissal",
+                    "sub_label": "Which court dismissed the charges?",
+                    "placeholder": "Court Name",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "additional_case_disposition_date",
+                    "type": "date",
+                    "label": "Date of Dismissal",
+                    "sub_label": "When were the charges dismissed?",
+                    "placeholder": "MM/DD/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": "Additional Conviction Status",
+          "subtitle": "Were you convicted of any charges in this additional case? This information is crucial for determining your eligibility for expungement.",
+          "icon": "ExclamationCircleIcon",
+          "fields": [
+            {
+              "id": "additional_conviction_information_status",
+              "type": "radio",
+              "label": "Conviction Status",
+              "sub_label": "Were you convicted of any charges in this additional case?",
+              "name": "additionalConvictionStatus",
+              "validation": {
+                "required": true
+              },
+              "options": ["Yes", "No"],
+              "subFields": {
+                "Yes": [
+                  {
+                    "id": "additional_conviction_information_date",
+                    "type": "date",
+                    "label": "Date of Conviction",
+                    "sub_label": "On what date were you convicted?",
+                    "placeholder": "MM/DD/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "additional_conviction_information_offense",
+                    "type": "input",
+                    "label": "Convicted Offense",
+                    "sub_label": "For which offense were you convicted?",
+                    "placeholder": "Offense Name",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "additional_conviction_information_statute",
+                    "type": "input",
+                    "label": "Statute of Conviction",
+                    "sub_label": "Do you know the NJSA Statute Code for the convicted offense?",
+                    "placeholder": "NJSA Statute Code",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": "Additional Time Served",
+          "subtitle": "Did the court order you to serve jail time, probation, or pay fines for this additional case?",
+          "icon": "CalendarIcon",
+          "fields": [
+            {
+              "id": "additional_sentence_details_status",
+              "type": "radio",
+              "label": "Court-Ordered Penalties",
+              "sub_label": "Did you have to serve jail time, complete probation, or pay fines?",
+              "name": "additionalTimeServed",
+              "validation": {
+                "required": true
+              },
+              "options": ["Yes", "No"],
+              "subFields": {
+                "Yes": [
+                  {
+                    "id": "additional_sentence_details_jail_end",
+                    "type": "date",
+                    "label": "Jail Time",
+                    "sub_label": "When did you get out of jail?",
+                    "placeholder": "MM/DD/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "additional_sentence_details_probation_end",
+                    "type": "date",
+                    "label": "Probation",
+                    "sub_label": "When did you finish your probation?",
+                    "placeholder": "MM/DD/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "additional_sentence_details_fine_payment",
+                    "type": "date",
+                    "label": "Fines",
+                    "sub_label": "When did you pay all your fines?",
+                    "placeholder": "MM/DD/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
       ],
       "No": []
@@ -645,51 +766,58 @@
     "list": [],
     "stepper": [
       {
-        "title": "Application Information Review",
+        "title": "Personal Information Review",
         "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
         "icon": "ClipboardDocumentCheckIcon",
-        "fields": [
-          {
-            "id": "review_personal_information",
-            "type": "review",
-            "label": "Personal Information",
-            "sub_label": "Please review your personal information",
-            "source": "personal-information"
-          },
-          {
-            "id": "review_arrest_information",
-            "type": "review",
-            "label": "Arrest Information",
-            "sub_label": "Please review your arrest information",
-            "source": "arrest-information"
-          },
-          {
-            "id": "review_case_disposition",
-            "type": "review",
-            "label": "Case Disposition",
-            "sub_label": "Please review your case disposition information",
-            "source": "case-disposition"
-          },
-          {
-            "id": "review_conviction_information",
-            "type": "review",
-            "label": "Conviction Information",
-            "sub_label": "Please review your conviction information",
-            "source": "conviction-information"
-          },
-          {
-            "id": "review_sentencing_information",
-            "type": "review",
-            "label": "Sentencing Information",
-            "sub_label": "Please review your sentencing information",
-            "source": "sentencing-information"
-          }
-        ]
+        "value": "personal-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Arrest Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "arrest-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Case Outcome Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "case-disposition",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Conviction Details Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "conviction-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Sentencing Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "sentencing-information",
+        "isReview": true,
+        "fields": []
+      },
+      {
+        "title": "Additional Arrest Information Review",
+        "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
+        "icon": "ClipboardDocumentCheckIcon",
+        "value": "arrest-information",
+        "isReview": true,
+        "fields": []
       },
       {
         "title": "Accuracy Confirmation",
         "subtitle": "Before we proceed, we need you to confirm the accuracy and completeness of all information provided in your application.",
         "icon": "ShieldCheckIcon",
+        "value": "accuracy-confirmation",
         "fields": [
           {
             "id": "review_confirm_accuracy",

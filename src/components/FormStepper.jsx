@@ -69,12 +69,11 @@ const FormStepper = ({
   }
 
   const handleSubfields = (field) => {
-    let valid = true
-    console.log(field)
-    valid = isValidField(field) && valid
+    let valid = true;
+    valid = isValidField(field) && valid;
     for (let subField of (field?.subFields?.[selectedOptions[field.id]?.value] || [])) {
       valid = handleSubfields(subField) && valid
-    }
+    };
     return valid
   }
 
