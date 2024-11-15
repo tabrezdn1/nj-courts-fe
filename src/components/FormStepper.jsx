@@ -15,7 +15,9 @@ const FormStepper = ({
   moveNextTab,
   movePrevTab,
   isFirstTab,
-  isLastTab
+  isLastTab,
+  isTabComplete,
+  updateFormDetails
 }) => {
   const { mode } = useParams();
 
@@ -43,23 +45,25 @@ const FormStepper = ({
     })
   }
 
-  const isValidField = (field) => {
+  const isValidField = (field, updateDisplay=true) => {
     if (field?.validation) {
       if (field.validation.required) {
         const fieldValue = selectedOptions[field.id]?.value;
         if (field.type !== "checkbox") {
-          // Validation for non-checkbox fields
           if (!fieldValue || fieldValue.trim() === "") {  
-            setInputProperty(field.id, "error", true);
-            setInputProperty(field.id, "error_desc", "Required Field");
+            if (updateDisplay) {
+              setInputProperty(field.id, "error", true);
+              setInputProperty(field.id, "error_desc", "Required Field");
+            }
             return false
           }
         } else {
-          // Validation for checkbox fields
           const requiredOptions = field.validation.requiredOptions || [];
           if (!fieldValue || requiredOptions.some(option => !fieldValue[option])) {
-            setInputProperty(field.id, "error", true);
-            setInputProperty(field.id, "error_desc", "Required Field");
+            if (updateDisplay) {
+              setInputProperty(field.id, "error", true);
+              setInputProperty(field.id, "error_desc", "Required Field");
+            }
             return  false
           }
         }
@@ -68,21 +72,21 @@ const FormStepper = ({
     return true
   }
 
-  const handleSubfields = (field) => {
+  const handleSubfields = (field, updateDisplay=false) => {
     let valid = true;
-    valid = isValidField(field) && valid;
+    valid = isValidField(field, updateDisplay) && valid;
     for (let subField of (field?.subFields?.[selectedOptions[field.id]?.value] || [])) {
       valid = handleSubfields(subField) && valid
     };
     return valid
   }
 
-  const isValid = () => {
+  const isValid = (updateDisplay=true) => {
     const currentStep = steps[selectedOptions.activeStep];
     let valid = true
   
     for (let field of currentStep?.fields) {
-      valid = handleSubfields(field) && valid
+      valid = handleSubfields(field, updateDisplay) && valid
     }
   
     return valid;
@@ -103,6 +107,7 @@ const FormStepper = ({
           }
         )
         moveNextTab();
+        isTabComplete();
       }
     }
   };
@@ -125,7 +130,7 @@ const FormStepper = ({
     localStorage.setItem(id, JSON.stringify(selectedOptions));
   }, [selectedOptions, steps.length]);
 
-  const handleOptionChange = ( fieldId, option, isChecked=true ) => {
+  const handleConditionStepper = (fieldId, option, isChecked=true) => {
     const isConditionalStepper = tabDetails.conditionalStepper;
     const conditionalField = tabDetails.conditionalField;
     if (!isConditionalStepper || conditionalField != fieldId) {
@@ -148,7 +153,12 @@ const FormStepper = ({
     updateTabDetails(tab_id, updatedTab);
   }
 
-  React.useEffect(() => {
+  const handleOptionChange = ( fieldId, option, isChecked=true ) => {
+    handleConditionStepper(fieldId, option, isChecked)
+    updateFormDetails(selectedOptions, fieldId, option, isChecked)
+  }
+
+  const initializeConditionalStepper = () => {
     const isConditionalStepper = tabDetails.conditionalStepper;
     const conditionalField = tabDetails.conditionalField;
     if (!isConditionalStepper || !(conditionalField in selectedOptions)) {
@@ -160,6 +170,20 @@ const FormStepper = ({
     const updatedStepper = tab.stepper.concat(tabDetails.conditional_stepper[option]);
     const updatedTab = { ...tab, stepper: updatedStepper };
     updateTabDetails(tab_id, updatedTab);
+  }
+
+  React.useEffect(() => {
+
+    if (isValid(false)) {
+      isTabComplete()
+    }
+
+    initializeConditionalStepper()
+
+    return () => {
+      console.log("Component unmounted");
+      localStorage.removeItem(id);
+    };
   }, [])
 
   return (

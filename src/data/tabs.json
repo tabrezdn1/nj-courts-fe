@@ -280,6 +280,24 @@
     "value": "case-disposition",
     "desc": "Let's discuss how your case was resolved.",
     "list": [],
+    "conditionalTabs": {
+      "field_id": "case_disposition_status",
+      "subTabs": {
+        "Yes": [
+          {
+            "type": "remove",
+            "tab": "conviction-information"
+          }
+        ],
+        "No": [
+          {
+            "type": "add",
+            "tab": "conviction-information",
+            "index": 3
+          }
+        ]
+      }
+    },
     "stepper": [
       {
         "title": "Case Dismissal Status",

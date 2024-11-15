@@ -6,7 +6,6 @@ const FormReview = ({ id }) => {
     const [fieldsToReview, setFieldsToReview] = React.useState([]);
     useEffect(() => {
         const reviewData = JSON.parse(localStorage.getItem(`expungement_form-${id}`)) || {};
-        console.log(reviewData);
         const currentReviewTab = Tabs.find((tab) => tab.value === id);
         const reviewFields = [];
         currentReviewTab.stepper.forEach((step) => {

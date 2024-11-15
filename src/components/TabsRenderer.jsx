@@ -36,6 +36,45 @@ const TabsRenderer = ({ id, formConfig }) => {
     });
   };
 
+  const updateFormDetails = (
+    selectedOptions, 
+    fieldId, 
+    option, 
+    isChecked, 
+    conditionalTabs
+  ) => {
+    if (conditionalTabs) {
+      if (fieldId === conditionalTabs.field_id) {
+        const optionSelected = option;
+        for (let action of conditionalTabs["subTabs"][optionSelected]) {
+          if (action.type === "remove") {
+            updateActiveForm(prev => prev.filter(item => item.value !== action.tab));
+          } else if (action.type === "add") {
+            updateActiveForm(prev => {
+              if (
+                prev[action.index] &&
+                prev[action.index].value === action.tab
+              ) {
+                return prev;
+              }
+
+              const filteredPrev = prev.filter(item => item.value !== action.tab);
+              const index = formConfig.findIndex(item => item.value === action.tab)
+
+              const updatedForm = [
+                ...filteredPrev.slice(0, action.index),
+                formConfig[index],
+                ...filteredPrev.slice(action.index),
+              ];
+
+              return updatedForm;
+            })
+          }
+        }
+      }
+    }
+  };
+
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
@@ -50,6 +89,31 @@ const TabsRenderer = ({ id, formConfig }) => {
     }, 0);
   }, [activeTab]);
 
+  const handleTabChange = (value) => {
+    if (value != activeTab) {
+      const valueIndex = activeForm.findIndex((item) => item.value === value);
+      if (!activeForm[valueIndex].complete) {
+        setTimeout(() => {
+          const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+          if (tabButton) {
+            tabButton.click();
+          }
+        }, 0);
+        return 
+      }
+    } 
+    updateActiveTab(value)
+  }
+
+  const isTabComplete = (index) => {
+    updateActiveForm(prev => {
+      const newForm = [...prev];
+      newForm[index] = { ...newForm[index], complete: true };
+      return newForm;
+    });
+  };
+  
+
   return (
     <Tabs className="mt-6 w-auto" value={activeTab}>
       <TabsHeader
@@ -63,7 +127,7 @@ const TabsRenderer = ({ id, formConfig }) => {
           <Tab
             key={value}
             value={value}
-            onClick={() => updateActiveTab(value)}
+            onClick={() => handleTabChange(value)}
             className={activeTab === value ? "text-gray-900" : ""}
           >
             {label}
@@ -92,6 +156,21 @@ const TabsRenderer = ({ id, formConfig }) => {
               movePrevTab={() => updateActiveTab(activeForm[index - 1]["value"])}
               isFirstTab={item.value === activeForm[0].value}
               isLastTab={item.value === activeForm[activeForm.length - 1].value}
+              isTabComplete={() => isTabComplete(index)}
+              updateFormDetails={
+                (
+                  selectedOptions, 
+                  fieldId, 
+                  option, 
+                  isChecked
+                ) => updateFormDetails(
+                  selectedOptions, 
+                  fieldId, 
+                  option, 
+                  isChecked, 
+                  item.conditionalTabs
+                )
+              }
             />
           </TabPanel>
         ))}
