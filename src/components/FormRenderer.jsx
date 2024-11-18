@@ -20,7 +20,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         <Input
           size="lg"
           placeholder={field.placeholder}
-          className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+          className="!border-t-blue-gray-200 focus:!border-t-gray-900 "
           labelProps={{
             className: "before:content-none after:content-none",
           }}
@@ -216,7 +216,7 @@ const FormRenderer = ({
   };
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="px-1">
       <Typography variant="h4" color="blue-gray">
         {form?.title}
         {form?.helper && <HelpDrawer />}

@@ -188,7 +188,7 @@ const FormStepper = ({
 
   return (
     <>
-      <div className="w-full px-24 py-4 min-h-24">
+      <div className="w-full md:px-24 py-4 min-h-24">
         {steps.length > 1 && (
           <Stepper
             activeStep={selectedOptions.activeStep}
@@ -219,7 +219,7 @@ const FormStepper = ({
           handleOptionChangeCallback={handleOptionChange}
         />
       </div>
-      <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit]">
+      <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit] pt-4 md:pt-0">
         <div>
           {!(isFirstTab && isFirstStep) && (
             <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>

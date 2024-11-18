@@ -115,9 +115,9 @@ const TabsRenderer = ({ id, formConfig }) => {
   
 
   return (
-    <Tabs className="mt-6 w-auto" value={activeTab}>
+    <Tabs className="mt-6" value={activeTab}>
       <TabsHeader
-        className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
+        className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto"
         indicatorProps={{
           className:
             "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
@@ -139,7 +139,7 @@ const TabsRenderer = ({ id, formConfig }) => {
           <TabPanel key={item.value} value={item.value}>
             <Typography
               color="gray"
-              className="py-1 w-1/2 text-2xl mx-auto text-center"
+              className="py-1 md:w-1/2 text-2xl mx-auto text-center"
             >
               {item.desc}
             </Typography>
