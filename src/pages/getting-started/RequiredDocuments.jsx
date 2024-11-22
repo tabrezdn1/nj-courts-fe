@@ -262,12 +262,12 @@ const StepByStepGuides = () => {
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto mt-16" shadow={false}>
         <Heading heading={heading} />
-        <CardBody className="font-normal px-[64px]">
-          <Tabs className="mt-6 w-auto" value={activeTab}>
+        <CardBody className="font-normal mb:px-[64px]">
+          <Tabs className="mt-6 w-screen" value={activeTab}>
             <TabsHeader
-              className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
+              className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto whitespace-nowrap"
               indicatorProps={{
                 className:
                   "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
@@ -287,13 +287,11 @@ const StepByStepGuides = () => {
             <TabsBody>
               {tabsData.map(({ value, steps, additionalSteps }) => (
                 <TabPanel key={value} value={value}>
-                  {/* Numbered Section for each guide */}
                   <NumberedSection
                     heading={`${value.replace("-", " ")} Steps`}
                     items={steps}
                   />
 
-                  {/* Display Additional Steps if available */}
                   {additionalSteps.length > 0 && (
                     <div className="mt-12">
                       <NumberedSection

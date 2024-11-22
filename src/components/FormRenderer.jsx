@@ -20,7 +20,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         <Input
           size="lg"
           placeholder={field.placeholder}
-          className="!border-t-blue-gray-200 focus:!border-t-gray-900 "
+          className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
           labelProps={{
             className: "before:content-none after:content-none",
           }}
@@ -30,7 +30,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           maxLength={field?.validation?.maxLength || 255}
         />
         {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1 text-xs">{selectedOptions[field.id]?.error_desc}</p>
         }
       </>
     case "radio":
@@ -44,11 +44,12 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
               color="teal"
               onChange={() => onOptionChange(field.id, option)}
               checked={selectedOptions[field.id]?.value === option}
+              className="text-sm"
             />
           ))}
         </div>
         {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1 text-xs">{selectedOptions[field.id]?.error_desc}</p>
         }
       </>
     case "checkbox":
@@ -64,11 +65,12 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
                 onOptionChange(field.id, option, e.target.checked)
               }
               checked={selectedOptions[field.id]?.value?.[option] || false}
+              className="text-sm"
             />
           ))}
         </div>
         {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1 text-xs">{selectedOptions[field.id]?.error_desc}</p>
         }
       </>
     case "select":
@@ -83,6 +85,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           onChange={(value) => onOptionChange(field.id, value)}
           value={selectedOptions[field.id]?.["value"]}
           error={selectedOptions[field.id]?.error}
+          className="text-sm"
         >
           {field.options.map((option, i) => (
             <Option
@@ -94,7 +97,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           ))}
         </Select>
         {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1 text-xs">{selectedOptions[field.id]?.error_desc}</p>
         }
       </>
     case "textarea":
@@ -102,9 +105,10 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         <Textarea
           color="teal"
           placeholder={field.placeholder}
-          rows={8}
+          rows={4}
           onChange={(e) => onOptionChange(field.id, e.target.value)}
           value={selectedOptions[field.id]?.["value"] || ""}
+          className="text-sm"
         />
       );
     case "date":
@@ -112,7 +116,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         <Input
           type="date"
           size="lg"
-          className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+          className="!border-t-blue-gray-200 focus:!border-t-gray-900 text-sm"
           labelProps={{
             className: "before:content-none after:content-none",
           }}
@@ -123,7 +127,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           error={selectedOptions[field.id]?.error}
         />
         {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
+          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1 text-xs">{selectedOptions[field.id]?.error_desc}</p>
         }
       </>
     default:
@@ -137,15 +141,15 @@ const RecursiveFieldRenderer = ({
   onOptionChange,
 }) => {
   return fields.map((field, index) => (
-    <div key={index}>
+    <div key={index} className="mb-4">
       <Typography
         variant="h6"
         color="blue-gray"
-        className="py-1 font-black font-bold"
+        className="py-1 font-black font-bold text-sm"
       >
         {field.label}
       </Typography>
-      <Typography variant="small" color="gray" className="py-1 font-black">
+      <Typography variant="small" color="gray" className="py-1 font-black text-xs">
         {field.sub_label}
       </Typography>
       <FieldRenderer
@@ -216,15 +220,15 @@ const FormRenderer = ({
   };
 
   return (
-    <Card color="transparent" shadow={false} className="px-1">
-      <Typography variant="h4" color="blue-gray">
+    <Card color="transparent" shadow={false}>
+      <Typography variant="h4" color="blue-gray" className="text-xl md:text-2xl">
         {form?.title}
         {form?.helper && <HelpDrawer />}
       </Typography>
-      <Typography color="gray" className="font-normal max-w-96">
+      <Typography color="gray" className="font-normal max-w-96 text-sm md:text-base">
         {form?.subtitle || ""}
       </Typography>
-      <form className="w-96">
+      <form className="w-full md:w-96">
         <div className="mb-1 flex flex-col gap-6">
           {!form.isReview && (<RecursiveFieldRenderer
             fields={form.fields}

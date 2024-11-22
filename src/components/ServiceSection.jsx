@@ -2,7 +2,7 @@ import { Typography, Button } from "@material-tailwind/react";
 
 const ServiceSection = ({ heading, services, buttonText }) => {
   return (
-    <div className="flex flex-col items-center justify-center px-4 py-10">
+    <div className="flex flex-col items-center justify-center pt-10 px-4 py-10">
       <Typography variant="h3" className="text-center mb-8">
         {heading}
       </Typography>
@@ -18,7 +18,7 @@ const ServiceSection = ({ heading, services, buttonText }) => {
               {service.title}
             </Typography>
 
-            <Typography variant="body1" className="text-gray-600 mb-">
+            <Typography variant="paragraph" className="text-gray-600 mb-">
               {service.description}
             </Typography>
           </div>

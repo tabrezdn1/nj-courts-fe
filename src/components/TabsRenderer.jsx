@@ -117,10 +117,10 @@ const TabsRenderer = ({ id, formConfig }) => {
   return (
     <Tabs className="mt-6" value={activeTab}>
       <TabsHeader
-        className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto"
+        className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto whitespace-nowrap"
         indicatorProps={{
           className:
-            "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
+            "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none ",
         }}
       >
         {activeForm.map(({ label, value }) => (
@@ -128,7 +128,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             key={value}
             value={value}
             onClick={() => handleTabChange(value)}
-            className={activeTab === value ? "text-gray-900" : ""}
+            className={activeTab === value ? "text-gray-900 w-96 wd:w-full" : ""}
           >
             {label}
           </Tab>

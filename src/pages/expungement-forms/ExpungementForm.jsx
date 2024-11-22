@@ -8,9 +8,9 @@ const ExpungementForm = () => {
   const FormId = "expungement_form";
 
   return (
-    <Card shadow={false} className="w-full h-[calc(100vh-2rem)] overflow-y-auto pt-[70px] md:pt-[0px] ">
-        <Heading heading={heading} className="" />
-        <CardBody className="p-5 md:p-6 font-normal md:px-[16px] md:mt-[16px] md:px-[64px] w-screen md:w-full">
+    <Card shadow={false} className="w-full h-[calc(100vh-2rem)] md:overflow-y-auto pt-[70px] md:pt-[0px] ">
+        <Heading heading={heading}/>
+        <CardBody className="mx-0 md:p-6 font-normal md:px-[16px] md:mt-[16px] md:px-[64px] w-screen md:w-full">
           <TabsRenderer id={FormId} formConfig={tabItems} />
         </CardBody>
     </Card>
