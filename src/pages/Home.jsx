@@ -4,6 +4,7 @@ import {
   Typography,
   CardFooter,
   Button,
+  Input,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -11,13 +12,16 @@ import { useState } from "react";
 import Heading from "../components/Heading";
 import SVGRenderer from "../components/SVGRenderer";
 import questions from "../data/homescreen.json";
-
+import { useTranslation } from "react-i18next";
 const Home = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+  const { t } = useTranslation();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(
+    questions[currentQuestionIndex]
+  );
   const [userSelection, setUserSelection] = useState({});
   const navigate = useNavigate();
-  const heading = "NJ Courts E-Forms Portal";
+  const heading = "Questionnaire 🤔";
 
   const routeTo = (card) => {
     // selection for first question
@@ -59,7 +63,7 @@ const Home = () => {
             color="gray"
             className="mt-[20px] pb-4 px-4 text-xl md:text-2xl text-center font-bold"
           >
-            {currentQuestion.question}
+            {t(`homescreen.${currentQuestionIndex}.question`)}
           </Typography>
           <div
             className={`grid grid-cols-1 md:grid-cols-2 gap-[15px] md:gap-[30px] px-[10px] md:px-[100px] lg:px-[250px] pt-[30px] md:pt-[60px]`}
@@ -79,7 +83,9 @@ const Home = () => {
                     color="gray"
                     className="mb-2 text-sm md:text-lg"
                   >
-                    {card.title}
+                    {t(
+                      `homescreen.${currentQuestionIndex}.options.${index}.title`
+                    )}
                   </Typography>
                 </CardFooter>
               </Card>

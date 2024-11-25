@@ -17,21 +17,29 @@ const FormStepper = ({
   isFirstTab,
   isLastTab,
   isTabComplete,
-  updateFormDetails
+  updateFormDetails,
+  tabIndex,
 }) => {
   const { mode } = useParams();
 
   const getSeletedOptions = () => {
     if (mode === "new") {
-      return {activeStep: 0, tabCompleted: false, progress: 0};
+      return { activeStep: 0, tabCompleted: false, progress: 0 };
     } else {
-      return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false, progress: 0};
+      return (
+        JSON.parse(localStorage.getItem(id)) || {
+          activeStep: 0,
+          tabCompleted: false,
+          progress: 0
+        }
+      );
     }
-  }
+  };
 
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
-  const [selectedOptions, setSelectedOptions] = React.useState(getSeletedOptions);
+  const [selectedOptions, setSelectedOptions] =
+    React.useState(getSeletedOptions);
 
   const setInputProperty = (fieldId, property, value) => {
     setSelectedOptions((prevOptions) => {
@@ -42,53 +50,57 @@ const FormStepper = ({
           [property]: value,
         },
       };
-    })
-  }
+    });
+  };
 
-  const isValidField = (field, updateDisplay=true) => {
+  const isValidField = (field, updateDisplay = true) => {
     if (field?.validation) {
       if (field.validation.required) {
         const fieldValue = selectedOptions[field.id]?.value;
         if (field.type !== "checkbox") {
-          if (!fieldValue || fieldValue.trim() === "") {  
+          if (!fieldValue || fieldValue.trim() === "") {
             if (updateDisplay) {
               setInputProperty(field.id, "error", true);
               setInputProperty(field.id, "error_desc", "Required Field");
             }
-            return false
+            return false;
           }
         } else {
           const requiredOptions = field.validation.requiredOptions || [];
-          if (!fieldValue || requiredOptions.some(option => !fieldValue[option])) {
+          if (
+            !fieldValue ||
+            requiredOptions.some((option) => !fieldValue[option])
+          ) {
             if (updateDisplay) {
               setInputProperty(field.id, "error", true);
               setInputProperty(field.id, "error_desc", "Required Field");
             }
-            return  false
+            return false;
           }
         }
       }
     }
-    return true
-  }
+    return true;
+  };
 
-  const handleSubfields = (field, updateDisplay=false) => {
+  const handleSubfields = (field, updateDisplay = false) => {
     let valid = true;
     valid = isValidField(field, updateDisplay) && valid;
-    for (let subField of (field?.subFields?.[selectedOptions[field.id]?.value] || [])) {
-      valid = handleSubfields(subField) && valid
-    };
-    return valid
-  }
-
-  const isValid = (updateDisplay=true, index=undefined) => {
-    const currentStep = steps[index || selectedOptions.activeStep];
-    let valid = true
-  
-    for (let field of currentStep?.fields) {
-      valid = handleSubfields(field, updateDisplay) && valid
+    for (let subField of field?.subFields?.[selectedOptions[field.id]?.value] ||
+      []) {
+      valid = handleSubfields(subField) && valid;
     }
-  
+    return valid;
+  };
+
+  const isValid = (updateDisplay = true, index=undefined) => {
+    const currentStep = steps[index || selectedOptions.activeStep];
+    let valid = true;
+
+    for (let field of currentStep?.fields) {
+      valid = handleSubfields(field, updateDisplay) && valid;
+    }
+
     return valid;
   };
 
@@ -101,26 +113,19 @@ const FormStepper = ({
   };
 
   const handleNext = () => {
-    if (isValid()){
+    if (isValid()) {
       if (!isLastStep) {
-        setSelectedOptions(
-          (prev) => {
-            return {
-              ...prev, 
-              activeStep: prev.activeStep+1, 
-              progress: Math.max(prev.activeStep+1, prev.progress)
-            }
-          }
-        )
+        setSelectedOptions((prev) => {
+          return { 
+            ...prev, 
+            activeStep: prev.activeStep + 1, 
+            progress: Math.max(prev.activeStep+1, prev.progress) 
+          };
+        });
       } else if (isLastStep && !isLastTab) {
-        setSelectedOptions(
-          (prev) => {
-            return {
-              ...prev, 
-              tabCompleted: true
-            }
-          }
-        )
+        setSelectedOptions((prev) => {
+          return { ...prev, tabCompleted: true };
+        });
         moveNextTab();
         isTabComplete(true);
       }
@@ -128,16 +133,14 @@ const FormStepper = ({
   };
   const handlePrev = () => {
     if (!isFirstStep) {
-      setSelectedOptions(
-        (prev) => {
-          return {...prev, activeStep: prev.activeStep-1}
-        }
-      )
+      setSelectedOptions((prev) => {
+        return { ...prev, activeStep: prev.activeStep - 1 };
+      });
     } else if (isFirstStep && !isFirstTab) {
       movePrevTab();
     }
   };
-  
+
   React.useEffect(() => {
     setIsLastStep(selectedOptions.activeStep === steps.length - 1);
     setIsFirstStep(selectedOptions.activeStep === 0);
@@ -156,19 +159,22 @@ const FormStepper = ({
     }
   }, [selectedOptions, steps.length]);
 
-  const handleConditionStepper = (fieldId, option, isChecked=true) => {
+  const handleConditionStepper = (fieldId, option, isChecked = true) => {
     const isConditionalStepper = tabDetails.conditionalStepper;
     const conditionalField = tabDetails.conditionalField;
     if (!isConditionalStepper || conditionalField != fieldId) {
-      return
+      return;
     }
-    const tab_id = tabDetails.value
-    const tab = formConfig.find(item => item.value === tab_id);
-    const updatedStepper = tab.stepper.concat(tabDetails.conditional_stepper[option]);
+    const tab_id = tabDetails.value;
+    const tab = formConfig.find((item) => item.value === tab_id);
+    const updatedStepper = tab.stepper.concat(
+      tabDetails.conditional_stepper[option]
+    );
     const updatedTab = { ...tab, stepper: updatedStepper };
     setSelectedOptions((prevOptions) => {
       const updatedOptions = { ...prevOptions };
-      const prevConditionalSteps = tabDetails.conditional_stepper[prevOptions[fieldId]?.value] || [];
+      const prevConditionalSteps =
+        tabDetails.conditional_stepper[prevOptions[fieldId]?.value] || [];
       prevConditionalSteps.forEach((step) => {
         step.fields.forEach((field) => {
           delete updatedOptions[field.id];
@@ -177,40 +183,47 @@ const FormStepper = ({
       return updatedOptions;
     });
     updateTabDetails(tab_id, updatedTab);
-  }
+  };
 
-  const handleOptionChange = ( fieldId, option, isChecked=true ) => {
-    handleConditionStepper(fieldId, option, isChecked)
-    updateFormDetails(selectedOptions, fieldId, option, isChecked)
-  }
+  const handleOptionChange = (fieldId, option, isChecked = true) => {
+    handleConditionStepper(fieldId, option, isChecked);
+    updateFormDetails(selectedOptions, fieldId, option, isChecked);
+  };
 
   const initializeConditionalStepper = () => {
     const isConditionalStepper = tabDetails.conditionalStepper;
     const conditionalField = tabDetails.conditionalField;
     if (!isConditionalStepper || !(conditionalField in selectedOptions)) {
-      return
+      return;
     }
-    const option = selectedOptions[conditionalField].value
-    const tab_id = tabDetails.value
-    const tab = formConfig.find(item => item.value === tab_id);
-    const updatedStepper = tab.stepper.concat(tabDetails.conditional_stepper[option]);
+    const option = selectedOptions[conditionalField].value;
+    const tab_id = tabDetails.value;
+    const tab = formConfig.find((item) => item.value === tab_id);
+    const updatedStepper = tab.stepper.concat(
+      tabDetails.conditional_stepper[option]
+    );
     const updatedTab = { ...tab, stepper: updatedStepper };
     updateTabDetails(tab_id, updatedTab);
-  }
+  };
 
   React.useEffect(() => {
-
     if (isValid(false)) {
-      isTabComplete()
+      isTabComplete();
     }
 
-    initializeConditionalStepper()
+    initializeConditionalStepper();
 
     return () => {
       console.log("Component unmounted");
       localStorage.removeItem(id);
     };
-  }, [])
+  }, []);
+
+  const getStepIndex = (title, subtitle) => {
+    return steps.findIndex(
+      (step) => step.title === title && step.subtitle === subtitle
+    );
+  };
 
   const handleStepperClick = (index) => {
     if (isValid() && (selectedOptions.progress+1) >= (index)) {
@@ -254,10 +267,15 @@ const FormStepper = ({
         )}
       </div>
       <div className="flex items-center justify-center min-h-96">
-        <FormRenderer 
-          form={steps[selectedOptions.activeStep] || steps[0]} 
+        <FormRenderer
+          form={steps[selectedOptions.activeStep] || steps[0]}
+          tabIndex={tabIndex}
+          stepIndex={getStepIndex(
+            steps[selectedOptions.activeStep].title,
+            steps[selectedOptions.activeStep].subtitle
+          )}
           id={id}
-          selectedOptions={selectedOptions} 
+          selectedOptions={selectedOptions}
           setSelectedOptions={setSelectedOptions}
           handleOptionChangeCallback={handleOptionChange}
         />
@@ -276,9 +294,8 @@ const FormStepper = ({
               Next
             </Button>
           )}
-          {steps[selectedOptions.activeStep]?.showSubmitButton === true && isLastStep && (
-            <ExpungementFormSubmit formData={selectedOptions}/>
-          )}
+          {steps[selectedOptions.activeStep]?.showSubmitButton === true &&
+            isLastStep && <ExpungementFormSubmit formData={selectedOptions} />}
         </div>
       </div>
     </>

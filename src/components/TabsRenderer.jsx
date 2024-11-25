@@ -10,9 +10,10 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
+import { useTranslation } from "react-i18next";
 
 const TabsRenderer = ({ id, formConfig }) => {
-
+  const { t } = useTranslation();
   const getInitialTab = () => {
     let tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
     if (tabsDetails?.activeTab === undefined) {
@@ -30,19 +31,19 @@ const TabsRenderer = ({ id, formConfig }) => {
   const [activeForm, updateActiveForm] = React.useState(formConfig);
 
   const updateTabDetails = (tab_id, value) => {
-    updateActiveForm(prev => {
+    updateActiveForm((prev) => {
       const newState = [...prev];
-      const index = newState.findIndex(item => item.value === tab_id);
+      const index = newState.findIndex((item) => item.value === tab_id);
       newState[index] = { ...newState[index], ...value };
       return newState;
     });
   };
 
   const updateFormDetails = (
-    selectedOptions, 
-    fieldId, 
-    option, 
-    isChecked, 
+    selectedOptions,
+    fieldId,
+    option,
+    isChecked,
     conditionalTabs
   ) => {
     if (conditionalTabs) {
@@ -50,9 +51,11 @@ const TabsRenderer = ({ id, formConfig }) => {
         const optionSelected = option;
         for (let action of conditionalTabs["subTabs"][optionSelected]) {
           if (action.type === "remove") {
-            updateActiveForm(prev => prev.filter(item => item.value !== action.tab));
+            updateActiveForm((prev) =>
+              prev.filter((item) => item.value !== action.tab)
+            );
           } else if (action.type === "add") {
-            updateActiveForm(prev => {
+            updateActiveForm((prev) => {
               if (
                 prev[action.index] &&
                 prev[action.index].value === action.tab
@@ -60,8 +63,12 @@ const TabsRenderer = ({ id, formConfig }) => {
                 return prev;
               }
 
-              const filteredPrev = prev.filter(item => item.value !== action.tab);
-              const index = formConfig.findIndex(item => item.value === action.tab)
+              const filteredPrev = prev.filter(
+                (item) => item.value !== action.tab
+              );
+              const index = formConfig.findIndex(
+                (item) => item.value === action.tab
+              );
 
               const updatedForm = [
                 ...filteredPrev.slice(0, action.index),
@@ -70,7 +77,7 @@ const TabsRenderer = ({ id, formConfig }) => {
               ];
 
               return updatedForm;
-            })
+            });
           }
         }
       }
@@ -114,7 +121,6 @@ const TabsRenderer = ({ id, formConfig }) => {
       }
     }
   }
-  console.log(activeForm)
 
   const isTabComplete = (index, complete) => {
     if(activeForm[index].complete != complete) {
@@ -125,7 +131,12 @@ const TabsRenderer = ({ id, formConfig }) => {
       });
     }
   };
-  
+
+  const getTabIndexByLabelAndValue = (label, value) => {
+    return formConfig.findIndex(
+      (tab) => tab.label === label && tab.value === value
+    );
+  };
 
   return (
     <Tabs className="mt-6" value={tabDetails.activeTab}>
@@ -143,7 +154,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             onClick={() => handleTabChange(value)}
             className={tabDetails.activeTab === value ? "text-gray-900 w-96 wd:w-full" : ""}
           >
-            {label}
+            {t(`tabs.${getTabIndexByLabelAndValue(label, value)}.label`)}
           </Tab>
         ))}
       </TabsHeader>
@@ -154,14 +165,22 @@ const TabsRenderer = ({ id, formConfig }) => {
               color="gray"
               className="py-1 md:w-1/2 text-2xl mx-auto text-center"
             >
-              {item.desc}
+              {t(
+                `tabs.${getTabIndexByLabelAndValue(
+                  item.label,
+                  item.value
+                )}.desc`
+              )}
             </Typography>
             {item.value !== "submit" && (
-              <>{item.list?.length > 0 && <PointsList listPoints={item.list} />}</>
+              <>
+                {item.list?.length > 0 && <PointsList listPoints={item.list} />}
+              </>
             )}
             <FormStepper
               id={`${id}-${item.value}`}
               steps={item.stepper}
+              tabIndex={getTabIndexByLabelAndValue(item.label, item.value)}
               tabDetails={item}
               formConfig={formConfig}
               updateTabDetails={updateTabDetails}
