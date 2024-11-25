@@ -24,7 +24,7 @@ const UnderstandingCF = () => {
   };
 
   return (
-    <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto sm:mt-4 mt-16">
+    <Card className="w-full h-[calc(100vh-2rem)] sm:mt-4 mt-16">
       <Heading heading={heading} />
       <CardBody className="font-normal mb:px-[64px]">
         <Typography color="gray" className="py-1 mb:w-1/2 text-2xl">

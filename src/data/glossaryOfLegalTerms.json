@@ -1,0 +1,19 @@
+{
+    "heading": "Glossary of Legal Terms",
+    "subHeading": "Legal terms",
+    "listPoints": [
+      {
+        "title": "Expungement",
+        "description": "The legal process of sealing criminal records from public access."
+      },
+      {
+        "title": "Petition",
+        "description": "A formal written request to the court."
+      },
+      {
+        "title": "Disposition",
+        "description": "The final outcome of a case (e.g., conviction, acquittal, dismissal)."
+      }
+    ]
+  }
+  

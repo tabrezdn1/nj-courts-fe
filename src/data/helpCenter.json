@@ -1,0 +1,19 @@
+{
+    "heading": "Help Center",
+    "subHeading": "Available support:",
+    "listPoints": [
+      {
+        "title": "Getting Started Guides",
+        "description": "Tutorials on using the online portal."
+      },
+      {
+        "title": "Technical Support",
+        "description": "Assistance with website issues or errors."
+      },
+      {
+        "title": "Account Assistance",
+        "description": "Help with login issues, password resets, and account management."
+      }
+    ]
+  }
+  

@@ -39,17 +39,17 @@ const HowItWorks = () => {
     }));
 
   return (
-    <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto pt-16 sm:pt-16" shadow={false}>
-      <Heading heading={heading} className="" />
+    <Card className="w-full pt-16 sm:pt-0" shadow={false}>
+      <Heading heading={heading} />
       <CardBody className="w-full font-normal px-5 sm:px-[64px]">
-        <section className="mb-8 sm:mb-16">
+        <section className="mb-4 sm:mb-11">
           <CustomTypography variant="heading">Introduction</CustomTypography>
           <CustomTypography variant="paragraph" className="text-sm sm:text-base">
             {introductionText}
           </CustomTypography>
         </section>
 
-        <section className="mb-8 sm:mb-16">
+        <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Find the Form You Need
           </CustomTypography>
@@ -60,7 +60,7 @@ const HowItWorks = () => {
           <PointsList listPoints={convertIconPoints(findFormPoints)} />
         </section>
 
-        <section className="mb-8 sm:mb-16">
+        <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Fill Out the Form with Step-by-Step Guidance
           </CustomTypography>
@@ -72,7 +72,7 @@ const HowItWorks = () => {
           <PointsList listPoints={convertIconPoints(fillFormPoints)} />
         </section>
 
-        <section className="mb-8 sm:mb-16">
+        <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Submit Your Form
           </CustomTypography>
@@ -82,7 +82,7 @@ const HowItWorks = () => {
           <PointsList listPoints={convertIconPoints(submitFormPoints)} />
         </section>
 
-        <section className="mb-8 sm:mb-16">
+        <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Save Time and Reduce Errors
           </CustomTypography>

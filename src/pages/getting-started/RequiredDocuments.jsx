@@ -262,12 +262,12 @@ const StepByStepGuides = () => {
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto mt-16" shadow={false}>
-        <Heading heading={heading} />
-        <CardBody className="font-normal mb:px-[64px]">
-          <Tabs className="mt-6 w-screen" value={activeTab}>
-            <TabsHeader
-              className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto whitespace-nowrap"
+      <Card className="h-[calc(100vh-2rem)] mt-16" shadow={false}>
+        {/* <Heading heading={heading} /> */}
+        <CardBody className="p-2 font-normal md:px-[64px] overflow-x-hidden">
+          <Tabs className="mt-6" value={activeTab}>
+          <TabsHeader
+              className="w-full rounded-none border-b border-blue-gray-50 bg-transparent overflow-x-auto scrollbar-hide flex-nowrap"
               indicatorProps={{
                 className:
                   "bg-transparent border-b-2 border-gray-900 shadow-none rounded-none",
@@ -278,22 +278,24 @@ const StepByStepGuides = () => {
                   key={value}
                   value={value}
                   onClick={() => updateActiveTab(value)}
-                  className={activeTab === value ? "text-gray-900" : ""}
+                  className={`text-sm sm:text-base md:text-xl ${
+                    activeTab === value ? "text-gray-900" : ""
+                  }`}
                 >
                   {label}
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody>
+            <TabsBody className="p-2 sm:p-4">
               {tabsData.map(({ value, steps, additionalSteps }) => (
-                <TabPanel key={value} value={value}>
+                <TabPanel key={value} value={value} className="p-0">
                   <NumberedSection
                     heading={`${value.replace("-", " ")} Steps`}
                     items={steps}
                   />
 
                   {additionalSteps.length > 0 && (
-                    <div className="mt-12">
+                    <div className="mt-8 sm:mt-12">
                       <NumberedSection
                         heading="Additional Steps"
                         items={additionalSteps}

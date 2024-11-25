@@ -12,19 +12,21 @@ import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
 
 const TabsRenderer = ({ id, formConfig }) => {
-  let tabsDetails = {}
 
   const getInitialTab = () => {
-    tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
+    let tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
     if (tabsDetails?.activeTab === undefined) {
-      tabsDetails.activeTab = formConfig[0]["value"]
+      tabsDetails = {
+        activeTab: formConfig[0]["value"],
+        progress: 0
+      }
       localStorage.setItem(id, JSON.stringify(tabsDetails))
     }
-    return tabsDetails.activeTab;
+    return tabsDetails || {};
   };
 
 
-  const [activeTab, updateActiveTab] = React.useState(getInitialTab);
+  const [tabDetails, updateActiveTab] = React.useState(getInitialTab);
   const [activeForm, updateActiveForm] = React.useState(formConfig);
 
   const updateTabDetails = (tab_id, value) => {
@@ -78,44 +80,55 @@ const TabsRenderer = ({ id, formConfig }) => {
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
-    tabsDetails.activeTab = activeTab
-    localStorage.setItem(id, JSON.stringify(tabsDetails));
+    localStorage.setItem(id, JSON.stringify(tabDetails));
 
     setTimeout(() => {
-      const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+      const tabButton = document.querySelector(`li[data-value="${tabDetails.activeTab}"]`);
       if (tabButton) {
         tabButton.click();
       }
     }, 0);
-  }, [activeTab]);
+  }, [tabDetails]);
 
   const handleTabChange = (value) => {
-    if (value != activeTab) {
+    if (value != tabDetails.activeTab){
       const valueIndex = activeForm.findIndex((item) => item.value === value);
-      if (!activeForm[valueIndex].complete) {
+      const activeIndex = activeForm.findIndex((item) => item.value === tabDetails.activeTab);
+      const activeTabDetails = activeForm[activeIndex];
+      if (activeIndex < tabDetails.progress && !activeTabDetails.complete) {
         setTimeout(() => {
-          const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
-          if (tabButton) {
-            tabButton.click();
-          }
+          const tabButton = document.querySelector(`li[data-value="${tabDetails.activeTab}"]`);
+          tabButton.click();
         }, 0);
-        return 
+      } else if (valueIndex <= tabDetails.progress) {
+        updateActiveTab((prev) => ({
+          ...prev,
+          activeTab: value,
+        }))
+      } else if (valueIndex > tabDetails.progress || !activeTabDetails.complete) {
+        // Come back to current tab as we have not finished it
+        setTimeout(() => {
+          const tabButton = document.querySelector(`li[data-value="${tabDetails.activeTab}"]`);
+          tabButton.click();
+        }, 0);
       }
-    } 
-    updateActiveTab(value)
+    }
   }
+  console.log(activeForm)
 
-  const isTabComplete = (index) => {
-    updateActiveForm(prev => {
-      const newForm = [...prev];
-      newForm[index] = { ...newForm[index], complete: true };
-      return newForm;
-    });
+  const isTabComplete = (index, complete) => {
+    if(activeForm[index].complete != complete) {
+      updateActiveForm(prev => {
+        const newForm = [...prev];
+        newForm[index] = { ...newForm[index], complete: complete };
+        return newForm;
+      });
+    }
   };
   
 
   return (
-    <Tabs className="mt-6" value={activeTab}>
+    <Tabs className="mt-6" value={tabDetails.activeTab}>
       <TabsHeader
         className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto whitespace-nowrap"
         indicatorProps={{
@@ -128,7 +141,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             key={value}
             value={value}
             onClick={() => handleTabChange(value)}
-            className={activeTab === value ? "text-gray-900 w-96 wd:w-full" : ""}
+            className={tabDetails.activeTab === value ? "text-gray-900 w-96 wd:w-full" : ""}
           >
             {label}
           </Tab>
@@ -152,11 +165,23 @@ const TabsRenderer = ({ id, formConfig }) => {
               tabDetails={item}
               formConfig={formConfig}
               updateTabDetails={updateTabDetails}
-              moveNextTab={() => updateActiveTab(activeForm[index + 1]["value"])}
-              movePrevTab={() => updateActiveTab(activeForm[index - 1]["value"])}
+              moveNextTab={() => 
+                {
+                  updateActiveTab((prev) => ({
+                    activeTab: activeForm[index + 1]["value"],
+                    progress: Math.max(index + 1, prev.progress)
+                  }))
+                }
+              }    
+              movePrevTab={() => 
+                updateActiveTab((prev) => ({
+                  ...prev,
+                  activeTab: activeForm[index - 1]["value"],
+                }))
+              }
               isFirstTab={item.value === activeForm[0].value}
               isLastTab={item.value === activeForm[activeForm.length - 1].value}
-              isTabComplete={() => isTabComplete(index)}
+              isTabComplete={(complete) => isTabComplete(index, complete)}
               updateFormDetails={
                 (
                   selectedOptions, 

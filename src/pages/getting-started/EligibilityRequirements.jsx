@@ -8,9 +8,9 @@ const EligibilityRequirements = () => {
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto mt-16 mb:mt-0">
+      <Card className="w-full h-[calc(100vh-2rem)] mt-16 md:mt-0">
         <Heading heading={heading} />
-        <CardBody className="font-normal mb:px-[64px]">
+        <CardBody className="font-normal md:px-12">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
             {introduction}
           </Typography>

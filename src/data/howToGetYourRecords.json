@@ -1,0 +1,71 @@
+{
+    "heading": "How to Get Your Records?",
+    "tabs": [
+      {
+        "label": "Obtaining Criminal Records",
+        "value": "obtain-criminal-record",
+        "desc": "To apply for expungement, you'll need detailed information about your criminal history:",
+        "list": [
+          {
+            "title": "Local Law Enforcement",
+            "description": "Contact the police department where you were arrested for arrest records and charges."
+          },
+          {
+            "title": "County Court Records",
+            "description": "Reach out to the Superior Court in the county of your conviction for court documents, including docket numbers and case dispositions."
+          },
+          {
+            "title": "New Jersey State Police",
+            "description": "Request a comprehensive criminal history record, which may require submitting fingerprints."
+          }
+        ]
+      },
+      {
+        "label": "Fingerprinting for Expungement",
+        "value": "fingerprinting-for-expungement",
+        "desc": "Fingerprinting may be necessary to confirm your identity:",
+        "list": [
+          {
+            "title": "Schedule an Appointment",
+            "description": "Use an approved fingerprinting service authorized by the New Jersey State Police."
+          },
+          {
+            "title": "Submit Fingerprints",
+            "description": "Your fingerprints will be taken electronically and submitted to the state police."
+          },
+          {
+            "title": "Obtain a Receipt",
+            "description": "Include the fingerprinting receipt with your expungement petition."
+          }
+        ]
+      },
+      {
+        "label": "Information You Need",
+        "value": "info-you-need",
+        "desc": "Prepare the following details:",
+        "list": [
+          {
+            "title": "Date of Arrest",
+            "description": "Exact dates for each arrest."
+          },
+          {
+            "title": "Offense or Charges",
+            "description": "Specific charges and related statute numbers."
+          },
+          {
+            "title": "Court Case Number (Docket Number)",
+            "description": "Assigned numbers for each case."
+          },
+          {
+            "title": "Case Outcome",
+            "description": "Dispositions such as guilty, not guilty, or dismissed."
+          },
+          {
+            "title": "Sentence Completion Proof",
+            "description": "Documentation of completed jail time, probation, or fines paid."
+          }
+        ]
+      }
+    ]
+  }
+  

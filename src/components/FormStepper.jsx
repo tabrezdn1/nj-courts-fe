@@ -23,9 +23,9 @@ const FormStepper = ({
 
   const getSeletedOptions = () => {
     if (mode === "new") {
-      return {activeStep: 0, tabCompleted: false};
+      return {activeStep: 0, tabCompleted: false, progress: 0};
     } else {
-      return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false};
+      return JSON.parse(localStorage.getItem(id)) || {activeStep: 0, tabCompleted: false, progress: 0};
     }
   }
 
@@ -81,8 +81,8 @@ const FormStepper = ({
     return valid
   }
 
-  const isValid = (updateDisplay=true) => {
-    const currentStep = steps[selectedOptions.activeStep];
+  const isValid = (updateDisplay=true, index=undefined) => {
+    const currentStep = steps[index || selectedOptions.activeStep];
     let valid = true
   
     for (let field of currentStep?.fields) {
@@ -92,22 +92,37 @@ const FormStepper = ({
     return valid;
   };
 
+  const isValidForm = () => {
+    let valid = true;
+    steps.forEach((item, currentIndex) => {
+      valid = isValid(false, currentIndex) && valid;
+    });
+    return valid;
+  };
+
   const handleNext = () => {
     if (isValid()){
       if (!isLastStep) {
         setSelectedOptions(
           (prev) => {
-            return {...prev, activeStep: prev.activeStep+1}
+            return {
+              ...prev, 
+              activeStep: prev.activeStep+1, 
+              progress: Math.max(prev.activeStep+1, prev.progress)
+            }
           }
         )
       } else if (isLastStep && !isLastTab) {
         setSelectedOptions(
           (prev) => {
-            return {...prev, tabCompleted: true}
+            return {
+              ...prev, 
+              tabCompleted: true
+            }
           }
         )
         moveNextTab();
-        isTabComplete();
+        isTabComplete(true);
       }
     }
   };
@@ -128,6 +143,17 @@ const FormStepper = ({
     setIsFirstStep(selectedOptions.activeStep === 0);
 
     localStorage.setItem(id, JSON.stringify(selectedOptions));
+    if (isLastStep && isValid(false) && !selectedOptions.tabCompleted ) {
+      isTabComplete()
+      setSelectedOptions(
+        (prev) => {
+          return {
+            ...prev,
+            tabCompleted: true
+          }
+        }
+      )
+    }
   }, [selectedOptions, steps.length]);
 
   const handleConditionStepper = (fieldId, option, isChecked=true) => {
@@ -186,6 +212,23 @@ const FormStepper = ({
     };
   }, [])
 
+  const handleStepperClick = (index) => {
+    if (isValid() && (selectedOptions.progress+1) >= (index)) {
+      setSelectedOptions(prev => {
+        return {...prev, activeStep: index}
+      })
+    }
+  }
+
+  const init = () => {
+    if (isValidForm()) {
+      isTabComplete(true)
+    } else {
+      isTabComplete(false)
+    }
+  }
+  init()
+
   return (
     <>
       <div className="w-full md:px-24 py-4 min-h-24">
@@ -198,7 +241,7 @@ const FormStepper = ({
             {steps.map((step, index) => {
               const IconComponent = HeroIcons[step.icon];
               return (
-                <Step key={index}>
+                <Step key={index} onClick={() => handleStepperClick(index)}>
                   {IconComponent ? (
                     <IconComponent className="h-6 w-6" />
                   ) : (

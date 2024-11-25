@@ -3,7 +3,7 @@ import PointsList from "./PointsList";
 
 const NumberedSection = ({ heading, items }) => {
   return (
-    <div className="w-full px-6 py-12">
+    <div className="w-full mb:px-6 py-12">
       <Typography variant="h4" className="text-left mb-4">
         {heading}
       </Typography>

@@ -191,7 +191,6 @@ const FormRenderer = ({
   }, [selectedOptions]);
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
-    handleOptionChangeCallback(fieldId, option, isChecked)
     setSelectedOptions((prevOptions) => {
       const field = form.fields.find((f) => f.id === fieldId);
       if (field && field.type === "checkbox") {
@@ -217,6 +216,7 @@ const FormRenderer = ({
         };
       }
     });
+    handleOptionChangeCallback(fieldId, option, isChecked)
   };
 
   return (

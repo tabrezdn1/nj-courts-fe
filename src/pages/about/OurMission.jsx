@@ -25,7 +25,7 @@ const OurMission = () => {
   }));
 
   return (
-    <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto mt-16 sm:mt-0">
+    <Card className="w-full mt-16 sm:mt-0" shadow={false}>
       <Heading heading={heading} />
       <CardBody className="font-normal px-5">
         <CustomTypography variant="paragraph">{missionText}</CustomTypography>

@@ -27,7 +27,7 @@ const PointsList = ({ listPoints }) => {
               </Typography>
             </TimelineHeader>
 
-            <TimelineBody className="pb-4 sm:pb-8">
+            <TimelineBody className="pt-2 pb-4 sm:pb-8">
               <Typography
                 color="gray"
                 className="font-normal text-gray-600 mb-2 sm:mb-4 text-xs sm:text-sm md:text-base"

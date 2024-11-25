@@ -1,0 +1,18 @@
+{
+	"heading": "Court Locations and Contact",
+	"introduction": "Contact Court:",
+	"listPoints": [
+		{
+			"title": "Find a Court",
+			"description": "Addresses and contact information for courts in each New Jersey county."
+		},
+		{
+			"title": "Operating Hours",
+			"description": "Standard hours and holiday schedules."
+		},
+		{
+			"title": "Accessibility Services",
+			"description": "Information on services for individuals with disabilities."
+		}
+	]
+}
