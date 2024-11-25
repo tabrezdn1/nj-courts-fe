@@ -27,7 +27,7 @@ const FieldRenderer = ({
           <Input
             size="lg"
             placeholder={t(placeholderPath)}
-            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -37,7 +37,7 @@ const FieldRenderer = ({
             maxLength={field?.validation?.maxLength || 255}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1">
+            <p className="text-red-500 mt-1 text-xs">
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -55,11 +55,12 @@ const FieldRenderer = ({
                 color="teal"
                 onChange={() => onOptionChange(field.id, option)}
                 checked={selectedOptions[field.id]?.value === option}
+                className="text-sm"
               />
             ))}
           </div>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1">
+            <p className="text-red-500 mt-1 text-xs">
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -79,11 +80,12 @@ const FieldRenderer = ({
                   onOptionChange(field.id, option, e.target.checked)
                 }
                 checked={selectedOptions[field.id]?.value?.[option] || false}
+                className="text-sm"
               />
             ))}
           </div>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1">
+            <p className="text-red-500 mt-1 text-xs">
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -102,6 +104,7 @@ const FieldRenderer = ({
             onChange={(value) => onOptionChange(field.id, value)}
             value={selectedOptions[field.id]?.["value"]}
             error={selectedOptions[field.id]?.error}
+            className="text-sm"
           >
             {field.options.map((option, i) => (
               <Option
@@ -115,7 +118,7 @@ const FieldRenderer = ({
             ))}
           </Select>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1">
+            <p className="text-red-500 mt-1 text-xs">
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -126,9 +129,10 @@ const FieldRenderer = ({
         <Textarea
           color="teal"
           placeholder={field.placeholder}
-          rows={8}
+          rows={4}
           onChange={(e) => onOptionChange(field.id, e.target.value)}
           value={selectedOptions[field.id]?.["value"] || ""}
+          className="text-sm"
         />
       );
     case "date":
@@ -137,7 +141,7 @@ const FieldRenderer = ({
           <Input
             type="date"
             size="lg"
-            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900 text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -148,7 +152,7 @@ const FieldRenderer = ({
             error={selectedOptions[field.id]?.error}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1">
+            <p className="text-red-500 mt-1 text-xs">
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -182,11 +186,11 @@ const RecursiveFieldRenderer = ({
   };
 
   return fields.map((field, index) => (
-    <div key={index}>
+    <div key={index} className="mb-4">
       <Typography
         variant="h6"
         color="blue-gray"
-        className="py-1 font-black font-bold"
+        className="py-1 font-black font-bold text-sm"
       >
         {t(
           `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
@@ -195,7 +199,7 @@ const RecursiveFieldRenderer = ({
           )}.label`
         )}
       </Typography>
-      <Typography variant="small" color="gray" className="py-1 font-black">
+      <Typography variant="small" color="gray" className="py-1 font-black text-xs">
         {field.sub_label}
         {t(
           `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
@@ -395,14 +399,14 @@ const FormRenderer = ({
 
   return (
     <Card color="transparent" shadow={false}>
-      <Typography variant="h4" color="blue-gray">
+      <Typography variant="h4" color="blue-gray" className="text-xl md:text-2xl">
         {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`)}
         {form?.helper && <HelpDrawer />}
       </Typography>
-      <Typography color="gray" className="font-normal max-w-96">
+      <Typography color="gray" className="font-normal max-w-96 text-sm md:text-base">
         {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`) || ""}
       </Typography>
-      <form className="w-96">
+      <form className="w-full md:w-96">
         <div className="mb-1 flex flex-col gap-6">
           {!form.isReview && (
             <RecursiveFieldRenderer

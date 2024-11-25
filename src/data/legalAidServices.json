@@ -1,0 +1,19 @@
+{
+  "heading": "Legal Aid Services",
+  "description": "These are few known legal aid services:",
+  "listPoints": [
+    {
+      "title": "Pro Bono Programs",
+      "description": "Organizations offering free or reduced-cost legal assistance."
+    },
+    {
+      "title": "Legal Clinics",
+      "description": "Community resources providing legal advice and assistance."
+    },
+    {
+      "title": "Lawyer Referral Services",
+      "description": "Help in finding an attorney suited to your needs."
+    }
+  ]
+}
+  

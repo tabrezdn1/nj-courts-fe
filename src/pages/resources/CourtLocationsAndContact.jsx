@@ -1,33 +1,18 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-
 import Heading from "../../components/Heading";
 import PointsList from "../../components/PointsList";
+import { courtLocationsAndContact } from "../../data/configs";
 
 const CourtLocationsAndContact = () => {
-  const heading = "Court Locations and Contact";
-  const listPoints = [
-    {
-      title: "Find a Court",
-      description: "Addresses and contact information for courts in each New Jersey county.",
-    },
-    {
-      title: "Operating Hours",
-      description: "Standard hours and holiday schedules.",
-    },
-    {
-      title: "Accessibility Services",
-      description: "Information on services for individuals with disabilities.",
-    },
-  ];
   return (
     <>
       <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
-        <Heading heading={heading} />
-        <CardBody className="font-normal px-[64px]">
+        <Heading heading={courtLocationsAndContact.heading} />
+        <CardBody className="font-normal px-8">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            Contact Court:
+            {courtLocationsAndContact.introduction}
           </Typography>
-          <PointsList listPoints={listPoints} />
+          <PointsList listPoints={courtLocationsAndContact.listPoints}/>
         </CardBody>
       </Card>
     </>

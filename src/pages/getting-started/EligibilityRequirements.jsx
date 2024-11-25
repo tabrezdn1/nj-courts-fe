@@ -1,27 +1,18 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-
 import Heading from "../../components/Heading";
 import PointsList from "../../components/PointsList";
+import { eligibilityData } from "../../data/configs";
 
 const EligibilityRequirements = () => {
-  const heading = "Eligibility Requirements";
-  const listPoints = [
-    {
-      title: "Check Eligibility",
-      description: "Different forms have specific eligibility criteria.",
-    },
-    {
-      title: "Legal Consultation",
-      description: "Consider seeking legal advice to confirm your eligibility.",
-    },
-  ];
+  const { heading, introduction, listPoints } = eligibilityData;
+
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full h-[calc(100vh-2rem)] mt-16 md:mt-0">
         <Heading heading={heading} />
-        <CardBody className="font-normal px-[64px]">
+        <CardBody className="font-normal md:px-12">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            Before you begin:
+            {introduction}
           </Typography>
           <PointsList listPoints={listPoints} />
         </CardBody>

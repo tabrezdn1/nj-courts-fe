@@ -1,0 +1,19 @@
+{
+    "heading": "Contact Us",
+    "subHeading": "Get in touch:",
+    "listPoints": [
+      {
+        "title": "Email Support",
+        "description": "support@njcourtsforms.gov"
+      },
+      {
+        "title": "Phone Support",
+        "description": "1-800-XXX-XXXX (Monday to Friday, 9 AM - 5 PM)"
+      },
+      {
+        "title": "Live Chat",
+        "description": "Chat with a support agent for immediate assistance."
+      }
+    ]
+  }
+  

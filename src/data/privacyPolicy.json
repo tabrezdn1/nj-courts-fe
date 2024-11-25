@@ -1,0 +1,19 @@
+{
+    "heading": "Privacy Policy",
+    "subHeading": "Policy:",
+    "listPoints": [
+      {
+        "title": "Data Protection",
+        "description": "Measures we take to secure your personal information."
+      },
+      {
+        "title": "Data Usage",
+        "description": "How your information is used within our services."
+      },
+      {
+        "title": "Cookies and Tracking",
+        "description": "Information on website tracking technologies."
+      }
+    ]
+  }
+  

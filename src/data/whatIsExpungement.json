@@ -1,0 +1,42 @@
+{
+    "heading": "What is Expungement?",
+    "whatIsExpungementTitle": "What is Expungement?",
+    "whatIsExpungementText": "Expungement is the legal process that allows certain criminal records to be sealed or removed from public view, giving individuals the opportunity for a fresh start. Once an expungement is granted, records will not appear in most background checks conducted by employers, landlords, or educational institutions. However, expunged records can still be accessed by law enforcement and certain government agencies.",
+    "howExpungementWorksTitle": "How Expungement Works",
+    "howExpungementWorksText": "In New Jersey, expungement applies to records maintained by the courts, law enforcement, and detention facilities. It essentially \"seals\" the record, preventing it from being viewed by the general public. Once expungement is granted, you can legally state that you have not been convicted of the crime in most situations, such as when applying for jobs or housing.",
+    "benefitsTitle": "Benefits of Expungement",
+    "benefits": [
+      {
+        "icon": "BriefcaseIcon",
+        "title": "Employment",
+        "description": "Expungement removes the record from most employment background checks, improving job prospects."
+      },
+      {
+        "icon": "HomeIcon",
+        "title": "Housing",
+        "description": "Landlords cannot see expunged records during rental applications, giving individuals better access to housing."
+      },
+      {
+        "icon": "AcademicCapIcon",
+        "title": "Education and Loans",
+        "description": "Expunged records will not impact student loans, financial aid, or admission to educational programs."
+      }
+    ],
+    "exceptionsTitle": "Exceptions to Expungement",
+    "exceptionsText": "While expungement removes the record from public view, certain entities may still access it, including:",
+    "exceptions": [
+      {
+        "title": "Law Enforcement",
+        "description": "For future investigations or criminal cases."
+      },
+      {
+        "title": "Government Employment",
+        "description": "Expunged records may be visible when applying for jobs in law enforcement or other sensitive positions."
+      },
+      {
+        "title": "Licensing Boards",
+        "description": "Some professional boards may access expunged records during their background check process."
+      }
+    ]
+  }
+  
