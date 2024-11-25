@@ -200,7 +200,6 @@ const RecursiveFieldRenderer = ({
         )}
       </Typography>
       <Typography variant="small" color="gray" className="py-1 font-black text-xs">
-        {field.sub_label}
         {t(
           `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
             field.label,
