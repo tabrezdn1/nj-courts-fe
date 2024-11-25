@@ -1,30 +1,17 @@
-import PropTypes from "prop-types";
+import { Typography } from "@material-tailwind/react";
 
-const ComingSoon = ({ logoSrc = "/nj-courts.jpeg" }) => {
+const ComingSoon = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4">
-      <div className="flex items-center space-x-4 mb-8">
-        <img
-          src={logoSrc}
-          alt="NJ Courts Logo"
-          width={100}
-          height={100}
-          className="object-contain"
-        />
-        <h1 className="text-3xl sm:text-5xl font-semibold text-gray-800">
-          New Jersey Courts
-        </h1>
+    <div className="flex flex-col items-center justify-center bg-white text-center p-2">
+      <div className="flex items-center w-fit">
+        <img src="/logo.svg" alt="logo" className="h-32" />
       </div>
 
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+      <Typography className="text-3xl sm:text-4xl font-bold text-gray-800">
         Coming Soon
-      </h2>
+      </Typography>
     </div>
   );
-};
-
-ComingSoon.propTypes = {
-  logoSrc: PropTypes.string,
 };
 
 export default ComingSoon;

@@ -10,37 +10,38 @@ import {
 
 import PointsList from "./PointsList";
 import FormStepper from "./FormStepper";
+import { useTranslation } from "react-i18next";
 
 const TabsRenderer = ({ id, formConfig }) => {
-  let tabsDetails = {}
+  const { t } = useTranslation();
+  let tabsDetails = {};
 
   const getInitialTab = () => {
-    tabsDetails = JSON.parse(localStorage.getItem(id)) || {}
+    tabsDetails = JSON.parse(localStorage.getItem(id)) || {};
     if (tabsDetails?.activeTab === undefined) {
-      tabsDetails.activeTab = formConfig[0]["value"]
-      localStorage.setItem(id, JSON.stringify(tabsDetails))
+      tabsDetails.activeTab = formConfig[0]["value"];
+      localStorage.setItem(id, JSON.stringify(tabsDetails));
     }
     return tabsDetails.activeTab;
   };
-
 
   const [activeTab, updateActiveTab] = React.useState(getInitialTab);
   const [activeForm, updateActiveForm] = React.useState(formConfig);
 
   const updateTabDetails = (tab_id, value) => {
-    updateActiveForm(prev => {
+    updateActiveForm((prev) => {
       const newState = [...prev];
-      const index = newState.findIndex(item => item.value === tab_id);
+      const index = newState.findIndex((item) => item.value === tab_id);
       newState[index] = { ...newState[index], ...value };
       return newState;
     });
   };
 
   const updateFormDetails = (
-    selectedOptions, 
-    fieldId, 
-    option, 
-    isChecked, 
+    selectedOptions,
+    fieldId,
+    option,
+    isChecked,
     conditionalTabs
   ) => {
     if (conditionalTabs) {
@@ -48,9 +49,11 @@ const TabsRenderer = ({ id, formConfig }) => {
         const optionSelected = option;
         for (let action of conditionalTabs["subTabs"][optionSelected]) {
           if (action.type === "remove") {
-            updateActiveForm(prev => prev.filter(item => item.value !== action.tab));
+            updateActiveForm((prev) =>
+              prev.filter((item) => item.value !== action.tab)
+            );
           } else if (action.type === "add") {
-            updateActiveForm(prev => {
+            updateActiveForm((prev) => {
               if (
                 prev[action.index] &&
                 prev[action.index].value === action.tab
@@ -58,8 +61,12 @@ const TabsRenderer = ({ id, formConfig }) => {
                 return prev;
               }
 
-              const filteredPrev = prev.filter(item => item.value !== action.tab);
-              const index = formConfig.findIndex(item => item.value === action.tab)
+              const filteredPrev = prev.filter(
+                (item) => item.value !== action.tab
+              );
+              const index = formConfig.findIndex(
+                (item) => item.value === action.tab
+              );
 
               const updatedForm = [
                 ...filteredPrev.slice(0, action.index),
@@ -68,7 +75,7 @@ const TabsRenderer = ({ id, formConfig }) => {
               ];
 
               return updatedForm;
-            })
+            });
           }
         }
       }
@@ -78,7 +85,7 @@ const TabsRenderer = ({ id, formConfig }) => {
   // Hack for smooter transistions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
-    tabsDetails.activeTab = activeTab
+    tabsDetails.activeTab = activeTab;
     localStorage.setItem(id, JSON.stringify(tabsDetails));
 
     setTimeout(() => {
@@ -94,25 +101,32 @@ const TabsRenderer = ({ id, formConfig }) => {
       const valueIndex = activeForm.findIndex((item) => item.value === value);
       if (!activeForm[valueIndex].complete) {
         setTimeout(() => {
-          const tabButton = document.querySelector(`li[data-value="${activeTab}"]`);
+          const tabButton = document.querySelector(
+            `li[data-value="${activeTab}"]`
+          );
           if (tabButton) {
             tabButton.click();
           }
         }, 0);
-        return 
+        return;
       }
-    } 
-    updateActiveTab(value)
-  }
+    }
+    updateActiveTab(value);
+  };
 
   const isTabComplete = (index) => {
-    updateActiveForm(prev => {
+    updateActiveForm((prev) => {
       const newForm = [...prev];
       newForm[index] = { ...newForm[index], complete: true };
       return newForm;
     });
   };
-  
+
+  const getTabIndexByLabelAndValue = (label, value) => {
+    return formConfig.findIndex(
+      (tab) => tab.label === label && tab.value === value
+    );
+  };
 
   return (
     <Tabs className="mt-6 w-auto" value={activeTab}>
@@ -130,7 +144,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             onClick={() => handleTabChange(value)}
             className={activeTab === value ? "text-gray-900" : ""}
           >
-            {label}
+            {t(`tabs.${getTabIndexByLabelAndValue(label, value)}.label`)}
           </Tab>
         ))}
       </TabsHeader>
@@ -141,33 +155,45 @@ const TabsRenderer = ({ id, formConfig }) => {
               color="gray"
               className="py-1 w-1/2 text-2xl mx-auto text-center"
             >
-              {item.desc}
+              {t(
+                `tabs.${getTabIndexByLabelAndValue(
+                  item.label,
+                  item.value
+                )}.desc`
+              )}
             </Typography>
             {item.value !== "submit" && (
-              <>{item.list?.length > 0 && <PointsList listPoints={item.list} />}</>
+              <>
+                {item.list?.length > 0 && <PointsList listPoints={item.list} />}
+              </>
             )}
             <FormStepper
               id={`${id}-${item.value}`}
               steps={item.stepper}
+              tabIndex={getTabIndexByLabelAndValue(item.label, item.value)}
               tabDetails={item}
               formConfig={formConfig}
               updateTabDetails={updateTabDetails}
-              moveNextTab={() => updateActiveTab(activeForm[index + 1]["value"])}
-              movePrevTab={() => updateActiveTab(activeForm[index - 1]["value"])}
+              moveNextTab={() =>
+                updateActiveTab(activeForm[index + 1]["value"])
+              }
+              movePrevTab={() =>
+                updateActiveTab(activeForm[index - 1]["value"])
+              }
               isFirstTab={item.value === activeForm[0].value}
               isLastTab={item.value === activeForm[activeForm.length - 1].value}
               isTabComplete={() => isTabComplete(index)}
-              updateFormDetails={
-                (
-                  selectedOptions, 
-                  fieldId, 
-                  option, 
-                  isChecked
-                ) => updateFormDetails(
-                  selectedOptions, 
-                  fieldId, 
-                  option, 
-                  isChecked, 
+              updateFormDetails={(
+                selectedOptions,
+                fieldId,
+                option,
+                isChecked
+              ) =>
+                updateFormDetails(
+                  selectedOptions,
+                  fieldId,
+                  option,
+                  isChecked,
                   item.conditionalTabs
                 )
               }

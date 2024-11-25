@@ -10,93 +10,117 @@ import {
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
 import { useEffect } from "react";
-import React from "react";
 import FormReview from "./FormReview";
+import { useTranslation } from "react-i18next";
 
-const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
+const FieldRenderer = ({
+  field,
+  onOptionChange,
+  selectedOptions,
+  placeholderPath,
+}) => {
+  const { t } = useTranslation();
   switch (field.type) {
     case "input":
-      return <>
-        <Input
-          size="lg"
-          placeholder={field.placeholder}
-          className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-          labelProps={{
-            className: "before:content-none after:content-none",
-          }}
-          onChange={(e) => onOptionChange(field.id, e.target.value)}
-          value={selectedOptions[field.id]?.value || ""}
-          error={selectedOptions[field.id]?.error}
-          maxLength={field?.validation?.maxLength || 255}
-        />
-        {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
-        }
-      </>
+      return (
+        <>
+          <Input
+            size="lg"
+            placeholder={t(placeholderPath)}
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+            onChange={(e) => onOptionChange(field.id, e.target.value)}
+            value={selectedOptions[field.id]?.value || ""}
+            error={selectedOptions[field.id]?.error}
+            maxLength={field?.validation?.maxLength || 255}
+          />
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     case "radio":
-      return <>
-        <div className="flex gap-4">
-          {field.options.map((option, i) => (
-            <Radio
-              key={i}
-              name={field.name}
-              label={option}
-              color="teal"
-              onChange={() => onOptionChange(field.id, option)}
-              checked={selectedOptions[field.id]?.value === option}
-            />
-          ))}
-        </div>
-        {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
-        }
-      </>
+      return (
+        <>
+          <div className="flex gap-4">
+            {field.options.map((option, i) => (
+              <Radio
+                key={i}
+                name={field.name}
+                label={option}
+                color="teal"
+                onChange={() => onOptionChange(field.id, option)}
+                checked={selectedOptions[field.id]?.value === option}
+              />
+            ))}
+          </div>
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     case "checkbox":
-      return <>
-        <div className="flex gap-4">
-          {field.options.map((option, i) => (
-            <Checkbox
-              key={i}
-              ripple={true}
-              label={option}
-              color="teal"
-              onChange={(e) =>
-                onOptionChange(field.id, option, e.target.checked)
-              }
-              checked={selectedOptions[field.id]?.value?.[option] || false}
-            />
-          ))}
-        </div>
-        {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
-        }
-      </>
+      return (
+        <>
+          <div className="flex gap-4">
+            {field.options.map((option, i) => (
+              <Checkbox
+                key={i}
+                ripple={true}
+                label={option}
+                color="teal"
+                onChange={(e) =>
+                  onOptionChange(field.id, option, e.target.checked)
+                }
+                checked={selectedOptions[field.id]?.value?.[option] || false}
+              />
+            ))}
+          </div>
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     case "select":
-      return <>
-        <Select
-          color="teal"
-          label={field.name}
-          animate={{
-            mount: { y: 0 },
-            unmount: { y: 25 },
-          }}
-          onChange={(value) => onOptionChange(field.id, value)}
-          value={selectedOptions[field.id]?.["value"]}
-          error={selectedOptions[field.id]?.error}
-        >
-          {field.options.map((option, i) => (
-            <Option
-              key={i}
-              value={typeof option === "string" ? option.trim() : option.value}
-            >
-              {typeof option === "string" ? option : option.label}
-            </Option>
-          ))}
-        </Select>
-        {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
-        }
-      </>
+      return (
+        <>
+          <Select
+            color="teal"
+            label={field.name}
+            animate={{
+              mount: { y: 0 },
+              unmount: { y: 25 },
+            }}
+            onChange={(value) => onOptionChange(field.id, value)}
+            value={selectedOptions[field.id]?.["value"]}
+            error={selectedOptions[field.id]?.error}
+          >
+            {field.options.map((option, i) => (
+              <Option
+                key={i}
+                value={
+                  typeof option === "string" ? option.trim() : option.value
+                }
+              >
+                {typeof option === "string" ? option : option.label}
+              </Option>
+            ))}
+          </Select>
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     case "textarea":
       return (
         <Textarea
@@ -108,24 +132,28 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
         />
       );
     case "date":
-      return <>
-        <Input
-          type="date"
-          size="lg"
-          className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-          labelProps={{
-            className: "before:content-none after:content-none",
-          }}
-          onChange={(e) => onOptionChange(field.id, e.target.value)}
-          value={selectedOptions[field.id]?.["value"] || ""}
-          min="1947-08-15"
-          max={new Date().toISOString().split("T")[0]}
-          error={selectedOptions[field.id]?.error}
-        />
-        {
-          selectedOptions[field.id]?.error && <p className="text-red-500 mt-1">{selectedOptions[field.id]?.error_desc}</p>
-        }
-      </>
+      return (
+        <>
+          <Input
+            type="date"
+            size="lg"
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+            onChange={(e) => onOptionChange(field.id, e.target.value)}
+            value={selectedOptions[field.id]?.["value"] || ""}
+            min="1947-08-15"
+            max={new Date().toISOString().split("T")[0]}
+            error={selectedOptions[field.id]?.error}
+          />
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     default:
       return null;
   }
@@ -135,7 +163,24 @@ const RecursiveFieldRenderer = ({
   fields,
   selectedOptions,
   onOptionChange,
+  tabIndex,
+  stepIndex,
 }) => {
+  const { t } = useTranslation();
+  const getFieldIndexByLabelAndSublabel = (label, sub_label) => {
+    return fields.findIndex(
+      (field) => field.label === label && field.sub_label === sub_label
+    );
+  };
+
+  const generateFieldPlaceholderPath = (tabIndex, stepIndex, fieldIndex) => {
+    return `tabs.${tabIndex}.stepper.${stepIndex}.fields.${fieldIndex}.placeholder`;
+  };
+
+  const getOptionsFieldIndex = (optionFields, field) => {
+    return optionFields.findIndex((optionIndex) => optionIndex.id === field.id);
+  };
+
   return fields.map((field, index) => (
     <div key={index}>
       <Typography
@@ -143,25 +188,155 @@ const RecursiveFieldRenderer = ({
         color="blue-gray"
         className="py-1 font-black font-bold"
       >
-        {field.label}
+        {t(
+          `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
+            field.label,
+            field.sub_label
+          )}.label`
+        )}
       </Typography>
       <Typography variant="small" color="gray" className="py-1 font-black">
         {field.sub_label}
+        {t(
+          `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
+            field.label,
+            field.sub_label
+          )}.sub_label`
+        )}
       </Typography>
       <FieldRenderer
         field={field}
+        placeholderPath={generateFieldPlaceholderPath(
+          tabIndex,
+          stepIndex,
+          getFieldIndexByLabelAndSublabel(field.label, field.sub_label)
+        )}
         onOptionChange={onOptionChange}
         selectedOptions={selectedOptions}
       />
       {field.subFields &&
         selectedOptions[field.id]?.value &&
         field.subFields[selectedOptions[field.id]?.value] && (
-          <RecursiveFieldRenderer
-            className="p-1"
-            fields={field.subFields[selectedOptions[field.id]?.value]}
-            selectedOptions={selectedOptions}
-            onOptionChange={onOptionChange}
-          />
+          <div className="p-1">
+            {field.subFields[selectedOptions[field.id]?.value].map(
+              (subField, subIndex) => (
+                <div key={subIndex}>
+                  <Typography
+                    variant="h6"
+                    color="blue-gray"
+                    className="py-1 font-black font-bold"
+                  >
+                    {t(
+                      `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
+                        field.label,
+                        field.sub_label
+                      )}.subFields.${
+                        selectedOptions[field.id]?.value
+                      }.${getOptionsFieldIndex(
+                        field.subFields[selectedOptions[field.id]?.value],
+                        subField
+                      )}.label`
+                    )}
+                  </Typography>
+                  <Typography
+                    variant="small"
+                    color="gray"
+                    className="py-1 font-black"
+                  >
+                    {t(
+                      `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
+                        field.label,
+                        field.sub_label
+                      )}.subFields.${
+                        selectedOptions[field.id]?.value
+                      }.${getOptionsFieldIndex(
+                        field.subFields[selectedOptions[field.id]?.value],
+                        subField
+                      )}.label`
+                    )}
+                  </Typography>
+                  <FieldRenderer
+                    field={subField}
+                    tabIndex={tabIndex}
+                    stepIndex={stepIndex}
+                    fieldIndex={subIndex}
+                    onOptionChange={onOptionChange}
+                    selectedOptions={selectedOptions}
+                  />
+                  {subField.subFields &&
+                    selectedOptions[subField.id]?.value &&
+                    subField.subFields[selectedOptions[subField.id]?.value] && (
+                      <div className="p-1">
+                        {subField.subFields[
+                          selectedOptions[subField.id]?.value
+                        ].map((nestedField, nestedIndex) => (
+                          <div key={nestedIndex}>
+                            <Typography
+                              variant="h6"
+                              color="blue-gray"
+                              className="py-1 font-black font-bold"
+                            >
+                              {nestedField.label}
+                            </Typography>
+                            <Typography
+                              variant="small"
+                              color="gray"
+                              className="py-1 font-black"
+                            >
+                              {nestedField.sub_label}
+                            </Typography>
+                            <FieldRenderer
+                              field={nestedField}
+                              tabIndex={tabIndex}
+                              stepIndex={stepIndex}
+                              fieldIndex={nestedIndex}
+                              onOptionChange={onOptionChange}
+                              selectedOptions={selectedOptions}
+                            />
+                            {nestedField.subFields &&
+                              selectedOptions[nestedField.id]?.value &&
+                              nestedField.subFields[
+                                selectedOptions[nestedField.id]?.value
+                              ] && (
+                                <div className="p-1">
+                                  {nestedField.subFields[
+                                    selectedOptions[nestedField.id]?.value
+                                  ].map((deepNestedField, deepNestedIndex) => (
+                                    <div key={deepNestedIndex}>
+                                      <Typography
+                                        variant="h6"
+                                        color="blue-gray"
+                                        className="py-1 font-black font-bold"
+                                      >
+                                        {deepNestedField.label}
+                                      </Typography>
+                                      <Typography
+                                        variant="small"
+                                        color="gray"
+                                        className="py-1 font-black"
+                                      >
+                                        {deepNestedField.sub_label}
+                                      </Typography>
+                                      <FieldRenderer
+                                        field={deepNestedField}
+                                        tabIndex={tabIndex}
+                                        stepIndex={stepIndex}
+                                        fieldIndex={deepNestedIndex}
+                                        onOptionChange={onOptionChange}
+                                        selectedOptions={selectedOptions}
+                                      />
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                </div>
+              )
+            )}
+          </div>
         )}
     </div>
   ));
@@ -172,8 +347,11 @@ const FormRenderer = ({
   form,
   selectedOptions,
   setSelectedOptions,
-  handleOptionChangeCallback
+  handleOptionChangeCallback,
+  tabIndex,
+  stepIndex,
 }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     // Read existing data from local storage
     const existingData = JSON.parse(localStorage.getItem(id)) || {};
@@ -187,7 +365,7 @@ const FormRenderer = ({
   }, [selectedOptions]);
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
-    handleOptionChangeCallback(fieldId, option, isChecked)
+    handleOptionChangeCallback(fieldId, option, isChecked);
     setSelectedOptions((prevOptions) => {
       const field = form.fields.find((f) => f.id === fieldId);
       if (field && field.type === "checkbox") {
@@ -199,8 +377,8 @@ const FormRenderer = ({
               ...(prevOptions[fieldId]?.["value"] || {}),
               [option]: isChecked,
             },
-            error: false
-          } ,
+            error: false,
+          },
         };
       } else {
         return {
@@ -208,7 +386,7 @@ const FormRenderer = ({
           [fieldId]: {
             ...(prevOptions[fieldId] || {}),
             value: option,
-            error: false
+            error: false,
           },
         };
       }
@@ -218,21 +396,24 @@ const FormRenderer = ({
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
-        {form?.title}
+        {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`)}
         {form?.helper && <HelpDrawer />}
       </Typography>
       <Typography color="gray" className="font-normal max-w-96">
-        {form?.subtitle || ""}
+        {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`) || ""}
       </Typography>
       <form className="w-96">
         <div className="mb-1 flex flex-col gap-6">
-          {!form.isReview && (<RecursiveFieldRenderer
-            fields={form.fields}
-            selectedOptions={form.isReview ? reviewData : selectedOptions}
-            onOptionChange={handleOptionChange}
-          />
+          {!form.isReview && (
+            <RecursiveFieldRenderer
+              tabIndex={tabIndex}
+              stepIndex={stepIndex}
+              fields={form.fields}
+              selectedOptions={form.isReview ? reviewData : selectedOptions}
+              onOptionChange={handleOptionChange}
+            />
           )}
-          {form.isReview && (<FormReview id={form.value} />)}
+          {form.isReview && <FormReview id={form.value} />}
         </div>
       </form>
     </Card>

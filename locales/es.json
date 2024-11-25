@@ -1,0 +1,1219 @@
+{
+  "sidebar": [
+    {
+      "title": "Acerca de",
+      "link": "/about",
+      "menu": [
+        {
+          "label": "Nuestra Misión",
+          "link": "/our-mission"
+        },
+        {
+          "label": "Cómo Funciona",
+          "link": "/how-it-works"
+        }
+      ]
+    },
+    {
+      "title": "Introducción",
+      "link": "/getting-started",
+      "menu": [
+        {
+          "label": "Comprendiendo los Formularios Judiciales",
+          "link": "/understanding-court-forms"
+        },
+        {
+          "label": "Requisitos de Elegibilidad",
+          "link": "/eligibility-requirements"
+        },
+        {
+          "label": "Documentos Necesarios",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Formularios de Expungimiento",
+      "link": "/expungement-forms",
+      "menu": [
+        {
+          "label": "¿Qué es el Expungimiento?",
+          "link": "/what-is-expungement"
+        },
+        {
+          "label": "¿Por qué Considerar el Expungimiento?",
+          "link": "/why-consider-expungement"
+        },
+        {
+          "label": "Criterios de Elegibilidad",
+          "link": "/eligibility-criteria"
+        },
+        {
+          "label": "Proceso de Expungimiento",
+          "link": "/expungement-process",
+          "tabs": [
+            {
+              "label": "Pasos para Solicitar",
+              "link": ""
+            },
+            {
+              "label": "Documentos Necesarios",
+              "link": ""
+            },
+            {
+              "label": "Tiempo de Procesamiento",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "¿Cómo Obtener sus Registros?",
+          "link": "/how-to-get-your-records",
+          "tabs": [
+            {
+              "label": "Obtención de Registros Criminales",
+              "link": ""
+            },
+            {
+              "label": "Huellas Dactilares para el Expungimiento",
+              "link": ""
+            },
+            {
+              "label": "Información Requerida",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Información Post-Expungimiento",
+          "link": "/post-expungement-process",
+          "tabs": [
+            {
+              "label": "¿Qué Ocurre Después del Expungimiento?",
+              "link": ""
+            },
+            {
+              "label": "¿Quién Puede Ver los Registros Expungidos?",
+              "link": ""
+            },
+            {
+              "label": "¿Puede Revertirse el Expungimiento?",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Completar el Formulario",
+          "link": "/form/new",
+          "chip": "EN LÍNEA",
+          "tabs": [
+            {
+              "label": "¿Qué Ocurre Después del Expungimiento?",
+              "link": ""
+            },
+            {
+              "label": "¿Quién Puede Ver los Registros Expungidos?",
+              "link": ""
+            },
+            {
+              "label": "¿Puede Revertirse el Expungimiento?",
+              "link": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Formularios de la Corte Civil",
+      "link": "/civil-court-forms",
+      "menu": [
+        {
+          "label": "Descripción General",
+          "link": "/overview"
+        },
+        {
+          "label": "Formularios Comunes",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Documentos Necesarios",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Formularios de la Corte de Familia",
+      "link": "/family-court-forms",
+      "menu": [
+        {
+          "label": "Descripción General",
+          "link": "/overview"
+        },
+        {
+          "label": "Formularios Comunes",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Documentos Necesarios",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Formularios de la Corte Criminal",
+      "link": "/criminal-court-forms",
+      "menu": [
+        {
+          "label": "Descripción General",
+          "link": "/overview"
+        },
+        {
+          "label": "Formularios Comunes",
+          "link": "/common-forms"
+        },
+        {
+          "label": "Documentos Necesarios",
+          "link": "/required-documents"
+        }
+      ]
+    },
+    {
+      "title": "Cómo Completar los Formularios",
+      "link": "/how-to-fill",
+      "menu": [
+        {
+          "label": "Guías Paso a Paso",
+          "link": "/step-by-step-guides",
+          "tabs": [
+            {
+              "label": "Guía del Formulario de Expungimiento",
+              "link": ""
+            },
+            {
+              "label": "Guía del Formulario de Queja Civil",
+              "link": ""
+            },
+            {
+              "label": "Guía de la Petición de la Corte de Familia",
+              "link": ""
+            }
+          ]
+        },
+        {
+          "label": "Preguntas Frecuentes",
+          "link": "/frequently-asked-questions"
+        }
+      ]
+    },
+    {
+      "title": "Recursos",
+      "link": "/resources",
+      "menu": [
+        {
+          "label": "Servicios de Asistencia Legal",
+          "link": "/legal-aid-services"
+        },
+        {
+          "label": "Ubicaciones y Contacto de la Corte",
+          "link": "/court-locations-and-contact"
+        },
+        {
+          "label": "Glosario de Términos Legales",
+          "link": "/glossary-of-legal-terms"
+        }
+      ]
+    },
+    {
+      "title": "Soporte al Usuario",
+      "link": "/user-support",
+      "menu": [
+        {
+          "label": "Centro de Ayuda",
+          "link": "/help-center"
+        },
+        {
+          "label": "Contáctenos",
+          "link": "/contact-us"
+        }
+      ]
+    },
+    {
+      "title": "Términos y Políticas",
+      "link": "/terms-and-policies",
+      "menu": [
+        {
+          "label": "Política de Privacidad",
+          "link": "/privacy-policy"
+        },
+        {
+          "label": "Términos de Uso",
+          "link": "/terms-of-use"
+        }
+      ]
+    }
+  ],
+  "homescreen": [
+    {
+      "id": 1,
+      "question": "¿Qué tipo de acción legal necesita asistencia?",
+      "noOfCols": 3,
+      "options": [
+        {
+          "title": "Expungimiento de Registros",
+          "formLink": "/expungement-forms/form",
+          "helpLink": "/expungement-forms/expungement-process",
+          "name": "expungement"
+        },
+        {
+          "title": "Cambio de Nombre",
+          "name": "nameChange",
+          "formLink": "/expungement-form"
+        },
+        {
+          "title": "Asuntos Civiles",
+          "formLink": "/expungement-form",
+          "name": "civilCase"
+        },
+        {
+          "title": "Asuntos Criminales",
+          "formLink": "/expungement-form",
+          "name": "criminalCase"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "¿Qué está buscando hacer?",
+      "noOfCols": 2,
+      "options": [
+        {
+          "title": "Iniciar una Nueva Solicitud",
+          "actionType": "new",
+          "name": "newForm"
+        },
+        {
+          "title": "Continuar con una Solicitud Existente",
+          "actionType": "continue",
+          "name": "continueForm"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "¿Como quién está presentando este formulario?",
+      "noOfCols": 2,
+      "options": [
+        {
+          "title": "Individual (Auto-Presentación)",
+          "userType": "individual",
+          "noQuestionForward": true,
+          "name": "individual"
+        },
+        {
+          "title": "Abogado o Representante Legal",
+          "userType": "lawyer",
+          "noQuestionForward": true,
+          "name": "lawyer"
+        },
+        {
+          "title": "Organización o Empresa",
+          "userType": "organization",
+          "noQuestionForward": true,
+          "name": "organization"
+        },
+        {
+          "title": "Personal del Tribunal o Empleado del Gobierno",
+          "userType": "staff",
+          "noQuestionForward": true,
+          "name": "staff"
+        }
+      ]
+    }
+  ],
+  "tabs": [
+    {
+      "label": "Detalles Personales",
+      "value": "personal-information",
+      "desc": "Comencemos por recopilar su información personal esencial.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Nombre Legal",
+          "subtitle": "¿Podría proporcionar su nombre legal completo tal como aparece en los documentos oficiales?",
+          "icon": "UserIcon",
+          "fields": [
+            {
+              "id": "personal_information_first_name",
+              "type": "input", 
+              "label": "Primer Nombre",
+              "sub_label": "¿Cuál es su nombre legal?",
+              "placeholder": "Nombre Legal",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "personal_information_middle_name",
+              "type": "input",
+              "label": "Segundo Nombre",
+              "sub_label": "¿Tiene un segundo nombre legal? Si es así, por favor ingréselo:",
+              "placeholder": "Nombre Legal"
+            },
+            {
+              "id": "personal_information_last_name",
+              "type": "input",
+              "label": "Apellido",
+              "sub_label": "¿Cuál es su apellido legal?",
+              "placeholder": "Apellido Legal",
+              "validation": {
+                "required": true,
+                "minimum": 3,
+                "maximum": 16
+              }
+            }
+          ]
+        },
+        {
+          "title": "Fecha de Nacimiento",
+          "subtitle": "Su fecha de nacimiento es crucial para verificar su identidad y determinar la elegibilidad. ¿Podría proporcionarla?",
+          "icon": "CalendarIcon",
+          "fields": [
+            {
+              "id": "personal_information_dob",
+              "type": "date",
+              "label": "Fecha de Nacimiento",
+              "sub_label": "¿En qué fecha nació?",
+              "placeholder": "DD/MM/YYYY",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "Dirección Residencial Actual",
+          "subtitle": "Necesitamos su dirección residencial actual para nuestros registros y cualquier correspondencia necesaria. ¿Podría proporcionar esa información?",
+          "icon": "HomeIcon",
+          "fields": [
+            {
+              "id": "personal_information_street_address",
+              "type": "input",
+              "label": "Dirección",
+              "sub_label": "¿Cuál es su dirección actual?",
+              "placeholder": "Dirección",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "personal_information_city",
+              "type": "input",
+              "label": "Ciudad",
+              "sub_label": "¿En qué ciudad reside actualmente?",
+              "placeholder": "Ciudad",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "personal_information_state",
+              "type": "select",
+              "label": "Estado",
+              "sub_label": "Por favor seleccione su estado de residencia:",
+              "placeholder": "Seleccionar Estado",
+              "validation": {
+                "required": true
+              },
+              "options": [
+                { "value": "AL", "label": "Alabama" },
+                { "value": "AK", "label": "Alaska" },
+                { "value": "AZ", "label": "Arizona" },
+                { "value": "AR", "label": "Arkansas" },
+                { "value": "CA", "label": "California" },
+                { "value": "CO", "label": "Colorado" },
+                { "value": "CT", "label": "Connecticut" },
+                { "value": "DE", "label": "Delaware" },
+                { "value": "FL", "label": "Florida" },
+                { "value": "GA", "label": "Georgia" },
+                { "value": "HI", "label": "Hawái" },
+                { "value": "ID", "label": "Idaho" },
+                { "value": "IL", "label": "Illinois" },
+                { "value": "IN", "label": "Indiana" },
+                { "value": "IA", "label": "Iowa" },
+                { "value": "KS", "label": "Kansas" },
+                { "value": "KY", "label": "Kentucky" },
+                { "value": "LA", "label": "Luisiana" },
+                { "value": "ME", "label": "Maine" },
+                { "value": "MD", "label": "Maryland" },
+                { "value": "MA", "label": "Massachusetts" },
+                { "value": "MI", "label": "Michigan" },
+                { "value": "MN", "label": "Minnesota" },
+                { "value": "MS", "label": "Misisipi" },
+                { "value": "MO", "label": "Misuri" },
+                { "value": "MT", "label": "Montana" },
+                { "value": "NE", "label": "Nebraska" },
+                { "value": "NV", "label": "Nevada" },
+                { "value": "NH", "label": "Nuevo Hampshire" },
+                { "value": "NJ", "label": "Nueva Jersey" },
+                { "value": "NM", "label": "Nuevo México" },
+                { "value": "NY", "label": "Nueva York" },
+                { "value": "NC", "label": "Carolina del Norte" },
+                { "value": "ND", "label": "Dakota del Norte" },
+                { "value": "OH", "label": "Ohio" },
+                { "value": "OK", "label": "Oklahoma" },
+                { "value": "OR", "label": "Oregón" },
+                { "value": "PA", "label": "Pensilvania" },
+                { "value": "RI", "label": "Rhode Island" },
+                { "value": "SC", "label": "Carolina del Sur" },
+                { "value": "SD", "label": "Dakota del Sur" },
+                { "value": "TN", "label": "Tennessee" },
+                { "value": "TX", "label": "Texas" },
+                { "value": "UT", "label": "Utah" },
+                { "value": "VT", "label": "Vermont" },
+                { "value": "VA", "label": "Virginia" },
+                { "value": "WA", "label": "Washington" },
+                { "value": "WV", "label": "Virginia Occidental" },
+                { "value": "WI", "label": "Wisconsin" },
+                { "value": "WY", "label": "Wyoming" }
+              ]
+            },
+            {
+              "id": "personal_information_zipcode",
+              "type": "input",
+              "label": "Código Postal",
+              "sub_label": "¿Cuál es su código postal actual?",
+              "placeholder": "Código Postal",
+              "validation": {
+                "required": true,
+                "maxLength": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "Información de Contacto",
+          "subtitle": "Es posible que necesitemos comunicarnos con usted respecto a su solicitud. ¿Cuál es la mejor manera de contactarlo?",
+          "icon": "PhoneIcon",
+          "fields": [
+            {
+              "id": "personal_information_phone",
+              "type": "input",
+              "label": "Número de Teléfono",
+              "sub_label": "¿Cuál es su número de teléfono principal?",
+              "placeholder": "Número de Teléfono",
+              "validation": {
+                "required": true,
+                "maxLength": 10
+              }
+            }
+          ]
+        },
+        {
+          "title": "Número de Seguro Social",
+          "subtitle": "Su número de seguro social es necesario para una identificación precisa. Tenga la seguridad de que esta información está protegida por las leyes de privacidad.",
+          "icon": "IdentificationIcon",
+          "fields": [
+            {
+              "id": "personal_information_ssn",
+              "type": "input",
+              "label": "Número de Seguro Social",
+              "sub_label": "¿Cuál es su número de seguro social?",
+              "placeholder": "XXX-XX-XXXX",
+              "validation": {
+                "required": true,
+                "maxLength": 7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Detalles de Arresto",
+      "value": "arrest-information",
+      "desc": "Ahora, hablemos de los detalles del arresto en cuestión.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Fecha de Arresto",
+          "subtitle": "La fecha específica del arresto es crucial para nuestros registros y el proceso de expungement. ¿Recuerda cuándo ocurrió?",
+          "icon": "CalendarIcon",
+          "fields": [
+            {
+              "id": "arrest_information_date",
+              "type": "date",
+              "label": "Fecha de Arresto",
+              "sub_label": "¿En qué fecha tuvo lugar el arresto?",
+              "placeholder": "DD/MM/YYYY",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "Jurisdicción del Arresto",
+          "subtitle": "Para determinar la autoridad judicial relevante, necesitamos saber dónde ocurrió el arresto. ¿Puede proporcionar esa información?",
+          "icon": "MapPinIcon",
+          "fields": [
+            {
+              "id": "arrest_information_jurisdiction",
+              "type": "input",
+              "label": "Jurisdicción",
+              "sub_label": "¿En qué municipio o jurisdicción tuvo lugar el arresto?",
+              "placeholder": "Municipio/Jurisdicción",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "Detalles de la Ofensa",
+          "subtitle": "Para evaluar su elegibilidad para el expungement, necesitamos información específica sobre los cargos. ¿Puede proporcionar esos detalles?",
+          "icon": "ClipboardDocumentListIcon",
+          "fields": [
+            {
+              "id": "arrest_information_offense_name",
+              "type": "input",
+              "label": "Ofensa(s) Cargadas",
+              "sub_label": "¿Qué ofensa(s) se le imputaron?",
+              "placeholder": "Nombre(s) de Ofensa(s)",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "arrest_information_statute_code",
+              "type": "input",
+              "label": "Código de Estatuto",
+              "sub_label": "¿Conoce el código de estatuto NJSA para la ofensa principal?",
+              "placeholder": "Código de Estatuto NJSA",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "id": "arrest_information_docket_number",
+              "type": "input",
+              "label": "Número de Caso Original",
+              "sub_label": "¿Cuál fue el número original de Indictment/Acusación/Summons/Orden/Queja/Docket?",
+              "placeholder": "Número de Caso",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Resultado del Caso",
+      "value": "case-disposition",
+      "desc": "Hablemos sobre cómo se resolvió su caso.",
+      "list": [],
+      "conditionalTabs": {
+        "field_id": "case_disposition_status",
+        "subTabs": {
+          "Sí": [
+            {
+              "type": "remove",
+              "tab": "conviction-information"
+            }
+          ],
+          "No": [
+            {
+              "type": "add",
+              "tab": "conviction-information",
+              "index": 3
+            }
+          ]
+        }
+      },
+      "stepper": [
+        {
+          "title": "Estado de Desestimación",
+          "subtitle": "Necesitamos saber si los cargos en su contra fueron desestimados. ¿Puede proporcionar esta información?",
+          "icon": "CheckCircleIcon",
+          "fields": [
+            {
+              "id": "case_disposition_status",
+              "type": "radio",
+              "label": "Estado de Desestimación",
+              "validation": {
+                "required": true
+              },
+              "sub_label": "¿Fueron desestimados los cargos en su contra?",
+              "name": "dismissalStatus",
+              "options": ["Sí", "No"],
+              "subFields": {
+                "Sí": [
+                  {
+                    "id": "case_disposition_conditional",
+                    "type": "radio",
+                    "label": "Desestimación Condicional",
+                    "sub_label": "¿Fue la desestimación condicional?",
+                    "name": "conditionalDismissal",
+                    "validation": {
+                      "required": true
+                    },
+                    "options": ["Sí", "No"],
+                    "subFields": {
+                      "Sí": [
+                        {
+                          "id": "case_disposition_programs",
+                          "type": "select",
+                          "label": "Programa de Desestimación",
+                          "sub_label": "¿Bajo qué programa se desestimó su caso?",
+                          "name": "dismissalProgram",
+                          "validation": {
+                            "required": true
+                          },
+                          "options": [
+                            "Descargo Condicional",
+                            "Intervención Prejudicial",
+                            "Comité de Conferencia Juvenil",
+                            "Conferencia de Servicio de Admisión",
+                            "Disposición Diferida"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "case_disposition_court",
+                    "type": "input",
+                    "label": "Corte de Desestimación",
+                    "sub_label": "¿Qué corte desestimó los cargos?",
+                    "placeholder": "Nombre de la Corte",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "case_disposition_date",
+                    "type": "date",
+                    "label": "Fecha de Desestimación",
+                    "sub_label": "¿Cuándo fueron desestimados los cargos?",
+                    "placeholder": "DD/MM/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Detalles de la Condena",
+      "value": "conviction-information",
+      "desc": "Si corresponde, necesitamos discutir cualquier condena relacionada con este caso.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Estado de Condena",
+          "subtitle": "¿Fue condenado por algún cargo en este caso? Esta información es crucial para determinar su elegibilidad para el expungement.",
+          "icon": "ExclamationCircleIcon",
+          "fields": [
+            {
+              "id": "conviction_information_status",
+              "type": "radio",
+              "label": "Estado de Condena",
+              "sub_label": "¿Fue condenado por algún cargo en este caso?",
+              "name": "convictionStatus",
+              "validation": {
+                "required": true
+              },
+              "options": ["Sí", "No"],
+              "subFields": {
+                "Sí": [
+                  {
+                    "id": "conviction_information_date",
+                    "type": "date",
+                    "label": "Fecha de Condena",
+                    "sub_label": "¿En qué fecha fue condenado?",
+                    "placeholder": "DD/MM/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "conviction_information_offense",
+                    "type": "input",
+                    "label": "Ofensa Condenada",
+                    "sub_label": "¿Por qué ofensa fue condenado?",
+                    "placeholder": "Nombre de la Ofensa",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "conviction_information_statute",
+                    "type": "input",
+                    "label": "Estatuto de Condena",
+                    "sub_label": "¿Conoce el código de estatuto NJSA para la ofensa condenada?",
+                    "placeholder": "Código de Estatuto NJSA",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Detalles de la Sentencia",
+      "value": "sentencing-information", 
+      "desc": "Si fue declarado culpable, necesitamos saber cuándo terminó su sentencia.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Tiempo Cumplido",
+          "subtitle": "¿El tribunal le ordenó cumplir tiempo en la cárcel, probation, o pagar multas?",
+          "icon": "CalendarIcon",
+          "fields": [
+            {
+              "id": "sentence_details_status",
+              "type": "radio",
+              "label": "Penalidades Ordenadas por el Tribunal",
+              "sub_label": "¿Tuvo que cumplir tiempo en la cárcel, completar probation, o pagar multas?",
+              "name": "timeServed",
+              "validation": {
+                "required": true
+              },
+              "options": ["Sí", "No"],
+              "subFields": {
+                "Sí": [
+                  {
+                    "id": "sentence_details_jail_end",
+                    "type": "date",
+                    "label": "Tiempo en la Cárcel",
+                    "sub_label": "¿Cuándo salió de la cárcel?",
+                    "placeholder": "DD/MM/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "sentence_details_probation_end", 
+                    "type": "date",
+                    "label": "Probation",
+                    "sub_label": "¿Cuándo terminó su probation?",
+                    "placeholder": "DD/MM/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  },
+                  {
+                    "id": "sentence_details_fine_payment",
+                    "type": "date", 
+                    "label": "Multas",
+                    "sub_label": "¿Cuándo pagó todas sus multas?",
+                    "placeholder": "DD/MM/YYYY",
+                    "validation": {
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Detalles de Arrestos Adicionales",
+      "value": "additional-arrest-information",
+      "desc": "Ahora, hablemos de los detalles de cualquier arresto adicional o antiguo en cuestión.",
+      "list": [],
+      "conditionalStepper": true,
+      "conditionalField": "additional_arrest",
+      "stepper": [
+        {
+          "title": "Arresto Adicional",
+          "subtitle": "¿Hay algún arresto adicional que desee agregar?",
+          "icon": "CalendarIcon",
+          "fields": [
+            {
+              "id": "additional_arrest",
+              "type": "radio",
+              "label": "",
+              "sub_label": "",
+              "name": "additionalArrest",
+              "validation": {
+                "required": true
+              },
+              "options": ["Sí", "No"]
+            }
+          ]
+        }
+      ], 
+      "conditional_stepper": {
+        "Sí": [
+          {
+            "title": "Fecha de Arresto Adicional",
+            "subtitle": "La fecha específica del arresto es crucial para nuestros registros y el proceso de expungement. ¿Recuerda cuándo ocurrió?",
+            "icon": "CalendarIcon",
+            "fields": [
+              {
+                "id": "additional_arrest_information_date",
+                "type": "date",
+                "label": "Fecha de Arresto",
+                "sub_label": "¿En qué fecha tuvo lugar el arresto?",
+                "placeholder": "DD/MM/YYYY",
+                "validation": {
+                  "required": true
+                }
+              }
+            ]
+          },
+          {
+            "title": "Jurisdicción del Arresto Adicional",
+            "subtitle": "Para determinar la autoridad judicial relevante, necesitamos saber dónde ocurrió el arresto adicional. ¿Puede proporcionar esa información?",
+            "icon": "MapPinIcon",
+            "fields": [
+              {
+                "id": "additional_arrest_information_jurisdiction",
+                "type": "input",
+                "label": "Jurisdicción",
+                "sub_label": "¿En qué municipio o jurisdicción tuvo lugar el arresto adicional?",
+                "placeholder": "Municipio/Jurisdicción",
+                "validation": {
+                  "required": true
+                }
+              }
+            ]
+          },
+          {
+            "title": "Detalles de Ofensas Adicionales",
+            "subtitle": "Para evaluar su elegibilidad para el expungement, necesitamos información específica sobre los cargos adicionales. ¿Puede proporcionar esos detalles?",
+            "icon": "ClipboardDocumentListIcon",
+            "fields": [
+              {
+                "id": "additional_arrest_information_offense_name",
+                "type": "input",
+                "label": "Ofensa(s) Cargadas para este Arresto Adicional",
+                "sub_label": "¿Qué ofensa(s) se le imputaron?",
+                "placeholder": "Nombre(s) de Ofensa(s) Adicionales",
+                "validation": {
+                  "required": true
+                }
+              },
+              {
+                "id": "additional_arrest_information_statute_code",
+                "type": "input",
+                "label": "Código de Estatuto para este Arresto Adicional",
+                "sub_label": "¿Conoce el código de estatuto NJSA para la ofensa primaria adicional?",
+                "placeholder": "Código de Estatuto NJSA",
+                "validation": {
+                  "required": true
+                }
+              },
+              {
+                "id": "additional_arrest_information_docket_number",
+                "type": "input",
+                "label": "Número de Caso Original para este Arresto Adicional",
+                "sub_label": "¿Cuál fue el número original de Indictment/Acusación/Summons/Orden/Queja/Docket para este arresto adicional?",
+                "placeholder": "Número de Caso",
+                "validation": {
+                  "required": true
+                }
+              }
+            ]
+          },
+          {
+            "title": "Estado de Desestimación Adicional",
+            "subtitle": "Necesitamos saber si los cargos de este arresto adicional fueron desestimados. ¿Puede proporcionar esta información?",
+            "icon": "CheckCircleIcon",
+            "fields": [
+              {
+                "id": "additional_case_disposition_status",
+                "type": "radio",
+                "label": "Estado de Desestimación",
+                "validation": {
+                  "required": true
+                },
+                "sub_label": "¿Fueron desestimados los cargos en su contra?",
+                "name": "additionalDismissalStatus",
+                "options": ["Sí", "No"],
+                "subFields": {
+                  "Sí": [
+                    {
+                      "id": "additional_case_disposition_conditional",
+                      "type": "radio",
+                      "label": "Desestimación Condicional",
+                      "sub_label": "¿Fue la desestimación condicional?",
+                      "name": "additionalConditionalDismissal",
+                      "validation": {
+                        "required": true
+                      },
+                      "options": ["Sí", "No"],
+                      "subFields": {
+                        "Sí": [
+                          {
+                            "id": "additional_case_disposition_programs",
+                            "type": "select",
+                            "label": "Programa de Desestimación",
+                            "sub_label": "¿Bajo qué programa se desestimó su caso?",
+                            "name": "additionalDismissalProgram",
+                            "validation": {
+                              "required": true
+                            },
+                            "options": [
+                              "Descargo Condicional",
+                              "Intervención Prejudicial",
+                              "Comité de Conferencia Juvenil",
+                              "Conferencia de Servicio de Admisión",
+                              "Disposición Diferida"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "additional_case_disposition_court",
+                      "type": "input",
+                      "label": "Corte de Desestimación",
+                      "sub_label": "¿Qué corte desestimó los cargos?",
+                      "placeholder": "Nombre de la Corte",
+                      "validation": {
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "additional_case_disposition_date",
+                      "type": "date",
+                      "label": "Fecha de Desestimación",
+                      "sub_label": "¿Cuándo fueron desestimados los cargos?",
+                      "placeholder": "DD/MM/YYYY",
+                      "validation": {
+                        "required": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "title": "Estado de Condena Adicional",
+            "subtitle": "¿Fue condenado por algún cargo en este caso adicional? Esta información es crucial para determinar su elegibilidad para el expungement.",
+            "icon": "ExclamationCircleIcon",
+            "fields": [
+              {
+                "id": "additional_conviction_information_status",
+                "type": "radio",
+                "label": "Estado de Condena",
+                "sub_label": "¿Fue condenado por algún cargo en este caso adicional?",
+                "name": "additionalConvictionStatus",
+                "validation": {
+                  "required": true
+                },
+                "options": ["Sí", "No"],
+                "subFields": {
+                  "Sí": [
+                    {
+                      "id": "additional_conviction_information_date",
+                      "type": "date",
+                      "label": "Fecha de Condena",
+                      "sub_label": "¿En qué fecha fue condenado?",
+                      "placeholder": "DD/MM/YYYY",
+                      "validation": {
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "additional_conviction_information_offense",
+                      "type": "input",
+                      "label": "Ofensa Condenada",
+                      "sub_label": "¿Por qué ofensa fue condenado?",
+                      "placeholder": "Nombre de la Ofensa",
+                      "validation": {
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "additional_conviction_information_statute",
+                      "type": "input",
+                      "label": "Estatuto de Condena",
+                      "sub_label": "¿Conoce el código de estatuto NJSA para la ofensa condenada?",
+                      "placeholder": "Código de Estatuto NJSA",
+                      "validation": {
+                        "required": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "title": "Tiempo Cumplido Adicional",
+            "subtitle": "¿El tribunal le ordenó cumplir tiempo en la cárcel, probation, o pagar multas por este caso adicional?",
+            "icon": "CalendarIcon",
+            "fields": [
+              {
+                "id": "additional_sentence_details_status",
+                "type": "radio",
+                "label": "Penalidades Ordenadas por el Tribunal",
+                "sub_label": "¿Tuvo que cumplir tiempo en la cárcel, completar probation, o pagar multas?",
+                "name": "additionalTimeServed",
+                "validation": {
+                  "required": true
+                },
+                "options": ["Sí", "No"],
+                "subFields": {
+                  "Sí": [
+                    {
+                      "id": "additional_sentence_details_jail_end",
+                      "type": "date",
+                      "label": "Tiempo en la Cárcel",
+                      "sub_label": "¿Cuándo salió de la cárcel?",
+                      "placeholder": "DD/MM/YYYY",
+                      "validation": {
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "additional_sentence_details_probation_end",
+                      "type": "date",
+                      "label": "Probation",
+                      "sub_label": "¿Cuándo terminó su probation?",
+                      "placeholder": "DD/MM/YYYY",
+                      "validation": {
+                        "required": true
+                      }
+                    },
+                    {
+                      "id": "additional_sentence_details_fine_payment",
+                      "type": "date",
+                      "label": "Multas",
+                      "sub_label": "¿Cuándo pagó todas sus multas?",
+                      "placeholder": "DD/MM/YYYY",
+                      "validation": {
+                        "required": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "No": []
+      }
+    },
+    {
+      "label": "Revisión de Información",
+      "value": "information-review",
+      "desc": "Revisemos toda la información que ha proporcionado para asegurar su precisión y completitud.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Revisión de Información Personal",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "personal-information",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Revisión de Información de Arresto",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "arrest-information",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Revisión de Resultado del Caso",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "case-disposition",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Revisión de Detalles de Condena",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "conviction-information",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Revisión de Información de Sentencia",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "sentencing-information",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Revisión de Información de Arresto Adicional",
+          "subtitle": "Por favor, tómese un momento para revisar toda la información que ha proporcionado en su solicitud. ¿Es todo preciso y completo?",
+          "icon": "ClipboardDocumentCheckIcon",
+          "value": "arrest-information",
+          "isReview": true,
+          "fields": []
+        },
+        {
+          "title": "Confirmación de Precisión",
+          "subtitle": "Antes de continuar, necesitamos que confirme la precisión y completitud de toda la información proporcionada en su solicitud.",
+          "icon": "ShieldCheckIcon",
+          "value": "accuracy-confirmation",
+          "fields": [
+            {
+              "id": "review_confirm_accuracy",
+              "type": "checkbox",
+              "label": "Confirmación de Precisión",
+              "sub_label": "Afirmo solemnemente que toda la información proporcionada en esta solicitud es verdadera, precisa y completa según mi leal saber y entender.",
+              "options": ["Confirmar"],
+              "validation": {
+                "required": true,
+                "requiredOptions": [
+                  "Confirmar"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Envío de Solicitud",
+      "value": "application-submission",
+      "desc": "Estamos listos para enviar su solicitud de expungement.",
+      "list": [],
+      "stepper": [
+        {
+          "title": "Envío de Solicitud",
+          "subtitle": "Antes de enviar su solicitud de expungement, por favor revise los términos y condiciones.",
+          "icon": "PaperAirplaneIcon",
+          "showSubmitButton": true,
+          "fields": [
+            {
+              "id": "submit_terms_agreement",
+              "type": "checkbox",
+              "label": "Términos y Condiciones",
+              "sub_label": "Por la presente reconozco que he leído, entendido y acepto los términos y condiciones que rigen el envío de esta solicitud de expungement.",
+              "options": ["Aceptar"],
+              "validation": {
+                "required": true,
+                "requiredOptions": [
+                  "Aceptar"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

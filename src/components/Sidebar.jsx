@@ -11,11 +11,15 @@ import {
   Input,
   ListItemSuffix,
   Chip,
+  CardFooter,
+  Switch,
 } from "@material-tailwind/react";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 const Sidebar = (props) => {
+  const { t, i18n } = useTranslation();
   const [openAccordions, setOpenAccordions] = React.useState({});
   // const NJCOURTS_SVG_URL =
   //   "https://portalselfreg-cloud.njcourts.gov/prweb/PRServletPublicAuth/app/ESSOPortal_/yq-No0lmafOUvv0O-O5GtbIFqEhzNFKZ*/esso/njcourtslogo_12624293735.svg!!.svg";
@@ -47,6 +51,11 @@ const Sidebar = (props) => {
   };
   const AccodionItems = props?.items ?? [];
 
+  const handleLanguageChange = (isChecked) => {
+    const lang = isChecked ? "es" : "en";
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <div className="h-full flex-[0.20] ">
       <Card className="h-[calc(100vh-2rem)] w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
@@ -55,6 +64,13 @@ const Sidebar = (props) => {
             <img src="/logo.svg" alt="logo" className="h-24" />
           </div>
         </Link>
+        <div className="flex items-center justify-center p-4">
+          <Switch
+            label="ESPANIOL 🇪🇸"
+            ripple={true}
+            onChange={(e) => handleLanguageChange(e.target.checked)}
+          />
+        </div>
 
         {AccodionItems.map((accordionItem, accordionIndex) => (
           <Accordion
@@ -63,7 +79,7 @@ const Sidebar = (props) => {
             icon={<Icon rotate={openAccordions[accordionIndex]} />}
           >
             <AccordionHeader onClick={() => toggleAccordion(accordionIndex)}>
-              {accordionItem.title}
+              {t(`sidebar.${accordionIndex}.title`)}
             </AccordionHeader>
             {openAccordions[accordionIndex] && (
               <AccordionBody>
@@ -74,11 +90,13 @@ const Sidebar = (props) => {
                       key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
                     >
                       <ListItem>
-                        {menuItem.label}
+                        {t(`sidebar.${accordionIndex}.menu.${menuIndex}.label`)}
                         {menuItem?.chip?.length && (
                           <ListItemSuffix>
                             <Chip
-                              value="ONLINE"
+                              value={t(
+                                `sidebar.${accordionIndex}.menu.${menuIndex}.chip`
+                              )}
                               size="sm"
                               variant="ghost"
                               color="blue-gray"
