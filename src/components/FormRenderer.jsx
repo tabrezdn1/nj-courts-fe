@@ -426,7 +426,7 @@ const FormRenderer = ({
   };
 
   return (
-    <Card color="transparent" shadow={false}>
+    <Card color="transparent" shadow={false} className="w-full md:w-auto">
       <Typography variant="h4" color="blue-gray" className="text-xl md:text-2xl">
         {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`)}
         {form?.helper && <HelpDrawer />}
