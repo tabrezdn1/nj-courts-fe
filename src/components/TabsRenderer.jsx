@@ -152,7 +152,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             key={value}
             value={value}
             onClick={() => handleTabChange(value)}
-            className={tabDetails.activeTab === value ? "text-gray-900 w-96 wd:w-full" : ""}
+            className={tabDetails.activeTab === value ? "text-gray-900 w-84 wd:w-full" : ""}
           >
             {t(`tabs.${getTabIndexByLabelAndValue(label, value)}.label`)}
           </Tab>

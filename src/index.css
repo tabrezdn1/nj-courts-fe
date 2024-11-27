@@ -107,3 +107,18 @@
   right: 5px;
   bottom: 5px;
 }
+
+#signaturepad {
+  height: 217px !important;
+  width: 100%;
+  position: center;
+  left: 0;
+  top: 60px;
+  border: none;
+  background: #ccc;
+  border: 1px solid #858585;
+}
+
+.content {
+  position: relative !important;
+}
