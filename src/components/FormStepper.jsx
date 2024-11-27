@@ -96,11 +96,12 @@ const FormStepper = ({
 
     if (field?.type === "ssn") {
       const fieldValue = selectedOptions[field.id]?.value;
-      const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
-      if (!ssnPattern.test(fieldValue)) {
+      const ssnPattern = /^\d{9}$/;
+      const maxLength = 9;
+      if (!ssnPattern.test(fieldValue) || fieldValue.length != maxLength) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
-          setInputProperty(field.id, "error_desc", "Invalid SSN Format (XXX-XX-XXXX)");
+          setInputProperty(field.id, "error_desc", "Invalid SSN Format");
         }
         return false;
       }
