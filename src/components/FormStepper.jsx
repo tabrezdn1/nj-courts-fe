@@ -82,8 +82,10 @@ const FormStepper = ({
     }
     if (field?.type === "phone"){
       const fieldValue = selectedOptions[field.id]?.value;
+      const minLength = 10;
+      const maxLength = 15;
       const phonePattern = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
-      if (!phonePattern.test(fieldValue)) {
+      if (!phonePattern.test(fieldValue) || fieldValue.length < minLength || fieldValue.length > maxLength) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
           setInputProperty(field.id, "error_desc", "Invalid Phone Number");
