@@ -68,6 +68,10 @@ const ExpungementFormSubmit = ({formData}) => {
     "expungement_form-information-review": [
       "review_confirm_accuracy"
     ],
+    "expungement_form-signature": [
+      "signatureData",
+      "signatureType"
+    ],
     "expungement_form-application-submission": [
       "submit_terms_agreement"
     ]

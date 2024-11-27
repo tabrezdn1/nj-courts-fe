@@ -866,7 +866,7 @@
         "icon": "PencilAltIcon",
         "fields": [
           {
-            "id": "signature_pad",
+            "id": "signatureData",
             "type": "signature",
             "label": "Signature",
             "sub_label": "Please sign below to certify the accuracy and completeness of your application.",
