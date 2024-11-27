@@ -86,7 +86,12 @@ const Sidebar = (props) => {
         } md:translate-x-0 md:static md:flex-[0.20]`}
       >
         <Card className="h-full w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
-          <Link to="/">
+          <Link to="/" onClick={
+            () => {
+              if (!openAccordions[accordionIndex]) {
+                setIsSidebarOpen(false);
+              }
+          }}>
             <div className="mb-2 flex items-center gap-4 p-4">
               <img src="/nj-courts.jpeg" alt="brand" className="h-8 w-8" />
               <Typography variant="h5" color="blue-gray">

@@ -169,7 +169,7 @@ const FormStepper = ({
 
     localStorage.setItem(id, JSON.stringify(selectedOptions));
     if (isLastStep && isValid(false) && !selectedOptions.tabCompleted) {
-      isTabComplete()
+      isTabComplete(true)
       setSelectedOptions(
         (prev) => {
           return {
@@ -230,15 +230,10 @@ const FormStepper = ({
 
   React.useEffect(() => {
     if (isValid(false)) {
-      isTabComplete();
+      isTabComplete(true);
     }
 
     initializeConditionalStepper();
-
-    return () => {
-      console.log("Component unmounted");
-      localStorage.removeItem(id);
-    };
   }, []);
 
   const getStepIndex = (title, subtitle) => {

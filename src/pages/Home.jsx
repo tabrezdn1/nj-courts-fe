@@ -41,7 +41,7 @@ const Home = () => {
 
     setUserSelection(userSelection);
 
-    if (card.noQuestionForward) {
+    if (card.noQuestionForward || userSelection.actionType === "continue") {
       navigate(`${userSelection.formLink}/${userSelection.actionType}`);
     } else {
       setCurrentQuestion(questions[currentQuestionIndex + 1]);

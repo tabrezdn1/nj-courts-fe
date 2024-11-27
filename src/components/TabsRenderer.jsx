@@ -51,6 +51,7 @@ const TabsRenderer = ({ id, formConfig }) => {
         const optionSelected = option;
         for (let action of conditionalTabs["subTabs"][optionSelected]) {
           if (action.type === "remove") {
+            localStorage.removeItem(`${id}-${action.tab}`)
             updateActiveForm((prev) =>
               prev.filter((item) => item.value !== action.tab)
             );
