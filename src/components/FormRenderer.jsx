@@ -12,6 +12,7 @@ import HelpDrawer from "./HelpDrawer";
 import { useEffect } from "react";
 import FormReview from "./FormReview";
 import { useTranslation } from "react-i18next";
+import SignaturePad from "./SignaturePad";
 
 const FieldRenderer = ({
   field,
@@ -182,6 +183,12 @@ const FieldRenderer = ({
           )}
         </>
       );
+    case "signature":
+      return (
+        <>
+          <SignaturePad field={field} onOptionChange={onOptionChange} selectedOptions={selectedOptions}/>
+        </>
+      )
     default:
       return null;
   }
@@ -257,8 +264,7 @@ const RecursiveFieldRenderer = ({
                       `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
                         field.label,
                         field.sub_label
-                      )}.subFields.${
-                        selectedOptions[field.id]?.value
+                      )}.subFields.${selectedOptions[field.id]?.value
                       }.${getOptionsFieldIndex(
                         field.subFields[selectedOptions[field.id]?.value],
                         subField
@@ -274,8 +280,7 @@ const RecursiveFieldRenderer = ({
                       `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
                         field.label,
                         field.sub_label
-                      )}.subFields.${
-                        selectedOptions[field.id]?.value
+                      )}.subFields.${selectedOptions[field.id]?.value
                       }.${getOptionsFieldIndex(
                         field.subFields[selectedOptions[field.id]?.value],
                         subField
@@ -323,7 +328,7 @@ const RecursiveFieldRenderer = ({
                             {nestedField.subFields &&
                               selectedOptions[nestedField.id]?.value &&
                               nestedField.subFields[
-                                selectedOptions[nestedField.id]?.value
+                              selectedOptions[nestedField.id]?.value
                               ] && (
                                 <div className="p-1">
                                   {nestedField.subFields[
@@ -436,7 +441,7 @@ const FormRenderer = ({
               tabIndex={tabIndex}
               stepIndex={stepIndex}
               fields={form.fields}
-              selectedOptions={form.isReview ? reviewData : selectedOptions}
+              selectedOptions={selectedOptions}
               onOptionChange={handleOptionChange}
             />
           )}

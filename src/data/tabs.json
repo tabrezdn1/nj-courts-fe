@@ -855,6 +855,30 @@
     ]
   },
   {
+    "label": "Signature",
+    "value": "signature",
+    "desc": "Please provide your electronic signature to certify the accuracy of your application.",
+    "list": [],
+    "stepper": [
+      {
+        "title": "Electronic Signature",
+        "subtitle": "Please sign below to certify the accuracy and completeness of your application.",
+        "icon": "PencilAltIcon",
+        "fields": [
+          {
+            "id": "signature_pad",
+            "type": "signature",
+            "label": "Signature",
+            "sub_label": "Please sign below to certify the accuracy and completeness of your application.",
+            "validation": {
+              "required": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "label": "Application Submission",
     "value": "application-submission",
     "desc": "We're ready to submit your expungement application.",
