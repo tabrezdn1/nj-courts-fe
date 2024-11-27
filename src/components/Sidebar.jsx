@@ -115,7 +115,11 @@ const Sidebar = (props) => {
               key={`${accordionItem}-${accordionIndex}`}
               icon={<Icon rotate={openAccordions[accordionIndex]} />}
             >
-              <AccordionHeader onClick={() => toggleAccordion(accordionIndex)}>
+              <AccordionHeader
+                onClick={() => {
+                  toggleAccordion(accordionIndex);
+                }}
+              >
                 {t(`sidebar.${accordionIndex}.title`)}
               </AccordionHeader>
               {openAccordions[accordionIndex] && (
@@ -125,6 +129,12 @@ const Sidebar = (props) => {
                       <NavLink
                         to={`${accordionItem.link}${menuItem.link}`}
                         key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
+                        onClick={() => {
+                          setIsSidebarOpen(false)
+                          if (!openAccordions[accordionIndex]) {
+                            setIsSidebarOpen(false);
+                          }
+                        }}
                       >
                         <ListItem>
                           {t(`sidebar.${accordionIndex}.menu.${menuIndex}.label`)}
