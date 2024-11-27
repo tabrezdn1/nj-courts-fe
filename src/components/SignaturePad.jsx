@@ -30,12 +30,12 @@ const SignaturePad = ({ field, onOptionChange, selectedOptions }) => {
 
     return (
         <>
-            <Tabs value={selectedTab} onChange={(value) => signatureTypeChange(value)}>
+            <Tabs value={selectedTab}>
                 <TabsHeader>
-                    <Tab key="draw" value="draw">
+                    <Tab key="draw" value="draw" onClick={() => signatureTypeChange("draw")}>
                         Draw Signature
                     </Tab>
-                    <Tab key="type" value="type">
+                    <Tab key="type" value="type" onClick={() => signatureTypeChange("type")}>
                         Type Signature
                     </Tab>
                 </TabsHeader>
