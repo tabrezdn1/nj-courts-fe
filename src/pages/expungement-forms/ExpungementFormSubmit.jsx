@@ -52,7 +52,10 @@ const ExpungementFormSubmit = ({formData}) => {
       "sentencing_information_incarceration_end",
       "sentencing_information_probation_end",
       "sentencing_information_fine_amount",
-      "sentencing_information_fine_payment"
+      "sentence_details_fine_payment",
+      "sentence_details_jail_end",
+      "sentence_details_probation_end",
+      "sentence_details_status"
     ],
     "expungement_form-additional-arrest-information": [
       "additional_arrest",
@@ -80,18 +83,23 @@ const ExpungementFormSubmit = ({formData}) => {
       const fieldsForTab = fields[key] || [];
 
       fieldsForTab.forEach((field) => {
+        console.log(key, tabData, field)
         if (tabData.hasOwnProperty(field)) {
+          // console.log(field)
 
           if (key === "expungement_form-information-review") {
             payload[field] = tabData[field].value['Confirm'] === true;
           } else if (key === "expungement_form-application-submission") {
             payload[field] = tabData[field].value["Agree"] === true;
           } else {
+            // console.log(key)
             payload[field] = tabData[field].value;
           }
         }
       });
     });
+
+    console.log(payload)
 
     return payload;
   };
