@@ -82,8 +82,10 @@ const FormStepper = ({
     }
     if (field?.type === "phone"){
       const fieldValue = selectedOptions[field.id]?.value;
+      const minLength = 10;
+      const maxLength = 15;
       const phonePattern = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
-      if (!phonePattern.test(fieldValue)) {
+      if (!phonePattern.test(fieldValue) || fieldValue.length < minLength || fieldValue.length > maxLength) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
           setInputProperty(field.id, "error_desc", "Invalid Phone Number");
@@ -94,11 +96,12 @@ const FormStepper = ({
 
     if (field?.type === "ssn") {
       const fieldValue = selectedOptions[field.id]?.value;
-      const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
-      if (!ssnPattern.test(fieldValue)) {
+      const ssnPattern = /^\d{9}$/;
+      const maxLength = 9;
+      if (!ssnPattern.test(fieldValue) || fieldValue.length != maxLength) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
-          setInputProperty(field.id, "error_desc", "Invalid SSN Format (XXX-XX-XXXX)");
+          setInputProperty(field.id, "error_desc", "Invalid SSN Format");
         }
         return false;
       }
