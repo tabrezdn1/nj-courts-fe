@@ -21,7 +21,31 @@ const FieldRenderer = ({
 }) => {
   const { t } = useTranslation();
   switch (field.type) {
+    case "phone":
+      return (
+        <>
+          <Input
+            size="lg"
+            type="tel"
+            placeholder={t(placeholderPath)}
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+            onChange={(e) => onOptionChange(field.id, e.target.value)}
+            value={selectedOptions[field.id]?.value || ""}
+            error={selectedOptions[field.id]?.error}
+            maxLength={15}
+          />
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1 text-xs">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
     case "input":
+    case "ssn":
       return (
         <>
           <Input
@@ -368,7 +392,6 @@ const FormRenderer = ({
   }, [selectedOptions]);
 
   const handleOptionChange = (fieldId, option, isChecked = true) => {
-    handleOptionChangeCallback(fieldId, option, isChecked);
     setSelectedOptions((prevOptions) => {
       const field = form.fields.find((f) => f.id === fieldId);
       if (field && field.type === "checkbox") {
@@ -394,6 +417,7 @@ const FormRenderer = ({
         };
       }
     });
+    handleOptionChangeCallback(fieldId, option, isChecked);
   };
 
   return (

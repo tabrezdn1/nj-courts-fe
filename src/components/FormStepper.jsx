@@ -80,6 +80,29 @@ const FormStepper = ({
         }
       }
     }
+    if (field?.type === "phone"){
+      const fieldValue = selectedOptions[field.id]?.value;
+      const phonePattern = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
+      if (!phonePattern.test(fieldValue)) {
+        if (updateDisplay) {
+          setInputProperty(field.id, "error", true);
+          setInputProperty(field.id, "error_desc", "Invalid Phone Number");
+        }
+        return false;
+      }
+    }
+
+    if (field?.type === "ssn") {
+      const fieldValue = selectedOptions[field.id]?.value;
+      const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
+      if (!ssnPattern.test(fieldValue)) {
+        if (updateDisplay) {
+          setInputProperty(field.id, "error", true);
+          setInputProperty(field.id, "error_desc", "Invalid SSN Format (XXX-XX-XXXX)");
+        }
+        return false;
+      }
+    }
     return true;
   };
 

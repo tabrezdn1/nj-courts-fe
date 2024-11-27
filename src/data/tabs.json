@@ -165,7 +165,7 @@
         "fields": [
           {
             "id": "personal_information_phone",
-            "type": "input",
+            "type": "phone",
             "label": "Telephone Number",
             "sub_label": "What is your primary telephone number?",
             "placeholder": "Telephone Number",
@@ -183,13 +183,13 @@
         "fields": [
           {
             "id": "personal_information_ssn",
-            "type": "input",
+            "type": "ssn",
             "label": "Social Security Number",
             "sub_label": "What is your Social Security Number?",
             "placeholder": "XXX-XX-XXXX",
             "validation": {
               "required": true,
-              "maxLength": 7
+              "maxLength": 12
             }
           }
         ]
