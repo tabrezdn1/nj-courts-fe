@@ -23,17 +23,13 @@ const FormStepper = ({
   const { mode } = useParams();
 
   const getSeletedOptions = () => {
-    if (mode === "new") {
-      return { activeStep: 0, tabCompleted: false, progress: 0 };
-    } else {
-      return (
-        JSON.parse(localStorage.getItem(id)) || {
-          activeStep: 0,
-          tabCompleted: false,
-          progress: 0
-        }
-      );
-    }
+    return (
+      JSON.parse(localStorage.getItem(id)) || {
+        activeStep: 0,
+        tabCompleted: false,
+        progress: 0
+      }
+    );
   };
 
   const [isLastStep, setIsLastStep] = React.useState(false);
@@ -80,7 +76,7 @@ const FormStepper = ({
         }
       }
     }
-    if (field?.type === "phone"){
+    if (field?.type === "phone") {
       const fieldValue = selectedOptions[field.id]?.value;
       const minLength = 10;
       const maxLength = 15;
@@ -119,7 +115,7 @@ const FormStepper = ({
     return valid;
   };
 
-  const isValid = (updateDisplay = true, index=undefined) => {
+  const isValid = (updateDisplay = true, index = undefined) => {
     const currentStep = steps[index || selectedOptions.activeStep];
     let valid = true;
 
@@ -142,10 +138,10 @@ const FormStepper = ({
     if (isValid()) {
       if (!isLastStep) {
         setSelectedOptions((prev) => {
-          return { 
-            ...prev, 
-            activeStep: prev.activeStep + 1, 
-            progress: Math.max(prev.activeStep+1, prev.progress) 
+          return {
+            ...prev,
+            activeStep: prev.activeStep + 1,
+            progress: Math.max(prev.activeStep + 1, prev.progress)
           };
         });
       } else if (isLastStep && !isLastTab) {
@@ -172,7 +168,7 @@ const FormStepper = ({
     setIsFirstStep(selectedOptions.activeStep === 0);
 
     localStorage.setItem(id, JSON.stringify(selectedOptions));
-    if (isLastStep && isValid(false) && !selectedOptions.tabCompleted ) {
+    if (isLastStep && isValid(false) && !selectedOptions.tabCompleted) {
       isTabComplete()
       setSelectedOptions(
         (prev) => {
@@ -252,9 +248,9 @@ const FormStepper = ({
   };
 
   const handleStepperClick = (index) => {
-    if (isValid() && (selectedOptions.progress+1) >= (index)) {
+    if (isValid() && (selectedOptions.progress + 1) >= (index)) {
       setSelectedOptions(prev => {
-        return {...prev, activeStep: index}
+        return { ...prev, activeStep: index }
       })
     }
   }
