@@ -19,7 +19,7 @@ import { useLocation } from "react-router-dom";
 
 const LegalMate = () => {
   const location = useLocation();
-  const AI_API_KEY = import.meta.env.VITE_AI_API_KEY;
+  const AI_API_KEY = import.meta.env.VITE_AI_API;
   const AgentPrompt = import.meta.env.VITE_AGENT_PROMPT?.replace(
     "{{current_path}}",
     location.pathname
