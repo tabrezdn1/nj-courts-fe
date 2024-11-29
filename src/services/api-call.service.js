@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiOrigin = "http://localhost:7001";
+const apiOrigin = "https://gentle-ridge-55473-961724f9c38d.herokuapp.com";
 
 /**
  * Makes a GET request to the specified URL.
