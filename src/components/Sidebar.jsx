@@ -85,11 +85,7 @@ const Sidebar = (props) => {
         <Card className="h-full w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
           <Link
             to="/"
-            onClick={() => {
-              if (!openAccordions[accordionIndex]) {
-                setIsSidebarOpen(false);
-              }
-            }}
+            onClick={() => setIsSidebarOpen(false)}
           >
             <div className="flex items-center  w-fit">
               <img src="/logo.svg" alt="logo" className="h-24" />
@@ -127,12 +123,7 @@ const Sidebar = (props) => {
                       <NavLink
                         to={`${accordionItem.link}${menuItem.link}`}
                         key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
-                        onClick={() => {
-                          setIsSidebarOpen(false);
-                          if (!openAccordions[accordionIndex]) {
-                            setIsSidebarOpen(false);
-                          }
-                        }}
+                        onClick={() => setIsSidebarOpen(false)}
                       >
                         <ListItem>
                           {t(

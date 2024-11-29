@@ -243,7 +243,7 @@ const FormStepper = ({
   };
 
   const handleStepperClick = (index) => {
-    if (isValid() && (selectedOptions.progress + 1) >= (index)) {
+    if ((selectedOptions.progress + 1) >= index) {
       setSelectedOptions(prev => {
         return { ...prev, activeStep: index }
       })
