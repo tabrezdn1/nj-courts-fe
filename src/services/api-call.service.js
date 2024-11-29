@@ -51,13 +51,17 @@ export const get = (url, baseURL, responseType) => {
  */
 export const post = (url, data, baseURL, responseType) => {
     return new Promise((resolve, reject) => {
+        // Encrypt the request body
+        const encryptedData = encryptRequestBody(data);
+        const aesKey = encryptedData.aesKey;
+        delete encryptedData.aesKey;
         axios({
             method: "post",
             url: url,
             baseURL: baseURL || apiOrigin,
             responseType: responseType || "json",
             withCredentials: true,
-            data: data,
+            data: encryptedData,
             headers: {
                 "Content-Type": "application/json",
             }
