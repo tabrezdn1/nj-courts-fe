@@ -36,7 +36,7 @@ const FieldRenderer = ({
             onChange={(e) => onOptionChange(field.id, e.target.value)}
             value={selectedOptions[field.id]?.value || ""}
             error={selectedOptions[field.id]?.error}
-            maxLength={15}
+            maxLength={10}
           />
           {selectedOptions[field.id]?.error && (
             <p className="text-red-500 mt-1 text-xs">
