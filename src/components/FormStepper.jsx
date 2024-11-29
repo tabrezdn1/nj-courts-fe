@@ -119,7 +119,7 @@ const FormStepper = ({
     const currentStep = steps[index || selectedOptions.activeStep];
     let valid = true;
 
-    for (let field of currentStep?.fields) {
+    for (let field of (currentStep?.fields || [])) {
       valid = handleSubfields(field, updateDisplay) && valid;
     }
 
