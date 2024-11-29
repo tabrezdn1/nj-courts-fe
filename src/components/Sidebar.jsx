@@ -8,14 +8,13 @@ import {
   Accordion,
   AccordionHeader,
   AccordionBody,
-  Input,
   ListItemSuffix,
   Chip,
-  CardFooter,
   Switch,
 } from "@material-tailwind/react";
-import { MagnifyingGlassIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
+import LegalMate from "./LegalMate";
 
 const Sidebar = (props) => {
   const { t, i18n } = useTranslation();
@@ -71,13 +70,11 @@ const Sidebar = (props) => {
           <div className="flex items-center space-x-2">
             <Bars3Icon className="h-6 w-6" />
             <Typography variant="h5" color="white">
-              NJ Courts Forms
+              LegalAid App
             </Typography>
           </div>
         </button>
       )}
-
-
 
       {/* Sidebar */}
       <div
@@ -86,17 +83,16 @@ const Sidebar = (props) => {
         } md:translate-x-0 md:static md:flex-[0.20]`}
       >
         <Card className="h-full w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
-          <Link to="/" onClick={
-            () => {
+          <Link
+            to="/"
+            onClick={() => {
               if (!openAccordions[accordionIndex]) {
                 setIsSidebarOpen(false);
               }
-          }}>
-            <div className="mb-2 flex items-center gap-4 p-4">
-              <img src="/nj-courts.jpeg" alt="brand" className="h-8 w-8" />
-              <Typography variant="h5" color="blue-gray">
-                NJ Courts Forms
-              </Typography>
+            }}
+          >
+            <div className="flex items-center  w-fit">
+              <img src="/logo.svg" alt="logo" className="h-24" />
             </div>
           </Link>
           <div className="flex items-center justify-center p-4">
@@ -108,10 +104,7 @@ const Sidebar = (props) => {
           </div>
 
           <div className="p-2">
-            <Input
-              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-              label="Search"
-            />
+            <LegalMate />
           </div>
 
           {AccodionItems.map((accordionItem, accordionIndex) => (
@@ -135,14 +128,16 @@ const Sidebar = (props) => {
                         to={`${accordionItem.link}${menuItem.link}`}
                         key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
                         onClick={() => {
-                          setIsSidebarOpen(false)
+                          setIsSidebarOpen(false);
                           if (!openAccordions[accordionIndex]) {
                             setIsSidebarOpen(false);
                           }
                         }}
                       >
                         <ListItem>
-                          {t(`sidebar.${accordionIndex}.menu.${menuIndex}.label`)}
+                          {t(
+                            `sidebar.${accordionIndex}.menu.${menuIndex}.label`
+                          )}
                           {menuItem?.chip?.length && (
                             <ListItemSuffix>
                               <Chip

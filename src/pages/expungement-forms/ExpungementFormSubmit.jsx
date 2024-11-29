@@ -2,11 +2,11 @@ import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 import { ArrowDownOnSquareStackIcon } from "@heroicons/react/24/outline";
 
-
 import { post } from "../../services/api-call.service";
 import { tabItems } from "../../data/configs";
-
-const ExpungementFormSubmit = ({formData}) => {
+const expungementFromEndpoint =
+  import.meta.env.VITE_BE_EXPUNGEMENT_SERVICE ?? "/expungementform/print";
+const ExpungementFormSubmit = ({ formData }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
   const [error, setError] = useState(false);
@@ -23,27 +23,27 @@ const ExpungementFormSubmit = ({formData}) => {
       "personal_information_state",
       "personal_information_zipcode",
       "personal_information_phone",
-      "personal_information_ssn"
+      "personal_information_ssn",
     ],
     "expungement_form-arrest-information": [
       "arrest_information_date",
       "arrest_information_jurisdiction",
       "arrest_information_offense_name",
       "arrest_information_statute_code",
-      "arrest_information_docket_number"
+      "arrest_information_docket_number",
     ],
     "expungement_form-case-disposition": [
       "case_disposition_status",
       "case_disposition_conditional",
       "case_disposition_programs",
       "case_disposition_court",
-      "case_disposition_date"
+      "case_disposition_date",
     ],
     "expungement_form-conviction-information": [
       "conviction_information_status",
       "conviction_information_date",
       "conviction_information_offense",
-      "conviction_information_statute"
+      "conviction_information_statute",
     ],
     "expungement_form-sentencing-information": [
       "sentencing_information_incarceration",
@@ -55,7 +55,7 @@ const ExpungementFormSubmit = ({formData}) => {
       "sentence_details_fine_payment",
       "sentence_details_jail_end",
       "sentence_details_probation_end",
-      "sentence_details_status"
+      "sentence_details_status",
     ],
     "expungement_form-additional-arrest-information": [
       "additional_arrest",
@@ -63,18 +63,11 @@ const ExpungementFormSubmit = ({formData}) => {
       "additional_arrest_information_jurisdiction",
       "additional_arrest_information_offense_name",
       "additional_arrest_information_statute_code",
-      "conviction_information_status"
+      "conviction_information_status",
     ],
-    "expungement_form-information-review": [
-      "review_confirm_accuracy"
-    ],
-    "expungement_form-signature": [
-      "signatureData",
-      "signatureType"
-    ],
-    "expungement_form-application-submission": [
-      "submit_terms_agreement"
-    ]
+    "expungement_form-information-review": ["review_confirm_accuracy"],
+    "expungement_form-signature": ["signatureData", "signatureType"],
+    "expungement_form-application-submission": ["submit_terms_agreement"],
   };
 
   const createPayload = () => {
@@ -87,12 +80,12 @@ const ExpungementFormSubmit = ({formData}) => {
       const fieldsForTab = fields[key] || [];
 
       fieldsForTab.forEach((field) => {
-        console.log(key, tabData, field)
+        console.log(key, tabData, field);
         if (tabData.hasOwnProperty(field)) {
           // console.log(field)
 
           if (key === "expungement_form-information-review") {
-            payload[field] = tabData[field].value['Confirm'] === true;
+            payload[field] = tabData[field].value["Confirm"] === true;
           } else if (key === "expungement_form-application-submission") {
             payload[field] = tabData[field].value["Agree"] === true;
           } else {
@@ -103,7 +96,7 @@ const ExpungementFormSubmit = ({formData}) => {
       });
     });
 
-    console.log(payload)
+    console.log(payload);
 
     return payload;
   };
@@ -120,21 +113,21 @@ const ExpungementFormSubmit = ({formData}) => {
     window.URL.revokeObjectURL(url);
     setApiResponse("downloadSuccess");
     setIsLoading(false);
-  }
+  };
 
   const submitForm = () => {
-
     setIsLoading(true);
-    const payload = createPayload()
-    post("/expungementform/print", payload, null, "blob")
+    const payload = createPayload();
+    post(expungementFromEndpoint, payload, null, "blob")
       .then((response) => {
         setFileBuffer(response);
         setApiResponse("submitSuccess");
         setIsLoading(false);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
-        setError(true)
-        setErrorDesc("Something went wrong!")
+        setError(true);
+        setErrorDesc("Something went wrong!");
         setIsLoading(false);
       });
   };
@@ -146,7 +139,9 @@ const ExpungementFormSubmit = ({formData}) => {
           color="teal"
           size="md"
           onClick={submitForm}
-          disabled={isLoading || formData?.submit_terms_agreement?.value?.Agree != true}
+          disabled={
+            isLoading || formData?.submit_terms_agreement?.value?.Agree != true
+          }
           loading={isLoading}
           className="w-auto"
         >
@@ -166,9 +161,7 @@ const ExpungementFormSubmit = ({formData}) => {
           Download Form
         </Button>
       )}
-      {error && (
-        <p className="text-red-700 mt-3 font-bold">{errorDesc}</p>
-      )}
+      {error && <p className="text-red-700 mt-3 font-bold">{errorDesc}</p>}
       {apiResponse === "submitSuccess" && (
         <p className="text-green-700 mt-3 font-bold">
           Form submitted successfully!
