@@ -26,9 +26,15 @@ const TabsRenderer = ({ id, formConfig }) => {
     return tabsDetails || {};
   };
 
+  const getForm = () => JSON.parse(localStorage.getItem(`${id}-form`)) || formConfig;
+
 
   const [tabDetails, updateActiveTab] = React.useState(getInitialTab);
-  const [activeForm, updateActiveForm] = React.useState(formConfig);
+  const [activeForm, updateActiveForm] = React.useState(getForm);
+
+  React.useEffect(() => {
+    localStorage.setItem(`${id}-form`, JSON.stringify(activeForm));
+  }, [activeForm]);
 
   const updateTabDetails = (tab_id, value) => {
     updateActiveForm((prev) => {

@@ -119,7 +119,7 @@ const FormStepper = ({
     const currentStep = steps[index || selectedOptions.activeStep];
     let valid = true;
 
-    for (let field of (currentStep?.fields || [])) {
+    for (let field of currentStep?.fields) {
       valid = handleSubfields(field, updateDisplay) && valid;
     }
 
@@ -211,30 +211,6 @@ const FormStepper = ({
     handleConditionStepper(fieldId, option, isChecked);
     updateFormDetails(selectedOptions, fieldId, option, isChecked);
   };
-
-  const initializeConditionalStepper = () => {
-    const isConditionalStepper = tabDetails.conditionalStepper;
-    const conditionalField = tabDetails.conditionalField;
-    if (!isConditionalStepper || !(conditionalField in selectedOptions)) {
-      return;
-    }
-    const option = selectedOptions[conditionalField].value;
-    const tab_id = tabDetails.value;
-    const tab = formConfig.find((item) => item.value === tab_id);
-    const updatedStepper = tab.stepper.concat(
-      tabDetails.conditional_stepper[option]
-    );
-    const updatedTab = { ...tab, stepper: updatedStepper };
-    updateTabDetails(tab_id, updatedTab);
-  };
-
-  React.useEffect(() => {
-    if (isValid(false)) {
-      isTabComplete(true);
-    }
-
-    initializeConditionalStepper();
-  }, []);
 
   const getStepIndex = (title, subtitle) => {
     return steps.findIndex(
