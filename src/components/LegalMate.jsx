@@ -27,8 +27,8 @@ const LegalMate = () => {
         content: AgentPrompt,
       },
       {
-        role: "user",
-        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you do not recieve any path, it means the user is at homepage.`,
+        role: "system",
+        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you are not sure about the path then assume that user is at homepage.`,
       },
     ]);
   }, [location]);
@@ -134,8 +134,8 @@ const LegalMate = () => {
         content: AgentPrompt,
       },
       {
-        role: "user",
-        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
+        role: "system",
+        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you are not sure about the path then assume that user is at homepage.`,
       },
     ]);
   };
@@ -175,7 +175,7 @@ const LegalMate = () => {
         className="overflow-scroll"
       >
         <DialogBody>
-          <Card color="transparent" shadow={false} className="w-full">
+          <Card color="transparent" shadow={false} className="min-w-fit min-h-full overflow-y-auto">
             <CardHeader
               color="transparent"
               floated={false}

@@ -42,7 +42,7 @@ const HowItWorks = () => {
     <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
       <Heading heading={heading} />
       <CardBody className="w-full font-normal px-5 sm:px-[64px]">
-        <section className="mb-4 sm:mb-11">
+        <section className="p-1">
           <CustomTypography variant="heading">Introduction</CustomTypography>
           <CustomTypography
             variant="paragraph"
@@ -52,13 +52,13 @@ const HowItWorks = () => {
           </CustomTypography>
         </section>
 
-        <section className="mb-2 sm:mb-11">
+        <section className="p-1">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Find the Form You Need
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
-            className="text-sm sm:text-base mb-4"
+            className="text-sm sm:text-base"
           >
             The first step to getting started is identifying the right form for
             your legal matter. You can easily:
@@ -68,13 +68,13 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="mb-2 sm:mb-11">
+        <section className="p-1">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Fill Out the Form with Step-by-Step Guidance
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
-            className="text-sm sm:text-base mb-4"
+            className="text-sm sm:text-base"
           >
             Once you’ve found the right form, our platform offers
             easy-to-understand, step-by-step instructions to ensure you fill it
@@ -85,13 +85,13 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="mb-2 sm:mb-11">
+        <section className="p-1">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Submit Your Form
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
-            className="text-sm sm:text-base mb-4"
+            className="text-sm sm:text-base"
           >
             After completing your form, you can:
           </CustomTypography>
@@ -100,7 +100,7 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="mb-2 sm:mb-11">
+        <section className="p-1">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Save Time and Reduce Errors
           </CustomTypography>
@@ -108,7 +108,7 @@ const HowItWorks = () => {
             <CustomTypography
               key={index}
               variant="paragraph"
-              className="text-sm sm:text-base mt-4"
+              className="text-sm sm:text-base"
             >
               {text}
             </CustomTypography>
