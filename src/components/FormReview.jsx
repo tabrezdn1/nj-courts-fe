@@ -2,11 +2,18 @@ import React, { useEffect } from "react";
 import Tabs from "../data/tabs.json";
 import { Typography } from "@material-tailwind/react";
 
-const FormReview = ({ id }) => {
+const FormReview = ({ id, activeTab }) => {
     const [fieldsToReview, setFieldsToReview] = React.useState([]);
+    
     useEffect(() => {
         setReviewData();
     }, [id]);
+
+    useEffect(() => {
+        if (activeTab === "information-review") {
+            setReviewData();
+        }
+    }, [activeTab]);
 
     const setReviewData = () => {
         const reviewData = JSON.parse(localStorage.getItem(`expungement_form-${id}`)) || {};

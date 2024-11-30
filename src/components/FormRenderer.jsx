@@ -439,9 +439,9 @@ const FormRenderer = ({
   handleOptionChangeCallback,
   tabIndex,
   stepIndex,
+  activeTab
 }) => {
   const { t } = useTranslation();
-  const formReviewRef = useRef(null);
 
   useEffect(() => {
     // Read existing data from local storage
@@ -482,16 +482,7 @@ const FormRenderer = ({
       }
     });
     handleOptionChangeCallback(fieldId, option, isChecked);
-    // Refresh form review data
-    refreshFormReview();
   };
-
-  // Refresh form review data
-  const refreshFormReview = () => {
-    if (formReviewRef.current) {
-      formReviewRef.current.setReviewData();
-    }
-  }
 
   return (
     <Card color="transparent" shadow={false} className="w-full md:w-auto">
@@ -513,7 +504,7 @@ const FormRenderer = ({
               onOptionChange={handleOptionChange}
             />
           )}
-          {form.isReview && <FormReview id={form.value} ref={formReviewRef} />}
+          {form.isReview && <FormReview id={form.value} activeTab={activeTab}/>}
         </div>
       </form>
     </Card>

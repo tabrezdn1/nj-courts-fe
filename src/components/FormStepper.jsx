@@ -2,7 +2,6 @@ import React from "react";
 import { Stepper, Step, Button } from "@material-tailwind/react";
 import * as HeroIcons from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
-import { useParams } from "react-router-dom";
 
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
 
@@ -10,6 +9,7 @@ const FormStepper = ({
   id,
   steps,
   showErrorPage=false,
+  activeTab,
   disableShowErrorPage,
   tabDetails,
   formConfig,
@@ -296,6 +296,7 @@ const FormStepper = ({
           selectedOptions={selectedOptions}
           setSelectedOptions={setSelectedOptions}
           handleOptionChangeCallback={handleOptionChange}
+          activeTab={activeTab}
         />
       </div>
       <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit] pt-4 md:pt-0">

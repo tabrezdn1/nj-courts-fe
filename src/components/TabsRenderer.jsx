@@ -191,6 +191,7 @@ const TabsRenderer = ({ id, formConfig }) => {
               id={`${id}-${item.value}`}
               steps={item.stepper}
               showErrorPage={tabDetails.activeTab === item.value ? tabDetails?.showErrorPage : false}
+              activeTab={tabDetails.activeTab}
               disableShowErrorPage={() => updateActiveTab((prev) => {
                 return {
                   ...prev,
