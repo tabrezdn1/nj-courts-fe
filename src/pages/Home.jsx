@@ -4,7 +4,6 @@ import {
   Typography,
   CardFooter,
   Button,
-  Input,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

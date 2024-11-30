@@ -344,7 +344,7 @@
           "fields": [
             {
               "id": "personal_information_first_name",
-              "type": "input", 
+              "type": "input",
               "label": "Primer Nombre",
               "sub_label": "¿Cuál es su nombre legal?",
               "placeholder": "Nombre Legal",
@@ -769,7 +769,7 @@
     },
     {
       "label": "Detalles de la Sentencia",
-      "value": "sentencing-information", 
+      "value": "sentencing-information",
       "desc": "Si fue declarado culpable, necesitamos saber cuándo terminó su sentencia.",
       "list": [],
       "stepper": [
@@ -801,7 +801,7 @@
                     }
                   },
                   {
-                    "id": "sentence_details_probation_end", 
+                    "id": "sentence_details_probation_end",
                     "type": "date",
                     "label": "Probation",
                     "sub_label": "¿Cuándo terminó su probation?",
@@ -812,7 +812,7 @@
                   },
                   {
                     "id": "sentence_details_fine_payment",
-                    "type": "date", 
+                    "type": "date",
                     "label": "Multas",
                     "sub_label": "¿Cuándo pagó todas sus multas?",
                     "placeholder": "DD/MM/YYYY",
@@ -853,7 +853,7 @@
             }
           ]
         }
-      ], 
+      ],
       "conditional_stepper": {
         "Sí": [
           {
@@ -1177,9 +1177,7 @@
               "options": ["Confirmar"],
               "validation": {
                 "required": true,
-                "requiredOptions": [
-                  "Confirmar"
-                ]
+                "requiredOptions": ["Confirmar"]
               }
             }
           ]
@@ -1230,14 +1228,142 @@
               "options": ["Aceptar"],
               "validation": {
                 "required": true,
-                "requiredOptions": [
-                  "Aceptar"
-                ]
+                "requiredOptions": ["Aceptar"]
               }
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "mission": {
+    "heading": "Nuestra Misión",
+    "missionText": "En el Portal de Formularios en Línea de los Tribunales de Nueva Jersey, nuestra misión es crear una experiencia digital fluida, accesible y segura para los residentes que navegan por procedimientos legales. Nuestro objetivo es simplificar el proceso legal proporcionando un fácil acceso a los formularios judiciales oficiales necesarios para diversos problemas legales, incluidos asuntos civiles, penales, familiares y de expurgación.",
+    "platformText": "Nuestra plataforma está diseñada para empoderar a los individuos ofreciendo:",
+    "services": [
+      {
+        "title": "Simplicidad",
+        "description": "Creemos que cada residente de Nueva Jersey debería poder navegar por los procesos legales sin confusión. Al ofrecer un portal fácil de usar con instrucciones paso a paso, nos aseguramos de que los formularios legales se puedan completar de manera precisa y eficiente.",
+        "icon": "ClipboardDocumentListIcon"
+      },
+      {
+        "title": "Accesibilidad",
+        "description": "Estamos comprometidos a proporcionar acceso equitativo a todos los residentes, independientemente de su origen o habilidades técnicas. Nuestra plataforma es accesible desde cualquier dispositivo, lo que permite a los usuarios completar formularios legales desde casa, el trabajo o cualquier otro lugar.",
+        "icon": "ShareIcon"
+      },
+      {
+        "title": "Eficiencia",
+        "description": "El tiempo es crítico en asuntos legales, y nuestro objetivo es agilizar el proceso para ahorrarle tiempo. Al proporcionar opciones de envío de formularios en línea seguras y seguimiento en tiempo real, reducimos la necesidad de múltiples visitas al tribunal, haciendo que el proceso sea más eficiente tanto para los residentes como para el sistema judicial.",
+        "icon": "GlobeAltIcon"
+      }
+    ],
+    "buttonText": "Aprender más",
+    "closingText": "En el corazón de nuestra misión hay un deseo de modernizar la forma en que los residentes de Nueva Jersey interactúan con el sistema judicial. Al aprovechar la tecnología, nos esforzamos por hacer que el proceso de presentación legal sea directo, transparente y accesible para todos.",
+    "startText": "Comience a explorar el portal hoy y permítanos guiarlo a través de sus necesidades de presentación legal con claridad y confianza."
+  },
+  "howItWorks": {
+    "heading": "¿Cómo Funciona?",
+    "intro": "Introducción",
+    "introductionText": "El Portal de Formularios en Línea de los Tribunales de Nueva Jersey simplifica el proceso de presentación legal, asegurando que cualquier persona pueda acceder, completar y enviar los formularios necesarios con facilidad. Nuestra plataforma está diseñada para proporcionarle la orientación que necesita en cada paso del camino, ya sea que esté presentando formularios para casos civiles, asuntos familiares, presentaciones penales o procesos de expurgación.",
+    "findForm": {
+      "intro": "Encuentra el formulario que necesitas",
+      "subIntro": "El primer paso para comenzar es identificar el formulario correcto para tu asunto legal. Puedes fácilmente:"
+    },
+    "findFormPoints": [
+      {
+        "title": "Navegar por Categoría",
+        "steps": [
+          {
+            "icon": "MagnifyingGlassCircleIcon",
+            "text": "Navegue por Categoría para encontrar formularios relevantes para su situación.",
+            "link": "/browse-category",
+            "linkText": "Navegar formularios"
+          }
+        ]
+      },
+      {
+        "title": "Usar la Barra de Búsqueda",
+        "steps": [
+          {
+            "icon": "DocumentTextIcon",
+            "text": "Utilice la Barra de Búsqueda para acceder rápidamente al formulario que necesita.",
+            "link": "/search-form",
+            "linkText": "Buscar ahora"
+          }
+        ]
+      }
+    ],
+    "fillForm": {
+      "intro": "Completa el formulario con orientación paso a paso",
+      "subIntro": "Una vez que hayas encontrado el formulario correcto, nuestra plataforma ofrece instrucciones fáciles de entender, paso a paso, para asegurarte de que lo completes correctamente. Nos aseguramos de:"
+    },
+    "fillFormPoints": [
+      {
+        "title": "Proporcionar Tooltips Útiles",
+        "steps": [
+          {
+            "icon": "InformationCircleIcon",
+            "text": "Entienda los términos legales con tooltips útiles.",
+            "link": "/tooltips",
+            "linkText": "Aprender más"
+          }
+        ]
+      },
+      {
+        "title": "Desglosar Secciones Complejas",
+        "steps": [
+          {
+            "icon": "ArrowUpIcon",
+            "text": "Las secciones complejas se desglosan en pasos.",
+            "link": "/complex-sections",
+            "linkText": "Ver detalles"
+          }
+        ]
+      },
+      {
+        "title": "Guardar Automáticamente su Progreso",
+        "steps": [
+          {
+            "icon": "ArrowUpIcon",
+            "text": "Su progreso se guarda automáticamente a medida que avanza.",
+            "link": "/auto-save",
+            "linkText": "Aprender más"
+          }
+        ]
+      }
+    ],
+    "submitForm": {
+      "intro": "Envía tu formulario",
+      "subIntro": "Después de completar tu formulario, puedes:"
+    },
+    "submitFormPoints": [
+      {
+        "title": "Enviar Electrónicamente",
+        "steps": [
+          {
+            "icon": "ArrowUpIcon",
+            "text": "Envíe formularios en línea si es elegible.",
+            "link": "/submit-electronically",
+            "linkText": "Enviar en línea"
+          }
+        ]
+      },
+      {
+        "title": "Imprimir y Presentar en Persona",
+        "steps": [
+          {
+            "icon": "DocumentTextIcon",
+            "text": "Imprima y presente en el tribunal si la presentación en línea no está disponible.",
+            "link": "/print-submit",
+            "linkText": "Imprimir formulario"
+          }
+        ]
+      }
+    ],
+    "saveTimeTextLabel":"Ahorra tiempo y reduce errores",
+    "saveTimeText": [
+      "Con nuestro enfoque simplificado, ya no necesita preocuparse por perder plazos o cometer errores comunes en la presentación. Al ofrecer instrucciones detalladas y recordatorios automáticos, aseguramos que sus formularios sean precisos y se envíen a tiempo.",
+      "Comience eligiendo una categoría o buscando su formulario hoy, y deje que el Portal de Formularios en Línea de los Tribunales de Nueva Jersey lo guíe a través de su proceso de presentación legal de manera eficiente y segura."
+    ]
+  }
 }

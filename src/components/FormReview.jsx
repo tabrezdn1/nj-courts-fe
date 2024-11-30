@@ -5,27 +5,33 @@ import { Typography } from "@material-tailwind/react";
 const FormReview = ({ id }) => {
     const [fieldsToReview, setFieldsToReview] = React.useState([]);
     useEffect(() => {
+        setReviewData();
+    }, [id]);
+
+    const setReviewData = () => {
         const reviewData = JSON.parse(localStorage.getItem(`expungement_form-${id}`)) || {};
         const currentReviewTab = Tabs.find((tab) => tab.value === id);
         const reviewFields = [];
         currentReviewTab.stepper.forEach((step) => {
             step.fields.forEach((field) => {
+                const value = reviewData[field.id]?.value || "";
                 reviewFields.push({
                     "title": field.label,
-                    "value": reviewData[field.id]?.value || "",
+                    "value": field.type === "radio" && !value ? "N/A" : value
                 })
                 if (reviewData[field.id]?.value && field.subFields && Object.keys(field.subFields).length > 0 && field.subFields[reviewData[field.id]?.value]) {
                     field.subFields[reviewData[field.id]?.value].forEach((subField) => {
+                        const value = reviewData[subField.id]?.value || "";
                         reviewFields.push({
                             "title": subField.label,
-                            "value": reviewData[subField.id]?.value || "",
+                            "value": subField.type === "radio" && !value ? "N/A" : value
                         })
                     })
                 }
             });
         })
         setFieldsToReview(reviewFields);
-    }, [id]);
+    }
 
     return (
         <>

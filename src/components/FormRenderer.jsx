@@ -9,7 +9,7 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import FormReview from "./FormReview";
 import { useTranslation } from "react-i18next";
 import SignaturePad from "./SignaturePad";
@@ -441,6 +441,8 @@ const FormRenderer = ({
   stepIndex,
 }) => {
   const { t } = useTranslation();
+  const formReviewRef = useRef(null);
+
   useEffect(() => {
     // Read existing data from local storage
     const existingData = JSON.parse(localStorage.getItem(id)) || {};
@@ -480,7 +482,16 @@ const FormRenderer = ({
       }
     });
     handleOptionChangeCallback(fieldId, option, isChecked);
+    // Refresh form review data
+    refreshFormReview();
   };
+
+  // Refresh form review data
+  const refreshFormReview = () => {
+    if (formReviewRef.current) {
+      formReviewRef.current.setReviewData();
+    }
+  }
 
   return (
     <Card color="transparent" shadow={false} className="w-full md:w-auto">
@@ -502,7 +513,7 @@ const FormRenderer = ({
               onOptionChange={handleOptionChange}
             />
           )}
-          {form.isReview && <FormReview id={form.value} />}
+          {form.isReview && <FormReview id={form.value} ref={formReviewRef} />}
         </div>
       </form>
     </Card>
