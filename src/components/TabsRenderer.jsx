@@ -107,25 +107,28 @@ const TabsRenderer = ({ id, formConfig }) => {
   const handleTabChange = (value) => {
     if (value != tabDetails.activeTab){
       const valueIndex = activeForm.findIndex((item) => item.value === value);
-      const activeIndex = activeForm.findIndex((item) => item.value === tabDetails.activeTab);
-      const activeTabDetails = activeForm[activeIndex];
-      if (activeIndex < tabDetails.progress && !activeTabDetails.complete) {
-        setTimeout(() => {
-          const tabButton = document.querySelector(`li[data-value="${tabDetails.activeTab}"]`);
-          tabButton.click();
-        }, 0);
-      } else if (valueIndex <= tabDetails.progress) {
+      let activeIndex = activeForm.findIndex((item) => item.value === tabDetails.activeTab);
+      if ( valueIndex < activeIndex ) {
         updateActiveTab((prev) => ({
           ...prev,
-          activeTab: value,
+          activeTab: value
         }))
-      } else if (valueIndex > tabDetails.progress || !activeTabDetails.complete) {
-        // Come back to current tab as we have not finished it
-        setTimeout(() => {
-          const tabButton = document.querySelector(`li[data-value="${tabDetails.activeTab}"]`);
-          tabButton.click();
-        }, 0);
+        return
       }
+      while (activeIndex < activeForm.length && activeIndex < valueIndex && activeForm[activeIndex].complete) {
+        activeIndex += 1
+      }
+      let showErrorPage
+      if (valueIndex != activeIndex) {
+        showErrorPage = true
+      } else {
+        showErrorPage = false
+      }
+      updateActiveTab((prev) => ({
+        ...prev,
+        activeTab: activeForm[activeIndex].value,
+        showErrorPage: showErrorPage
+      }))
     }
   }
 
@@ -187,6 +190,13 @@ const TabsRenderer = ({ id, formConfig }) => {
             <FormStepper
               id={`${id}-${item.value}`}
               steps={item.stepper}
+              showErrorPage={tabDetails.activeTab === item.value ? tabDetails?.showErrorPage : false}
+              disableShowErrorPage={() => updateActiveTab((prev) => {
+                return {
+                  ...prev,
+                  showErrorPage: false
+                }
+              })} 
               tabIndex={getTabIndexByLabelAndValue(item.label, item.value)}
               tabDetails={item}
               formConfig={formConfig}
