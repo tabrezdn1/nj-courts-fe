@@ -8,7 +8,6 @@ import {
   ClipboardDocumentListIcon,
 } from "@heroicons/react/24/solid";
 import { missionData } from "../../data/configs";
-import { useTranslation } from "react-i18next";
 
 const iconMap = {
   ClipboardDocumentListIcon: ClipboardDocumentListIcon,
@@ -17,37 +16,37 @@ const iconMap = {
 };
 
 const OurMission = () => {
-  const { t } = useTranslation();
-  const { services } = missionData;
+  const {
+    heading,
+    missionText,
+    platformText,
+    services,
+    closingText,
+    startText,
+  } = missionData;
 
   // Map icons from string names to the actual components
-  const servicesWithIcons = services.map((service, index) => ({
+  const servicesWithIcons = services.map((service) => ({
     ...service,
-    title: t(`mission.services.${index}.title`),
-    description: t(`mission.services.${index}.description`),
     icon: iconMap[service.icon],
   }));
 
   return (
     <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-      <Heading heading={t(`mission.heading`)} />
+      <Heading heading={heading} />
       <CardBody className="font-normal px-5">
-        <CustomTypography variant="paragraph">
-          {t(`mission.missionText`)}
-        </CustomTypography>
+        <CustomTypography variant="paragraph">{missionText}</CustomTypography>
 
         <ServiceSection
-          heading={t(`mission.platformText`)}
+          heading={platformText}
           services={servicesWithIcons}
-          buttonText={t(`mission.buttonText`)}
+          buttonText="Learn More"
         />
 
         <section className="mb-16">
-          <CustomTypography variant="paragraph">
-            {t(`mission.closingText`)}
-          </CustomTypography>
+          <CustomTypography variant="paragraph">{closingText}</CustomTypography>
           <CustomTypography variant="paragraph" className="mt-4">
-            {t(`mission.startText`)}
+            {startText}
           </CustomTypography>
         </section>
       </CardBody>

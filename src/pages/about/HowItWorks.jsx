@@ -9,12 +9,16 @@ import {
 } from "@heroicons/react/24/outline";
 import CustomTypography from "../../components/CustomTypography";
 import { howItWorks } from "../../data/configs";
-import { useTranslation } from "react-i18next";
 
 const HowItWorks = () => {
-  const { t } = useTranslation();
-  const { findFormPoints, fillFormPoints, submitFormPoints, saveTimeText } =
-    howItWorks;
+  const {
+    heading,
+    introductionText,
+    findFormPoints,
+    fillFormPoints,
+    submitFormPoints,
+    saveTimeText,
+  } = howItWorks;
 
   // Map icon names to imported components
   const iconMapping = {
@@ -25,47 +29,39 @@ const HowItWorks = () => {
   };
 
   // Convert string icon references to actual icon components
-  const convertIconPoints = (points, pointsKey) =>
-    points.map((point, pointIndex) => ({
+  const convertIconPoints = (points) =>
+    points.map((point) => ({
       ...point,
-      title: t(`howItWorks.${pointsKey}.${pointIndex}.title`),
-      steps: point.steps.map((step, stepIndex) => ({
+      steps: point.steps.map((step) => ({
         ...step,
-        text: t(
-          `howItWorks.${pointsKey}.${pointIndex}.steps.${stepIndex}.text`
-        ),
-        linkText: t(
-          `howItWorks.${pointsKey}.${pointIndex}.steps.${stepIndex}.linkText`
-        ),
         icon: iconMapping[step.icon],
       })),
     }));
 
   return (
     <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-      <Heading heading={t(`howItWorks.heading`)} />
+      <Heading heading={heading} />
       <CardBody className="w-full font-normal px-5 sm:px-[64px]">
         <section className="mb-4 sm:mb-11">
-          <CustomTypography variant="heading">
-            {t(`howItWorks.intro`)}
-          </CustomTypography>
+          <CustomTypography variant="heading">Introduction</CustomTypography>
           <CustomTypography
             variant="paragraph"
             className="text-sm sm:text-base"
           >
-            {t(`howItWorks.introductionText`)}
+            {introductionText}
           </CustomTypography>
         </section>
 
         <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
-            {t(`howItWorks.findForm.intro`)}
+            Find the Form You Need
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
             className="text-sm sm:text-base mb-4"
           >
-            {t(`howItWorks.findForm.subIntro`)}
+            The first step to getting started is identifying the right form for
+            your legal matter. You can easily:
           </CustomTypography>
           <PointsList
             listPoints={convertIconPoints(findFormPoints, "findFormPoints")}
@@ -74,13 +70,15 @@ const HowItWorks = () => {
 
         <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
-            {t(`howItWorks.fillForm.intro`)}
+            Fill Out the Form with Step-by-Step Guidance
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
             className="text-sm sm:text-base mb-4"
           >
-            {t(`howItWorks.fillForm.subIntro`)}
+            Once you’ve found the right form, our platform offers
+            easy-to-understand, step-by-step instructions to ensure you fill it
+            out correctly. We make sure to:
           </CustomTypography>
           <PointsList
             listPoints={convertIconPoints(fillFormPoints, "fillFormPoints")}
@@ -89,13 +87,13 @@ const HowItWorks = () => {
 
         <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
-            {t(`howItWorks.submitForm.intro`)}
+            Submit Your Form
           </CustomTypography>
           <CustomTypography
             variant="paragraph"
             className="text-sm sm:text-base mb-4"
           >
-            {t(`howItWorks.submitForm.subIntro`)}
+            After completing your form, you can:
           </CustomTypography>
           <PointsList
             listPoints={convertIconPoints(submitFormPoints, "submitFormPoints")}
@@ -104,7 +102,7 @@ const HowItWorks = () => {
 
         <section className="mb-2 sm:mb-11">
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
-            {t(`howItWorks.saveTimeTextLabel`)}
+            Save Time and Reduce Errors
           </CustomTypography>
           {saveTimeText.map((text, index) => (
             <CustomTypography
@@ -112,7 +110,7 @@ const HowItWorks = () => {
               variant="paragraph"
               className="text-sm sm:text-base mt-4"
             >
-              {t(`howItWorks.saveTimeText.${index}`)}
+              {text}
             </CustomTypography>
           ))}
         </section>

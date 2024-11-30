@@ -10,14 +10,11 @@ import {
   AccordionBody,
   ListItemSuffix,
   Chip,
-  Switch,
 } from "@material-tailwind/react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { useTranslation } from "react-i18next";
 import LegalMate from "./LegalMate";
 
 const Sidebar = (props) => {
-  const { t, i18n } = useTranslation();
   const [openAccordions, setOpenAccordions] = React.useState({});
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   // const NJCOURTS_SVG_URL =
@@ -55,11 +52,6 @@ const Sidebar = (props) => {
 
   const AccodionItems = props?.items ?? [];
 
-  const handleLanguageChange = (isChecked) => {
-    const lang = isChecked ? "es" : "en";
-    i18n.changeLanguage(lang);
-  };
-
   return (
     <>
       {!isSidebarOpen && (
@@ -83,21 +75,11 @@ const Sidebar = (props) => {
         } md:translate-x-0 md:static md:flex-[0.20]`}
       >
         <Card className="h-full w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
-          <Link
-            to="/"
-            onClick={() => setIsSidebarOpen(false)}
-          >
+          <Link to="/" onClick={() => setIsSidebarOpen(false)}>
             <div className="flex items-center  w-fit">
               <img src="/logo.svg" alt="logo" className="h-24" />
             </div>
           </Link>
-          <div className="flex items-center justify-center p-4">
-            <Switch
-              label="ESPANIOL 🇪🇸"
-              ripple={true}
-              onChange={(e) => handleLanguageChange(e.target.checked)}
-            />
-          </div>
 
           <div className="p-2">
             <LegalMate />
@@ -114,7 +96,7 @@ const Sidebar = (props) => {
                   toggleAccordion(accordionIndex);
                 }}
               >
-                {t(`sidebar.${accordionIndex}.title`)}
+                {accordionItem.title}
               </AccordionHeader>
               {openAccordions[accordionIndex] && (
                 <AccordionBody>
@@ -126,15 +108,11 @@ const Sidebar = (props) => {
                         onClick={() => setIsSidebarOpen(false)}
                       >
                         <ListItem>
-                          {t(
-                            `sidebar.${accordionIndex}.menu.${menuIndex}.label`
-                          )}
+                          {menuItem.label}
                           {menuItem?.chip?.length && (
                             <ListItemSuffix>
                               <Chip
-                                value={t(
-                                  `sidebar.${accordionIndex}.menu.${menuIndex}.chip`
-                                )}
+                                value="Online"
                                 size="sm"
                                 variant="ghost"
                                 color="blue-gray"
