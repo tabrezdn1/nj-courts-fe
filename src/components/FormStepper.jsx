@@ -145,8 +145,8 @@ const FormStepper = ({
     return valid;
   };
 
-  const handleNext = () => {
-    if (isValid()) {
+  const handleNext = (index=undefined) => {
+    if (isValid(true, index)) {
       if (!isLastStep) {
         setSelectedOptions((prev) => {
           return {
@@ -224,6 +224,7 @@ const FormStepper = ({
   const handleStepperClick = (index) => {
     let currentStep = selectedOptions.activeStep;
     while ( currentStep < index && handleNext(currentStep) ) {
+      console.log(handleNext(currentStep))
       currentStep += 1;
     }
     setSelectedOptions(prev => {

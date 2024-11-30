@@ -478,7 +478,7 @@
                 },
                 {
                   "id": "sentence_details_fine_payment",
-                  "type": "date", 
+                  "type": "input", 
                   "label": "Fines",
                   "sub_label": "When did you pay all your fines?",
                   "placeholder": "MM/DD/YYYY",
@@ -758,7 +758,7 @@
                   },
                   {
                     "id": "additional_sentence_details_fine_payment",
-                    "type": "date",
+                    "type": "input",
                     "label": "Fines",
                     "sub_label": "When did you pay all your fines?",
                     "placeholder": "MM/DD/YYYY",
