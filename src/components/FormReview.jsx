@@ -14,6 +14,14 @@ const FormReview = ({ id }) => {
                     "title": field.label,
                     "value": reviewData[field.id]?.value || "",
                 })
+                if (reviewData[field.id]?.value && field.subFields && Object.keys(field.subFields).length > 0 && field.subFields[reviewData[field.id]?.value]) {
+                    field.subFields[reviewData[field.id]?.value].forEach((subField) => {
+                        reviewFields.push({
+                            "title": subField.label,
+                            "value": reviewData[subField.id]?.value || "",
+                        })
+                    })
+                }
             });
         })
         setFieldsToReview(reviewFields);
