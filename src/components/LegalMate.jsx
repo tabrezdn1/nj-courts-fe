@@ -28,7 +28,7 @@ const LegalMate = () => {
       },
       {
         role: "user",
-        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
+        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you do not recieve any path, it means the user is at homepage.`,
       },
     ]);
   }, [location]);
@@ -52,7 +52,7 @@ const LegalMate = () => {
     },
     {
       role: "user",
-      content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
+      content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you do not recieve any path, it means the user is at homepage.`,
     },
   ]);
 
