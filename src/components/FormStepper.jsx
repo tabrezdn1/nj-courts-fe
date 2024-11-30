@@ -121,7 +121,7 @@ const FormStepper = ({
     valid = isValidField(field, updateDisplay) && valid;
     for (let subField of field?.subFields?.[selectedOptions[field.id]?.value] ||
       []) {
-      valid = handleSubfields(subField) && valid;
+      valid = handleSubfields(subField, updateDisplay) && valid;
     }
     return valid;
   };
