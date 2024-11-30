@@ -34,7 +34,7 @@ function App() {
     <I18nextProvider i18n={i18n}>
       <div className="w-full flex h-svh max-h-svh">
         <Sidebar items={sidebarItems} />
-        <div className="h-full flex-1">
+        <div className="h-full flex-1 overflow-y-auto">
           <Routes>{renderRoutes(routeGroups)}</Routes>
         </div>
       </div>

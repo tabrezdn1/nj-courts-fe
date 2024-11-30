@@ -39,12 +39,15 @@ const HowItWorks = () => {
     }));
 
   return (
-    <Card className="w-full pt-16 sm:pt-0" shadow={false}>
+    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
       <Heading heading={heading} />
       <CardBody className="w-full font-normal px-5 sm:px-[64px]">
         <section className="mb-4 sm:mb-11">
           <CustomTypography variant="heading">Introduction</CustomTypography>
-          <CustomTypography variant="paragraph" className="text-sm sm:text-base">
+          <CustomTypography
+            variant="paragraph"
+            className="text-sm sm:text-base"
+          >
             {introductionText}
           </CustomTypography>
         </section>
@@ -53,7 +56,10 @@ const HowItWorks = () => {
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Find the Form You Need
           </CustomTypography>
-          <CustomTypography variant="paragraph" className="text-sm sm:text-base mb-4">
+          <CustomTypography
+            variant="paragraph"
+            className="text-sm sm:text-base mb-4"
+          >
             The first step to getting started is identifying the right form for
             your legal matter. You can easily:
           </CustomTypography>
@@ -64,7 +70,10 @@ const HowItWorks = () => {
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Fill Out the Form with Step-by-Step Guidance
           </CustomTypography>
-          <CustomTypography variant="paragraph" className="text-sm sm:text-base mb-4">
+          <CustomTypography
+            variant="paragraph"
+            className="text-sm sm:text-base mb-4"
+          >
             Once you’ve found the right form, our platform offers
             easy-to-understand, step-by-step instructions to ensure you fill it
             out correctly. We make sure to:
@@ -76,7 +85,10 @@ const HowItWorks = () => {
           <CustomTypography variant="heading" className="text-lg sm:text-xl">
             Submit Your Form
           </CustomTypography>
-          <CustomTypography variant="paragraph" className="text-sm sm:text-base mb-4">
+          <CustomTypography
+            variant="paragraph"
+            className="text-sm sm:text-base mb-4"
+          >
             After completing your form, you can:
           </CustomTypography>
           <PointsList listPoints={convertIconPoints(submitFormPoints)} />
@@ -87,7 +99,11 @@ const HowItWorks = () => {
             Save Time and Reduce Errors
           </CustomTypography>
           {saveTimeText.map((text, index) => (
-            <CustomTypography key={index} variant="paragraph" className="text-sm sm:text-base mt-4">
+            <CustomTypography
+              key={index}
+              variant="paragraph"
+              className="text-sm sm:text-base mt-4"
+            >
               {text}
             </CustomTypography>
           ))}

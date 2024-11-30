@@ -9,6 +9,8 @@ import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSub
 const FormStepper = ({
   id,
   steps,
+  showErrorPage=false,
+  disableShowErrorPage,
   tabDetails,
   formConfig,
   updateTabDetails,
@@ -20,7 +22,6 @@ const FormStepper = ({
   updateFormDetails,
   tabIndex,
 }) => {
-  const { mode } = useParams();
 
   const getSeletedOptions = () => {
     return (
@@ -34,8 +35,7 @@ const FormStepper = ({
 
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
-  const [selectedOptions, setSelectedOptions] =
-    React.useState(getSeletedOptions);
+  const [selectedOptions, setSelectedOptions] = React.useState(getSeletedOptions);
 
   const setInputProperty = (fieldId, property, value) => {
     setSelectedOptions((prevOptions) => {
@@ -76,6 +76,17 @@ const FormStepper = ({
         }
       }
     }
+    if (field?.type === "zipcode") {
+      const fieldValue = selectedOptions[field.id]?.value;
+      const minLength = 5;
+      if (fieldValue.length < minLength) {
+        if (updateDisplay) {
+          setInputProperty(field.id, "error", true);
+          setInputProperty(field.id, "error_desc", "Invalid Zipcode");
+        }
+        return false;
+      }
+    }
     if (field?.type === "phone") {
       const fieldValue = selectedOptions[field.id]?.value;
       const minLength = 10;
@@ -110,13 +121,13 @@ const FormStepper = ({
     valid = isValidField(field, updateDisplay) && valid;
     for (let subField of field?.subFields?.[selectedOptions[field.id]?.value] ||
       []) {
-      valid = handleSubfields(subField) && valid;
+      valid = handleSubfields(subField, updateDisplay) && valid;
     }
     return valid;
   };
 
   const isValid = (updateDisplay = true, index = undefined) => {
-    const currentStep = steps[index || selectedOptions.activeStep];
+    const currentStep = steps[(index != undefined) ? index : selectedOptions.activeStep];
     let valid = true;
 
     for (let field of currentStep?.fields) {
@@ -126,10 +137,10 @@ const FormStepper = ({
     return valid;
   };
 
-  const isValidForm = () => {
+  const isValidForm = (updateDisplay=false) => {
     let valid = true;
     steps.forEach((item, currentIndex) => {
-      valid = isValid(false, currentIndex) && valid;
+      valid = isValid(updateDisplay, currentIndex) && valid;
     });
     return valid;
   };
@@ -144,14 +155,17 @@ const FormStepper = ({
             progress: Math.max(prev.activeStep + 1, prev.progress)
           };
         });
+        return true
       } else if (isLastStep && !isLastTab) {
         setSelectedOptions((prev) => {
           return { ...prev, tabCompleted: true };
         });
         moveNextTab();
         isTabComplete(true);
+        return true
       }
     }
+    return false
   };
   const handlePrev = () => {
     if (!isFirstStep) {
@@ -168,17 +182,6 @@ const FormStepper = ({
     setIsFirstStep(selectedOptions.activeStep === 0);
 
     localStorage.setItem(id, JSON.stringify(selectedOptions));
-    if (isLastStep && isValid(false) && !selectedOptions.tabCompleted) {
-      isTabComplete(true)
-      setSelectedOptions(
-        (prev) => {
-          return {
-            ...prev,
-            tabCompleted: true
-          }
-        }
-      )
-    }
   }, [selectedOptions, steps.length]);
 
   const handleConditionStepper = (fieldId, option, isChecked = true) => {
@@ -219,21 +222,42 @@ const FormStepper = ({
   };
 
   const handleStepperClick = (index) => {
-    if ((selectedOptions.progress + 1) >= index) {
-      setSelectedOptions(prev => {
-        return { ...prev, activeStep: index }
-      })
+    let currentStep = selectedOptions.activeStep;
+    while ( currentStep < index && handleNext(currentStep) ) {
+      currentStep += 1;
     }
+    setSelectedOptions(prev => {
+      return { ...prev, activeStep: Math.min(currentStep, index) }
+    })
   }
 
-  const init = () => {
-    if (isValidForm()) {
-      isTabComplete(true)
-    } else {
-      isTabComplete(false)
-    }
+  if (isValidForm()) {
+    isTabComplete(true)
+  } else {
+    isTabComplete(false)
   }
-  init()
+
+  React.useEffect(() => {
+    if (showErrorPage) {
+      let errorStep
+      for (let i = 0; i < steps.length; i++) {
+        if (!isValid(false, i)) {
+          errorStep = i
+          disableShowErrorPage();
+          break;
+        }
+      }
+      isValid(true, errorStep)
+      setSelectedOptions((prev) => {
+        return {
+          ...prev,
+          activeStep: errorStep,
+        };
+      });
+    }
+  }, [showErrorPage]);
+  
+
 
   return (
     <>
@@ -283,7 +307,7 @@ const FormStepper = ({
         </div>
         <div>
           {!(isLastTab && isLastStep) && (
-            <Button onClick={handleNext} disabled={isLastTab && isLastStep}>
+            <Button onClick={() => handleNext()} disabled={isLastTab && isLastStep}>
               Next
             </Button>
           )}

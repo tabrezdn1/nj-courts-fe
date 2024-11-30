@@ -24,8 +24,8 @@ const WhyConsiderExpungement = () => {
   };
 
   return (
-    <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
-      <Heading heading={heading} />
+    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
+      <Heading heading={heading}/>
       <CardBody className="px-8 py-12 space-y-12">
         {sections.map((section, index) => {
           const IconComponent = icons[section.icon];

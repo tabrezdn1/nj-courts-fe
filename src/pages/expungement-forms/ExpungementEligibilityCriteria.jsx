@@ -26,7 +26,7 @@ const ExpungementEligibilityCriteria = () => {
   // ];
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
         <Heading heading={heading} />
         <CardBody className="font-normal px-6">
           <Typography color="gray" className="py-1 w-full md:w-1/2 text-2xl">

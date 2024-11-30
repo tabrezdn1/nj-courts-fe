@@ -147,13 +147,12 @@
           },
           {
             "id": "personal_information_zipcode",
-            "type": "input",
+            "type": "zipcode",
             "label": "ZIP Code",
             "sub_label": "What is your current ZIP code?",
             "placeholder": "ZIP Code",
             "validation": {
-              "required": true,
-              "maxLength": 5
+              "required": true
             }
           }
         ]
@@ -188,8 +187,7 @@
             "sub_label": "What is your Social Security Number?",
             "placeholder": "XXX-XX-XXXX",
             "validation": {
-              "required": true,
-              "maxLength": 12
+              "required": true
             }
           }
         ]
