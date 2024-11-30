@@ -188,8 +188,7 @@
             "sub_label": "What is your Social Security Number?",
             "placeholder": "XXX-XX-XXXX",
             "validation": {
-              "required": true,
-              "maxLength": 12
+              "required": true
             }
           }
         ]
