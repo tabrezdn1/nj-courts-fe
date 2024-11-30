@@ -413,7 +413,6 @@ const FormRenderer = ({
   stepIndex,
   activeTab
 }) => {
-  const { t } = useTranslation();
 
   useEffect(() => {
     // Read existing data from local storage
