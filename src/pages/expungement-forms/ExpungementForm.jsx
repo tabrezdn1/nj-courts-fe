@@ -3,13 +3,14 @@ import { tabItems } from "../../data/configs";
 import Heading from "../../components/Heading";
 import TabsRenderer from "../../components/TabsRenderer";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ExpungementForm = () => {
   const heading = "Expungement Form";
   const FormId = "expungement_form";
   const { mode } = useParams();
   const navigate = useNavigate();
+  const [isModeChecked, setIsModeChecked] = useState(false);
 
   useEffect(() => {
     if (mode === "new") {
@@ -21,12 +22,17 @@ const ExpungementForm = () => {
       });
       navigate(`/expungement-forms/form/continue`);
     }
+    setIsModeChecked(true);
   }, []);
   return (
     <Card shadow={false} className="w-full h-[calc(100vh-2rem)] md:overflow-y-auto pt-[70px] md:pt-[0px] ">
       <Heading heading={heading} />
       <CardBody className="mx-0 md:p-6 font-normal md:px-[16px] md:mt-[16px] md:px-[64px] w-screen md:w-full">
-        <TabsRenderer id={FormId} formConfig={tabItems} />
+        {
+          isModeChecked && (
+            <TabsRenderer id={FormId} formConfig={tabItems} />
+          )
+        }
       </CardBody>
     </Card>
   );
