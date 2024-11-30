@@ -147,13 +147,12 @@
           },
           {
             "id": "personal_information_zipcode",
-            "type": "input",
+            "type": "zipcode",
             "label": "ZIP Code",
             "sub_label": "What is your current ZIP code?",
             "placeholder": "ZIP Code",
             "validation": {
-              "required": true,
-              "maxLength": 5
+              "required": true
             }
           }
         ]

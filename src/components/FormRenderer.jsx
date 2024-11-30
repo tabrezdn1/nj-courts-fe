@@ -64,7 +64,33 @@ const FieldRenderer = ({
             }}
             value={selectedOptions[field.id]?.value || ""}
             error={selectedOptions[field.id]?.error}
-            maxLength={9}
+          />
+          {selectedOptions[field.id]?.error && (
+            <p className="text-red-500 mt-1 text-xs">
+              {selectedOptions[field.id]?.error_desc}
+            </p>
+          )}
+        </>
+      );
+    case "zipcode": 
+      return (
+        <>
+          <Input
+            size="lg"
+            type="number"
+            placeholder={t(placeholderPath)}
+            className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value.length <= 5) {
+                onOptionChange(field.id, value);
+              }
+            }}
+            value={selectedOptions[field.id]?.value || ""}
+            error={selectedOptions[field.id]?.error}
           />
           {selectedOptions[field.id]?.error && (
             <p className="text-red-500 mt-1 text-xs">

@@ -76,6 +76,17 @@ const FormStepper = ({
         }
       }
     }
+    if (field?.type === "zipcode") {
+      const fieldValue = selectedOptions[field.id]?.value;
+      const minLength = 5;
+      if (fieldValue.length < minLength) {
+        if (updateDisplay) {
+          setInputProperty(field.id, "error", true);
+          setInputProperty(field.id, "error_desc", "Invalid Zipcode");
+        }
+        return false;
+      }
+    }
     if (field?.type === "phone") {
       const fieldValue = selectedOptions[field.id]?.value;
       const minLength = 10;
