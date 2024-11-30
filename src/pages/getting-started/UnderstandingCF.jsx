@@ -2,7 +2,7 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 import Heading from "../../components/Heading";
 import NavigateLink from "../../components/NavigateLink";
 import PointsList from "../../components/PointsList";
-import React from 'react';
+import React from "react";
 
 import {
   BookOpenIcon,
@@ -24,7 +24,7 @@ const UnderstandingCF = () => {
   };
 
   return (
-    <Card className="w-full h-[calc(100vh-2rem)] sm:mt-4 mt-16">
+    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
       <Heading heading={heading} />
       <CardBody className="font-normal mb:px-[64px]">
         <Typography color="gray" className="py-1 mb:w-1/2 text-2xl">
@@ -37,7 +37,9 @@ const UnderstandingCF = () => {
               color="teal"
               className="font-semibold flex items-center gap-2"
             >
-              {React.createElement(iconMapping[section.icon], { className: "w-8 h-8" })}
+              {React.createElement(iconMapping[section.icon], {
+                className: "w-8 h-8",
+              })}
               {section.title}
             </Typography>
             <Typography color="blue-gray" className="mt-2 text-lg">

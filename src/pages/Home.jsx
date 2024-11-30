@@ -56,7 +56,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full h-[calc(100vh-2rem)] overflow-y-auto px-4 pb-4">
+      <div className="w-full h-full overflow-y-auto px-4 pb-4">
         <div className="pt-[80px] md:pt-[30px]">
           <Heading className="hidden md:block" heading={heading} />
           <Typography

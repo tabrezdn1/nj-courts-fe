@@ -8,7 +8,7 @@ const EligibilityRequirements = () => {
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] mt-16 md:mt-0">
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
         <Heading heading={heading} />
         <CardBody className="font-normal md:px-12">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">

@@ -262,11 +262,11 @@ const StepByStepGuides = () => {
 
   return (
     <>
-      <Card className="h-[calc(100vh-2rem)] mt-16" shadow={false}>
-        {/* <Heading heading={heading} /> */}
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
+        <Heading heading={heading} />
         <CardBody className="p-2 font-normal md:px-[64px] overflow-x-hidden">
           <Tabs className="mt-6" value={activeTab}>
-          <TabsHeader
+            <TabsHeader
               className="w-full rounded-none border-b border-blue-gray-50 bg-transparent overflow-x-auto scrollbar-hide flex-nowrap"
               indicatorProps={{
                 className:

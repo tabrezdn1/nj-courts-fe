@@ -3,11 +3,11 @@ import ComingSoon from "../../components/ComingSoon";
 import Heading from "../../components/Heading";
 
 const CriminalCourtOverview = () => {
-  const heading = "Civil Court Common Forms";
+  const heading = "Criminal Court Overview";
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
         <Heading heading={heading} />
         <CardBody className="flex items-center justify-center h-full">
           <ComingSoon />

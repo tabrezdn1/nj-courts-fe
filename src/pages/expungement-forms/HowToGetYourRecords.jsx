@@ -10,7 +10,7 @@ const HowToGetYourRecords = () => {
 
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
         <Heading heading={howToGetYourRecords.heading} />
         <CardBody className="font-normal px-8">
           <Tabs className="mt-6 w-auto" value={activeTab}>
@@ -34,7 +34,7 @@ const HowToGetYourRecords = () => {
             <TabsBody>
               {howToGetYourRecords.tabs.map(({ value, desc, list }) => (
                 <TabPanel key={value} value={value}>
-                  <Typography color="gray" className="py-1 w-1/2 text-2xl">
+                  <Typography color="gray" className="py-1 text-sm md:text-2xl">
                     {desc}
                   </Typography>
                   <PointsList listPoints={list} />

@@ -6,7 +6,7 @@ import { glossaryOfLegalTerms } from "../../data/configs";
 const GlossaryOfLegalTerms = () => {
   return (
     <>
-      <Card className="w-full h-[calc(100vh-2rem)] overflow-y-auto">
+      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
         <Heading heading={glossaryOfLegalTerms.heading} />
         <CardBody className="font-normal px-8">
           <Typography color="gray" className="py-1 w-1/2 text-2xl">
