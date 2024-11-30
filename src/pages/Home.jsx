@@ -11,9 +11,7 @@ import { useState } from "react";
 import Heading from "../components/Heading";
 import SVGRenderer from "../components/SVGRenderer";
 import questions from "../data/homescreen.json";
-import { useTranslation } from "react-i18next";
 const Home = () => {
-  const { t } = useTranslation();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(
     questions[currentQuestionIndex]
@@ -62,7 +60,7 @@ const Home = () => {
             color="gray"
             className="mt-[20px] pb-4 px-4 text-xl md:text-2xl text-center font-bold"
           >
-            {t(`homescreen.${currentQuestionIndex}.question`)}
+            {currentQuestion.question}
           </Typography>
           <div
             className={`grid grid-cols-1 md:grid-cols-2 gap-[15px] md:gap-[30px] px-[10px] md:px-[100px] lg:px-[250px] pt-[30px] md:pt-[60px]`}
@@ -82,9 +80,7 @@ const Home = () => {
                     color="gray"
                     className="mb-2 text-sm md:text-lg"
                   >
-                    {t(
-                      `homescreen.${currentQuestionIndex}.options.${index}.title`
-                    )}
+                    {card.title}
                   </Typography>
                 </CardFooter>
               </Card>
