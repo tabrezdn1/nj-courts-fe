@@ -4,8 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { sidebarItems } from "./data/configs";
 import { routeGroups } from "./routes";
 import * as Pages from "./pages";
-import { I18nextProvider } from "react-i18next";
-import i18n from "./i18n";
 
 function App() {
   const renderRoutes = (routes, parentPath = "") =>
@@ -31,14 +29,12 @@ function App() {
     });
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <div className="w-full flex h-svh max-h-svh">
-        <Sidebar items={sidebarItems} />
-        <div className="h-full flex-1 overflow-y-auto">
-          <Routes>{renderRoutes(routeGroups)}</Routes>
-        </div>
+    <div className="w-full flex h-svh max-h-svh">
+      <Sidebar items={sidebarItems} />
+      <div className="h-full flex-1 overflow-y-auto">
+        <Routes>{renderRoutes(routeGroups)}</Routes>
       </div>
-    </I18nextProvider>
+    </div>
   );
 }
 

@@ -11,16 +11,9 @@ import {
 import HelpDrawer from "./HelpDrawer";
 import { useEffect, useRef } from "react";
 import FormReview from "./FormReview";
-import { useTranslation } from "react-i18next";
 import SignaturePad from "./SignaturePad";
 
-const FieldRenderer = ({
-  field,
-  onOptionChange,
-  selectedOptions,
-  placeholderPath,
-}) => {
-  const { t } = useTranslation();
+const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
   switch (field.type) {
     case "phone":
       return (
@@ -28,7 +21,7 @@ const FieldRenderer = ({
           <Input
             size="lg"
             type="number"
-            placeholder={t(placeholderPath)}
+            placeholder={field.placeholder}
             className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -55,7 +48,7 @@ const FieldRenderer = ({
           <Input
             size="lg"
             type="number"
-            placeholder={t(placeholderPath)}
+            placeholder={field.placeholder}
             className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -76,13 +69,13 @@ const FieldRenderer = ({
           )}
         </>
       );
-    case "zipcode": 
+    case "zipcode":
       return (
         <>
           <Input
             size="lg"
             type="number"
-            placeholder={t(placeholderPath)}
+            placeholder={field.placeholder}
             className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -108,7 +101,7 @@ const FieldRenderer = ({
         <>
           <Input
             size="lg"
-            placeholder={t(placeholderPath)}
+            placeholder={field.placeholder}
             className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -243,9 +236,13 @@ const FieldRenderer = ({
     case "signature":
       return (
         <>
-          <SignaturePad field={field} onOptionChange={onOptionChange} selectedOptions={selectedOptions}/>
+          <SignaturePad
+            field={field}
+            onOptionChange={onOptionChange}
+            selectedOptions={selectedOptions}
+          />
         </>
-      )
+      );
     default:
       return null;
   }
@@ -258,7 +255,6 @@ const RecursiveFieldRenderer = ({
   tabIndex,
   stepIndex,
 }) => {
-  const { t } = useTranslation();
   const getFieldIndexByLabelAndSublabel = (label, sub_label) => {
     return fields.findIndex(
       (field) => field.label === label && field.sub_label === sub_label
@@ -280,20 +276,14 @@ const RecursiveFieldRenderer = ({
         color="blue-gray"
         className="py-1 font-black font-bold text-sm"
       >
-        {t(
-          `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
-            field.label,
-            field.sub_label
-          )}.label`
-        )}
+        {field.label}
       </Typography>
-      <Typography variant="small" color="gray" className="py-1 font-black text-xs">
-        {t(
-          `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
-            field.label,
-            field.sub_label
-          )}.sub_label`
-        )}
+      <Typography
+        variant="small"
+        color="gray"
+        className="py-1 font-black text-xs"
+      >
+        {field.sub_label}
       </Typography>
       <FieldRenderer
         field={field}
@@ -317,32 +307,14 @@ const RecursiveFieldRenderer = ({
                     color="blue-gray"
                     className="py-1 font-black font-bold"
                   >
-                    {t(
-                      `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
-                        field.label,
-                        field.sub_label
-                      )}.subFields.${selectedOptions[field.id]?.value
-                      }.${getOptionsFieldIndex(
-                        field.subFields[selectedOptions[field.id]?.value],
-                        subField
-                      )}.label`
-                    )}
+                    {subField.label}
                   </Typography>
                   <Typography
                     variant="small"
                     color="gray"
                     className="py-1 font-black"
                   >
-                    {t(
-                      `tabs.${tabIndex}.stepper.${stepIndex}.fields.${getFieldIndexByLabelAndSublabel(
-                        field.label,
-                        field.sub_label
-                      )}.subFields.${selectedOptions[field.id]?.value
-                      }.${getOptionsFieldIndex(
-                        field.subFields[selectedOptions[field.id]?.value],
-                        subField
-                      )}.label`
-                    )}
+                    {subField.sub_label}
                   </Typography>
                   <FieldRenderer
                     field={subField}
@@ -385,7 +357,7 @@ const RecursiveFieldRenderer = ({
                             {nestedField.subFields &&
                               selectedOptions[nestedField.id]?.value &&
                               nestedField.subFields[
-                              selectedOptions[nestedField.id]?.value
+                                selectedOptions[nestedField.id]?.value
                               ] && (
                                 <div className="p-1">
                                   {nestedField.subFields[
@@ -486,12 +458,19 @@ const FormRenderer = ({
 
   return (
     <Card color="transparent" shadow={false} className="w-full md:w-auto">
-      <Typography variant="h4" color="blue-gray" className="text-xl md:text-2xl">
-        {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`)}
+      <Typography
+        variant="h4"
+        color="blue-gray"
+        className="text-xl md:text-2xl"
+      >
+        {form.title}
         {form?.helper && <HelpDrawer />}
       </Typography>
-      <Typography color="gray" className="font-normal max-w-96 text-sm md:text-base">
-        {t(`tabs.${tabIndex}.stepper.${stepIndex}.title`) || ""}
+      <Typography
+        color="gray"
+        className="font-normal max-w-96 text-sm md:text-base"
+      >
+        {form.subtitle}
       </Typography>
       <form className="w-full md:w-96">
         <div className="mb-1 flex flex-col gap-6">
