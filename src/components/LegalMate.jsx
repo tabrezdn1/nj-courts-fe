@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   Typography,
@@ -16,15 +16,25 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { useLocation } from "react-router-dom";
+import OpenAI from "openai";
 
 const LegalMate = () => {
   const location = useLocation();
+  useEffect(() => {
+    setMessages([
+      {
+        role: "system",
+        content: AgentPrompt,
+      },
+      {
+        role: "user",
+        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
+      },
+    ]);
+  }, [location]);
+
   const AI_API_KEY = import.meta.env.VITE_AI_API;
-  const AgentPrompt = import.meta.env.VITE_AGENT_PROMPT?.replace(
-    "{{current_path}}",
-    location.pathname
-  );
-  const AgentBaseUrl = import.meta.env.VITE_AGENT_DEPLOYED_URL ?? "";
+  const AgentPrompt = import.meta.env.VITE_AGENT_PROMPT;
   const ModelName = import.meta.env.VITE_LLM_MODEL_NAME ?? "";
   const [size, setSize] = React.useState(null);
 
@@ -40,6 +50,10 @@ const LegalMate = () => {
       role: "system",
       content: AgentPrompt,
     },
+    {
+      role: "user",
+      content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
+    },
   ]);
 
   const handleTextInput = async (e) => {
@@ -48,6 +62,10 @@ const LegalMate = () => {
   const handleReplyInput = async (e) => {
     setReply(e.target.value);
   };
+  const openai = new OpenAI({
+    apiKey: AI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
   const handleSubmit = async () => {
     setLoading(true);
     handleOpen("xxl");
@@ -58,28 +76,32 @@ const LegalMate = () => {
     }
     setMessages(messages);
     try {
-      const response = await fetch(
-        AgentBaseUrl,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${AI_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            model: ModelName,
-            messages: messages,
-            repetition_penalty: 1.1,
-            temperature: 0.7,
-            top_p: 0.9,
-            top_k: 40,
-            max_tokens: 1024,
-            stream: false,
-          }),
-        }
-      );
-
-      const data = await response.json();
+      //   const response = await fetch(
+      //     AgentBaseUrl,
+      //     {
+      //       method: "POST",
+      //       headers: {
+      //         Authorization: `Bearer ${AI_API_KEY}`,
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify({
+      //         model: ModelName,
+      //         messages: messages,
+      //         repetition_penalty: 1.1,
+      //         temperature: 0.7,
+      //         top_p: 0.9,
+      //         top_k: 40,
+      //         max_tokens: 1024,
+      //         stream: false,
+      //       }),
+      //     }
+      // )
+      const response = await openai.chat.completions.create({
+        model: ModelName,
+        messages: messages,
+      });
+      //   const data = await response.json();
+      const data = await response;
       if (data && data.choices.length) {
         console.log(data.choices[0].message.content);
         setOutput(data.choices[0].message.content);
@@ -110,6 +132,10 @@ const LegalMate = () => {
       {
         role: "system",
         content: AgentPrompt,
+      },
+      {
+        role: "user",
+        content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing.`,
       },
     ]);
   };
@@ -190,12 +216,10 @@ const LegalMate = () => {
                           '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
                         ); // Links
                       return (
-                        
-                          <p
-                            key={index}
-                            dangerouslySetInnerHTML={{ __html: formattedLine }}
-                          />
-                        
+                        <p
+                          key={index}
+                          dangerouslySetInnerHTML={{ __html: formattedLine }}
+                        />
                       );
                     }
                   })
@@ -232,7 +256,12 @@ const LegalMate = () => {
                         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                       />
                       <div>
-                        <IconButton variant="text" className="rounded-full" onClick={handleSubmit} disabled={reply.length === 0}>
+                        <IconButton
+                          variant="text"
+                          className="rounded-full"
+                          onClick={handleSubmit}
+                          disabled={reply.length === 0}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
