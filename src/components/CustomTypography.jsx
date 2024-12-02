@@ -8,7 +8,11 @@ const CustomTypography = ({ children, variant = "heading" }) => {
 
   const classes = styleMap[variant] || "";
 
-  return <Typography className={classes}>{children}</Typography>;
+  return (
+    <Typography className={classes} aria-label={children}>
+      {children}
+    </Typography>
+  );
 };
 
 export default CustomTypography;

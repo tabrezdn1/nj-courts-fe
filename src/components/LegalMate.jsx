@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   Typography,
@@ -36,7 +36,7 @@ const LegalMate = () => {
   const AI_API_KEY = import.meta.env.VITE_AI_API;
   const AgentPrompt = import.meta.env.VITE_AGENT_PROMPT;
   const ModelName = import.meta.env.VITE_LLM_MODEL_NAME ?? "";
-  const [size, setSize] = React.useState(null);
+  const [size, setSize] = useState(null);
 
   const handleOpen = (value) => setSize(value);
 
@@ -44,7 +44,7 @@ const LegalMate = () => {
   const [reply, setReply] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showReply, SetShowReply] = useState(false);
+  const [showReply, setShowReply] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "system",
@@ -52,14 +52,14 @@ const LegalMate = () => {
     },
     {
       role: "user",
-      content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you do not recieve any path, it means the user is at homepage.`,
+      content: `The user is currently on this page ${location.pathname} on the app. Help user if they have doubt about what page they are viewing. If you do not receive any path, it means the user is at homepage.`,
     },
   ]);
 
-  const handleTextInput = async (e) => {
+  const handleTextInput = (e) => {
     setInput(e.target.value);
   };
-  const handleReplyInput = async (e) => {
+  const handleReplyInput = (e) => {
     setReply(e.target.value);
   };
   const openai = new OpenAI({
@@ -69,45 +69,19 @@ const LegalMate = () => {
   const handleSubmit = async () => {
     setLoading(true);
     handleOpen("xxl");
-    if (reply.length > 0) {
-      messages.push({ role: "user", content: reply });
-    } else {
-      messages.push({ role: "user", content: input });
-    }
+    const userMessage = reply.length > 0 ? reply : input;
+    messages.push({ role: "user", content: userMessage });
     setMessages(messages);
     try {
-      //   const response = await fetch(
-      //     AgentBaseUrl,
-      //     {
-      //       method: "POST",
-      //       headers: {
-      //         Authorization: `Bearer ${AI_API_KEY}`,
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify({
-      //         model: ModelName,
-      //         messages: messages,
-      //         repetition_penalty: 1.1,
-      //         temperature: 0.7,
-      //         top_p: 0.9,
-      //         top_k: 40,
-      //         max_tokens: 1024,
-      //         stream: false,
-      //       }),
-      //     }
-      // )
       const response = await openai.chat.completions.create({
         model: ModelName,
         messages: messages,
       });
-      //   const data = await response.json();
-      const data = await response;
-      if (data && data.choices.length) {
-        console.log(data.choices[0].message.content);
-        setOutput(data.choices[0].message.content);
+      if (response && response.choices.length) {
+        setOutput(response.choices[0].message.content);
         messages.push({
           role: "system",
-          content: data.choices[0].message.content,
+          content: response.choices[0].message.content,
         });
         setMessages(messages);
         setInput("");
@@ -124,7 +98,7 @@ const LegalMate = () => {
 
   const resetAgentChat = () => {
     handleOpen(null);
-    SetShowReply(false);
+    setShowReply(false);
     setOutput("");
     setInput("");
     setReply("");
@@ -140,14 +114,19 @@ const LegalMate = () => {
     ]);
   };
 
+
   return (
     <div>
       <div className="flex d-flex">
         <div className="mt-[-5px]">
           <Avatar
             src="/legal-mate.gif"
-            alt="tania andrew"
+            alt="LegalMate avatar"
             onClick={() => handleOpen("xxl")}
+            role="button"
+            aria-label="Open chat with LegalMate"
+            tabIndex={0} // Added to make it focusable
+            onKeyPress={(e) => e.key === "Enter" && handleOpen("xxl")} // Added keyboard accessibility
           />
         </div>
         <div>
@@ -157,35 +136,40 @@ const LegalMate = () => {
             onChange={handleTextInput}
             disabled={loading}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+            aria-label="Input for talking with LegalMate"
+            color="black"
           />
         </div>
       </div>
 
       <Dialog
-        open={
-          size === "xs" ||
-          size === "sm" ||
-          size === "md" ||
-          size === "lg" ||
-          size === "xl" ||
-          size === "xxl"
-        }
+        open={["xs", "sm", "md", "lg", "xl", "xxl"].includes(size)}
         size={size || "md"}
         handler={handleOpen}
         className="overflow-scroll"
+        aria-labelledby="legal-mate-dialog-title"
+        aria-describedby="legal-mate-dialog-description"
       >
         <DialogBody>
-          <Card color="transparent" shadow={false} className="min-w-fit min-h-full overflow-y-auto">
+          <Card
+            color="transparent"
+            shadow={false}
+            className="min-w-fit min-h-full overflow-y-auto"
+          >
             <CardHeader
               color="transparent"
               floated={false}
               shadow={false}
               className="mx-0 flex items-center gap-4 pt-0 pb-8"
             >
-              <Avatar src="/legal-mate.gif" alt="tania andrew" />
+              <Avatar src="/legal-mate.gif" alt="LegalMate avatar" />
               <div className="flex w-full flex-col">
                 <div className="flex items-center justify-between">
-                  <Typography variant="h5" color="blue-gray">
+                  <Typography
+                    variant="h5"
+                    color="blue-gray"
+                    id="legal-mate-dialog-title"
+                  >
                     Legal Mate
                   </Typography>
                 </div>
@@ -193,7 +177,7 @@ const LegalMate = () => {
               </div>
             </CardHeader>
             <CardBody className="mb-6 p-1 w-full">
-              <Typography>
+              <Typography id="legal-mate-dialog-description">
                 {loading ? (
                   <Spinner color="teal" className="h-32 w-32 mx-auto" />
                 ) : (
@@ -207,14 +191,13 @@ const LegalMate = () => {
                     } else if (line.startsWith("- ")) {
                       return <li key={index}>{line.slice(2)}</li>;
                     } else {
-                      // Handle bold, italic, links, and other markdown styles
                       const formattedLine = line
-                        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Bold
-                        .replace(/\*(.*?)\*/g, "<em>$1</em>") // Italic
+                        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                        .replace(/\*(.*?)\*/g, "<em>$1</em>")
                         .replace(
                           /\[(.*?)\]\((.*?)\)/g,
                           '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-                        ); // Links
+                        );
                       return (
                         <p
                           key={index}
@@ -236,7 +219,8 @@ const LegalMate = () => {
                     <Button
                       variant="gradient"
                       className="rounded-full"
-                      onClick={() => SetShowReply(true)}
+                      onClick={() => setShowReply(true)}
+                      aria-label="Reply to LegalMate"
                     >
                       Reply
                     </Button>
@@ -246,47 +230,52 @@ const LegalMate = () => {
 
               <div className="p-2">
                 {showReply && (
-                  <>
-                    <div className="flex w-full flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
-                      <Input
-                        label="Reply to LegalMate"
-                        value={reply}
-                        onChange={handleReplyInput}
-                        disabled={loading}
-                        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-                      />
-                      <div>
-                        <IconButton
-                          variant="text"
-                          className="rounded-full"
-                          onClick={handleSubmit}
-                          disabled={reply.length === 0}
+                  <div className="flex w-full flex-row items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">
+                    <Input
+                      label="Reply to LegalMate"
+                      value={reply}
+                      onChange={handleReplyInput}
+                      disabled={loading}
+                      onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+                      aria-label="Input for replying to LegalMate"
+                    />
+                    <div>
+                      <IconButton
+                        variant="text"
+                        className="rounded-full"
+                        onClick={handleSubmit}
+                        disabled={reply.length === 0}
+                        aria-label="Send reply to LegalMate"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          className="h-5 w-5"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            className="h-5 w-5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-                            />
-                          </svg>
-                        </IconButton>
-                      </div>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                          />
+                        </svg>
+                      </IconButton>
                     </div>
-                  </>
+                  </div>
                 )}
               </div>
             </CardBody>
           </Card>
         </DialogBody>
         <DialogFooter>
-          <Button variant="gradient" color="green" onClick={resetAgentChat}>
+          <Button
+            variant="gradient"
+            color="green"
+            onClick={resetAgentChat}
+            aria-label="Close chat with LegalMate"
+          >
             <span>Close</span>
           </Button>
         </DialogFooter>

@@ -11,6 +11,7 @@ import { useState } from "react";
 import Heading from "../components/Heading";
 import SVGRenderer from "../components/SVGRenderer";
 import questions from "../data/homescreen.json";
+
 const Home = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(
@@ -53,23 +54,28 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full h-full overflow-y-auto">
+      <div className="w-full h-full overflow-y-auto" role="main">
         <div className="pt-[80px] md:pt-0">
           <Heading className="hidden md:block" heading={heading} />
           <Typography
             color="gray"
             className="mt-[20px] pb-4 px-4 text-xl md:text-2xl text-center font-bold"
+            aria-live="polite"
           >
             {currentQuestion.question}
           </Typography>
           <div
             className={`grid grid-cols-1 md:grid-cols-2 gap-[15px] md:gap-[30px] px-[10px] md:px-[100px] lg:px-[250px] pt-[30px] md:pt-[60px]`}
+            role="group"
+            aria-labelledby="question-options"
           >
             {currentQuestion.options.map((card, index) => (
               <Card
                 key={index}
                 className="w-full md:w-[300px] lg:w-[350px] mx-auto h-[200px] md:h-[250px] cursor-pointer shadow-md transition-transform transform hover:scale-105"
                 onClick={() => routeTo(card)}
+                role="button"
+                aria-label={`Select ${card.title}`}
               >
                 <CardBody className="flex justify-center items-center text-center">
                   <SVGRenderer svgName={card.name} />
@@ -94,6 +100,7 @@ const Home = () => {
                 className="w-auto md:w-32"
                 variant="outlined"
                 onClick={back}
+                aria-label="Go back to the previous question"
               >
                 Back
               </Button>

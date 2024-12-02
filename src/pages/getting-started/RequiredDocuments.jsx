@@ -194,7 +194,7 @@ const StepByStepGuides = () => {
         {
           title: "Government ID",
           description:
-            "a copy of your state-issued driver's license, passport, or another form of identification will be required to confirm your identity.",
+            "A copy of your state-issued driver's license, passport, or another form of identification will be required to confirm your identity.",
         },
         {
           title: "Social Security Card",
@@ -209,12 +209,12 @@ const StepByStepGuides = () => {
         {
           title: "Case Numbers",
           description:
-            "Any prior case numbers related to your current legal matter. For example, if you are seeking expungement, you will need the case number of the criminal case you wish to expunge",
+            "Any prior case numbers related to your current legal matter. For example, if you are seeking expungement, you will need the case number of the criminal case you wish to expunge.",
         },
         {
           title: "Prior Court Orders",
           description:
-            "A utility bill, lease agreement, or other official document showing your current address may be requested to establish residency",
+            "A utility bill, lease agreement, or other official document showing your current address may be requested to establish residency.",
         },
       ],
     },
@@ -281,6 +281,10 @@ const StepByStepGuides = () => {
                   className={`text-sm sm:text-base md:text-xl ${
                     activeTab === value ? "text-gray-900" : ""
                   }`}
+                  aria-selected={activeTab === value}
+                  role="tab"
+                  aria-controls={`${value}-panel`}
+                  id={`${value}-tab`}
                 >
                   {label}
                 </Tab>
@@ -288,7 +292,14 @@ const StepByStepGuides = () => {
             </TabsHeader>
             <TabsBody className="p-2 sm:p-4">
               {tabsData.map(({ value, steps, additionalSteps }) => (
-                <TabPanel key={value} value={value} className="p-0">
+                <TabPanel
+                  key={value}
+                  value={value}
+                  className="p-0"
+                  role="tabpanel"
+                  id={`${value}-panel`}
+                  aria-labelledby={`${value}-tab`}
+                >
                   <NumberedSection
                     heading={`${value.replace("-", " ")} Steps`}
                     items={steps}

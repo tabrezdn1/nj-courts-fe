@@ -2,13 +2,12 @@ import React from "react";
 import { Stepper, Step, Button } from "@material-tailwind/react";
 import * as HeroIcons from "@heroicons/react/24/outline";
 import FormRenderer from "./FormRenderer";
-
 import ExpungementFormSubmit from "../pages/expungement-forms/ExpungementFormSubmit";
 
 const FormStepper = ({
   id,
   steps,
-  showErrorPage=false,
+  showErrorPage = false,
   activeTab,
   disableShowErrorPage,
   tabDetails,
@@ -22,31 +21,29 @@ const FormStepper = ({
   updateFormDetails,
   tabIndex,
 }) => {
-
   const getSeletedOptions = () => {
     return (
       JSON.parse(localStorage.getItem(id)) || {
         activeStep: 0,
         tabCompleted: false,
-        progress: 0
+        progress: 0,
       }
     );
   };
 
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
-  const [selectedOptions, setSelectedOptions] = React.useState(getSeletedOptions);
+  const [selectedOptions, setSelectedOptions] =
+    React.useState(getSeletedOptions);
 
   const setInputProperty = (fieldId, property, value) => {
-    setSelectedOptions((prevOptions) => {
-      return {
-        ...prevOptions,
-        [fieldId]: {
-          ...prevOptions[fieldId],
-          [property]: value,
-        },
-      };
-    });
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [fieldId]: {
+        ...prevOptions[fieldId],
+        [property]: value,
+      },
+    }));
   };
 
   const isValidField = (field, updateDisplay = true) => {
@@ -92,7 +89,11 @@ const FormStepper = ({
       const minLength = 10;
       const maxLength = 15;
       const phonePattern = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
-      if (!phonePattern.test(fieldValue) || fieldValue.length < minLength || fieldValue.length > maxLength) {
+      if (
+        !phonePattern.test(fieldValue) ||
+        fieldValue.length < minLength ||
+        fieldValue.length > maxLength
+      ) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
           setInputProperty(field.id, "error_desc", "Invalid Phone Number");
@@ -105,7 +106,7 @@ const FormStepper = ({
       const fieldValue = selectedOptions[field.id]?.value;
       const ssnPattern = /^\d{9}$/;
       const maxLength = 9;
-      if (!ssnPattern.test(fieldValue) || fieldValue.length != maxLength) {
+      if (!ssnPattern.test(fieldValue) || fieldValue.length !== maxLength) {
         if (updateDisplay) {
           setInputProperty(field.id, "error", true);
           setInputProperty(field.id, "error_desc", "Invalid SSN Format");
@@ -127,7 +128,8 @@ const FormStepper = ({
   };
 
   const isValid = (updateDisplay = true, index = undefined) => {
-    const currentStep = steps[(index != undefined) ? index : selectedOptions.activeStep];
+    const currentStep =
+      steps[index !== undefined ? index : selectedOptions.activeStep];
     let valid = true;
 
     for (let field of currentStep?.fields) {
@@ -137,7 +139,7 @@ const FormStepper = ({
     return valid;
   };
 
-  const isValidForm = (updateDisplay=false) => {
+  const isValidForm = (updateDisplay = false) => {
     let valid = true;
     steps.forEach((item, currentIndex) => {
       valid = isValid(updateDisplay, currentIndex) && valid;
@@ -145,33 +147,34 @@ const FormStepper = ({
     return valid;
   };
 
-  const handleNext = (index=undefined) => {
+  const handleNext = (index = undefined) => {
     if (isValid(true, index)) {
       if (!isLastStep) {
-        setSelectedOptions((prev) => {
-          return {
-            ...prev,
-            activeStep: prev.activeStep + 1,
-            progress: Math.max(prev.activeStep + 1, prev.progress)
-          };
-        });
-        return true
+        setSelectedOptions((prev) => ({
+          ...prev,
+          activeStep: prev.activeStep + 1,
+          progress: Math.max(prev.activeStep + 1, prev.progress),
+        }));
+        return true;
       } else if (isLastStep && !isLastTab) {
-        setSelectedOptions((prev) => {
-          return { ...prev, tabCompleted: true };
-        });
+        setSelectedOptions((prev) => ({
+          ...prev,
+          tabCompleted: true,
+        }));
         moveNextTab();
         isTabComplete(true);
-        return true
+        return true;
       }
     }
-    return false
+    return false;
   };
+
   const handlePrev = () => {
     if (!isFirstStep) {
-      setSelectedOptions((prev) => {
-        return { ...prev, activeStep: prev.activeStep - 1 };
-      });
+      setSelectedOptions((prev) => ({
+        ...prev,
+        activeStep: prev.activeStep - 1,
+      }));
     } else if (isFirstStep && !isFirstTab) {
       movePrevTab();
     }
@@ -187,7 +190,7 @@ const FormStepper = ({
   const handleConditionStepper = (fieldId, option, isChecked = true) => {
     const isConditionalStepper = tabDetails.conditionalStepper;
     const conditionalField = tabDetails.conditionalField;
-    if (!isConditionalStepper || conditionalField != fieldId) {
+    if (!isConditionalStepper || conditionalField !== fieldId) {
       return;
     }
     const tab_id = tabDetails.value;
@@ -223,42 +226,38 @@ const FormStepper = ({
 
   const handleStepperClick = (index) => {
     let currentStep = selectedOptions.activeStep;
-    while ( currentStep < index && handleNext(currentStep) ) {
-      console.log(handleNext(currentStep))
+    while (currentStep < index && handleNext(currentStep)) {
       currentStep += 1;
     }
-    setSelectedOptions(prev => {
-      return { ...prev, activeStep: Math.min(currentStep, index) }
-    })
-  }
+    setSelectedOptions((prev) => ({
+      ...prev,
+      activeStep: Math.min(currentStep, index),
+    }));
+  };
 
   if (isValidForm()) {
-    isTabComplete(true)
+    isTabComplete(true);
   } else {
-    isTabComplete(false)
+    isTabComplete(false);
   }
 
   React.useEffect(() => {
     if (showErrorPage) {
-      let errorStep
+      let errorStep;
       for (let i = 0; i < steps.length; i++) {
         if (!isValid(false, i)) {
-          errorStep = i
+          errorStep = i;
           disableShowErrorPage();
           break;
         }
       }
-      isValid(true, errorStep)
-      setSelectedOptions((prev) => {
-        return {
-          ...prev,
-          activeStep: errorStep,
-        };
-      });
+      isValid(true, errorStep);
+      setSelectedOptions((prev) => ({
+        ...prev,
+        activeStep: errorStep,
+      }));
     }
   }, [showErrorPage]);
-  
-
 
   return (
     <>
@@ -268,15 +267,20 @@ const FormStepper = ({
             activeStep={selectedOptions.activeStep}
             isLastStep={(value) => setIsLastStep(value)}
             isFirstStep={(value) => setIsFirstStep(value)}
+            aria-label="Form Stepper"
           >
             {steps.map((step, index) => {
               const IconComponent = HeroIcons[step.icon];
               return (
-                <Step key={index} onClick={() => handleStepperClick(index)}>
+                <Step
+                  key={index}
+                  onClick={() => handleStepperClick(index)}
+                  aria-label={`Step ${index + 1}: ${step.title}`}
+                >
                   {IconComponent ? (
-                    <IconComponent className="h-6 w-6" />
+                    <IconComponent className="h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <div className="h-6 w-6" />
+                    <div className="h-6 w-6" aria-hidden="true" />
                   )}
                 </Step>
               );
@@ -302,14 +306,22 @@ const FormStepper = ({
       <div className="flex justify-between sticky bottom-0 bg-white max-w-[inherit] pt-4 md:pt-0">
         <div>
           {!(isFirstTab && isFirstStep) && (
-            <Button onClick={handlePrev} disabled={isFirstTab && isFirstStep}>
+            <Button
+              onClick={handlePrev}
+              disabled={isFirstTab && isFirstStep}
+              aria-label="Previous Step"
+            >
               Prev
             </Button>
           )}
         </div>
         <div>
           {!(isLastTab && isLastStep) && (
-            <Button onClick={() => handleNext()} disabled={isLastTab && isLastStep}>
+            <Button
+              onClick={() => handleNext()}
+              disabled={isLastTab && isLastStep}
+              aria-label="Next Step"
+            >
               Next
             </Button>
           )}

@@ -39,11 +39,18 @@ const HowItWorks = () => {
     }));
 
   return (
-    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="how-it-works-heading"
+    >
       <Heading heading={heading} />
       <CardBody className="w-full font-normal px-5 sm:px-[64px]">
-        <section className="p-1">
-          <CustomTypography variant="heading">Introduction</CustomTypography>
+        <section className="p-1" aria-labelledby="introduction-heading">
+          <CustomTypography id="introduction-heading" variant="heading">
+            Introduction
+          </CustomTypography>
           <CustomTypography
             variant="paragraph"
             className="text-sm sm:text-base"
@@ -52,8 +59,12 @@ const HowItWorks = () => {
           </CustomTypography>
         </section>
 
-        <section className="p-1">
-          <CustomTypography variant="heading" className="text-lg sm:text-xl">
+        <section className="p-1" aria-labelledby="find-form-heading">
+          <CustomTypography
+            id="find-form-heading"
+            variant="heading"
+            className="text-lg sm:text-xl"
+          >
             Find the Form You Need
           </CustomTypography>
           <CustomTypography
@@ -68,8 +79,12 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="p-1">
-          <CustomTypography variant="heading" className="text-lg sm:text-xl">
+        <section className="p-1" aria-labelledby="fill-form-heading">
+          <CustomTypography
+            id="fill-form-heading"
+            variant="heading"
+            className="text-lg sm:text-xl"
+          >
             Fill Out the Form with Step-by-Step Guidance
           </CustomTypography>
           <CustomTypography
@@ -85,8 +100,12 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="p-1">
-          <CustomTypography variant="heading" className="text-lg sm:text-xl">
+        <section className="p-1" aria-labelledby="submit-form-heading">
+          <CustomTypography
+            id="submit-form-heading"
+            variant="heading"
+            className="text-lg sm:text-xl"
+          >
             Submit Your Form
           </CustomTypography>
           <CustomTypography
@@ -100,8 +119,12 @@ const HowItWorks = () => {
           />
         </section>
 
-        <section className="p-1">
-          <CustomTypography variant="heading" className="text-lg sm:text-xl">
+        <section className="p-1" aria-labelledby="save-time-heading">
+          <CustomTypography
+            id="save-time-heading"
+            variant="heading"
+            className="text-lg sm:text-xl"
+          >
             Save Time and Reduce Errors
           </CustomTypography>
           {saveTimeText.map((text, index) => (

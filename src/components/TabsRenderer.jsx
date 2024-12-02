@@ -89,7 +89,7 @@ const TabsRenderer = ({ id, formConfig }) => {
     }
   };
 
-  // Hack for smooter transistions
+  // Hack for smoother transitions
   // https://github.com/creativetimofficial/material-tailwind/issues/364
   React.useEffect(() => {
     localStorage.setItem(id, JSON.stringify(tabDetails));
@@ -105,7 +105,7 @@ const TabsRenderer = ({ id, formConfig }) => {
   }, [tabDetails]);
 
   const handleTabChange = (value) => {
-    if (value != tabDetails.activeTab) {
+    if (value !== tabDetails.activeTab) {
       const valueIndex = activeForm.findIndex((item) => item.value === value);
       let activeIndex = activeForm.findIndex(
         (item) => item.value === tabDetails.activeTab
@@ -124,12 +124,7 @@ const TabsRenderer = ({ id, formConfig }) => {
       ) {
         activeIndex += 1;
       }
-      let showErrorPage;
-      if (valueIndex != activeIndex) {
-        showErrorPage = true;
-      } else {
-        showErrorPage = false;
-      }
+      let showErrorPage = valueIndex !== activeIndex;
       updateActiveTab((prev) => ({
         ...prev,
         activeTab: activeForm[activeIndex].value,
@@ -139,7 +134,7 @@ const TabsRenderer = ({ id, formConfig }) => {
   };
 
   const isTabComplete = (index, complete) => {
-    if (activeForm[index].complete != complete) {
+    if (activeForm[index].complete !== complete) {
       updateActiveForm((prev) => {
         const newForm = [...prev];
         newForm[index] = { ...newForm[index], complete: complete };
@@ -155,7 +150,7 @@ const TabsRenderer = ({ id, formConfig }) => {
   };
 
   return (
-    <Tabs className="mt-6" value={tabDetails.activeTab}>
+    <Tabs className="mt-6" value={tabDetails.activeTab} aria-label="Form tabs">
       <TabsHeader
         className="rounded-none border-b border-blue-gray-50 bg-transparent p-0 overflow-x-auto whitespace-nowrap"
         indicatorProps={{
@@ -173,6 +168,9 @@ const TabsRenderer = ({ id, formConfig }) => {
                 ? "text-gray-900 w-84 wd:w-full"
                 : ""
             }
+            role="tab"
+            aria-selected={tabDetails.activeTab === value}
+            aria-controls={`tabpanel-${value}`}
           >
             {label}
           </Tab>
@@ -180,10 +178,17 @@ const TabsRenderer = ({ id, formConfig }) => {
       </TabsHeader>
       <TabsBody>
         {activeForm.map((item, index) => (
-          <TabPanel key={item.value} value={item.value}>
+          <TabPanel
+            key={item.value}
+            value={item.value}
+            id={`tabpanel-${item.value}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${item.value}`}
+          >
             <Typography
               color="gray"
               className="py-1 md:w-1/2 text-2xl mx-auto text-center"
+              id={`description-${item.value}`}
             >
               {item.desc}
             </Typography>
@@ -202,12 +207,10 @@ const TabsRenderer = ({ id, formConfig }) => {
                   : false
               }
               disableShowErrorPage={() =>
-                updateActiveTab((prev) => {
-                  return {
-                    ...prev,
-                    showErrorPage: false,
-                  };
-                })
+                updateActiveTab((prev) => ({
+                  ...prev,
+                  showErrorPage: false,
+                }))
               }
               tabIndex={getTabIndexByLabelAndValue(item.label, item.value)}
               tabDetails={item}

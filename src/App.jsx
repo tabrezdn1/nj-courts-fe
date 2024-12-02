@@ -23,15 +23,21 @@ function App() {
               ? `${parentPath}${path}${paramRoute}`
               : `${parentPath}${path}`
           }
-          element={<ComponentToRender />}
+          element={
+            <ComponentToRender aria-label={`Navigate to ${component}`} />
+          }
         />
       );
     });
 
   return (
-    <div className="w-full flex h-svh max-h-svh">
-      <Sidebar items={sidebarItems} />
-      <div className="h-full flex-1 overflow-y-auto">
+    <div
+      className="w-full flex h-svh max-h-svh"
+      role="application"
+      aria-label="Main application area"
+    >
+      <Sidebar items={sidebarItems} aria-label="Sidebar navigation" />
+      <div className="h-full flex-1 overflow-y-auto" role="main">
         <Routes>{renderRoutes(routeGroups)}</Routes>
       </div>
     </div>

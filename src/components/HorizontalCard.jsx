@@ -3,15 +3,28 @@ import NavigateLink from "../components/NavigateLink";
 
 export function HorizontalCard({ content }) {
   return (
-    <Card className="w-full max-w-[48rem] flex-row">
+    <Card
+      className="w-full max-w-[48rem] flex-row"
+      role="article"
+      aria-labelledby="horizontal-card-title"
+    >
       <CardBody>
-        <Typography variant="h6" color="gray" className="mb-4 uppercase">
+        <Typography
+          id="horizontal-card-title"
+          variant="h6"
+          color="gray"
+          className="mb-4 uppercase"
+        >
           {content?.category || "Category"}
         </Typography>
         <Typography variant="h4" color="blue-gray" className="mb-2">
           {content?.title || "Default Title"}
         </Typography>
-        <Typography color="gray" className="font-normal">
+        <Typography
+          color="gray"
+          className="font-normal"
+          aria-describedby="content-description"
+        >
           {content?.description || "Default description of the content."}
         </Typography>
         {content?.link && content?.buttonText && (
@@ -19,6 +32,7 @@ export function HorizontalCard({ content }) {
             link={content.link}
             label={content.buttonText}
             className="flex items-center gap-2 text-blue-500 hover:underline mt-4"
+            aria-label={`Learn more about ${content.title || "this content"}`}
           ></NavigateLink>
         )}
       </CardBody>

@@ -7,17 +7,24 @@ const EligibilityRequirements = () => {
   const { heading, introduction, listPoints } = eligibilityData;
 
   return (
-    <>
-      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-        <Heading heading={heading} />
-        <CardBody className="font-normal md:px-12">
-          <Typography color="gray" className="py-1 w-1/2 text-2xl">
-            {introduction}
-          </Typography>
-          <PointsList listPoints={listPoints} />
-        </CardBody>
-      </Card>
-    </>
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="eligibility-requirements-heading"
+    >
+      <Heading heading={heading} id="eligibility-requirements-heading" />
+      <CardBody className="font-normal md:px-12" role="document">
+        <Typography
+          color="gray"
+          className="py-1 w-1/2 text-2xl"
+          aria-label="Introduction to eligibility requirements"
+        >
+          {introduction}
+        </Typography>
+        <PointsList listPoints={listPoints} />
+      </CardBody>
+    </Card>
   );
 };
 

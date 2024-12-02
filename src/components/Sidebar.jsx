@@ -17,8 +17,6 @@ import LegalMate from "./LegalMate";
 const Sidebar = (props) => {
   const [openAccordions, setOpenAccordions] = React.useState({});
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
-  // const NJCOURTS_SVG_URL =
-  //   "https://portalselfreg-cloud.njcourts.gov/prweb/PRServletPublicAuth/app/ESSOPortal_/yq-No0lmafOUvv0O-O5GtbIFqEhzNFKZ*/esso/njcourtslogo_12624293735.svg!!.svg";
 
   function Icon({ rotate }) {
     return (
@@ -29,6 +27,7 @@ const Sidebar = (props) => {
         strokeWidth={2}
         stroke="currentColor"
         className={`${rotate ? "rotate-180" : ""} h-5 w-5 transition-transform`}
+        aria-hidden="true" // Added for accessibility
       >
         <path
           strokeLinecap="round"
@@ -58,10 +57,12 @@ const Sidebar = (props) => {
         <button
           className="md:hidden fixed top-0 left-0 w-full z-50 bg-teal-500 text-white p-4 flex items-center shadow-lg"
           onClick={toggleSidebar}
+          aria-label="Open sidebar" // Added for accessibility
         >
           <div className="flex items-center space-x-2">
-            <Bars3Icon className="h-6 w-6" />
-            <Typography variant="h5" color="white">
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" color="black"/>{" "}
+            {/* Added aria-hidden for icon */}
+            <Typography variant="h5" color="black">
               LegalAid App
             </Typography>
           </div>
@@ -73,11 +74,17 @@ const Sidebar = (props) => {
         className={`fixed top-0 left-0 h-full z-40 transition-transform duration-300 ease-in-out transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:static md:flex-[0.20]`}
+        role="navigation" // Added role for better accessibility
+        aria-label="Main navigation" // Added aria-label for better accessibility
       >
         <Card className="h-full w-full min-w-[20rem] max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 overflow-auto">
-          <Link to="/" onClick={() => setIsSidebarOpen(false)}>
-            <div className="flex items-center  w-fit">
-              <img src="/logo.svg" alt="logo" className="h-24" />
+          <Link
+            to="/"
+            onClick={() => setIsSidebarOpen(false)}
+            aria-label="Go to home"
+          >
+            <div className="flex items-center w-fit">
+              <img src="/logo.svg" alt="LegalAid logo" className="h-24" />
             </div>
           </Link>
 
@@ -99,13 +106,14 @@ const Sidebar = (props) => {
                 {accordionItem.title}
               </AccordionHeader>
               {openAccordions[accordionIndex] && (
-                <AccordionBody>
+                <AccordionBody id={`accordion-body-${accordionIndex}`}>
                   <List>
                     {accordionItem?.menu.map((menuItem, menuIndex) => (
                       <NavLink
                         to={`${accordionItem.link}${menuItem.link}`}
                         key={`${accordionItem}-${accordionIndex}-${menuIndex}-${menuIndex}`}
                         onClick={() => setIsSidebarOpen(false)}
+                        aria-label={`Navigate to ${menuItem.label}`} // Added for accessibility
                       >
                         <ListItem>
                           {menuItem.label}
@@ -136,6 +144,8 @@ const Sidebar = (props) => {
         <div
           className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
           onClick={toggleSidebar}
+          role="button" // Added role for better accessibility
+          aria-label="Close sidebar" // Added for accessibility
         ></div>
       )}
     </>

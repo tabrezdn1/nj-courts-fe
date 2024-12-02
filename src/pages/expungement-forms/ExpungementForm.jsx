@@ -23,16 +23,21 @@ const ExpungementForm = () => {
       navigate(`/expungement-forms/form/continue`);
     }
     setIsModeChecked(true);
-  }, []);
+  }, [mode, navigate]); // Added dependencies for useEffect
+
   return (
-    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-      <Heading heading={heading} />
-      <CardBody className="mx-0 md:p-6 font-normal md:px-[16px] md:mt-[16px] md:px-[64px] w-screen md:w-full">
-        {
-          isModeChecked && (
-            <TabsRenderer id={FormId} formConfig={tabItems} />
-          )
-        }
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="expungement-form-heading"
+    >
+      <Heading heading={heading} id="expungement-form-heading" />
+      <CardBody
+        className="mx-0 md:p-6 font-normal md:px-[16px] md:mt-[16px] md:px-[64px] w-screen md:w-full"
+        role="document"
+      >
+        {isModeChecked && <TabsRenderer id={FormId} formConfig={tabItems} />}
       </CardBody>
     </Card>
   );

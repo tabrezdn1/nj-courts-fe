@@ -6,14 +6,20 @@ const FamilyCourtOverview = () => {
   const heading = "Family Court Overview";
 
   return (
-    <>
-      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-        <Heading heading={heading} />
-        <CardBody className="flex items-center justify-center h-full">
-          <ComingSoon />
-        </CardBody>
-      </Card>
-    </>
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="family-court-overview-heading"
+    >
+      <Heading heading={heading} id="family-court-overview-heading" />
+      <CardBody
+        className="flex items-center justify-center h-full"
+        role="document"
+      >
+        <ComingSoon aria-live="polite" />
+      </CardBody>
+    </Card>
   );
 };
 

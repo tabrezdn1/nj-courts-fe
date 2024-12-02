@@ -95,7 +95,7 @@ const ExpungementFormSubmit = ({ formData }) => {
 
       fieldsForTab.forEach((field) => {
         console.log(key, tabData, field);
-        if (tabData.hasOwnProperty(field)) {
+        if (Object.prototype.hasOwnProperty.call(tabData, field)) {
           // console.log(field)
 
           if (key === "expungement_form-information-review") {
@@ -121,6 +121,7 @@ const ExpungementFormSubmit = ({ formData }) => {
     const a = document.createElement("a");
     a.href = url;
     a.download = "ExpungementForm.pdf";
+    a.setAttribute("aria-label", "Download Expungement Form");
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -154,10 +155,11 @@ const ExpungementFormSubmit = ({ formData }) => {
           size="md"
           onClick={submitForm}
           disabled={
-            isLoading || formData?.submit_terms_agreement?.value?.Agree != true
+            isLoading || formData?.submit_terms_agreement?.value?.Agree !== true
           }
           loading={isLoading}
           className="w-auto"
+          aria-label="Submit Expungement Form"
         >
           Submit
         </Button>
@@ -170,19 +172,24 @@ const ExpungementFormSubmit = ({ formData }) => {
           onClick={downloadForm}
           disabled={isLoading}
           className="w-auto flex items-center gap-3"
+          aria-label="Download Expungement Form"
         >
           <ArrowDownOnSquareStackIcon className="h-5 w-5" />
           Download Form
         </Button>
       )}
-      {error && <p className="text-red-700 mt-3 font-bold">{errorDesc}</p>}
+      {error && (
+        <p className="text-red-700 mt-3 font-bold" role="alert">
+          {errorDesc}
+        </p>
+      )}
       {apiResponse === "submitSuccess" && (
-        <p className="text-green-700 mt-3 font-bold">
+        <p className="text-green-700 mt-3 font-bold" role="alert">
           Form submitted successfully!
         </p>
       )}
       {apiResponse === "downloadSuccess" && (
-        <p className="text-green-700 mt-3 font-bold">
+        <p className="text-green-700 mt-3 font-bold" role="alert">
           Form downloaded successfully!
         </p>
       )}

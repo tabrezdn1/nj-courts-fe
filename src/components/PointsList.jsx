@@ -11,17 +11,25 @@ import Instructions from "./Instructions";
 
 const PointsList = ({ listPoints }) => {
   return (
-    <div className="w-full max-w-lg px-4 sm:px-6 md:w-[40rem] py-5">
+    <div
+      className="w-full max-w-lg px-4 sm:px-6 md:w-[40rem] py-5"
+      role="region"
+      aria-labelledby="points-list-heading"
+    >
+      <Typography id="points-list-heading" className="sr-only">
+        List of Points
+      </Typography>
       <Timeline>
         {listPoints.map((point, pointIndex) => (
-          <TimelineItem key={`${point.title}-${pointIndex}`}>
+          <TimelineItem key={`${point.title}-${pointIndex}`} role="listitem">
             {pointIndex < listPoints.length - 1 && <TimelineConnector />}
             <TimelineHeader className="h-3">
-              <TimelineIcon />
+              <TimelineIcon aria-hidden="true" />
               <Typography
                 variant="h6"
                 color="text-gray-900"
                 className="leading-none text-sm sm:text-base md:text-lg"
+                aria-labelledby={`point-title-${pointIndex}`}
               >
                 {point.title}
               </Typography>
@@ -31,6 +39,7 @@ const PointsList = ({ listPoints }) => {
               <Typography
                 color="gray"
                 className="font-normal text-gray-600 mb-2 sm:mb-4 text-xs sm:text-sm md:text-base"
+                aria-labelledby={`point-description-${pointIndex}`}
               >
                 {point.description}
               </Typography>
