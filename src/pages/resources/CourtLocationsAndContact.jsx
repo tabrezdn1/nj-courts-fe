@@ -17,7 +17,7 @@ const CourtLocationsAndContact = () => {
       />
       <CardBody className="font-normal px-8">
         <Typography
-          color="gray"
+          color="black"
           className="py-1 w-1/2 text-2xl"
           aria-label="Introduction to court locations and contact information"
         >

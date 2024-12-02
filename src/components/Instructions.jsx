@@ -31,7 +31,7 @@ export function Instructions({ steps }) {
             <div className="mx-3">
               <Typography
                 id={`step-title-${index}`}
-                className="text-gray-600 dark:text-gray-200"
+                className="text-gray-900 dark:text-gray-900"
               >
                 {step.text}
                 {step.link && (

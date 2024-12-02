@@ -33,7 +33,7 @@ const ServiceSection = ({ heading, services, buttonText }) => {
             <Typography
               id={`service-description-${index}`}
               variant="paragraph"
-              className="text-gray-600 mb-"
+              className="text-gray-900 mb-"
             >
               {service.description}
             </Typography>

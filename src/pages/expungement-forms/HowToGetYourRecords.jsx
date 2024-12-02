@@ -62,7 +62,7 @@ const HowToGetYourRecords = () => {
                 id={`tabpanel-${value}`}
                 aria-labelledby={`tab-${value}`}
               >
-                <Typography color="gray" className="py-1 text-sm md:text-2xl">
+                <Typography color="black" className="py-1 text-sm md:text-2xl">
                   {desc}
                 </Typography>
                 <PointsList listPoints={list} />

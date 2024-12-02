@@ -186,7 +186,7 @@ const TabsRenderer = ({ id, formConfig }) => {
             aria-labelledby={`tab-${item.value}`}
           >
             <Typography
-              color="gray"
+              color="black"
               className="py-1 md:w-1/2 text-2xl mx-auto text-center"
               id={`description-${item.value}`}
             >

@@ -63,7 +63,7 @@ const PostExpungementInfo = () => {
               >
                 {desc && (
                   <Typography
-                    color="gray"
+                    color="black"
                     className="py-1 text-sm md:text-2xl"
                     aria-live="polite"
                   >

@@ -64,7 +64,7 @@ const FormReview = ({ id, activeTab }) => {
                         className="py-1 font-black font-bold"
                     >
                         {field.title}
-                        <span className="antialiased font-sans text-sm leading-normal text-gray-700 py-1 font-black"> {field.value}</span>
+                        <span className="antialiased font-sans text-sm leading-normal text-gray-900 py-1 font-black"> {field.value}</span>
                     </Typography>
                 </div>
             ))}

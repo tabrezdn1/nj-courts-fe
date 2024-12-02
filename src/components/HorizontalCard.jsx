@@ -12,7 +12,7 @@ export function HorizontalCard({ content }) {
         <Typography
           id="horizontal-card-title"
           variant="h6"
-          color="gray"
+          color="black"
           className="mb-4 uppercase"
         >
           {content?.category || "Category"}
@@ -21,7 +21,7 @@ export function HorizontalCard({ content }) {
           {content?.title || "Default Title"}
         </Typography>
         <Typography
-          color="gray"
+          color="black"
           className="font-normal"
           aria-describedby="content-description"
         >

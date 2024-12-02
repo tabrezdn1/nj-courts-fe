@@ -36,7 +36,7 @@ const WhatIsExpungement = () => {
           {whatIsExpungementTitle}
         </Typography>
         <Typography
-          color="gray"
+          color="black"
           className="mb-8 text-lg leading-relaxed"
           aria-label="What is expungement explanation"
         >
@@ -53,7 +53,7 @@ const WhatIsExpungement = () => {
           {howExpungementWorksTitle}
         </Typography>
         <Typography
-          color="gray"
+          color="black"
           className="mb-8 text-lg leading-relaxed"
           aria-label="How expungement works explanation"
         >
@@ -98,7 +98,7 @@ const WhatIsExpungement = () => {
                       >
                         {title}
                       </Typography>
-                      <Typography color="gray" className="text-lg">
+                      <Typography color="black" className="text-lg">
                         {description}
                       </Typography>
                     </div>
@@ -119,7 +119,7 @@ const WhatIsExpungement = () => {
               {exceptionsTitle}
             </Typography>
             <Typography
-              color="gray"
+              color="black"
               className="text-lg leading-relaxed mb-4"
               aria-label="Exceptions explanation"
             >
@@ -146,7 +146,7 @@ const WhatIsExpungement = () => {
                     >
                       {title}
                     </Typography>
-                    <Typography color="gray" className="text-lg">
+                    <Typography color="black" className="text-lg">
                       {description}
                     </Typography>
                   </div>

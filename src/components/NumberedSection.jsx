@@ -33,7 +33,7 @@ const NumberedSection = ({ heading, items }) => {
               >
                 {index + 1 < 10 ? `0${index + 1}` : index + 1}
               </div>
-              <Typography variant="h6" className="font-bold text-gray-700">
+              <Typography variant="h6" className="font-bold text-gray-900">
                 {item.description}
               </Typography>
             </div>

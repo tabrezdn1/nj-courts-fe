@@ -61,7 +61,7 @@ const HelpDrawer = () => {
         </div>
         <Typography
           id="help-drawer-description"
-          color="gray"
+          color="black"
           className="mb-8 pr-4 font-normal"
         >
           You need more help?

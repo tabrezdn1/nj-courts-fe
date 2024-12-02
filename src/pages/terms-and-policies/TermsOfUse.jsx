@@ -14,7 +14,7 @@ const TermsOfUse = () => {
       <Heading heading={termsOfUse.heading} id="terms-of-use-heading" />
       <CardBody className="font-normal px-8" role="document">
         <Typography
-          color="gray"
+          color="black"
           className="py-1 md:w-1/2 text-2xl"
           aria-label="Terms of Use Subheading"
         >

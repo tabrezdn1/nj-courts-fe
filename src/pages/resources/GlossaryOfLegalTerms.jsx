@@ -14,7 +14,7 @@ const GlossaryOfLegalTerms = () => {
       <Heading heading={glossaryOfLegalTerms.heading} id="glossary-heading" />
       <CardBody className="font-normal px-8" role="document">
         <Typography
-          color="gray"
+          color="black"
           className="py-1 w-1/2 text-2xl"
           aria-label="Glossary Subheading"
         >

@@ -12,7 +12,7 @@ const ComingSoon = () => {
       </div>
 
       <Typography
-        className="text-3xl sm:text-4xl font-bold text-gray-800"
+        className="text-3xl sm:text-4xl font-bold text-gray-900"
         aria-label="Coming Soon"
       >
         Coming Soon

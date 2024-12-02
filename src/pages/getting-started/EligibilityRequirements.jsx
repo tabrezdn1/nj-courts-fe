@@ -16,7 +16,7 @@ const EligibilityRequirements = () => {
       <Heading heading={heading} id="eligibility-requirements-heading" />
       <CardBody className="font-normal md:px-12" role="document">
         <Typography
-          color="gray"
+          color="black"
           className="py-1 w-1/2 text-2xl"
           aria-label="Introduction to eligibility requirements"
         >

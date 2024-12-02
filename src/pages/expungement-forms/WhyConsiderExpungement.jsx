@@ -87,7 +87,7 @@ const WhyConsiderExpungement = () => {
                       >
                         {point.title}
                       </Typography>
-                      <Typography color="gray" className="text-base">
+                      <Typography color="black" className="text-base">
                         {point.content}
                       </Typography>
                     </div>

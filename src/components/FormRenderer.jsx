@@ -291,7 +291,7 @@ const RecursiveFieldRenderer = ({
       </Typography>
       <Typography
         variant="small"
-        color="gray"
+        color="black"
         className="py-1 font-black text-xs"
       >
         {field.sub_label}
@@ -317,7 +317,7 @@ const RecursiveFieldRenderer = ({
                   </Typography>
                   <Typography
                     variant="small"
-                    color="gray"
+                    color="black"
                     className="py-1 font-black"
                   >
                     {subField.sub_label}
@@ -347,7 +347,7 @@ const RecursiveFieldRenderer = ({
                             </Typography>
                             <Typography
                               variant="small"
-                              color="gray"
+                              color="black"
                               className="py-1 font-black"
                             >
                               {nestedField.sub_label}
@@ -379,7 +379,7 @@ const RecursiveFieldRenderer = ({
                                       </Typography>
                                       <Typography
                                         variant="small"
-                                        color="gray"
+                                        color="black"
                                         className="py-1 font-black"
                                       >
                                         {deepNestedField.sub_label}
@@ -471,7 +471,7 @@ const FormRenderer = ({
         {form?.helper && <HelpDrawer />}
       </Typography>
       <Typography
-        color="gray"
+        color="black"
         className="font-normal max-w-96 text-sm md:text-base"
       >
         {form.subtitle}

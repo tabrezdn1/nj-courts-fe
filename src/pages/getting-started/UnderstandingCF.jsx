@@ -33,7 +33,7 @@ const UnderstandingCF = () => {
       <CardBody className="font-normal mb:px-[64px]">
         <Typography
           id="introduction"
-          color="gray"
+          color="black"
           className="py-1 mb:w-1/2 text-2xl"
         >
           {introduction}

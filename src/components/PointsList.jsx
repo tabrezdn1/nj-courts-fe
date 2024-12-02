@@ -37,8 +37,8 @@ const PointsList = ({ listPoints }) => {
 
             <TimelineBody className="pt-2 pb-4 sm:pb-8">
               <Typography
-                color="gray"
-                className="font-normal text-gray-600 mb-2 sm:mb-4 text-xs sm:text-sm md:text-base"
+                color="black"
+                className="font-normal text-gray-900 mb-2 sm:mb-4 text-xs sm:text-sm md:text-base"
                 aria-labelledby={`point-description-${pointIndex}`}
               >
                 {point.description}

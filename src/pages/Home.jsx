@@ -58,7 +58,7 @@ const Home = () => {
         <div className="pt-[80px] md:pt-0">
           <Heading className="hidden md:block" heading={heading} />
           <Typography
-            color="gray"
+            color="black"
             className="mt-[20px] pb-4 px-4 text-xl md:text-2xl text-center font-bold"
             aria-live="polite"
           >
@@ -83,7 +83,7 @@ const Home = () => {
                 <CardFooter className="pt-0 text-center">
                   <Typography
                     variant="h5"
-                    color="gray"
+                    color="black"
                     className="mb-2 text-sm md:text-lg"
                   >
                     {card.title}

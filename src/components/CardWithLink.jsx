@@ -33,13 +33,13 @@ const CardWithLink = ({ title, description, steps }) => {
               <Typography
                 id={`step-title-${index}`}
                 variant="h5"
-                className="font-semibold mb-2 text-gray-800"
+                className="font-semibold mb-2 text-gray-900"
               >
                 {step.title}
               </Typography>
               <Typography
                 id={`step-description-${index}`}
-                className="text-gray-600 text-center mb-4"
+                className="text-gray-900 text-center mb-4"
               >
                 {step.description}
               </Typography>

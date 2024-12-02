@@ -19,7 +19,7 @@ const ExpungementEligibilityCriteria = () => {
       />
       <CardBody className="font-normal px-6" role="document">
         <Typography
-          color="gray"
+          color="black"
           className="py-1 w-full md:w-1/2 text-2xl"
           aria-live="polite"
         >
