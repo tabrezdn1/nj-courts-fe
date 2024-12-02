@@ -32,20 +32,34 @@ const OurMission = () => {
   }));
 
   return (
-    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-      <Heading heading={heading} />
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="our-mission-heading"
+    >
+      <Heading heading={heading} id="our-mission-heading" />
       <CardBody className="font-normal px-5">
-        <CustomTypography variant="paragraph">{missionText}</CustomTypography>
+        <CustomTypography variant="paragraph" aria-describedby="mission-text">
+          {missionText}
+        </CustomTypography>
 
         <ServiceSection
           heading={platformText}
           services={servicesWithIcons}
           buttonText="Learn More"
+          aria-labelledby="platform-services-heading"
         />
 
-        <section className="mb-16">
-          <CustomTypography variant="paragraph">{closingText}</CustomTypography>
-          <CustomTypography variant="paragraph" className="mt-4">
+        <section className="mb-16" aria-labelledby="closing-section-heading">
+          <CustomTypography variant="paragraph" id="closing-section-heading">
+            {closingText}
+          </CustomTypography>
+          <CustomTypography
+            variant="paragraph"
+            className="mt-4"
+            aria-label="start-text"
+          >
             {startText}
           </CustomTypography>
         </section>

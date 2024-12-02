@@ -41,7 +41,8 @@ const FormReview = ({ id, activeTab }) => {
     }
 
     return (
-        <>
+        <div role="region" aria-labelledby="form-review-heading">
+            <h2 id="form-review-heading" className="sr-only">Form Review</h2>
             {fieldsToReview.map((field, index) => (
                 <div key={index}>
                     <Typography
@@ -54,7 +55,7 @@ const FormReview = ({ id, activeTab }) => {
                     </Typography>
                 </div>
             ))}
-        </>
+        </div>
     )
 }
 

@@ -9,7 +9,7 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import HelpDrawer from "./HelpDrawer";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import FormReview from "./FormReview";
 import SignaturePad from "./SignaturePad";
 
@@ -19,6 +19,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
       return (
         <>
           <Input
+            aria-label={field.placeholder} // Added accessibility label
             size="lg"
             type="number"
             placeholder={field.placeholder}
@@ -36,7 +37,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             error={selectedOptions[field.id]?.error}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -46,6 +49,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
       return (
         <>
           <Input
+            aria-label={field.placeholder} // Added accessibility label
             size="lg"
             type="number"
             placeholder={field.placeholder}
@@ -63,7 +67,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             error={selectedOptions[field.id]?.error}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -73,6 +79,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
       return (
         <>
           <Input
+            aria-label={field.placeholder} // Added accessibility label
             size="lg"
             type="number"
             placeholder={field.placeholder}
@@ -90,7 +97,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             error={selectedOptions[field.id]?.error}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -100,6 +109,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
       return (
         <>
           <Input
+            aria-label={field.placeholder} // Added accessibility label
             size="lg"
             placeholder={field.placeholder}
             className="!border-t-blue-gray-200 focus:!border-t-gray-900 md:w-full text-sm"
@@ -112,7 +122,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             maxLength={field?.validation?.maxLength || 255}
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -131,11 +143,14 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
                 onChange={() => onOptionChange(field.id, option)}
                 checked={selectedOptions[field.id]?.value === option}
                 className="text-sm"
+                aria-labelledby={`${field.id}-option-${i}`} // Added aria-labelledby for better accessibility
               />
             ))}
           </div>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -156,11 +171,14 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
                 }
                 checked={selectedOptions[field.id]?.value?.[option] || false}
                 className="text-sm"
+                aria-labelledby={`${field.id}-option-${i}`} // Added aria-labelledby for better accessibility
               />
             ))}
           </div>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -172,6 +190,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
           <Select
             color="teal"
             label={field.name}
+            aria-label={field.name} // Added accessibility label
             animate={{
               mount: { y: 0 },
               unmount: { y: 25 },
@@ -193,7 +212,9 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             ))}
           </Select>
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -202,6 +223,7 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
     case "textarea":
       return (
         <Textarea
+          aria-label={field.placeholder} // Added accessibility label
           color="teal"
           placeholder={field.placeholder}
           rows={4}
@@ -225,9 +247,12 @@ const FieldRenderer = ({ field, onOptionChange, selectedOptions }) => {
             min="1947-08-15"
             max={new Date().toISOString().split("T")[0]}
             error={selectedOptions[field.id]?.error}
+            aria-label={field.placeholder} // Added accessibility label
           />
           {selectedOptions[field.id]?.error && (
-            <p className="text-red-500 mt-1 text-xs">
+            <p className="text-red-500 mt-1 text-xs" role="alert">
+              {" "}
+              {/* Added role for error message */}
               {selectedOptions[field.id]?.error_desc}
             </p>
           )}
@@ -255,20 +280,6 @@ const RecursiveFieldRenderer = ({
   tabIndex,
   stepIndex,
 }) => {
-  const getFieldIndexByLabelAndSublabel = (label, sub_label) => {
-    return fields.findIndex(
-      (field) => field.label === label && field.sub_label === sub_label
-    );
-  };
-
-  const generateFieldPlaceholderPath = (tabIndex, stepIndex, fieldIndex) => {
-    return `tabs.${tabIndex}.stepper.${stepIndex}.fields.${fieldIndex}.placeholder`;
-  };
-
-  const getOptionsFieldIndex = (optionFields, field) => {
-    return optionFields.findIndex((optionIndex) => optionIndex.id === field.id);
-  };
-
   return fields.map((field, index) => (
     <div key={index} className="mb-4">
       <Typography
@@ -287,11 +298,6 @@ const RecursiveFieldRenderer = ({
       </Typography>
       <FieldRenderer
         field={field}
-        placeholderPath={generateFieldPlaceholderPath(
-          tabIndex,
-          stepIndex,
-          getFieldIndexByLabelAndSublabel(field.label, field.sub_label)
-        )}
         onOptionChange={onOptionChange}
         selectedOptions={selectedOptions}
       />
@@ -411,9 +417,8 @@ const FormRenderer = ({
   handleOptionChangeCallback,
   tabIndex,
   stepIndex,
-  activeTab
+  activeTab,
 }) => {
-
   useEffect(() => {
     // Read existing data from local storage
     const existingData = JSON.parse(localStorage.getItem(id)) || {};
@@ -482,7 +487,9 @@ const FormRenderer = ({
               onOptionChange={handleOptionChange}
             />
           )}
-          {form.isReview && <FormReview id={form.value} activeTab={activeTab}/>}
+          {form.isReview && (
+            <FormReview id={form.value} activeTab={activeTab} />
+          )}
         </div>
       </form>
     </Card>

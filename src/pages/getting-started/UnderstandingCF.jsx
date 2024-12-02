@@ -24,21 +24,36 @@ const UnderstandingCF = () => {
   };
 
   return (
-    <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      aria-labelledby="understanding-cf-heading"
+    >
       <Heading heading={heading} />
       <CardBody className="font-normal mb:px-[64px]">
-        <Typography color="gray" className="py-1 mb:w-1/2 text-2xl">
+        <Typography
+          id="introduction"
+          color="gray"
+          className="py-1 mb:w-1/2 text-2xl"
+        >
           {introduction}
         </Typography>
         {sections.map((section, index) => (
-          <div key={index} className="my-8">
+          <div
+            key={index}
+            className="my-8"
+            role="region"
+            aria-labelledby={`section-${index}`}
+          >
             <Typography
+              id={`section-${index}`}
               variant="h4"
               color="teal"
               className="font-semibold flex items-center gap-2"
             >
               {React.createElement(iconMapping[section.icon], {
                 className: "w-8 h-8",
+                "aria-hidden": true,
               })}
               {section.title}
             </Typography>
@@ -57,6 +72,7 @@ const UnderstandingCF = () => {
                           key={idx}
                           link={link.route}
                           label={link.label}
+                          aria-label={`Link to ${link.label}`}
                         />
                       ))}
                   </>

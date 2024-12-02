@@ -6,14 +6,20 @@ const CivilCourtCommonForms = () => {
   const heading = "Civil Court Common Forms";
 
   return (
-    <>
-      <Card className="w-full overflow-y-auto mt-16 md:mt-0" shadow={false}>
-        <Heading heading={heading} />
-        <CardBody className="flex items-center justify-center h-full">
-          <ComingSoon />
-        </CardBody>
-      </Card>
-    </>
+    <Card
+      className="w-full overflow-y-auto mt-16 md:mt-0"
+      shadow={false}
+      role="region"
+      aria-labelledby="civil-court-common-forms-heading"
+    >
+      <Heading heading={heading} id="civil-court-common-forms-heading" />
+      <CardBody
+        className="flex items-center justify-center h-full"
+        role="alert"
+      >
+        <ComingSoon />
+      </CardBody>
+    </Card>
   );
 };
 
