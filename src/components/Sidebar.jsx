@@ -102,8 +102,6 @@ const Sidebar = (props) => {
                 onClick={() => {
                   toggleAccordion(accordionIndex);
                 }}
-                aria-expanded={openAccordions[accordionIndex]} // Added for accessibility
-                aria-controls={`accordion-body-${accordionIndex}`} // Added for accessibility
               >
                 {accordionItem.title}
               </AccordionHeader>
