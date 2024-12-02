@@ -60,9 +60,9 @@ const Sidebar = (props) => {
           aria-label="Open sidebar" // Added for accessibility
         >
           <div className="flex items-center space-x-2">
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />{" "}
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" color="black"/>{" "}
             {/* Added aria-hidden for icon */}
-            <Typography variant="h5" color="white">
+            <Typography variant="h5" color="black">
               LegalAid App
             </Typography>
           </div>
@@ -109,8 +109,6 @@ const Sidebar = (props) => {
               </AccordionHeader>
               {openAccordions[accordionIndex] && (
                 <AccordionBody id={`accordion-body-${accordionIndex}`}>
-                  {" "}
-                  {/* Added id for accessibility */}
                   <List>
                     {accordionItem?.menu.map((menuItem, menuIndex) => (
                       <NavLink

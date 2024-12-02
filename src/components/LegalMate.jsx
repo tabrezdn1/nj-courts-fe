@@ -114,6 +114,7 @@ const LegalMate = () => {
     ]);
   };
 
+
   return (
     <div>
       <div className="flex d-flex">
@@ -136,6 +137,7 @@ const LegalMate = () => {
             disabled={loading}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
             aria-label="Input for talking with LegalMate"
+            color="black"
           />
         </div>
       </div>
