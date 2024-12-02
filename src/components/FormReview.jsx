@@ -4,7 +4,7 @@ import { Typography } from "@material-tailwind/react";
 
 const FormReview = ({ id, activeTab }) => {
     const [fieldsToReview, setFieldsToReview] = React.useState([]);
-    
+
     useEffect(() => {
         setReviewData();
     }, [id]);
@@ -34,6 +34,19 @@ const FormReview = ({ id, activeTab }) => {
                             "value": subField.type === "radio" && !value ? "N/A" : value
                         })
                     })
+                }
+
+                // additional arrest information
+                if (id === "additional-arrest-information" && value === "Yes") {
+                    currentReviewTab.conditional_stepper["Yes"].forEach((cSteps) => {
+                        cSteps.fields.forEach((cField) => {
+                            const value = reviewData[cField.id]?.value || "";
+                            reviewFields.push({
+                                "title": cField.label,
+                                "value": cField.type === "radio" && !value ? "N/A" : value
+                            })
+                        })
+                    });
                 }
             });
         })

@@ -509,7 +509,7 @@
           {
             "id": "additional_arrest",
             "type": "radio",
-            "label": "",
+            "label": "Additional Arrest",
             "sub_label": "",
             "name": "additionalArrest",
             "validation": {
@@ -825,7 +825,7 @@
         "title": "Additional Arrest Information Review",
         "subtitle": "Please take a moment to review all the information you've provided in your application. Is everything accurate and complete?",
         "icon": "ClipboardDocumentCheckIcon",
-        "value": "arrest-information",
+        "value": "additional-arrest-information",
         "isReview": true,
         "fields": []
       },
