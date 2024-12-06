@@ -19,7 +19,7 @@ const Home = () => {
   );
   const [userSelection, setUserSelection] = useState({});
   const navigate = useNavigate();
-  const heading = "Questionnaire 🤔";
+  const heading = "Questionnaire";
 
   const routeTo = (card) => {
     // selection for first question
