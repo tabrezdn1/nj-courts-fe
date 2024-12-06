@@ -16,8 +16,9 @@ const Heading = ({ heading, className = "" }) => {
     >
       <Typography
         color="white"
-        className="text-4xl md:text-6xl"
+        className="text-4xl md:text-6xl text-shadow"
         aria-hidden="true"
+        style={{ textShadow: '1px 1px 0 black' }}
       >
         {" "}
         {/* Added aria-hidden to prevent redundancy */}

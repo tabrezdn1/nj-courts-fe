@@ -60,9 +60,9 @@ const Sidebar = (props) => {
           aria-label="Open sidebar" // Added for accessibility
         >
           <div className="flex items-center space-x-2">
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" color="black"/>{" "}
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" color="white"/>{" "}
             {/* Added aria-hidden for icon */}
-            <Typography variant="h5" color="black">
+            <Typography variant="h5" color="white" className="text-shadow" style={{ textShadow: '1px 1px 0 black' }}>
               LegalAid App
             </Typography>
           </div>
