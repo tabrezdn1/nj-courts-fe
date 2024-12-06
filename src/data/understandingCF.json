@@ -10,10 +10,10 @@
             "title": "Types of Court Forms",
             "description": "Depending on your case, you may need to file civil, criminal, family, or expungement forms.",
             "links": [
-              { "label": "Civil Court Forms", "route": "/civil-court-forms" },
-              { "label": "Family Court Forms", "route": "/family-court-forms" },
-              { "label": "Criminal Court Forms", "route": "/criminal-court-forms" },
-              { "label": "Expungement Forms", "route": "/expungement-forms" }
+              { "label": "Civil Court Forms", "route": "/civil-court-forms/overview" },
+              { "label": "Family Court Forms", "route": "/family-court-forms/overview" },
+              { "label": "Criminal Court Forms", "route": "/criminal-court-forms/overview" },
+              { "label": "Expungement Forms", "route": "/expungement-forms/form/continue" }
             ]
           },
           {

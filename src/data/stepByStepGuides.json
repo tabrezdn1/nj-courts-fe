@@ -9,49 +9,31 @@
           "icon": "DevicePhoneMobileIcon",
           "title": "Expungement Form Guide",
           "description": "Follow these steps to expunge your criminal record and file a petition for expungement.",
-          "link": "/expungement-guide"
+          "link": "/expungement-forms/what-is-expungement"
         },
         {
           "icon": "UserCircleIcon",
           "title": "Eligibility Check",
           "description": "Ensure that you meet the eligibility criteria for expungement.",
-          "link": "/eligibility-check"
+          "link": "/expungement-forms/eligibility-criteria"
         },
         {
           "icon": "ClipboardDocumentListIcon",
           "title": "Document Preparation",
           "description": "Gather all necessary documents for the expungement process.",
-          "link": "/document-preparation"
+          "link": "/getting-started/required-documents"
         },
         {
           "icon": "StarIcon",
           "title": "Submit the Petition",
           "description": "Submit the expungement petition to the appropriate court.",
-          "link": "/submit-petition"
+          "link": "/expungement-forms/post-expungement-process"
         },
         {
           "icon": "DevicePhoneMobileIcon",
           "title": "Court Appearance",
           "description": "Learn about the court appearance process for expungement cases.",
-          "link": "/court-appearance"
-        },
-        {
-          "icon": "UserCircleIcon",
-          "title": "Receive Expungement Order",
-          "description": "What to expect after receiving the expungement order from the court.",
-          "link": "/expungement-order"
-        },
-        {
-          "icon": "ClipboardDocumentListIcon",
-          "title": "Record Removal",
-          "description": "Understand the process of removing records from databases after expungement.",
-          "link": "/record-removal"
-        },
-        {
-          "icon": "StarIcon",
-          "title": "Notify Relevant Parties",
-          "description": "Notify law enforcement agencies and other relevant parties about your expungement.",
-          "link": "/notify-parties"
+          "link": "expungement-forms/expungement-process"
         }
       ]
     },
@@ -63,7 +45,7 @@
           "icon": "UserCircleIcon",
           "title": "Civil Complaint Form Guide",
           "description": "Step-by-step guide on filing a civil complaint in the court.",
-          "link": "/civil-complaint-guide"
+          "link": "/getting-started/understanding-court-forms"
         }
       ]
     },
@@ -75,7 +57,7 @@
           "icon": "ClipboardDocumentListIcon",
           "title": "Family Court Petition Guide",
           "description": "Steps to follow when submitting a family court petition.",
-          "link": "/family-court-guide"
+          "link": "/getting-started/understanding-court-forms"
         }
       ]
     }

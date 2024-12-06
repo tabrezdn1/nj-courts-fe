@@ -8,7 +8,6 @@
           {
             "icon": "MagnifyingGlassCircleIcon",
             "text": "Browse by Category to find forms relevant to your situation.",
-            "link": "/browse-category",
             "linkText": "Browse forms"
           }
         ]
@@ -19,7 +18,6 @@
           {
             "icon": "DocumentTextIcon",
             "text": "Use the Search Bar for quick access to the form you need.",
-            "link": "/search-form",
             "linkText": "Search now"
           }
         ]
@@ -32,7 +30,6 @@
           {
             "icon": "InformationCircleIcon",
             "text": "Understand legal terms with helpful tooltips.",
-            "link": "/tooltips",
             "linkText": "Learn more"
           }
         ]
@@ -43,7 +40,6 @@
           {
             "icon": "ArrowUpIcon",
             "text": "Complex sections are broken down into steps.",
-            "link": "/complex-sections",
             "linkText": "See details"
           }
         ]
@@ -54,7 +50,6 @@
           {
             "icon": "ArrowUpIcon",
             "text": "Your progress is automatically saved as you go.",
-            "link": "/auto-save",
             "linkText": "Learn more"
           }
         ]
@@ -67,7 +62,6 @@
           {
             "icon": "ArrowUpIcon",
             "text": "Submit forms online if eligible.",
-            "link": "/submit-electronically",
             "linkText": "Submit online"
           }
         ]
@@ -78,7 +72,6 @@
           {
             "icon": "DocumentTextIcon",
             "text": "Print and submit at the court if online submission is unavailable.",
-            "link": "/print-submit",
             "linkText": "Print form"
           }
         ]

@@ -47,7 +47,6 @@ const OurMission = () => {
         <ServiceSection
           heading={platformText}
           services={servicesWithIcons}
-          buttonText="Learn More"
           aria-labelledby="platform-services-heading"
         />
 

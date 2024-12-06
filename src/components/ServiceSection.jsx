@@ -40,16 +40,6 @@ const ServiceSection = ({ heading, services, buttonText }) => {
           </div>
         ))}
       </div>
-
-      <Button
-        variant="outlined"
-        color="teal"
-        size="lg"
-        className="mt-8"
-        aria-label={`Learn more about ${buttonText}`}
-      >
-        {buttonText}
-      </Button>
     </div>
   );
 };
