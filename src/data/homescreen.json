@@ -13,17 +13,20 @@
             {
                 "title": "Name Change",
                 "name": "nameChange",
-                "formLink": "/expungement-form"
+                "formLink": "/expungement-form",
+                "disable": true
             },
             {
                 "title": "Civil Matters",
                 "formLink": "/expungement-form",
-                "name": "civilCase"
+                "name": "civilCase",
+                "disable": true
             },
             {
                 "title": "Criminal Matters",
                 "formLink": "/expungement-form",
-                "name": "criminalCase"
+                "name": "criminalCase",
+                "disable": true
             }
         ]
     },

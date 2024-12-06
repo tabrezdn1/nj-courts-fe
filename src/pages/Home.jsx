@@ -72,8 +72,8 @@ const Home = () => {
             {currentQuestion.options.map((card, index) => (
               <Card
                 key={index}
-                className="w-full md:w-[300px] lg:w-[350px] mx-auto h-[200px] md:h-[250px] cursor-pointer shadow-md transition-transform transform hover:scale-105"
-                onClick={() => routeTo(card)}
+                className={`w-full md:w-[300px] lg:w-[350px] mx-auto h-[200px] md:h-[250px] cursor-pointer shadow-md transition-transform transform hover:scale-105 ${card.disable ? "opacity-50 cursor-not-allowed" : ""}`}
+                onClick={() => !card.disable && routeTo(card)}
                 role="button"
                 aria-label={`Select ${card.title}`}
               >
