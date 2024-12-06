@@ -62,7 +62,12 @@ const Sidebar = (props) => {
           <div className="flex items-center space-x-2">
             <Bars3Icon className="h-6 w-6" aria-hidden="true" color="white"/>{" "}
             {/* Added aria-hidden for icon */}
-            <Typography variant="h5" color="white" className="text-shadow" style={{ textShadow: '1px 1px 0 black' }}>
+            <Typography
+              variant="h5"
+              color="white"
+              className="text-shadow"
+              style={{ textShadow: "1px 1px 0 black" }}
+            >
               LegalAid App
             </Typography>
           </div>
@@ -136,6 +141,25 @@ const Sidebar = (props) => {
               )}
             </Accordion>
           ))}
+          <Link
+            to="https://legal--aid--ecru-vercel-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
+            className="flex items-center"
+          >
+            <a
+              href="https://legal--aid--ecru-vercel-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
+              <img
+                src="./google-translate.png"
+                alt="Google Translate"
+                className="px-8 mx-auto"
+                width="200"
+                height="100"
+              />
+            </a>
+          </Link>
         </Card>
       </div>
 
