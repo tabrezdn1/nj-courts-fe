@@ -141,25 +141,20 @@ const Sidebar = (props) => {
               )}
             </Accordion>
           ))}
-          <Link
-            to="https://legal--aid--ecru-vercel-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
+          <a
+            href="https://legal--aid--ecru-vercel-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center"
           >
-            <a
-              href="https://legal--aid--ecru-vercel-app.translate.goog/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center"
-            >
-              <img
-                src="./google-translate.png"
-                alt="Google Translate"
-                className="px-8 mx-auto"
-                width="200"
-                height="100"
-              />
-            </a>
-          </Link>
+            <img
+              src="./google-translate.png"
+              alt="Google Translate"
+              className="px-8 py-2 mx-auto"
+              width="200"
+              height="100"
+            />
+          </a>
         </Card>
       </div>
 
